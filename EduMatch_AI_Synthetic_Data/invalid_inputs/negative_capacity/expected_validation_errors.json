@@ -1,0 +1,12 @@
+{
+  "expected_primary_code": "INVALID_CAPACITY",
+  "errors": [
+    {
+      "file": "offers.csv",
+      "row": 2,
+      "field": "capacity",
+      "code": "INVALID_CAPACITY"
+    }
+  ],
+  "instruction": "Reject this whole import. Never mix invalid-input fixtures into model training."
+}

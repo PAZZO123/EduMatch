@@ -1,0 +1,12 @@
+{
+  "status": 409,
+  "body": {
+    "code": "STALE_REVISION",
+    "message": "This proposal changed since you loaded it. Refresh and retry.",
+    "details": {
+      "current_revision": 2,
+      "status": "APPROVED"
+    },
+    "request_id": "aa9d9c62130b4295"
+  }
+}

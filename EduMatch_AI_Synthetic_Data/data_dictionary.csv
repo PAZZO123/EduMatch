@@ -1,0 +1,36 @@
+file,field,description,model_feature,model_target
+students.csv,student_id,"Synthetic key, not a national or examination ID. Exclude from model features.",false,false
+students.csv,display_name,Synthetic alias only. Exclude from model features.,false,false
+students.csv,cohort_id,Synthetic cohort key.,false,false
+students.csv,province,Geographic label used in a simulated preference context.,false,false
+students.csv,overall_score,Synthetic 0-100 score; higher is better. Not a verified NESA grade scale.,false,false
+students.csv,math_score,Synthetic subject percentage in 0-100.,false,false
+students.csv,science_score,Synthetic subject percentage in 0-100.,false,false
+students.csv,language_score,Synthetic subject percentage in 0-100.,false,false
+students.csv,allow_fallback,Opt-in to unlisted fallback recommendations under invented demo policy.,false,false
+offers.csv,offer_id,Synthetic school-offer key; no real school identifiers.,false,false
+offers.csv,school_name,"Explicitly synthetic school label, not a real institution.",false,false
+offers.csv,province,Geographic label used in a simulated preference context.,false,false
+offers.csv,stage_programme,Generic placeholder because official admission stage is unconfirmed.,false,false
+offers.csv,capacity,"Initial seats per offer for this cohort, not remaining seats or national capacity.",false,false
+offers.csv,min_overall,Invented eligibility threshold on 0-100 scale.,false,false
+offers.csv,subject_min_math,Optional synthetic subject threshold; blank means no threshold.,false,false
+offers.csv,subject_min_science,Optional synthetic subject threshold; blank means no threshold.,false,false
+offers.csv,subject_min_language,Optional synthetic subject threshold; blank means no threshold.,false,false
+offers.csv,weight_math,Nonnegative offer subject-profile weight; three weights sum to one.,false,false
+offers.csv,weight_science,Nonnegative offer subject-profile weight; three weights sum to one.,false,false
+offers.csv,weight_language,Nonnegative offer subject-profile weight; three weights sum to one.,false,false
+preferences.csv,student_id,"Synthetic key, not a national or examination ID. Exclude from model features.",false,false
+preferences.csv,offer_id,Synthetic school-offer key; no real school identifiers.,false,false
+preferences.csv,rank,"1-3, unique and contiguous per student; lower means more preferred.",false,false
+pairs.csv,student_id,"Synthetic key, not a national or examination ID. Exclude from model features.",false,false
+pairs.csv,offer_id,Synthetic school-offer key; no real school identifiers.,false,false
+pairs.csv,split,"Preassigned train, validation or test. Students never overlap across splits.",false,false
+pairs.csv,overall_norm,overall_score / 100.,true,false
+pairs.csv,subject_fit,Sum of math/science/language scores times offer weights / 100.,true,false
+pairs.csv,eligibility_margin,"max(0, overall_score - min_overall) / 100. Not a capacity measure.",true,false
+pairs.csv,same_province,"1 if student and offer province labels match, otherwise 0.",true,false
+pairs.csv,y_demo,Synthetic teacher target: .75*subject_fit + .15*overall_norm + .10*same_province.,false,true
+pairs.csv,eligible,"Hard-rule eligibility at initial inputs. Diagnostic only, not a model feature.",false,false
+pairs.csv,listed_preference_rank,1-3 if pair is a listed choice; blank otherwise. Diagnostic only.,false,false
+pairs.csv,synthetic,Always true. No real records were used.,false,false

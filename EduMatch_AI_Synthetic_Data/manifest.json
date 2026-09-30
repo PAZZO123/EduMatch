@@ -1,0 +1,1018 @@
+{
+  "package_version": "1.0",
+  "synthetic": true,
+  "model_students": 30000,
+  "model_candidate_pairs": 1800000,
+  "archive_uncompressed_notice": "Extracting the package requires about 150 MB of disk space.",
+  "files": [
+    {
+      "path": "EduMatch_AI_Dataset_Preview.xlsx",
+      "bytes": 56188,
+      "sha256": "478543c97992fb8344b86f7733327480c79ce3e6b7094f09b8848f8c380a27be"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8333,
+      "sha256": "a83e6677cf39b81a710191cdf19558b62b6657ff495ea499a3caff62e778c1af"
+    },
+    {
+      "path": "data_dictionary.csv",
+      "bytes": 3458,
+      "sha256": "6c16921b1a36086a2429ef4e060c9e97c678b5987f177ccf8cfb7166fe79e3a2",
+      "data_rows": 35
+    },
+    {
+      "path": "demo/demo_200/expected_rules_only_placements.csv",
+      "bytes": 25834,
+      "sha256": "06ce3425dd3b81395364b0c3ecec28b5405237270f31540d73cbe10ae12347f3",
+      "data_rows": 200
+    },
+    {
+      "path": "demo/demo_200/expected_teacher_fallback_placements.csv",
+      "bytes": 27305,
+      "sha256": "975af020fc3ff0fda0a447a607c7b0a6bde3ea8ca314fbeae42ae31941bbe86e",
+      "data_rows": 200
+    },
+    {
+      "path": "demo/demo_200/offers.csv",
+      "bytes": 1576,
+      "sha256": "5c27050864a3538ac03c0c8d61c6129166a07979af8331d8a04e2b4849b45a42",
+      "data_rows": 12
+    },
+    {
+      "path": "demo/demo_200/preferences.csv",
+      "bytes": 19825,
+      "sha256": "9d7ba57b42916f5ac3d1121583430c01c5ac94c29256bfdda3e38c44ba138f1c",
+      "data_rows": 600
+    },
+    {
+      "path": "demo/demo_200/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "demo/demo_200/students.csv",
+      "bytes": 22607,
+      "sha256": "66a1d226c526b51df6aa38084d4eb2818be2a8a0942d4b831224c65bbb5594dd",
+      "data_rows": 200
+    },
+    {
+      "path": "demo/demo_200/summary.json",
+      "bytes": 943,
+      "sha256": "c0f40f162b0b6c5e1ba99155738eb4e376f53e988daa22c3e28fb643137c87d1"
+    },
+    {
+      "path": "demo/large_5000/expected_rules_only_placements.csv",
+      "bytes": 699608,
+      "sha256": "ae7b9835db6e2ae2499290b71f710410a6a61be7b3d54a8f447e5b216fb0e598",
+      "data_rows": 5000
+    },
+    {
+      "path": "demo/large_5000/expected_teacher_fallback_placements.csv",
+      "bytes": 774240,
+      "sha256": "944bba5e401e06fd5fdc71a61f5584c612349ad6819939f52cde140f3a5d3f8e",
+      "data_rows": 5000
+    },
+    {
+      "path": "demo/large_5000/offers.csv",
+      "bytes": 7442,
+      "sha256": "e3d87d3cd5f8f5d11431c65909b2aa8ca1b495197b78ec11d37e482beb6f8e34",
+      "data_rows": 60
+    },
+    {
+      "path": "demo/large_5000/preferences.csv",
+      "bytes": 555025,
+      "sha256": "6a8a7be2e240c9aef5982324134db5db1e027486b95a0387995c5f5ed5bfed90",
+      "data_rows": 15000
+    },
+    {
+      "path": "demo/large_5000/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "demo/large_5000/students.csv",
+      "bytes": 592596,
+      "sha256": "87d39e250acaf7c0dfd2464f9bfbeba50e8388803e765230f076e679011d7fc2",
+      "data_rows": 5000
+    },
+    {
+      "path": "demo/large_5000/summary.json",
+      "bytes": 979,
+      "sha256": "127f273490fdbc875ebf4a83880e5ea867d5e71931b412ad769689e5cea81e7b"
+    },
+    {
+      "path": "demo/stress_500/expected_rules_only_placements.csv",
+      "bytes": 70136,
+      "sha256": "aac9dbb1de85bfda2480fa1c4fc5f3a21b98fabcd13a70871f5a5dfe856644f0",
+      "data_rows": 500
+    },
+    {
+      "path": "demo/stress_500/expected_teacher_fallback_placements.csv",
+      "bytes": 74540,
+      "sha256": "3f0df5451334660899722040d5cc71fd102335dda8ebbdbff178f6ee025a1af0",
+      "data_rows": 500
+    },
+    {
+      "path": "demo/stress_500/offers.csv",
+      "bytes": 2587,
+      "sha256": "f41558f847ec71e18b462ad735accdce6709e296d0c1aea0465a38f603d85b39",
+      "data_rows": 20
+    },
+    {
+      "path": "demo/stress_500/preferences.csv",
+      "bytes": 55525,
+      "sha256": "792d1e3a4fd8f0893b5588c8cbc70be457f8ae35c417892acf2b8937e5624823",
+      "data_rows": 1500
+    },
+    {
+      "path": "demo/stress_500/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "demo/stress_500/students.csv",
+      "bytes": 59364,
+      "sha256": "5149c16be1dd6811d61820d224a81ad47cdca537163f76584b50ca47dfe484c5",
+      "data_rows": 500
+    },
+    {
+      "path": "demo/stress_500/summary.json",
+      "bytes": 950,
+      "sha256": "fd2f980389025decfcbdb5a0d48ee0f3190263fc222f8812bbd00e5ec5ed847b"
+    },
+    {
+      "path": "generation_metadata.json",
+      "bytes": 16320,
+      "sha256": "ac38f3bd023a75943643f133a387e6a18c8df273229618ccf91eff642272a529"
+    },
+    {
+      "path": "invalid_inputs/duplicate_choice/expected_validation_errors.json",
+      "bytes": 290,
+      "sha256": "22fdd3b085098742a5268936f002ef346acfb3beccead8265a47564eea316fb6"
+    },
+    {
+      "path": "invalid_inputs/duplicate_choice/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/duplicate_choice/preferences.csv",
+      "bytes": 88,
+      "sha256": "661d583380f7774dee7247ab3d4c04f602ce04c727f065958d6b18e246c88f35",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/duplicate_choice/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/duplicate_choice/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "invalid_inputs/duplicate_preference_rank/expected_validation_errors.json",
+      "bytes": 414,
+      "sha256": "af37c8c5b6049157f145a8d7c3a04a77fc9a3bb2e708762d81b08ea630bcdd30"
+    },
+    {
+      "path": "invalid_inputs/duplicate_preference_rank/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/duplicate_preference_rank/preferences.csv",
+      "bytes": 88,
+      "sha256": "63831c014d9c134af0d003806d5534e5675e650b14ca0208a5c22903a4f4700e",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/duplicate_preference_rank/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/duplicate_preference_rank/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "invalid_inputs/duplicate_student/expected_validation_errors.json",
+      "bytes": 303,
+      "sha256": "713038a0018010e19b841ae07c87139029ece2c0ed5e93a33f70d93abb8c3edc"
+    },
+    {
+      "path": "invalid_inputs/duplicate_student/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/duplicate_student/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/duplicate_student/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/duplicate_student/students.csv",
+      "bytes": 609,
+      "sha256": "35fc257e4bb681f034c1f1330483c01b98353974c25aca4914370d8ab5777a98",
+      "data_rows": 7
+    },
+    {
+      "path": "invalid_inputs/missing_score/expected_validation_errors.json",
+      "bytes": 286,
+      "sha256": "536777ee0146ac8c72c49da23b00e51f2b4f96bd3eac34391d5916f887110f2e"
+    },
+    {
+      "path": "invalid_inputs/missing_score/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/missing_score/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/missing_score/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/missing_score/students.csv",
+      "bytes": 536,
+      "sha256": "0882c560028aa7e6f7781193c7c503dfad2f4e7686349dc85f1e958985a4419a",
+      "data_rows": 6
+    },
+    {
+      "path": "invalid_inputs/negative_capacity/expected_validation_errors.json",
+      "bytes": 285,
+      "sha256": "a9a2a9fd22b850419c753a3a0124113898888520144bf87428ca7385c315a2f9"
+    },
+    {
+      "path": "invalid_inputs/negative_capacity/offers.csv",
+      "bytes": 403,
+      "sha256": "a8a9ae7f53620afbc2a4b40a9a5ca6df2e17076986940e1cb96fd088dca345f0",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/negative_capacity/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/negative_capacity/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/negative_capacity/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "invalid_inputs/no_choices/expected_validation_errors.json",
+      "bytes": 316,
+      "sha256": "35765f943ab70a166f1e79c0e9c7aef87b77d97ee232e17ae8b56ed180a8e01a"
+    },
+    {
+      "path": "invalid_inputs/no_choices/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/no_choices/preferences.csv",
+      "bytes": 74,
+      "sha256": "5cda3b8307933c46ec23c569650648bd082cea6d6cb1da18f955523570d84c8e",
+      "data_rows": 7
+    },
+    {
+      "path": "invalid_inputs/no_choices/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/no_choices/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "invalid_inputs/out_of_range_score/expected_validation_errors.json",
+      "bytes": 283,
+      "sha256": "526edd36571342b960a03719a1790ed1c2cdef7457e7377eef87a7e2f3dbc94e"
+    },
+    {
+      "path": "invalid_inputs/out_of_range_score/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/out_of_range_score/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/out_of_range_score/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/out_of_range_score/students.csv",
+      "bytes": 539,
+      "sha256": "b15bfcbb1989b22d606a3cfedef8c2bb40013aa84b8d7d20e26920533aa4fa3d",
+      "data_rows": 6
+    },
+    {
+      "path": "invalid_inputs/unknown_offer/expected_validation_errors.json",
+      "bytes": 284,
+      "sha256": "5b170278347409c795206600dac628394c6db7b84313e368977b70c9003b4d94"
+    },
+    {
+      "path": "invalid_inputs/unknown_offer/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "invalid_inputs/unknown_offer/preferences.csv",
+      "bytes": 94,
+      "sha256": "40a3eab26cd24088f6e6b762ad756f3994d8c4f2457117297b3b6598ee90caf5",
+      "data_rows": 9
+    },
+    {
+      "path": "invalid_inputs/unknown_offer/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "invalid_inputs/unknown_offer/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "model_artifacts/demo_200_model_placements.csv",
+      "bytes": 27290,
+      "sha256": "42070dc0e1b37aa9797e71750a4dd18e43ae58df3bb69a0c5432c0e98151c6f6",
+      "data_rows": 200
+    },
+    {
+      "path": "model_artifacts/demo_200_model_summary.json",
+      "bytes": 472,
+      "sha256": "551d5279c8f81c2e93c80f78b7b0eb24b07836c15af3727321d007b6beabde30"
+    },
+    {
+      "path": "model_artifacts/large_5000_model_placements.csv",
+      "bytes": 771752,
+      "sha256": "4268e63df684e73d5650d33ef3a1e18de1b750e14b76fdc17d8cb9e9f96a0106",
+      "data_rows": 5000
+    },
+    {
+      "path": "model_artifacts/large_5000_model_summary.json",
+      "bytes": 490,
+      "sha256": "a6a7bcac4a3ac0660a359aad216690fced733dd274bfc86519f1aecd333be90e"
+    },
+    {
+      "path": "model_artifacts/metadata.json",
+      "bytes": 1582,
+      "sha256": "9ba22f6603c2047fe01f15134bc6dbac484e4e9e95e4b33bb9eb5d1f463098d9"
+    },
+    {
+      "path": "model_artifacts/model.joblib",
+      "bytes": 1450083,
+      "sha256": "d47519a87d84bc92fc453b7620511fdd3c4e2aaccb772fe6a7ba9dc336f5a805"
+    },
+    {
+      "path": "model_artifacts/stress_500_model_placements.csv",
+      "bytes": 74378,
+      "sha256": "1ebeb5c27e6022caa9ca9aaba4c08ac405f9d90f8d152f1ef9c58b00a6f7ba45",
+      "data_rows": 500
+    },
+    {
+      "path": "model_artifacts/stress_500_model_summary.json",
+      "bytes": 474,
+      "sha256": "66a2234e26b207c2f4f0326f16c2d7ff3ed54f7c1288de62ffcee77ad32eee33"
+    },
+    {
+      "path": "model_training/offer_catalog.csv",
+      "bytes": 6556,
+      "sha256": "e10456bdaf7c112ee83007844887530692124f65e2af2bb413a32502da53bce4",
+      "data_rows": 60
+    },
+    {
+      "path": "model_training/test/expected_rules_only_placements.csv",
+      "bytes": 561935,
+      "sha256": "373e22738b1af4e5fed6909dea0365964e070e7c2f817b7caf65998db90256fa",
+      "data_rows": 5000
+    },
+    {
+      "path": "model_training/test/offers.csv",
+      "bytes": 6511,
+      "sha256": "e2a0e1c0ace26f5d003d0d9122d5feafa0736a5a011663ac559677d0eafe5291",
+      "data_rows": 60
+    },
+    {
+      "path": "model_training/test/pairs.csv",
+      "bytes": 21052260,
+      "sha256": "cde42b460203cfd06f6b1b283887253490548c352a03cb6dffb1c9d8a8caf719",
+      "data_rows": 300000
+    },
+    {
+      "path": "model_training/test/preferences.csv",
+      "bytes": 345025,
+      "sha256": "86209111b5f1bf0506714f1509ab796457955dd217a31061fbcf7946e8445844",
+      "data_rows": 15000
+    },
+    {
+      "path": "model_training/test/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "model_training/test/students.csv",
+      "bytes": 479539,
+      "sha256": "f2241788a49c36413820f9ad0125a193a86f106cdd6e5be665c32273c1b9368a",
+      "data_rows": 5000
+    },
+    {
+      "path": "model_training/test/summary.json",
+      "bytes": 465,
+      "sha256": "75364dccd984c9a1c80a98dcdb0ff572dfee9351d31701d97aae5c73b441eb57"
+    },
+    {
+      "path": "model_training/train/expected_rules_only_placements.csv",
+      "bytes": 2277541,
+      "sha256": "872a5094ad51d9e667348f8bc161435f9e747753ab53e4893dd6c3b0d6bef7f3",
+      "data_rows": 20000
+    },
+    {
+      "path": "model_training/train/offers.csv",
+      "bytes": 6552,
+      "sha256": "d6fee99fd7172d096f974e713cc238c50d5dc5de78aea4b60f574a8a212185d2",
+      "data_rows": 60
+    },
+    {
+      "path": "model_training/train/pairs.csv",
+      "bytes": 85403819,
+      "sha256": "18f3413f7ab69c21b29fe1da9f6caac2f529120010828d125cd61f6f649828ba",
+      "data_rows": 1200000
+    },
+    {
+      "path": "model_training/train/preferences.csv",
+      "bytes": 1380025,
+      "sha256": "836f66dc376bf9ef812437ea4c2a8575989f6ced3c2b31ded82d719535178e41",
+      "data_rows": 60000
+    },
+    {
+      "path": "model_training/train/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "model_training/train/students.csv",
+      "bytes": 1918014,
+      "sha256": "7813a1ce8b55ef0949f74f9885cea8894135e37a98ce08a2790bf9035442c9c6",
+      "data_rows": 20000
+    },
+    {
+      "path": "model_training/train/summary.json",
+      "bytes": 476,
+      "sha256": "452c81e350b8115e2863dec65b53c4ff8f9ce6447928d3508e2d515476ff6791"
+    },
+    {
+      "path": "model_training/validation/expected_rules_only_placements.csv",
+      "bytes": 581861,
+      "sha256": "656ab9f1d59a4635c57a1fceee3a0c82fc98427aa452a6820557a570832618b1",
+      "data_rows": 5000
+    },
+    {
+      "path": "model_training/validation/offers.csv",
+      "bytes": 6511,
+      "sha256": "e2a0e1c0ace26f5d003d0d9122d5feafa0736a5a011663ac559677d0eafe5291",
+      "data_rows": 60
+    },
+    {
+      "path": "model_training/validation/pairs.csv",
+      "bytes": 22859558,
+      "sha256": "43da51da55b5f473afe98571423bf9902a295dbd95cd8758d7c05d26de02892d",
+      "data_rows": 300000
+    },
+    {
+      "path": "model_training/validation/preferences.csv",
+      "bytes": 345025,
+      "sha256": "9aafd23cdbd7f424c5e971b584a70bdad03463ef25b6f97a18c79852b24e8a4d",
+      "data_rows": 15000
+    },
+    {
+      "path": "model_training/validation/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "model_training/validation/students.csv",
+      "bytes": 479759,
+      "sha256": "3064d609e9ddb7fdc5b9aa4958f930d5439979efcd5a414c62bd10053dcde638",
+      "data_rows": 5000
+    },
+    {
+      "path": "model_training/validation/summary.json",
+      "bytes": 465,
+      "sha256": "45a3e0ea4b6caf82f375da03e8fdd0bc7d73d6de2d487c07aeea7e8121342a4b"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 109,
+      "sha256": "169e198d23aadfe31e4f7b85307d330349e98b2d462cb0ec699434169a1dcefa"
+    },
+    {
+      "path": "scenarios/all_zero_capacity/expected_rules_only_placements.csv",
+      "bytes": 12359,
+      "sha256": "c492024dbba5afdef0b21e48a772c0cbedef6a5bef284f80fbf9e87af99f1815",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/all_zero_capacity/expected_teacher_fallback_placements.csv",
+      "bytes": 12359,
+      "sha256": "c492024dbba5afdef0b21e48a772c0cbedef6a5bef284f80fbf9e87af99f1815",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/all_zero_capacity/offers.csv",
+      "bytes": 1034,
+      "sha256": "0077711398224eb8ec3c9731380446899e3819a382c558bea43ca14cd6c050cb",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/all_zero_capacity/preferences.csv",
+      "bytes": 7525,
+      "sha256": "85ca8745ce2f9032d3ee41e6aefffc8a601598d7225bc32fc78666295c75aba5",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/all_zero_capacity/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/all_zero_capacity/students.csv",
+      "bytes": 10157,
+      "sha256": "33e9484328bfbbac41186ff72643756ff7d9662458047c1b60a62248805de628",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/all_zero_capacity/summary.json",
+      "bytes": 713,
+      "sha256": "e4e3476e883cea732006f667f1be5d9de5405120aae061c0e62680fe488bdb3a"
+    },
+    {
+      "path": "scenarios/capacity_surplus/expected_rules_only_placements.csv",
+      "bytes": 7904,
+      "sha256": "aa7aa12ec67fdfafd0239f3ae8b60ea20991d3beb3890471b1126e27c8290aff",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/capacity_surplus/expected_teacher_fallback_placements.csv",
+      "bytes": 7904,
+      "sha256": "aa7aa12ec67fdfafd0239f3ae8b60ea20991d3beb3890471b1126e27c8290aff",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/capacity_surplus/offers.csv",
+      "bytes": 1040,
+      "sha256": "9d65e6912a70f866a6a8320ce7a9d242d30458730c64f301dea42df91d088342",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/capacity_surplus/preferences.csv",
+      "bytes": 7525,
+      "sha256": "aa922da675a32cde0f79b4acceedba34f1a53b1a78cf4bad3c6f353b00285932",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/capacity_surplus/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/capacity_surplus/students.csv",
+      "bytes": 10164,
+      "sha256": "afe3e1b438b2bba276756324d313f7c684ce55969032134d32c70fa979a9ab1f",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/capacity_surplus/summary.json",
+      "bytes": 591,
+      "sha256": "7b64b3daa48933dceddf18d1216ced98ef1e3d139fa6407846d4b0fd0330b2af"
+    },
+    {
+      "path": "scenarios/eligibility_boundary/expected_rules_only_placements.csv",
+      "bytes": 11130,
+      "sha256": "0dd24f47d7261bb3ff90e924fe548b9ade0a29a0954dcd69327ddc1d42824632",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/eligibility_boundary/expected_teacher_fallback_placements.csv",
+      "bytes": 11403,
+      "sha256": "e315dab55751c38276de78f8eecfdf401dc1b878a848c0cca2cca1adb7d1b604",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/eligibility_boundary/offers.csv",
+      "bytes": 1035,
+      "sha256": "dd3f11a5ea0daf92aece1a5c9d85268a31f1a35a68314802a34300bfd582e61c",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/eligibility_boundary/preferences.csv",
+      "bytes": 7525,
+      "sha256": "8ea51f27f1af7ed4f70f013bb524db3e12e6ddd21faaaf25e14ee220dafa014c",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/eligibility_boundary/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/eligibility_boundary/students.csv",
+      "bytes": 9491,
+      "sha256": "0e632d3a206c105758d46a9b2db291888043aae9434837ab9268bb765792aba4",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/eligibility_boundary/summary.json",
+      "bytes": 870,
+      "sha256": "9c5ca04da73baba637139aef55c1b4d1a0299188f5a587f39bd298d7f714d6bb"
+    },
+    {
+      "path": "scenarios/fallback_disabled/expected_rules_only_placements.csv",
+      "bytes": 10790,
+      "sha256": "937a3cae4c045e82ed6c52920fe1bf188258d336b9a3e2439f41cc6f6fc5c707",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/fallback_disabled/expected_teacher_fallback_placements.csv",
+      "bytes": 10790,
+      "sha256": "937a3cae4c045e82ed6c52920fe1bf188258d336b9a3e2439f41cc6f6fc5c707",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/fallback_disabled/offers.csv",
+      "bytes": 1041,
+      "sha256": "39f065302c4bd103dd1c16c688401b2d589ec919ca29e79676e5abd09a53eec5",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/fallback_disabled/preferences.csv",
+      "bytes": 7525,
+      "sha256": "0b45a29e3d41eaf50ef51c4600cb142524f71730822771428defe2a200f4aa06",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/fallback_disabled/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/fallback_disabled/students.csv",
+      "bytes": 10221,
+      "sha256": "92817064f3c790601e8bf9b7925f4bc93ff2ecc5d7f1f96be4f0bd06a1ac447e",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/fallback_disabled/summary.json",
+      "bytes": 889,
+      "sha256": "fcb3e20d329af988264ad53ceaf034150e15614a7e56b4cd192f3b15bb7c0a53"
+    },
+    {
+      "path": "scenarios/no_eligible_offer/expected_rules_only_placements.csv",
+      "bytes": 12004,
+      "sha256": "158797be4801e67ef85748f5e32634ee24ba6720c7972ad6e5ad8f2085eae8f8",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/no_eligible_offer/expected_teacher_fallback_placements.csv",
+      "bytes": 12004,
+      "sha256": "158797be4801e67ef85748f5e32634ee24ba6720c7972ad6e5ad8f2085eae8f8",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/no_eligible_offer/offers.csv",
+      "bytes": 1042,
+      "sha256": "324623f1029de173fc9db948514c49e386c42681fbffb264f883277d7b38ee4f",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/no_eligible_offer/preferences.csv",
+      "bytes": 7525,
+      "sha256": "963a31448df1c0be0ef8f09ab51180be392a36a532300557ee8b2475df2cf92b",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/no_eligible_offer/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/no_eligible_offer/students.csv",
+      "bytes": 10166,
+      "sha256": "5d5ca554a431c4d2ff62e96375e87ccdc9e9a62f73d0112ef1de544910ac51e4",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/no_eligible_offer/summary.json",
+      "bytes": 589,
+      "sha256": "dd523324fa51ed1f97c1edad6f6403d9ee50cf750800da1458cca982d63d0f6d"
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/expected_rules_only_placements.csv",
+      "bytes": 11576,
+      "sha256": "34cbab995f81bdd8f76a31669b64c000cdc426f80a479944d2ea0991f5d75505",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/expected_teacher_fallback_placements.csv",
+      "bytes": 12540,
+      "sha256": "47f2b3b7d5684e5700abb85cfe81a0431aef6eef31f1a3b104807af3f138c5b2",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/offers.csv",
+      "bytes": 1043,
+      "sha256": "52a36d752e00e05a05867ace3cb3beb55ef98f1ac6c01f46a80f388f79e3054f",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/preferences.csv",
+      "bytes": 7525,
+      "sha256": "ab220ed9157db58e0ec07f4847d09f66ae54fcb147368d53d7b5d2672d07151d",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/students.csv",
+      "bytes": 10163,
+      "sha256": "2f1707f2652c8405306aa5d1513d19fcffc6ea3d7669d0452c7aeae1b5e08a4c",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/oversubscribed_hotspot/summary.json",
+      "bytes": 873,
+      "sha256": "1cf9cf26b5620b82f79bc6bc5fb9cd9b5671a200d509dd9d6f6659b2cf7e74b5"
+    },
+    {
+      "path": "scenarios/seat_shortage/expected_rules_only_placements.csv",
+      "bytes": 12106,
+      "sha256": "dedfe64b37e4b560f3523a3ef06a4d88a8f703cec5fe8fce1a2a5647102eeec8",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/seat_shortage/expected_teacher_fallback_placements.csv",
+      "bytes": 12235,
+      "sha256": "6e077629ef00c9f088cdc1293b5c30f9e2f53e59d27812062fe2efcba242f2ed",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/seat_shortage/offers.csv",
+      "bytes": 1030,
+      "sha256": "a8ac909c4e0099a2f0e721448ce0eca660e14cf4acb24166601d4929cb950123",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/seat_shortage/preferences.csv",
+      "bytes": 7525,
+      "sha256": "b2c4a765bff8685c5c2ec339cf355f62cd06e2925eeae0da24320a3441cdae13",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/seat_shortage/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/seat_shortage/students.csv",
+      "bytes": 10160,
+      "sha256": "bbffb9436b2ec14483c5cff1052fcc2c3e3c9b8311117337c6a7fbe01022e68a",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/seat_shortage/summary.json",
+      "bytes": 926,
+      "sha256": "56212d4933f25a8a4170de15cfc9abeb1cbc16dce4d4b7504d8c98fd4a102c43"
+    },
+    {
+      "path": "scenarios/six_student_base/expected_rules_only_placements.csv",
+      "bytes": 462,
+      "sha256": "64b43c00460ea8d8295311bb8092fbd3f9733ef3f0f4d0a83f0a4b9160fbe670",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_base/expected_teacher_fallback_placements.csv",
+      "bytes": 462,
+      "sha256": "64b43c00460ea8d8295311bb8092fbd3f9733ef3f0f4d0a83f0a4b9160fbe670",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_base/offers.csv",
+      "bytes": 402,
+      "sha256": "1ace679c494c260c7f3d5ed0c389a441fda51ff380804d2b7139533407869416",
+      "data_rows": 3
+    },
+    {
+      "path": "scenarios/six_student_base/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "scenarios/six_student_base/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/six_student_base/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_base/summary.json",
+      "bytes": 757,
+      "sha256": "47dc6322dbc49b45c716755cd430ffe046ed34f480b6f655f95449322fb9bcec"
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/expected_rules_only_placements.csv",
+      "bytes": 472,
+      "sha256": "b7e4c0efe0c0bc010fc6998da325f43ac003eef01f93a254c63b12d6f199d6d4",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/expected_teacher_fallback_placements.csv",
+      "bytes": 472,
+      "sha256": "b7e4c0efe0c0bc010fc6998da325f43ac003eef01f93a254c63b12d6f199d6d4",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/offers.csv",
+      "bytes": 402,
+      "sha256": "3d654b91ff63bfd3cd4b2cdfda4356aee70bc5f7af3b11cd78ec965264d41e0e",
+      "data_rows": 3
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/students.csv",
+      "bytes": 538,
+      "sha256": "88300a9b56f959ef25e9b69aca8e28fbe7434b930b7ecd272b90b4ec6e4150ca",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_fallback_off/summary.json",
+      "bytes": 693,
+      "sha256": "17cba05045900afdc3840f36af8cde8b37fb459fcd53d25565b808d78566da94"
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/expected_rules_only_placements.csv",
+      "bytes": 472,
+      "sha256": "b7e4c0efe0c0bc010fc6998da325f43ac003eef01f93a254c63b12d6f199d6d4",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/expected_teacher_fallback_placements.csv",
+      "bytes": 495,
+      "sha256": "261586c2b38002ccf2a58a56cde0cf357433d9087ede7941ec3c165c87babf14",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/offers.csv",
+      "bytes": 402,
+      "sha256": "3d654b91ff63bfd3cd4b2cdfda4356aee70bc5f7af3b11cd78ec965264d41e0e",
+      "data_rows": 3
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/preferences.csv",
+      "bytes": 88,
+      "sha256": "f25b5c28563693f551d2af5d387c9e2e787e91a8738728231178873ef4793d41",
+      "data_rows": 9
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/students.csv",
+      "bytes": 537,
+      "sha256": "8d170173ab66dcf1b940c460bd57c695b012491718f1c6d2eaa6312d0f48e82d",
+      "data_rows": 6
+    },
+    {
+      "path": "scenarios/six_student_fallback_on/summary.json",
+      "bytes": 728,
+      "sha256": "4bf9612437b0af7d30fb3e334b03a2188702837115882e4b8ccc1cdcc2da23f3"
+    },
+    {
+      "path": "scenarios/tied_scores/expected_rules_only_placements.csv",
+      "bytes": 10735,
+      "sha256": "45bbe14a156584ff9f71bd63c6d1a798079a423f1dd8ddf0688c842117e53e49",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/tied_scores/expected_teacher_fallback_placements.csv",
+      "bytes": 11755,
+      "sha256": "1dd0c8a81554065130f3878eca2662df47a35c927770b2f1a80b46ce9051fe55",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/tied_scores/offers.csv",
+      "bytes": 1041,
+      "sha256": "506d4f6cc88e7f85bf6795d4c3541ef725b5877690ce48c67266401676c0a942",
+      "data_rows": 8
+    },
+    {
+      "path": "scenarios/tied_scores/preferences.csv",
+      "bytes": 7525,
+      "sha256": "e44c20926f022e84e85c8e9c0f7b5acf1bbd4fed1da76dc7338b944e1ad2a560",
+      "data_rows": 300
+    },
+    {
+      "path": "scenarios/tied_scores/rules.json",
+      "bytes": 371,
+      "sha256": "72f584e72443cf6cf4a0a9d77c0089fc5f4d36552e20b8812e71106f8020b8a6"
+    },
+    {
+      "path": "scenarios/tied_scores/students.csv",
+      "bytes": 10168,
+      "sha256": "ebfe88798355e1e3a10fe2f1d0d5abdf101c9b493fb68c859f261950b9d1fc16",
+      "data_rows": 100
+    },
+    {
+      "path": "scenarios/tied_scores/summary.json",
+      "bytes": 843,
+      "sha256": "863a8226851917e0cb2ca9d9fde201a74e8d6f0a3e0d7cade582868555b2616f"
+    },
+    {
+      "path": "schema.json",
+      "bytes": 1265,
+      "sha256": "66620abe1c3708f2928975463e130f507ba98c0920ff3dd448cc725193a2fa3e"
+    },
+    {
+      "path": "tools/common.py",
+      "bytes": 10304,
+      "sha256": "69d7b87f3117dd98016b2d3481f698911b962ed27687d846990e34ce014c1a14"
+    },
+    {
+      "path": "tools/generate_data.py",
+      "bytes": 16540,
+      "sha256": "324e03681855d151ac83ac99cd94098e4fd65b0835bc0ab4e853cd5e006547b1"
+    },
+    {
+      "path": "tools/train_model.py",
+      "bytes": 5564,
+      "sha256": "3e38973c919becbfee71062d753e8690f883b04884c5317aca8abb3881a8bbca"
+    },
+    {
+      "path": "tools/validate_data.py",
+      "bytes": 6429,
+      "sha256": "be3cf231e4b7c197375f7c3f48a782d0aaf051871997fbcefacb90c6e5e3a695"
+    },
+    {
+      "path": "validation_report.json",
+      "bytes": 8501,
+      "sha256": "08365645d377a8740e6ff95656a6cb13bbda53693b3db346d1dc72e00e232671"
+    }
+  ]
+}

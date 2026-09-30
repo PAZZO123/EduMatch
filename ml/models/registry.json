@@ -1,0 +1,70 @@
+{
+  "champion": "linear_regression",
+  "selection_rule": "Highest validation top-1 ranking accuracy, then lowest validation MAE.",
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "synthetic": true,
+  "models": [
+    {
+      "key": "linear_regression",
+      "path": "linear_regression/model.joblib",
+      "metadata": "linear_regression/metadata.json",
+      "model_version": "linear-regression-synthetic-v1",
+      "display_name": "Linear Regression",
+      "sha256": "63d9a7963740690ee45a991058f37d688890c3a3734e3fd99fc3678a8af2c86d"
+    },
+    {
+      "key": "decision_tree",
+      "path": "decision_tree/model.joblib",
+      "metadata": "decision_tree/metadata.json",
+      "model_version": "decision-tree-synthetic-v1",
+      "display_name": "Decision Tree",
+      "sha256": "caffd3c9ad8bb7bde109cef1297ca434b4731d7699171407504363273987c4aa"
+    },
+    {
+      "key": "random_forest",
+      "path": "random_forest/model.joblib",
+      "metadata": "random_forest/metadata.json",
+      "model_version": "random-forest-synthetic-v1",
+      "display_name": "Random Forest (SRS)",
+      "sha256": "511b217f8256a809affc8c84d43eebf7996312ae248366bbe61beeea0d9dbde4"
+    },
+    {
+      "key": "extra_trees",
+      "path": "extra_trees/model.joblib",
+      "metadata": "extra_trees/metadata.json",
+      "model_version": "extra-trees-synthetic-v1",
+      "display_name": "Extra Trees",
+      "sha256": "fb17cff0f15d19650105d1d9f9db07cb534b50efafbdb487fba43fe74029c8d6"
+    },
+    {
+      "key": "hist_gradient_boosting",
+      "path": "hist_gradient_boosting/model.joblib",
+      "metadata": "hist_gradient_boosting/metadata.json",
+      "model_version": "hist-gradient-boosting-synthetic-v1",
+      "display_name": "Gradient Boosting",
+      "sha256": "15ebfa68a3728421e99d9bc00b475b33e7f1474e5344316f5c978f16d0fe6af5"
+    },
+    {
+      "key": "knn",
+      "path": "knn/model.joblib",
+      "metadata": "knn/metadata.json",
+      "model_version": "knn-synthetic-v1",
+      "display_name": "k-Nearest Neighbours",
+      "sha256": "0111c2ff045bfb39a455f959c18b84ca679840f3c5ba0265f69b1429352bc8d0"
+    },
+    {
+      "key": "mlp",
+      "path": "mlp/model.joblib",
+      "metadata": "mlp/metadata.json",
+      "model_version": "mlp-synthetic-v1",
+      "display_name": "Neural Network (MLP)",
+      "sha256": "fb56ee6b26916fd352ab8310816178cb7f2e17aece1d85b15cd8b9c62bfb3de9"
+    }
+  ]
+}

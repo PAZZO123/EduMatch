@@ -1,0 +1,70 @@
+{
+  "status": 200,
+  "body": {
+    "events": [
+      {
+        "id": 4,
+        "at": "2026-09-30T13:12:52.028543",
+        "actor": "admin",
+        "role": "ADMIN",
+        "action": "PROPOSAL_APPROVED",
+        "cohort_id": "SYN-DEMO_200-2026",
+        "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+        "proposal_id": "c0e958d0-9139-4869-8e68-827a9fc4f680",
+        "student_id": "DEMO_200-S000114",
+        "old_offer_id": "DEMO_200-O001",
+        "new_offer_id": "DEMO_200-O001",
+        "reason": "Approved as proposed.",
+        "details": {
+          "revision": 2,
+          "input_version": 1,
+          "rule_version": "demo-policy-v1",
+          "model_version": "linear-regression-synthetic-v1"
+        }
+      },
+      {
+        "id": 3,
+        "at": "2026-09-30T13:12:51.707880",
+        "actor": "admin",
+        "role": "ADMIN",
+        "action": "RUN_GENERATED",
+        "cohort_id": "SYN-DEMO_200-2026",
+        "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+        "proposal_id": null,
+        "student_id": null,
+        "old_offer_id": null,
+        "new_offer_id": null,
+        "reason": null,
+        "details": {
+          "mode": "AI",
+          "model_version": "linear-regression-synthetic-v1",
+          "replaced_run": null,
+          "runtime_ms": 40.36,
+          "assigned": 115,
+          "unassigned": 85
+        }
+      },
+      {
+        "id": 2,
+        "at": "2026-09-30T13:12:51.593474",
+        "actor": "admin",
+        "role": "ADMIN",
+        "action": "COHORT_LOADED",
+        "cohort_id": "SYN-DEMO_200-2026",
+        "run_id": null,
+        "proposal_id": null,
+        "student_id": null,
+        "old_offer_id": null,
+        "new_offer_id": null,
+        "reason": null,
+        "details": {
+          "source": "SEED:demo_200",
+          "replaced": false,
+          "students": 200,
+          "offers": 12,
+          "preferences": 600
+        }
+      }
+    ]
+  }
+}

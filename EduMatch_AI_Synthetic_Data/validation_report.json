@@ -1,0 +1,308 @@
+{
+  "synthetic": true,
+  "status": "PASS",
+  "checks": [
+    "Student IDs are disjoint across train/validation/test; no duplicate candidate pair.",
+    "All clean cohorts have valid score ranges, keys, capacities, profile weights and ordered choices.",
+    "Every reference plan passes capacity, eligibility, uniqueness and preference authorization.",
+    "Six-student SRS fixture and fallback variants match expected outcomes.",
+    "All invalid-input fixtures are rejected; they are isolated from training data."
+  ],
+  "model_splits": {
+    "train": {
+      "students": 20000,
+      "offers": 60,
+      "preferences": 60000,
+      "pairs": 1200000,
+      "eligible_pairs": 628026,
+      "pair_features_and_targets": "PASS"
+    },
+    "validation": {
+      "students": 5000,
+      "offers": 60,
+      "preferences": 15000,
+      "pairs": 300000,
+      "eligible_pairs": 158443,
+      "pair_features_and_targets": "PASS"
+    },
+    "test": {
+      "students": 5000,
+      "offers": 60,
+      "preferences": 15000,
+      "pairs": 300000,
+      "eligible_pairs": 157716,
+      "pair_features_and_targets": "PASS"
+    }
+  },
+  "cohorts": {
+    "demo\\demo_200": {
+      "valid_applicants": 200,
+      "assigned": 115,
+      "unassigned": 85,
+      "fallback_assigned": 30,
+      "available_seats": 184,
+      "top_three_rate": 0.425,
+      "first_choice_rate": 0.065,
+      "utilization": 0.625,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 13,
+        "LISTED_CHOICE_2": 48,
+        "LISTED_CHOICE_3": 24,
+        "NO_ELIGIBLE_CHOICE": 16,
+        "FALLBACK_TEACHER_RANKED": 30,
+        "CHOICES_EXHAUSTED": 10,
+        "NO_ELIGIBLE_OFFER": 59
+      }
+    },
+    "demo\\large_5000": {
+      "valid_applicants": 5000,
+      "assigned": 2613,
+      "unassigned": 2387,
+      "fallback_assigned": 1361,
+      "available_seats": 4600,
+      "top_three_rate": 0.2504,
+      "first_choice_rate": 0.1204,
+      "utilization": 0.568043,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 602,
+        "LISTED_CHOICE_2": 297,
+        "LISTED_CHOICE_3": 353,
+        "FALLBACK_TEACHER_RANKED": 1361,
+        "CHOICES_EXHAUSTED": 1446,
+        "NO_ELIGIBLE_CHOICE": 335,
+        "NO_ELIGIBLE_OFFER": 606
+      }
+    },
+    "demo\\stress_500": {
+      "valid_applicants": 500,
+      "assigned": 242,
+      "unassigned": 258,
+      "fallback_assigned": 81,
+      "available_seats": 460,
+      "top_three_rate": 0.322,
+      "first_choice_rate": 0.086,
+      "utilization": 0.526087,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 43,
+        "LISTED_CHOICE_2": 40,
+        "LISTED_CHOICE_3": 78,
+        "CHOICES_EXHAUSTED": 40,
+        "FALLBACK_TEACHER_RANKED": 81,
+        "NO_ELIGIBLE_CHOICE": 150,
+        "NO_ELIGIBLE_OFFER": 68
+      }
+    },
+    "scenarios\\all_zero_capacity": {
+      "valid_applicants": 100,
+      "assigned": 0,
+      "unassigned": 100,
+      "fallback_assigned": 0,
+      "available_seats": 0,
+      "top_three_rate": 0.0,
+      "first_choice_rate": 0.0,
+      "utilization": null,
+      "reason_counts": {
+        "CHOICES_EXHAUSTED": 71,
+        "NO_ELIGIBLE_CHOICE": 13,
+        "NO_ELIGIBLE_OFFER": 16
+      }
+    },
+    "scenarios\\capacity_surplus": {
+      "valid_applicants": 100,
+      "assigned": 100,
+      "unassigned": 0,
+      "fallback_assigned": 0,
+      "available_seats": 800,
+      "top_three_rate": 1.0,
+      "first_choice_rate": 1.0,
+      "utilization": 0.125,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 100
+      }
+    },
+    "scenarios\\eligibility_boundary": {
+      "valid_applicants": 100,
+      "assigned": 57,
+      "unassigned": 43,
+      "fallback_assigned": 7,
+      "available_seats": 90,
+      "top_three_rate": 0.5,
+      "first_choice_rate": 0.23,
+      "utilization": 0.633333,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 23,
+        "LISTED_CHOICE_2": 11,
+        "LISTED_CHOICE_3": 16,
+        "FALLBACK_TEACHER_RANKED": 7,
+        "CHOICES_EXHAUSTED": 9,
+        "NO_ELIGIBLE_OFFER": 34
+      }
+    },
+    "scenarios\\fallback_disabled": {
+      "valid_applicants": 100,
+      "assigned": 63,
+      "unassigned": 37,
+      "fallback_assigned": 0,
+      "available_seats": 90,
+      "top_three_rate": 0.63,
+      "first_choice_rate": 0.22,
+      "utilization": 0.7,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 22,
+        "LISTED_CHOICE_2": 26,
+        "LISTED_CHOICE_3": 15,
+        "CHOICES_EXHAUSTED": 18,
+        "NO_ELIGIBLE_CHOICE": 7,
+        "NO_ELIGIBLE_OFFER": 12
+      }
+    },
+    "scenarios\\no_eligible_offer": {
+      "valid_applicants": 100,
+      "assigned": 0,
+      "unassigned": 100,
+      "fallback_assigned": 0,
+      "available_seats": 90,
+      "top_three_rate": 0.0,
+      "first_choice_rate": 0.0,
+      "utilization": 0.0,
+      "reason_counts": {
+        "NO_ELIGIBLE_OFFER": 100
+      }
+    },
+    "scenarios\\oversubscribed_hotspot": {
+      "valid_applicants": 100,
+      "assigned": 57,
+      "unassigned": 43,
+      "fallback_assigned": 23,
+      "available_seats": 90,
+      "top_three_rate": 0.34,
+      "first_choice_rate": 0.12,
+      "utilization": 0.633333,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 12,
+        "LISTED_CHOICE_2": 9,
+        "LISTED_CHOICE_3": 13,
+        "CHOICES_EXHAUSTED": 24,
+        "FALLBACK_TEACHER_RANKED": 23,
+        "NO_ELIGIBLE_OFFER": 19
+      }
+    },
+    "scenarios\\seat_shortage": {
+      "valid_applicants": 100,
+      "assigned": 14,
+      "unassigned": 86,
+      "fallback_assigned": 3,
+      "available_seats": 16,
+      "top_three_rate": 0.11,
+      "first_choice_rate": 0.04,
+      "utilization": 0.875,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 4,
+        "LISTED_CHOICE_2": 5,
+        "LISTED_CHOICE_3": 2,
+        "FALLBACK_TEACHER_RANKED": 3,
+        "CHOICES_EXHAUSTED": 56,
+        "NO_ELIGIBLE_CHOICE": 11,
+        "NO_ELIGIBLE_OFFER": 19
+      }
+    },
+    "scenarios\\six_student_base": {
+      "valid_applicants": 6,
+      "assigned": 4,
+      "unassigned": 2,
+      "fallback_assigned": 0,
+      "available_seats": 4,
+      "top_three_rate": 0.666667,
+      "first_choice_rate": 0.5,
+      "utilization": 1.0,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 3,
+        "LISTED_CHOICE_2": 1,
+        "CHOICES_EXHAUSTED": 1,
+        "NO_ELIGIBLE_OFFER": 1
+      }
+    },
+    "scenarios\\six_student_fallback_off": {
+      "valid_applicants": 6,
+      "assigned": 3,
+      "unassigned": 3,
+      "fallback_assigned": 0,
+      "available_seats": 4,
+      "top_three_rate": 0.5,
+      "first_choice_rate": 0.5,
+      "utilization": 0.75,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 3,
+        "CHOICES_EXHAUSTED": 2,
+        "NO_ELIGIBLE_OFFER": 1
+      }
+    },
+    "scenarios\\six_student_fallback_on": {
+      "valid_applicants": 6,
+      "assigned": 4,
+      "unassigned": 2,
+      "fallback_assigned": 1,
+      "available_seats": 4,
+      "top_three_rate": 0.5,
+      "first_choice_rate": 0.5,
+      "utilization": 1.0,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 3,
+        "FALLBACK_TEACHER_RANKED": 1,
+        "CHOICES_EXHAUSTED": 1,
+        "NO_ELIGIBLE_OFFER": 1
+      }
+    },
+    "scenarios\\tied_scores": {
+      "valid_applicants": 100,
+      "assigned": 79,
+      "unassigned": 21,
+      "fallback_assigned": 23,
+      "available_seats": 90,
+      "top_three_rate": 0.56,
+      "first_choice_rate": 0.28,
+      "utilization": 0.877778,
+      "reason_counts": {
+        "LISTED_CHOICE_1": 28,
+        "LISTED_CHOICE_2": 20,
+        "LISTED_CHOICE_3": 8,
+        "CHOICES_EXHAUSTED": 21,
+        "FALLBACK_TEACHER_RANKED": 23
+      }
+    }
+  },
+  "invalid_fixtures": {
+    "duplicate_choice": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "DUPLICATE_CHOICE"
+    },
+    "duplicate_preference_rank": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "DUPLICATE_RANK"
+    },
+    "duplicate_student": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "DUPLICATE_OR_MISSING_ID"
+    },
+    "missing_score": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "INVALID_SCORE"
+    },
+    "negative_capacity": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "INVALID_CAPACITY"
+    },
+    "no_choices": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "MISSING_OR_NONCONTIGUOUS_CHOICES"
+    },
+    "out_of_range_score": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "INVALID_SCORE"
+    },
+    "unknown_offer": {
+      "status": "EXPECTED_REJECTION",
+      "primary_code": "UNKNOWN_OFFER"
+    }
+  }
+}

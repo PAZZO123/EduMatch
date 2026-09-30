@@ -1,0 +1,7 @@
+# Keep data, fixtures and code byte-identical on every OS (checksums depend on it).
+* text=auto eol=lf
+*.joblib binary
+*.npz binary
+*.png binary
+*.pdf binary
+*.xlsx binary

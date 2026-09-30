@@ -1,0 +1,117 @@
+{
+  "status": 200,
+  "body": {
+    "proposal_id": "e1682c25-160e-4717-a690-3b7051faa604",
+    "student_id": "DEMO_200-S000052",
+    "current_offer_id": "DEMO_200-O012",
+    "fallback_authorized": true,
+    "model_version": "linear-regression-synthetic-v1",
+    "ai_label": "Local model loaded",
+    "score_note": "Compatibility score (0-100) vs. a synthetic formula; not an admission probability.",
+    "alternatives": [
+      {
+        "offer_id": "DEMO_200-O008",
+        "school_name": "Synthetic School DEMO_200 008",
+        "listed_rank": null,
+        "authorized": true,
+        "fit_score": 75.07,
+        "seats_available": 12,
+        "score_breakdown": {
+          "method": "exact linear decomposition",
+          "baseline": 0.0,
+          "contributions": {
+            "overall_norm": 11.04,
+            "subject_fit": 54.03,
+            "eligibility_margin": 0.0,
+            "same_province": 10.0
+          },
+          "weights": {
+            "overall_norm": 0.15,
+            "subject_fit": 0.75,
+            "eligibility_margin": 0.0,
+            "same_province": 0.1
+          },
+          "total": 75.07
+        },
+        "model_scores": {
+          "linear_regression": 75.07,
+          "decision_tree": 75.17,
+          "random_forest": 75.14,
+          "extra_trees": 74.98,
+          "hist_gradient_boosting": 75.05,
+          "knn": 75.15,
+          "mlp": 75.32
+        }
+      },
+      {
+        "offer_id": "DEMO_200-O004",
+        "school_name": "Synthetic School DEMO_200 004",
+        "listed_rank": null,
+        "authorized": true,
+        "fit_score": 74.65,
+        "seats_available": 7,
+        "score_breakdown": {
+          "method": "exact linear decomposition",
+          "baseline": 0.0,
+          "contributions": {
+            "overall_norm": 11.04,
+            "subject_fit": 53.61,
+            "eligibility_margin": 0.0,
+            "same_province": 10.0
+          },
+          "weights": {
+            "overall_norm": 0.15,
+            "subject_fit": 0.75,
+            "eligibility_margin": 0.0,
+            "same_province": 0.1
+          },
+          "total": 74.65
+        },
+        "model_scores": {
+          "linear_regression": 74.65,
+          "decision_tree": 74.7,
+          "random_forest": 74.93,
+          "extra_trees": 74.58,
+          "hist_gradient_boosting": 74.74,
+          "knn": 74.82,
+          "mlp": 74.9
+        }
+      },
+      {
+        "offer_id": "DEMO_200-O003",
+        "school_name": "Synthetic School DEMO_200 003",
+        "listed_rank": null,
+        "authorized": true,
+        "fit_score": 74.25,
+        "seats_available": 13,
+        "score_breakdown": {
+          "method": "exact linear decomposition",
+          "baseline": 0.0,
+          "contributions": {
+            "overall_norm": 11.04,
+            "subject_fit": 53.21,
+            "eligibility_margin": 0.0,
+            "same_province": 10.0
+          },
+          "weights": {
+            "overall_norm": 0.15,
+            "subject_fit": 0.75,
+            "eligibility_margin": 0.0,
+            "same_province": 0.1
+          },
+          "total": 74.25
+        },
+        "model_scores": {
+          "linear_regression": 74.25,
+          "decision_tree": 74.21,
+          "random_forest": 74.23,
+          "extra_trees": 74.22,
+          "hist_gradient_boosting": 74.2,
+          "knn": 74.55,
+          "mlp": 74.83
+        }
+      }
+    ],
+    "not_authorized": []
+  }
+}

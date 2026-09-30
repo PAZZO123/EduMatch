@@ -1,0 +1,39 @@
+{
+  "rules_only": {
+    "valid_applicants": 5000,
+    "assigned": 1342,
+    "unassigned": 3658,
+    "fallback_assigned": 0,
+    "available_seats": 4600,
+    "top_three_rate": 0.2684,
+    "first_choice_rate": 0.1236,
+    "utilization": 0.291739,
+    "reason_counts": {
+      "LISTED_CHOICE_1": 618,
+      "LISTED_CHOICE_2": 326,
+      "LISTED_CHOICE_3": 398,
+      "CHOICES_EXHAUSTED": 2631,
+      "NO_ELIGIBLE_CHOICE": 421,
+      "NO_ELIGIBLE_OFFER": 606
+    }
+  },
+  "teacher_fallback": {
+    "valid_applicants": 5000,
+    "assigned": 2613,
+    "unassigned": 2387,
+    "fallback_assigned": 1361,
+    "available_seats": 4600,
+    "top_three_rate": 0.2504,
+    "first_choice_rate": 0.1204,
+    "utilization": 0.568043,
+    "reason_counts": {
+      "LISTED_CHOICE_1": 602,
+      "LISTED_CHOICE_2": 297,
+      "LISTED_CHOICE_3": 353,
+      "FALLBACK_TEACHER_RANKED": 1361,
+      "CHOICES_EXHAUSTED": 1446,
+      "NO_ELIGIBLE_CHOICE": 335,
+      "NO_ELIGIBLE_OFFER": 606
+    }
+  }
+}

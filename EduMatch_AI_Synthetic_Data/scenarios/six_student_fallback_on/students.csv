@@ -1,0 +1,7 @@
+student_id,display_name,cohort_id,province,overall_score,math_score,science_score,language_score,allow_fallback
+S1,Synthetic Student 1,SYN-FIXTURE,Southern Province,90,90,90,90,false
+S2,Synthetic Student 2,SYN-FIXTURE,Southern Province,85,85,85,85,false
+S3,Synthetic Student 3,SYN-FIXTURE,Southern Province,80,80,80,80,true
+S4,Synthetic Student 4,SYN-FIXTURE,Southern Province,75,75,75,75,false
+S5,Synthetic Student 5,SYN-FIXTURE,Southern Province,65,65,65,65,false
+S6,Synthetic Student 6,SYN-FIXTURE,Southern Province,45,45,45,45,false

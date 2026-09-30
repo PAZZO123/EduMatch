@@ -1,0 +1,12 @@
+{
+  "expected_primary_code": "DUPLICATE_CHOICE",
+  "errors": [
+    {
+      "file": "preferences.csv",
+      "row": 3,
+      "field": "offer_id",
+      "code": "DUPLICATE_CHOICE"
+    }
+  ],
+  "instruction": "Reject this whole import. Never mix invalid-input fixtures into model training."
+}

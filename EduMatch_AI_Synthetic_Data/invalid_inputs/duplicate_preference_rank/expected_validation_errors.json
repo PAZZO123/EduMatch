@@ -1,0 +1,18 @@
+{
+  "expected_primary_code": "DUPLICATE_RANK",
+  "errors": [
+    {
+      "file": "preferences.csv",
+      "row": 3,
+      "field": "rank",
+      "code": "DUPLICATE_RANK"
+    },
+    {
+      "file": "preferences.csv",
+      "row": 0,
+      "field": "S1",
+      "code": "MISSING_OR_NONCONTIGUOUS_CHOICES"
+    }
+  ],
+  "instruction": "Reject this whole import. Never mix invalid-input fixtures into model training."
+}

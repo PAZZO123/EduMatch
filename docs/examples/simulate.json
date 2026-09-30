@@ -1,0 +1,55 @@
+{
+  "status": 200,
+  "body": {
+    "cohort_id": "SYN-DEMO_200-2026",
+    "input_version": 1,
+    "mode": "RULES_ONLY",
+    "model_version": null,
+    "capacity_overrides": {},
+    "runtime_ms": 6.24,
+    "metrics": {
+      "valid_applicants": 200,
+      "available_seats": 184,
+      "draft": {
+        "assigned": 88,
+        "placement_rate": 0.44,
+        "top_three_rate": 0.44,
+        "first_choice_rate": 0.065,
+        "fallback_assigned": 0
+      },
+      "approved": {
+        "assigned": 0,
+        "placement_rate": 0.0,
+        "top_three_rate": 0.0,
+        "first_choice_rate": 0.0,
+        "fallback_assigned": 0
+      },
+      "unassigned": 112,
+      "unassigned_rate": 0.56,
+      "utilization": 0.478261,
+      "status_counts": {
+        "DRAFT": 88,
+        "UNASSIGNED": 112
+      },
+      "reason_counts": {
+        "LISTED_CHOICE_1": 13,
+        "LISTED_CHOICE_2": 48,
+        "LISTED_CHOICE_3": 27,
+        "NO_ELIGIBLE_CHOICE": 38,
+        "CHOICES_EXHAUSTED": 15,
+        "NO_ELIGIBLE_OFFER": 59
+      },
+      "pending_review": 88
+    },
+    "invariants": {
+      "capacity_violations": 0,
+      "eligibility_violations": 0,
+      "duplicate_placement_violations": 0,
+      "preference_authority_violations": 0,
+      "accountability_violations": 0,
+      "total_violations": 0,
+      "passed": true
+    },
+    "persisted": false
+  }
+}

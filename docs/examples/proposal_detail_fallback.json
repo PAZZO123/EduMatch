@@ -1,0 +1,128 @@
+{
+  "status": 200,
+  "body": {
+    "proposal_id": "e1682c25-160e-4717-a690-3b7051faa604",
+    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "student_id": "DEMO_200-S000052",
+    "offer_id": "DEMO_200-O012",
+    "school_name": "Synthetic School DEMO_200 012",
+    "status": "DRAFT",
+    "priority_position": 52,
+    "preference_rank": null,
+    "fallback_used": true,
+    "fit_score": 76.97,
+    "reason_code": "FALLBACK_AI_RANKED",
+    "reason_codes": [
+      "FIRST_CHOICE_INELIGIBLE",
+      "SECOND_CHOICE_INELIGIBLE",
+      "THIRD_CHOICE_INELIGIBLE",
+      "FALLBACK_AUTHORIZED",
+      "FALLBACK_AI_RANKED"
+    ],
+    "engine_offer_id": "DEMO_200-O012",
+    "released_offer_id": null,
+    "revision": 1,
+    "reviewer": null,
+    "reviewed_at": null,
+    "decision_reason": null,
+    "student": {
+      "display_name": "Synthetic Student DEMO_200 000052",
+      "province": "Southern Province",
+      "overall_score": 73.6,
+      "math_score": 67.3,
+      "science_score": 74.3,
+      "language_score": 76.0,
+      "allow_fallback": true
+    },
+    "choices": [
+      {
+        "rank": 1,
+        "offer_id": "DEMO_200-O001",
+        "school_name": "Synthetic School DEMO_200 001"
+      },
+      {
+        "rank": 2,
+        "offer_id": "DEMO_200-O006",
+        "school_name": "Synthetic School DEMO_200 006"
+      },
+      {
+        "rank": 3,
+        "offer_id": "DEMO_200-O002",
+        "school_name": "Synthetic School DEMO_200 002"
+      }
+    ],
+    "trace": [
+      {
+        "kind": "LISTED",
+        "rank": 1,
+        "offer_id": "DEMO_200-O001",
+        "outcome": "INELIGIBLE",
+        "failures": [
+          {
+            "rule": "min_overall",
+            "required": 80.0,
+            "actual": 73.6
+          }
+        ]
+      },
+      {
+        "kind": "LISTED",
+        "rank": 2,
+        "offer_id": "DEMO_200-O006",
+        "outcome": "INELIGIBLE",
+        "failures": [
+          {
+            "rule": "min_overall",
+            "required": 80.0,
+            "actual": 73.6
+          }
+        ]
+      },
+      {
+        "kind": "LISTED",
+        "rank": 3,
+        "offer_id": "DEMO_200-O002",
+        "outcome": "INELIGIBLE",
+        "failures": [
+          {
+            "rule": "min_overall",
+            "required": 80.0,
+            "actual": 73.6
+          }
+        ]
+      }
+    ],
+    "explanation": [
+      "Priority position 52 of 200: overall score 73.6 (demo policy \u2014 overall score descending, then student ID ascending).",
+      "Choice 1 DEMO_200-O001 (Synthetic School DEMO_200 001): not eligible \u2014 overall score 73.6 is below the required 80.",
+      "Choice 2 DEMO_200-O006 (Synthetic School DEMO_200 006): not eligible \u2014 overall score 73.6 is below the required 80.",
+      "Choice 3 DEMO_200-O002 (Synthetic School DEMO_200 002): not eligible \u2014 overall score 73.6 is below the required 80.",
+      "No listed choice was feasible. The student opted in to fallback, so model linear-regression-synthetic-v1 ranked 8 eligible, available, unlisted offer(s); the best was DEMO_200-O012 (Synthetic School DEMO_200 012) with compatibility score 77.0/100.",
+      "Provenance: rule demo-policy-v1, input v1, model linear-regression-synthetic-v1."
+    ],
+    "score_breakdown": {
+      "method": "exact linear decomposition",
+      "baseline": 0.0,
+      "contributions": {
+        "overall_norm": 11.04,
+        "subject_fit": 55.93,
+        "eligibility_margin": 0.0,
+        "same_province": 10.0
+      },
+      "weights": {
+        "overall_norm": 0.15,
+        "subject_fit": 0.75,
+        "eligibility_margin": 0.0,
+        "same_province": 0.1
+      },
+      "total": 76.97
+    },
+    "provenance": {
+      "rule_version": "demo-policy-v1",
+      "input_version": 1,
+      "model_version": "linear-regression-synthetic-v1",
+      "mode": "AI"
+    },
+    "history": []
+  }
+}

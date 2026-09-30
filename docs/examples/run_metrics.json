@@ -1,0 +1,58 @@
+{
+  "status": 200,
+  "body": {
+    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "status": "GENERATED",
+    "mode": "AI",
+    "ai_label": "Local model",
+    "model_version": "linear-regression-synthetic-v1",
+    "rule_version": "demo-policy-v1",
+    "input_version": 1,
+    "runtime_ms": 40.36,
+    "allocation_ms": 14.072,
+    "metrics": {
+      "valid_applicants": 200,
+      "available_seats": 184,
+      "draft": {
+        "assigned": 115,
+        "placement_rate": 0.575,
+        "top_three_rate": 0.425,
+        "first_choice_rate": 0.065,
+        "fallback_assigned": 30
+      },
+      "approved": {
+        "assigned": 0,
+        "placement_rate": 0.0,
+        "top_three_rate": 0.0,
+        "first_choice_rate": 0.0,
+        "fallback_assigned": 0
+      },
+      "unassigned": 85,
+      "unassigned_rate": 0.425,
+      "utilization": 0.625,
+      "status_counts": {
+        "DRAFT": 115,
+        "UNASSIGNED": 85
+      },
+      "reason_counts": {
+        "LISTED_CHOICE_1": 13,
+        "LISTED_CHOICE_2": 48,
+        "LISTED_CHOICE_3": 24,
+        "FALLBACK_AI_RANKED": 30,
+        "NO_ELIGIBLE_CHOICE": 16,
+        "CHOICES_EXHAUSTED": 10,
+        "NO_ELIGIBLE_OFFER": 59
+      },
+      "pending_review": 115
+    },
+    "violations": {
+      "capacity_violations": 0,
+      "eligibility_violations": 0,
+      "duplicate_placement_violations": 0,
+      "preference_authority_violations": 0,
+      "accountability_violations": 0,
+      "total_violations": 0,
+      "passed": true
+    }
+  }
+}

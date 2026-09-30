@@ -1,0 +1,12 @@
+{
+  "expected_primary_code": "UNKNOWN_OFFER",
+  "errors": [
+    {
+      "file": "preferences.csv",
+      "row": 2,
+      "field": "offer_id",
+      "code": "UNKNOWN_OFFER"
+    }
+  ],
+  "instruction": "Reject this whole import. Never mix invalid-input fixtures into model training."
+}

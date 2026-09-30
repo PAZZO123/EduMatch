@@ -1,0 +1,76 @@
+{
+  "model_key": "extra_trees",
+  "model_version": "extra-trees-synthetic-v1",
+  "display_name": "Extra Trees",
+  "algorithm": "ExtraTreesRegressor",
+  "description": "100 randomised trees, depth 12, min 5 samples per leaf.",
+  "params": {
+    "bootstrap": false,
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": 12,
+    "max_features": 1.0,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 5,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 100,
+    "n_jobs": 1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "synthetic": true,
+  "training_source": "Generated synthetic pairs; no real records",
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "train_students_used": 2500,
+  "train_pairs_used": 150000,
+  "selected_student_ids_sha256": "ad57b5a0dbf1f11a966c48cdf34bad13c5a2cd0d36987ca9cb85e7401480a741",
+  "fixed_seed": 42,
+  "fit_seconds": 0.923,
+  "metrics": {
+    "train": {
+      "mae": 0.0007217931862360093,
+      "rmse": 0.0009726587031280086,
+      "r2": 0.9999608252877737,
+      "baseline_mae": 0.12486264896982757,
+      "top1_accuracy": 0.9864925709140027
+    },
+    "validation": {
+      "mae": 0.0007342082860348676,
+      "rmse": 0.001058329841776754,
+      "r2": 0.9999538163394084,
+      "baseline_mae": 0.1254491085338272,
+      "top1_accuracy": 0.9883668903803132
+    },
+    "test": {
+      "mae": 0.0007536578179472927,
+      "rmse": 0.00134482552539326,
+      "r2": 0.9999260237305746,
+      "baseline_mae": 0.1257752105640928,
+      "top1_accuracy": 0.989851150202977
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_sha256": "fb17cff0f15d19650105d1d9f9db07cb534b50efafbdb487fba43fe74029c8d6",
+  "model_bytes": 9365328,
+  "artifact_reload_prediction_check": "PASS",
+  "is_champion": false,
+  "evaluation_scope": "New synthetic students at known offer profiles. Not real placement accuracy."
+}

@@ -1,0 +1,79 @@
+{
+  "model_key": "hist_gradient_boosting",
+  "model_version": "hist-gradient-boosting-synthetic-v1",
+  "display_name": "Gradient Boosting",
+  "algorithm": "HistGradientBoostingRegressor",
+  "description": "Histogram GBM, up to 500 rounds, early stopping.",
+  "params": {
+    "categorical_features": "from_dtype",
+    "early_stopping": true,
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 0.1,
+    "loss": "squared_error",
+    "max_bins": 255,
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_iter": 500,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 20,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 42,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "synthetic": true,
+  "training_source": "Generated synthetic pairs; no real records",
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "train_students_used": 2500,
+  "train_pairs_used": 150000,
+  "selected_student_ids_sha256": "ad57b5a0dbf1f11a966c48cdf34bad13c5a2cd0d36987ca9cb85e7401480a741",
+  "fixed_seed": 42,
+  "fit_seconds": 17.458,
+  "metrics": {
+    "train": {
+      "mae": 0.0010528745238665006,
+      "rmse": 0.0018536980050578278,
+      "r2": 0.9998577137853228,
+      "baseline_mae": 0.12486264896982757,
+      "top1_accuracy": 0.9284106258442143
+    },
+    "validation": {
+      "mae": 0.0010675695231017934,
+      "rmse": 0.0019547364946058453,
+      "r2": 0.9998424484387779,
+      "baseline_mae": 0.1254491085338272,
+      "top1_accuracy": 0.9214765100671141
+    },
+    "test": {
+      "mae": 0.0011123514837413644,
+      "rmse": 0.0025629404051531104,
+      "r2": 0.9997313186295411,
+      "baseline_mae": 0.1257752105640928,
+      "top1_accuracy": 0.9271538114569238
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_sha256": "15ebfa68a3728421e99d9bc00b475b33e7f1474e5344316f5c978f16d0fe6af5",
+  "model_bytes": 123126,
+  "artifact_reload_prediction_check": "PASS",
+  "is_champion": false,
+  "evaluation_scope": "New synthetic students at known offer profiles. Not real placement accuracy."
+}

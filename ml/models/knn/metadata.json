@@ -1,0 +1,72 @@
+{
+  "model_key": "knn",
+  "model_version": "knn-synthetic-v1",
+  "display_name": "k-Nearest Neighbours",
+  "algorithm": "KNeighborsRegressor",
+  "description": "k=15, distance-weighted, standardised features.",
+  "params": {
+    "memory": null,
+    "transform_input": null,
+    "verbose": false,
+    "standardscaler__copy": true,
+    "standardscaler__with_mean": true,
+    "standardscaler__with_std": true,
+    "kneighborsregressor__algorithm": "auto",
+    "kneighborsregressor__leaf_size": 30,
+    "kneighborsregressor__metric": "minkowski",
+    "kneighborsregressor__metric_params": null,
+    "kneighborsregressor__n_jobs": 1,
+    "kneighborsregressor__n_neighbors": 15,
+    "kneighborsregressor__p": 2,
+    "kneighborsregressor__weights": "distance"
+  },
+  "synthetic": true,
+  "training_source": "Generated synthetic pairs; no real records",
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "train_students_used": 2500,
+  "train_pairs_used": 150000,
+  "selected_student_ids_sha256": "ad57b5a0dbf1f11a966c48cdf34bad13c5a2cd0d36987ca9cb85e7401480a741",
+  "fixed_seed": 42,
+  "fit_seconds": 0.254,
+  "metrics": {
+    "train": {
+      "mae": 1.0666666668657232e-10,
+      "rmse": 7.302967433447524e-09,
+      "r2": 0.9999999999999978,
+      "baseline_mae": 0.12486264896982757,
+      "top1_accuracy": 1.0
+    },
+    "validation": {
+      "mae": 0.0006203024310651108,
+      "rmse": 0.0015125812574940665,
+      "r2": 0.9999056626444462,
+      "baseline_mae": 0.1254491085338272,
+      "top1_accuracy": 0.9438478747203579
+    },
+    "test": {
+      "mae": 0.0006464825185213463,
+      "rmse": 0.00186576983324528,
+      "r2": 0.9998576109236312,
+      "baseline_mae": 0.1257752105640928,
+      "top1_accuracy": 0.9420387911592242
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_sha256": "0111c2ff045bfb39a455f959c18b84ca679840f3c5ba0265f69b1429352bc8d0",
+  "model_bytes": 4709285,
+  "artifact_reload_prediction_check": "PASS",
+  "is_champion": false,
+  "evaluation_scope": "New synthetic students at known offer profiles. Not real placement accuracy."
+}

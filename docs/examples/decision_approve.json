@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "body": {
+    "proposal_id": "c0e958d0-9139-4869-8e68-827a9fc4f680",
+    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "student_id": "DEMO_200-S000114",
+    "offer_id": "DEMO_200-O001",
+    "school_name": "Synthetic School DEMO_200 001",
+    "status": "APPROVED",
+    "priority_position": 1,
+    "preference_rank": 1,
+    "fallback_used": false,
+    "fit_score": null,
+    "reason_code": "LISTED_CHOICE_1",
+    "reason_codes": [
+      "FIRST_CHOICE_FEASIBLE"
+    ],
+    "engine_offer_id": "DEMO_200-O001",
+    "released_offer_id": null,
+    "revision": 2,
+    "reviewer": "admin",
+    "reviewed_at": "2026-09-30T13:12:52.017574+00:00",
+    "decision_reason": "Approved as proposed.",
+    "run_status": "UNDER_REVIEW",
+    "run_revision": 2
+  }
+}

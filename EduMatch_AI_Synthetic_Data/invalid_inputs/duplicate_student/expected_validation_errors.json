@@ -1,0 +1,12 @@
+{
+  "expected_primary_code": "DUPLICATE_OR_MISSING_ID",
+  "errors": [
+    {
+      "file": "students.csv",
+      "row": 8,
+      "field": "student_id",
+      "code": "DUPLICATE_OR_MISSING_ID"
+    }
+  ],
+  "instruction": "Reject this whole import. Never mix invalid-input fixtures into model training."
+}

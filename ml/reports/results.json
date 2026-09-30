@@ -1,0 +1,2112 @@
+{
+  "generated_utc": "2026-09-30T12:19:46.185783+00:00",
+  "champion": "linear_regression",
+  "selection_rule": "Highest validation top-1 ranking accuracy, then lowest validation MAE.",
+  "strong_match_threshold": 0.65,
+  "train_students": 2500,
+  "train_pairs": 150000,
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_info": {
+    "linear_regression": [
+      "Linear Regression",
+      "Ordinary least squares on the 4 features."
+    ],
+    "decision_tree": [
+      "Decision Tree",
+      "Single CART tree, depth 12, min 5 samples per leaf."
+    ],
+    "random_forest": [
+      "Random Forest (SRS)",
+      "SRS spec: 100 trees, depth 8, min 5 samples per leaf."
+    ],
+    "extra_trees": [
+      "Extra Trees",
+      "100 randomised trees, depth 12, min 5 samples per leaf."
+    ],
+    "hist_gradient_boosting": [
+      "Gradient Boosting",
+      "Histogram GBM, up to 500 rounds, early stopping."
+    ],
+    "knn": [
+      "k-Nearest Neighbours",
+      "k=15, distance-weighted, standardised features."
+    ],
+    "mlp": [
+      "Neural Network (MLP)",
+      "64-32 ReLU network, Adam, early stopping, standardised features."
+    ]
+  },
+  "results": {
+    "mean_baseline": {
+      "fit_seconds": 0.008,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 0.12486264896982757,
+        "rmse": 0.15540234561611385,
+        "max_abs_error": 0.5237676015466667,
+        "p99_abs_error": 0.3863047515466668,
+        "r2": 0.0,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 0.12297397833258797,
+        "strong_match": {
+          "tp": 0,
+          "tn": 40009,
+          "fp": 0,
+          "fn": 37108,
+          "accuracy": 0.5188090823035129,
+          "precision": null,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "roc_auc": 0.5,
+          "average_precision": 0.48119091769648714
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 0.0022512381809995496,
+          "mean_regret_when_wrong_pts": 10.265379918772561,
+          "max_regret_pts": 27.047299999999996,
+          "confusion": {
+            "tp": 5,
+            "tn": 72680,
+            "fp": 2216,
+            "fn": 2216,
+            "accuracy": 0.9425288846817174,
+            "precision": 0.0022512381809995496,
+            "recall": 0.0022512381809995496,
+            "specificity": 0.9704123050630207,
+            "f1": 0.0022512381809995496
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.1254491085338272,
+        "rmse": 0.15588707727891205,
+        "max_abs_error": 0.5512736015466667,
+        "p99_abs_error": 0.38722261951573334,
+        "r2": -0.001997176374597398,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.12605382043609575,
+        "strong_match": {
+          "tp": 0,
+          "tn": 79459,
+          "fp": 0,
+          "fn": 78984,
+          "accuracy": 0.5014989617717412,
+          "precision": null,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "roc_auc": 0.5,
+          "average_precision": 0.49850103822825875
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.0022371364653243847,
+          "mean_regret_when_wrong_pts": 10.532728901345292,
+          "max_regret_pts": 27.390899999999995,
+          "confusion": {
+            "tp": 10,
+            "tn": 149513,
+            "fp": 4460,
+            "fn": 4460,
+            "accuracy": 0.9437021515623916,
+            "precision": 0.0022371364653243847,
+            "recall": 0.0022371364653243847,
+            "specificity": 0.9710338825638262,
+            "f1": 0.0022371364653243847
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.1257752105640928,
+        "rmse": 0.1564365465416866,
+        "max_abs_error": 0.5610526015466667,
+        "p99_abs_error": 0.38543065154666667,
+        "r2": -0.0010066879644283766,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.12562743407522384,
+        "strong_match": {
+          "tp": 0,
+          "tn": 79817,
+          "fp": 0,
+          "fn": 77899,
+          "accuracy": 0.5060805498490959,
+          "precision": null,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "roc_auc": 0.5,
+          "average_precision": 0.49391945015090416
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.0009021199819576004,
+          "mean_regret_when_wrong_pts": 10.508951805869074,
+          "max_regret_pts": 23.788700000000002,
+          "confusion": {
+            "tp": 4,
+            "tn": 148852,
+            "fp": 4430,
+            "fn": 4430,
+            "accuracy": 0.9438230743868726,
+            "precision": 0.0009021199819576004,
+            "recall": 0.0009021199819576004,
+            "specificity": 0.9710990201067314,
+            "f1": 0.0009021199819576004
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 0.01235000672750175,
+        "batch_1000_ms": 0.01549998705741018
+      }
+    },
+    "linear_regression": {
+      "fit_seconds": 0.05,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 2.916858068165511e-07,
+        "rmse": 3.6734474477081497e-07,
+        "max_abs_error": 7.557428598481408e-07,
+        "p99_abs_error": 7.518748843404755e-07,
+        "r2": 0.9999999999944124,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 2.911531014233621e-07,
+        "strong_match": {
+          "tp": 37108,
+          "tn": 40009,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "f1": 1.0,
+          "roc_auc": 1.0,
+          "average_precision": 1.0
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 1.0,
+          "mean_regret_when_wrong_pts": 0.0,
+          "max_regret_pts": 0.0,
+          "confusion": {
+            "tp": 2220,
+            "tn": 74895,
+            "fp": 1,
+            "fn": 1,
+            "accuracy": 0.9999740653811741,
+            "precision": 0.9995497523638001,
+            "recall": 0.9995497523638001,
+            "specificity": 0.9999866481521043,
+            "f1": 0.9995497523638001
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 2.929500733390252e-07,
+        "rmse": 3.688061565571489e-07,
+        "max_abs_error": 7.562455902609955e-07,
+        "p99_abs_error": 7.519274142975263e-07,
+        "r2": 0.9999999999943916,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 2.9246390919530674e-07,
+        "strong_match": {
+          "tp": 78982,
+          "tn": 79459,
+          "fp": 0,
+          "fn": 2,
+          "accuracy": 0.9999873771640274,
+          "precision": 1.0,
+          "recall": 0.9999746784158817,
+          "specificity": 1.0,
+          "f1": 0.9999873390476433,
+          "roc_auc": 1.0,
+          "average_precision": 1.0
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 1.0,
+          "mean_regret_when_wrong_pts": 0.0,
+          "max_regret_pts": 0.0,
+          "confusion": {
+            "tp": 4470,
+            "tn": 153973,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "specificity": 1.0,
+            "f1": 1.0
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 2.9210927992363307e-07,
+        "rmse": 3.6795075557165226e-07,
+        "max_abs_error": 7.557947208081117e-07,
+        "p99_abs_error": 7.518821619345584e-07,
+        "r2": 0.9999999999944622,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 2.9192708382835084e-07,
+        "strong_match": {
+          "tp": 77898,
+          "tn": 79817,
+          "fp": 0,
+          "fn": 1,
+          "accuracy": 0.9999936594892085,
+          "precision": 1.0,
+          "recall": 0.9999871628647351,
+          "specificity": 1.0,
+          "f1": 0.9999935813911693,
+          "roc_auc": 0.999999999839168,
+          "average_precision": 0.99999999983521
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 1.0,
+          "mean_regret_when_wrong_pts": 0.0,
+          "max_regret_pts": 0.0,
+          "confusion": {
+            "tp": 4432,
+            "tn": 153280,
+            "fp": 2,
+            "fn": 2,
+            "accuracy": 0.9999746379568338,
+            "precision": 0.9995489400090212,
+            "recall": 0.9995489400090212,
+            "specificity": 0.999986952153547,
+            "f1": 0.9995489400090212
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 0.356850003299769,
+        "batch_1000_ms": 0.39370000013150275
+      },
+      "permutation_importance": {
+        "overall_norm": 0.028516,
+        "subject_fit": 0.142653,
+        "eligibility_margin": 0.0,
+        "same_province": 0.032592
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.000269473974998097,
+        "top1_accuracy": 0.992393736017897
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 115,
+          "unassigned": 85,
+          "fallback_assigned": 30,
+          "available_seats": 184,
+          "top_three_rate": 0.425,
+          "first_choice_rate": 0.065,
+          "utilization": 0.625,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 48,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 16,
+            "FALLBACK_MODEL_RANKED": 30,
+            "CHOICES_EXHAUSTED": 10,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 61.37,
+          "violations": 0,
+          "agreement_with_formula": 1.0
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 242,
+          "unassigned": 258,
+          "fallback_assigned": 81,
+          "available_seats": 460,
+          "top_three_rate": 0.322,
+          "first_choice_rate": 0.086,
+          "utilization": 0.526087,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 78,
+            "CHOICES_EXHAUSTED": 40,
+            "FALLBACK_MODEL_RANKED": 81,
+            "NO_ELIGIBLE_CHOICE": 150,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 184.8,
+          "violations": 0,
+          "agreement_with_formula": 1.0
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2613,
+          "unassigned": 2387,
+          "fallback_assigned": 1361,
+          "available_seats": 4600,
+          "top_three_rate": 0.2504,
+          "first_choice_rate": 0.1204,
+          "utilization": 0.568043,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 602,
+            "LISTED_CHOICE_2": 297,
+            "LISTED_CHOICE_3": 353,
+            "FALLBACK_MODEL_RANKED": 1361,
+            "CHOICES_EXHAUSTED": 1446,
+            "NO_ELIGIBLE_CHOICE": 335,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 2252.79,
+          "violations": 0,
+          "agreement_with_formula": 1.0
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 4.35,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 655
+    },
+    "decision_tree": {
+      "fit_seconds": 0.353,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 0.000939569411032694,
+        "rmse": 0.0012029466813307888,
+        "max_abs_error": 0.018435199999999985,
+        "p99_abs_error": 0.003236001272727069,
+        "r2": 0.9999400791980142,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 0.0009151300769489862,
+        "strong_match": {
+          "tp": 37032,
+          "tn": 39910,
+          "fp": 99,
+          "fn": 76,
+          "accuracy": 0.9977307208527303,
+          "precision": 0.9973337642401228,
+          "recall": 0.9979519241133987,
+          "specificity": 0.9975255567497313,
+          "f1": 0.9976427484206414,
+          "roc_auc": 0.9999826993356806,
+          "average_precision": 0.9999793037196907
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 0.9230076542098155,
+          "mean_regret_when_wrong_pts": 0.11403625730994173,
+          "max_regret_pts": 0.525500000000001,
+          "confusion": {
+            "tp": 2049,
+            "tn": 74724,
+            "fp": 172,
+            "fn": 172,
+            "accuracy": 0.9955392455619384,
+            "precision": 0.9225574065736155,
+            "recall": 0.9225574065736155,
+            "specificity": 0.9977034821619312,
+            "f1": 0.9225574065736155
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0011302171898337177,
+        "rmse": 0.0015017868573117628,
+        "max_abs_error": 0.037677375,
+        "p99_abs_error": 0.004191197450980401,
+        "r2": 0.9999070043001168,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.0011023145824470627,
+        "strong_match": {
+          "tp": 78843,
+          "tn": 79188,
+          "fp": 271,
+          "fn": 141,
+          "accuracy": 0.997399695789653,
+          "precision": 0.9965745632884192,
+          "recall": 0.9982148283196597,
+          "specificity": 0.996589436061365,
+          "f1": 0.9973940214297461,
+          "roc_auc": 0.9999755272859869,
+          "average_precision": 0.9999734384866168
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.917897091722595,
+          "mean_regret_when_wrong_pts": 0.12763950953678466,
+          "max_regret_pts": 0.6543999999999994,
+          "confusion": {
+            "tp": 4102,
+            "tn": 153605,
+            "fp": 368,
+            "fn": 368,
+            "accuracy": 0.9953547963620987,
+            "precision": 0.9176733780760626,
+            "recall": 0.9176733780760626,
+            "specificity": 0.9976099705792574,
+            "f1": 0.9176733780760626
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0011467482713064514,
+        "rmse": 0.0016528925346104078,
+        "max_abs_error": 0.054635375,
+        "p99_abs_error": 0.004384226363636406,
+        "r2": 0.9998882494226826,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.0011024984829489494,
+        "strong_match": {
+          "tp": 77726,
+          "tn": 79528,
+          "fp": 289,
+          "fn": 173,
+          "accuracy": 0.9970706840143042,
+          "precision": 0.996295584182529,
+          "recall": 0.9977791755991733,
+          "specificity": 0.9963792174599396,
+          "f1": 0.9970368279949202,
+          "roc_auc": 0.9999715434146561,
+          "average_precision": 0.9999680599398161
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.9192602616147948,
+          "mean_regret_when_wrong_pts": 0.1360159217877097,
+          "max_regret_pts": 1.018399999999997,
+          "confusion": {
+            "tp": 4076,
+            "tn": 152924,
+            "fp": 358,
+            "fn": 358,
+            "accuracy": 0.9954601942732506,
+            "precision": 0.9192602616147948,
+            "recall": 0.9192602616147948,
+            "specificity": 0.9976644354849232,
+            "f1": 0.9192602616147948
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 0.42735000170068815,
+        "batch_1000_ms": 0.5615999980363995
+      },
+      "permutation_importance": {
+        "overall_norm": 0.014487,
+        "subject_fit": 0.154486,
+        "eligibility_margin": -0.0,
+        "same_province": 0.032214
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.008324492526798394,
+        "top1_accuracy": 0.5194630872483221
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 116,
+          "unassigned": 84,
+          "fallback_assigned": 31,
+          "available_seats": 184,
+          "top_three_rate": 0.425,
+          "first_choice_rate": 0.065,
+          "utilization": 0.630435,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 48,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 15,
+            "FALLBACK_MODEL_RANKED": 31,
+            "CHOICES_EXHAUSTED": 10,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 43.78,
+          "violations": 0,
+          "agreement_with_formula": 0.99
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 242,
+          "unassigned": 258,
+          "fallback_assigned": 82,
+          "available_seats": 460,
+          "top_three_rate": 0.32,
+          "first_choice_rate": 0.086,
+          "utilization": 0.526087,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 77,
+            "CHOICES_EXHAUSTED": 41,
+            "FALLBACK_MODEL_RANKED": 82,
+            "NO_ELIGIBLE_CHOICE": 149,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 71.98,
+          "violations": 0,
+          "agreement_with_formula": 0.966
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2600,
+          "unassigned": 2400,
+          "fallback_assigned": 1360,
+          "available_seats": 4600,
+          "top_three_rate": 0.248,
+          "first_choice_rate": 0.1198,
+          "utilization": 0.565217,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 599,
+            "LISTED_CHOICE_2": 297,
+            "LISTED_CHOICE_3": 344,
+            "FALLBACK_MODEL_RANKED": 1360,
+            "CHOICES_EXHAUSTED": 1457,
+            "NO_ELIGIBLE_CHOICE": 337,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 1875.65,
+          "violations": 0,
+          "agreement_with_formula": 0.9342
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 4.77,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 170504
+    },
+    "random_forest": {
+      "fit_seconds": 2.831,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 0.00247352905236456,
+        "rmse": 0.003467908052841178,
+        "max_abs_error": 0.033976046928540615,
+        "p99_abs_error": 0.012192789556371025,
+        "r2": 0.9995020107027609,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 0.002441864903201138,
+        "strong_match": {
+          "tp": 36837,
+          "tn": 39807,
+          "fp": 202,
+          "fn": 271,
+          "accuracy": 0.9938664626476652,
+          "precision": 0.9945462890466805,
+          "recall": 0.9926969925622507,
+          "specificity": 0.9949511359944012,
+          "f1": 0.9936207803417536,
+          "roc_auc": 0.9998411225750589,
+          "average_precision": 0.9998304377509678
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 0.9837910850968032,
+          "mean_regret_when_wrong_pts": 0.1038888888888884,
+          "max_regret_pts": 1.186699999999996,
+          "confusion": {
+            "tp": 2185,
+            "tn": 74860,
+            "fp": 36,
+            "fn": 36,
+            "accuracy": 0.9990663537222662,
+            "precision": 0.9837910850968032,
+            "recall": 0.9837910850968032,
+            "specificity": 0.9995193334757531,
+            "f1": 0.9837910850968032
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0025592347746750768,
+        "rmse": 0.003582991963030464,
+        "max_abs_error": 0.05028684013793802,
+        "p99_abs_error": 0.0124326149478913,
+        "r2": 0.9994706560709518,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.0025068443404724487,
+        "strong_match": {
+          "tp": 78389,
+          "tn": 79035,
+          "fp": 424,
+          "fn": 595,
+          "accuracy": 0.9935686650719817,
+          "precision": 0.9946201768743735,
+          "recall": 0.9924668287248051,
+          "specificity": 0.9946639147233164,
+          "f1": 0.9935423360393416,
+          "roc_auc": 0.9998299943820047,
+          "average_precision": 0.9998305874060924
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.9816554809843401,
+          "mean_regret_when_wrong_pts": 0.1965146341463412,
+          "max_regret_pts": 1.9596999999999976,
+          "confusion": {
+            "tp": 4388,
+            "tn": 153891,
+            "fp": 82,
+            "fn": 82,
+            "accuracy": 0.9989649274502502,
+            "precision": 0.9816554809843401,
+            "recall": 0.9816554809843401,
+            "specificity": 0.999467439096465,
+            "f1": 0.9816554809843401
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.002571800119016977,
+        "rmse": 0.0037173105523191355,
+        "max_abs_error": 0.06074039367706331,
+        "p99_abs_error": 0.012679459224787592,
+        "r2": 0.9994347790792666,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.002519758885751375,
+        "strong_match": {
+          "tp": 77379,
+          "tn": 79326,
+          "fp": 491,
+          "fn": 520,
+          "accuracy": 0.9935897435897436,
+          "precision": 0.9936946192371902,
+          "recall": 0.993324689662255,
+          "specificity": 0.9938484282796898,
+          "f1": 0.9935096200142518,
+          "roc_auc": 0.9998280229653879,
+          "average_precision": 0.9998253496722272
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.9826341903473161,
+          "mean_regret_when_wrong_pts": 0.11261948051948155,
+          "max_regret_pts": 1.129800000000003,
+          "confusion": {
+            "tp": 4357,
+            "tn": 153205,
+            "fp": 77,
+            "fn": 77,
+            "accuracy": 0.9990235613381014,
+            "precision": 0.9826341903473161,
+            "recall": 0.9826341903473161,
+            "specificity": 0.9994976579115616,
+            "f1": 0.9826341903473161
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 12.83020000118995,
+        "batch_1000_ms": 30.937000003177673
+      },
+      "permutation_importance": {
+        "overall_norm": 0.004194,
+        "subject_fit": 0.162975,
+        "eligibility_margin": 0.0,
+        "same_province": 0.031777
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.0027914135366674045,
+        "top1_accuracy": 0.8785234899328859
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 116,
+          "unassigned": 84,
+          "fallback_assigned": 31,
+          "available_seats": 184,
+          "top_three_rate": 0.425,
+          "first_choice_rate": 0.065,
+          "utilization": 0.630435,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 48,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 15,
+            "FALLBACK_MODEL_RANKED": 31,
+            "CHOICES_EXHAUSTED": 10,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 243.9,
+          "violations": 0,
+          "agreement_with_formula": 0.99
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 242,
+          "unassigned": 258,
+          "fallback_assigned": 81,
+          "available_seats": 460,
+          "top_three_rate": 0.322,
+          "first_choice_rate": 0.086,
+          "utilization": 0.526087,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 78,
+            "CHOICES_EXHAUSTED": 40,
+            "FALLBACK_MODEL_RANKED": 81,
+            "NO_ELIGIBLE_CHOICE": 150,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 714.57,
+          "violations": 0,
+          "agreement_with_formula": 0.998
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2614,
+          "unassigned": 2386,
+          "fallback_assigned": 1365,
+          "available_seats": 4600,
+          "top_three_rate": 0.2498,
+          "first_choice_rate": 0.1202,
+          "utilization": 0.568261,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 601,
+            "LISTED_CHOICE_2": 297,
+            "LISTED_CHOICE_3": 351,
+            "FALLBACK_MODEL_RANKED": 1365,
+            "CHOICES_EXHAUSTED": 1446,
+            "NO_ELIGIBLE_CHOICE": 334,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 19381.46,
+          "violations": 0,
+          "agreement_with_formula": 0.981
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 10.93,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 1450084
+    },
+    "extra_trees": {
+      "fit_seconds": 0.923,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 0.0007217931862360093,
+        "rmse": 0.0009726587031280086,
+        "max_abs_error": 0.01871659234022993,
+        "p99_abs_error": 0.002954851176978233,
+        "r2": 0.9999608252877737,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 0.0006960719141307686,
+        "strong_match": {
+          "tp": 37061,
+          "tn": 39936,
+          "fp": 73,
+          "fn": 47,
+          "accuracy": 0.9984439228704436,
+          "precision": 0.9980341466041902,
+          "recall": 0.9987334267543387,
+          "specificity": 0.9981754105326301,
+          "f1": 0.9983836642331834,
+          "roc_auc": 0.9999927902392061,
+          "average_precision": 0.9999922607505444
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 0.9864925709140027,
+          "mean_regret_when_wrong_pts": 0.07434000000000014,
+          "max_regret_pts": 1.4492999999999978,
+          "confusion": {
+            "tp": 2190,
+            "tn": 74865,
+            "fp": 31,
+            "fn": 31,
+            "accuracy": 0.9991960268163959,
+            "precision": 0.9860423232778028,
+            "recall": 0.9860423232778028,
+            "specificity": 0.9995860927152318,
+            "f1": 0.9860423232778028
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0007342082860348676,
+        "rmse": 0.001058329841776754,
+        "max_abs_error": 0.046093380806959613,
+        "p99_abs_error": 0.0030311271787366576,
+        "r2": 0.9999538163394084,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.0006977221121298688,
+        "strong_match": {
+          "tp": 78887,
+          "tn": 79286,
+          "fp": 173,
+          "fn": 97,
+          "accuracy": 0.9982959171437047,
+          "precision": 0.9978117885150518,
+          "recall": 0.9987719031702623,
+          "specificity": 0.9978227765262588,
+          "f1": 0.998291614993293,
+          "roc_auc": 0.9999917300692249,
+          "average_precision": 0.9999917146638898
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.9883668903803132,
+          "mean_regret_when_wrong_pts": 0.04389615384615494,
+          "max_regret_pts": 0.4242999999999997,
+          "confusion": {
+            "tp": 4417,
+            "tn": 153920,
+            "fp": 53,
+            "fn": 53,
+            "accuracy": 0.9993309896934545,
+            "precision": 0.9881431767337807,
+            "recall": 0.9881431767337807,
+            "specificity": 0.9996557838062518,
+            "f1": 0.9881431767337807
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0007536578179472927,
+        "rmse": 0.00134482552539326,
+        "max_abs_error": 0.06305138080695961,
+        "p99_abs_error": 0.0030859890523647925,
+        "r2": 0.9999260237305746,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.0007025486564848554,
+        "strong_match": {
+          "tp": 77800,
+          "tn": 79649,
+          "fp": 168,
+          "fn": 99,
+          "accuracy": 0.9983070836186563,
+          "precision": 0.9978452698542992,
+          "recall": 0.9987291236087754,
+          "specificity": 0.9978951852362279,
+          "f1": 0.9982870010970892,
+          "roc_auc": 0.9999908360285192,
+          "average_precision": 0.9999906568366738
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.989851150202977,
+          "mean_regret_when_wrong_pts": 0.03875333333333539,
+          "max_regret_pts": 0.33960000000000656,
+          "confusion": {
+            "tp": 4388,
+            "tn": 153236,
+            "fp": 46,
+            "fn": 46,
+            "accuracy": 0.9994166730071774,
+            "precision": 0.9896256202074876,
+            "recall": 0.9896256202074876,
+            "specificity": 0.9996998995315823,
+            "f1": 0.9896256202074876
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 14.838950002740603,
+        "batch_1000_ms": 27.49920000496786
+      },
+      "permutation_importance": {
+        "overall_norm": 0.037551,
+        "subject_fit": 0.130716,
+        "eligibility_margin": 0.001112,
+        "same_province": 0.032345
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.0020918047515550565,
+        "top1_accuracy": 0.8720357941834452
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 115,
+          "unassigned": 85,
+          "fallback_assigned": 30,
+          "available_seats": 184,
+          "top_three_rate": 0.425,
+          "first_choice_rate": 0.065,
+          "utilization": 0.625,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 48,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 16,
+            "FALLBACK_MODEL_RANKED": 30,
+            "CHOICES_EXHAUSTED": 10,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 250.55,
+          "violations": 0,
+          "agreement_with_formula": 1.0
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 243,
+          "unassigned": 257,
+          "fallback_assigned": 81,
+          "available_seats": 460,
+          "top_three_rate": 0.324,
+          "first_choice_rate": 0.086,
+          "utilization": 0.528261,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 79,
+            "CHOICES_EXHAUSTED": 40,
+            "FALLBACK_MODEL_RANKED": 81,
+            "NO_ELIGIBLE_CHOICE": 149,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 633.45,
+          "violations": 0,
+          "agreement_with_formula": 0.99
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2617,
+          "unassigned": 2383,
+          "fallback_assigned": 1368,
+          "available_seats": 4600,
+          "top_three_rate": 0.2498,
+          "first_choice_rate": 0.1202,
+          "utilization": 0.568913,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 601,
+            "LISTED_CHOICE_2": 297,
+            "LISTED_CHOICE_3": 351,
+            "FALLBACK_MODEL_RANKED": 1368,
+            "CHOICES_EXHAUSTED": 1446,
+            "NO_ELIGIBLE_CHOICE": 331,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 10943.02,
+          "violations": 0,
+          "agreement_with_formula": 0.9838
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 13.22,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 9365328
+    },
+    "hist_gradient_boosting": {
+      "fit_seconds": 17.458,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 0.0010528745238665006,
+        "rmse": 0.0018536980050578278,
+        "max_abs_error": 0.06022960883496778,
+        "p99_abs_error": 0.005623446468907667,
+        "r2": 0.9998577137853228,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 0.000946255826335412,
+        "strong_match": {
+          "tp": 37032,
+          "tn": 39918,
+          "fp": 91,
+          "fn": 76,
+          "accuracy": 0.997834459328034,
+          "precision": 0.9975486894916897,
+          "recall": 0.9979519241133987,
+          "specificity": 0.997725511759854,
+          "f1": 0.9977502660613491,
+          "roc_auc": 0.9999863762867434,
+          "average_precision": 0.999985072975724
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 0.9284106258442143,
+          "mean_regret_when_wrong_pts": 0.131390566037736,
+          "max_regret_pts": 1.08680000000001,
+          "confusion": {
+            "tp": 2062,
+            "tn": 74737,
+            "fp": 159,
+            "fn": 159,
+            "accuracy": 0.9958763956066756,
+            "precision": 0.9284106258442143,
+            "recall": 0.9284106258442143,
+            "specificity": 0.9978770561845759,
+            "f1": 0.9284106258442143
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0010675695231017934,
+        "rmse": 0.0019547364946058453,
+        "max_abs_error": 0.07698786332099947,
+        "p99_abs_error": 0.005601880898416169,
+        "r2": 0.9998424484387779,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.0009721461526427653,
+        "strong_match": {
+          "tp": 78805,
+          "tn": 79268,
+          "fp": 191,
+          "fn": 179,
+          "accuracy": 0.9976647753450768,
+          "precision": 0.9975821560585346,
+          "recall": 0.9977337182214119,
+          "specificity": 0.9975962446041354,
+          "f1": 0.9976579313837195,
+          "roc_auc": 0.9999816677518119,
+          "average_precision": 0.9999813018984878
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.9214765100671141,
+          "mean_regret_when_wrong_pts": 0.16814586894586855,
+          "max_regret_pts": 1.1950000000000016,
+          "confusion": {
+            "tp": 4119,
+            "tn": 153622,
+            "fp": 351,
+            "fn": 351,
+            "accuracy": 0.9955693845736322,
+            "precision": 0.9214765100671141,
+            "recall": 0.9214765100671141,
+            "specificity": 0.9977203795470635,
+            "f1": 0.9214765100671141
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0011123514837413644,
+        "rmse": 0.0025629404051531104,
+        "max_abs_error": 0.08676686332099946,
+        "p99_abs_error": 0.005765181735959686,
+        "r2": 0.9997313186295411,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.000975468161886463,
+        "strong_match": {
+          "tp": 77723,
+          "tn": 79599,
+          "fp": 218,
+          "fn": 176,
+          "accuracy": 0.9975018387481296,
+          "precision": 0.9972030125351227,
+          "recall": 0.9977406641933786,
+          "specificity": 0.9972687522708195,
+          "f1": 0.9974717659137575,
+          "roc_auc": 0.9999799218017728,
+          "average_precision": 0.9999791811855944
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.9271538114569238,
+          "mean_regret_when_wrong_pts": 0.15666996904024816,
+          "max_regret_pts": 1.041599999999998,
+          "confusion": {
+            "tp": 4111,
+            "tn": 152959,
+            "fp": 323,
+            "fn": 323,
+            "accuracy": 0.9959040300286591,
+            "precision": 0.9271538114569238,
+            "recall": 0.9271538114569238,
+            "specificity": 0.9978927727978497,
+            "f1": 0.9271538114569239
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 3.26360000326531,
+        "batch_1000_ms": 4.149400003370829
+      },
+      "permutation_importance": {
+        "overall_norm": 0.027052,
+        "subject_fit": 0.141959,
+        "eligibility_margin": 0.0,
+        "same_province": 0.032183
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.002468736835483161,
+        "top1_accuracy": 0.8639821029082774
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 115,
+          "unassigned": 85,
+          "fallback_assigned": 30,
+          "available_seats": 184,
+          "top_three_rate": 0.425,
+          "first_choice_rate": 0.065,
+          "utilization": 0.625,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 48,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 16,
+            "FALLBACK_MODEL_RANKED": 30,
+            "CHOICES_EXHAUSTED": 10,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 111.37,
+          "violations": 0,
+          "agreement_with_formula": 1.0
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 241,
+          "unassigned": 259,
+          "fallback_assigned": 80,
+          "available_seats": 460,
+          "top_three_rate": 0.322,
+          "first_choice_rate": 0.086,
+          "utilization": 0.523913,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 78,
+            "CHOICES_EXHAUSTED": 40,
+            "FALLBACK_MODEL_RANKED": 80,
+            "NO_ELIGIBLE_CHOICE": 151,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 305.63,
+          "violations": 0,
+          "agreement_with_formula": 0.97
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2609,
+          "unassigned": 2391,
+          "fallback_assigned": 1366,
+          "available_seats": 4600,
+          "top_three_rate": 0.2486,
+          "first_choice_rate": 0.1202,
+          "utilization": 0.567174,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 601,
+            "LISTED_CHOICE_2": 297,
+            "LISTED_CHOICE_3": 345,
+            "FALLBACK_MODEL_RANKED": 1366,
+            "CHOICES_EXHAUSTED": 1450,
+            "NO_ELIGIBLE_CHOICE": 335,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 3728.77,
+          "violations": 0,
+          "agreement_with_formula": 0.952
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 3.47,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 123126
+    },
+    "knn": {
+      "fit_seconds": 0.254,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 1.0666666668657232e-10,
+        "rmse": 7.302967433447524e-09,
+        "max_abs_error": 5.00000000069889e-07,
+        "p99_abs_error": 0.0,
+        "r2": 0.9999999999999978,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 1.2967309450773961e-11,
+        "strong_match": {
+          "tp": 37108,
+          "tn": 40009,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "specificity": 1.0,
+          "f1": 1.0,
+          "roc_auc": 1.0,
+          "average_precision": 1.0
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 1.0,
+          "mean_regret_when_wrong_pts": 0.0,
+          "max_regret_pts": 0.0,
+          "confusion": {
+            "tp": 2221,
+            "tn": 74896,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "specificity": 1.0,
+            "f1": 1.0
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0006203024310651108,
+        "rmse": 0.0015125812574940665,
+        "max_abs_error": 0.06575186074704428,
+        "p99_abs_error": 0.006550840408422839,
+        "r2": 0.9999056626444462,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.0008883782994690517,
+        "strong_match": {
+          "tp": 78828,
+          "tn": 79254,
+          "fp": 205,
+          "fn": 156,
+          "accuracy": 0.9977215781069533,
+          "precision": 0.9974061467994382,
+          "recall": 0.9980249164387724,
+          "specificity": 0.9974200531091506,
+          "f1": 0.997715435680971,
+          "roc_auc": 0.9999676245482964,
+          "average_precision": 0.9999673536667706
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.9438478747203579,
+          "mean_regret_when_wrong_pts": 0.1975183266932271,
+          "max_regret_pts": 1.2419999999999987,
+          "confusion": {
+            "tp": 4219,
+            "tn": 153722,
+            "fp": 251,
+            "fn": 251,
+            "accuracy": 0.996831668170888,
+            "precision": 0.9438478747203579,
+            "recall": 0.9438478747203579,
+            "specificity": 0.9983698440635695,
+            "f1": 0.9438478747203579
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0006464825185213463,
+        "rmse": 0.00186576983324528,
+        "max_abs_error": 0.06809293320079089,
+        "p99_abs_error": 0.006826800543882897,
+        "r2": 0.9998576109236312,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.0008927705607064899,
+        "strong_match": {
+          "tp": 77737,
+          "tn": 79622,
+          "fp": 195,
+          "fn": 162,
+          "accuracy": 0.9977364376474169,
+          "precision": 0.9974978186110969,
+          "recall": 0.9979203840870872,
+          "specificity": 0.9975569114349073,
+          "f1": 0.9977090566061952,
+          "roc_auc": 0.9999681816218066,
+          "average_precision": 0.9999672755170158
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.9420387911592242,
+          "mean_regret_when_wrong_pts": 0.16639027237354073,
+          "max_regret_pts": 1.2865000000000015,
+          "confusion": {
+            "tp": 4175,
+            "tn": 153023,
+            "fp": 259,
+            "fn": 259,
+            "accuracy": 0.9967156154099774,
+            "precision": 0.9415877311682453,
+            "recall": 0.9415877311682453,
+            "specificity": 0.9983103038843439,
+            "f1": 0.9415877311682452
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 2.295649996085558,
+        "batch_1000_ms": 26.301799996872433
+      },
+      "permutation_importance": {
+        "overall_norm": 0.044229,
+        "subject_fit": 0.116698,
+        "eligibility_margin": 0.006941,
+        "same_province": 0.032326
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.013774890339183717,
+        "top1_accuracy": 0.5313199105145414
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 115,
+          "unassigned": 85,
+          "fallback_assigned": 30,
+          "available_seats": 184,
+          "top_three_rate": 0.425,
+          "first_choice_rate": 0.065,
+          "utilization": 0.625,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 48,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 16,
+            "FALLBACK_MODEL_RANKED": 30,
+            "CHOICES_EXHAUSTED": 10,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 75.41,
+          "violations": 0,
+          "agreement_with_formula": 1.0
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 241,
+          "unassigned": 259,
+          "fallback_assigned": 79,
+          "available_seats": 460,
+          "top_three_rate": 0.324,
+          "first_choice_rate": 0.086,
+          "utilization": 0.523913,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 79,
+            "CHOICES_EXHAUSTED": 40,
+            "FALLBACK_MODEL_RANKED": 79,
+            "NO_ELIGIBLE_CHOICE": 151,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 132.32,
+          "violations": 0,
+          "agreement_with_formula": 0.978
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2609,
+          "unassigned": 2391,
+          "fallback_assigned": 1363,
+          "available_seats": 4600,
+          "top_three_rate": 0.2492,
+          "first_choice_rate": 0.1202,
+          "utilization": 0.567174,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 601,
+            "LISTED_CHOICE_2": 298,
+            "LISTED_CHOICE_3": 347,
+            "FALLBACK_MODEL_RANKED": 1363,
+            "CHOICES_EXHAUSTED": 1450,
+            "NO_ELIGIBLE_CHOICE": 335,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 2741.29,
+          "violations": 0,
+          "agreement_with_formula": 0.9368
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 3.11,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 4709285
+    },
+    "mlp": {
+      "fit_seconds": 10.373,
+      "train": {
+        "pairs": 150000,
+        "students": 2500,
+        "mae": 0.0007443822626237356,
+        "rmse": 0.0010495202171563025,
+        "max_abs_error": 0.018027204623080606,
+        "p99_abs_error": 0.0036107206754052664,
+        "r2": 0.9999543893272068,
+        "baseline_mae": 0.12486264896982757,
+        "eligible_pairs": 77117,
+        "eligible_mae": 0.0008342213240555453,
+        "strong_match": {
+          "tp": 37006,
+          "tn": 39931,
+          "fp": 78,
+          "fn": 102,
+          "accuracy": 0.9976658843056654,
+          "precision": 0.9978966670262107,
+          "recall": 0.9972512665732457,
+          "specificity": 0.9980504386513035,
+          "f1": 0.9975738624110416,
+          "roc_auc": 0.9999782245556138,
+          "average_precision": 0.9999765511481751
+        },
+        "top_recommendation": {
+          "students": 2221,
+          "top1_accuracy": 0.9306618640252139,
+          "mean_regret_when_wrong_pts": 0.13271818181818174,
+          "max_regret_pts": 0.6010999999999989,
+          "confusion": {
+            "tp": 2065,
+            "tn": 74740,
+            "fp": 156,
+            "fn": 156,
+            "accuracy": 0.9959541994631534,
+            "precision": 0.929761368752814,
+            "recall": 0.929761368752814,
+            "specificity": 0.9979171117282631,
+            "f1": 0.929761368752814
+          }
+        }
+      },
+      "validation": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0007529050598674842,
+        "rmse": 0.0010634322261284831,
+        "max_abs_error": 0.023743624938025953,
+        "p99_abs_error": 0.003608903088461883,
+        "r2": 0.9999533699476996,
+        "baseline_mae": 0.1254491085338272,
+        "eligible_pairs": 158443,
+        "eligible_mae": 0.000840191478468822,
+        "strong_match": {
+          "tp": 78759,
+          "tn": 79311,
+          "fp": 148,
+          "fn": 225,
+          "accuracy": 0.997645841091118,
+          "precision": 0.9981243742633733,
+          "recall": 0.997151321786691,
+          "specificity": 0.9981374041958746,
+          "f1": 0.9976376107567879,
+          "roc_auc": 0.9999792203290401,
+          "average_precision": 0.9999792127072591
+        },
+        "top_recommendation": {
+          "students": 4470,
+          "top1_accuracy": 0.9364653243847875,
+          "mean_regret_when_wrong_pts": 0.1511352112676057,
+          "max_regret_pts": 0.7184999999999997,
+          "confusion": {
+            "tp": 4181,
+            "tn": 153684,
+            "fp": 289,
+            "fn": 289,
+            "accuracy": 0.9963520004039308,
+            "precision": 0.9353467561521253,
+            "recall": 0.9353467561521253,
+            "specificity": 0.9981230475472973,
+            "f1": 0.9353467561521253
+          }
+        }
+      },
+      "test": {
+        "pairs": 300000,
+        "students": 5000,
+        "mae": 0.0007578912630082179,
+        "rmse": 0.0010784309993841455,
+        "max_abs_error": 0.019651715858836905,
+        "p99_abs_error": 0.0036903709374877273,
+        "r2": 0.9999524286730939,
+        "baseline_mae": 0.1257752105640928,
+        "eligible_pairs": 157716,
+        "eligible_mae": 0.000844001331443227,
+        "strong_match": {
+          "tp": 77668,
+          "tn": 79653,
+          "fp": 164,
+          "fn": 231,
+          "accuracy": 0.997495498237338,
+          "precision": 0.9978928975228698,
+          "recall": 0.9970346217538094,
+          "specificity": 0.9979452998734606,
+          "f1": 0.9974635750107558,
+          "roc_auc": 0.9999780386991975,
+          "average_precision": 0.9999775261645013
+        },
+        "top_recommendation": {
+          "students": 4434,
+          "top1_accuracy": 0.933468651330627,
+          "mean_regret_when_wrong_pts": 0.15217864406779674,
+          "max_regret_pts": 0.7637999999999923,
+          "confusion": {
+            "tp": 4137,
+            "tn": 152985,
+            "fp": 297,
+            "fn": 297,
+            "accuracy": 0.9962337365898197,
+            "precision": 0.9330175913396481,
+            "recall": 0.9330175913396481,
+            "specificity": 0.998062394801738,
+            "f1": 0.9330175913396481
+          }
+        }
+      },
+      "speed": {
+        "single_pair_ms": 1.4720000035595149,
+        "batch_1000_ms": 2.8586999978870153
+      },
+      "permutation_importance": {
+        "overall_norm": 0.040023,
+        "subject_fit": 0.136902,
+        "eligibility_margin": 0.005784,
+        "same_province": 0.032366
+      },
+      "noisy_labels": {
+        "sigma": 0.05,
+        "clean_validation_mae": 0.001751138322468728,
+        "top1_accuracy": 0.9310961968680089
+      },
+      "placement": {
+        "demo_200": {
+          "valid_applicants": 200,
+          "assigned": 114,
+          "unassigned": 86,
+          "fallback_assigned": 30,
+          "available_seats": 184,
+          "top_three_rate": 0.42,
+          "first_choice_rate": 0.065,
+          "utilization": 0.619565,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 13,
+            "LISTED_CHOICE_2": 47,
+            "LISTED_CHOICE_3": 24,
+            "NO_ELIGIBLE_CHOICE": 16,
+            "FALLBACK_MODEL_RANKED": 30,
+            "CHOICES_EXHAUSTED": 11,
+            "NO_ELIGIBLE_OFFER": 59
+          },
+          "runtime_ms": 31.32,
+          "violations": 0,
+          "agreement_with_formula": 0.99
+        },
+        "stress_500": {
+          "valid_applicants": 500,
+          "assigned": 240,
+          "unassigned": 260,
+          "fallback_assigned": 79,
+          "available_seats": 460,
+          "top_three_rate": 0.322,
+          "first_choice_rate": 0.086,
+          "utilization": 0.521739,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 43,
+            "LISTED_CHOICE_2": 40,
+            "LISTED_CHOICE_3": 78,
+            "CHOICES_EXHAUSTED": 40,
+            "FALLBACK_MODEL_RANKED": 79,
+            "NO_ELIGIBLE_CHOICE": 152,
+            "NO_ELIGIBLE_OFFER": 68
+          },
+          "runtime_ms": 84.17,
+          "violations": 0,
+          "agreement_with_formula": 0.984
+        },
+        "large_5000": {
+          "valid_applicants": 5000,
+          "assigned": 2610,
+          "unassigned": 2390,
+          "fallback_assigned": 1364,
+          "available_seats": 4600,
+          "top_three_rate": 0.2492,
+          "first_choice_rate": 0.1202,
+          "utilization": 0.567391,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 601,
+            "LISTED_CHOICE_2": 298,
+            "LISTED_CHOICE_3": 347,
+            "FALLBACK_MODEL_RANKED": 1364,
+            "CHOICES_EXHAUSTED": 1449,
+            "NO_ELIGIBLE_CHOICE": 335,
+            "NO_ELIGIBLE_OFFER": 606
+          },
+          "runtime_ms": 1542.27,
+          "violations": 0,
+          "agreement_with_formula": 0.941
+        },
+        "six_student_fallback_on": {
+          "valid_applicants": 6,
+          "assigned": 4,
+          "unassigned": 2,
+          "fallback_assigned": 1,
+          "available_seats": 4,
+          "top_three_rate": 0.5,
+          "first_choice_rate": 0.5,
+          "utilization": 1.0,
+          "reason_counts": {
+            "LISTED_CHOICE_1": 3,
+            "FALLBACK_MODEL_RANKED": 1,
+            "CHOICES_EXHAUSTED": 1,
+            "NO_ELIGIBLE_OFFER": 1
+          },
+          "runtime_ms": 2.6,
+          "violations": 0,
+          "agreement_with_formula": 1.0,
+          "placements": {
+            "S1": "A",
+            "S2": "A",
+            "S3": "C",
+            "S4": "C",
+            "S5": null,
+            "S6": null
+          }
+        }
+      },
+      "model_bytes": 61506
+    }
+  },
+  "learning_curve": {
+    "linear_regression": [
+      {
+        "students": 100,
+        "pairs": 6000,
+        "train_mae": 2.947203931269934e-07,
+        "validation_mae": 2.9459278013897965e-07
+      },
+      {
+        "students": 250,
+        "pairs": 15000,
+        "train_mae": 2.937596824235625e-07,
+        "validation_mae": 2.939095198701338e-07
+      },
+      {
+        "students": 500,
+        "pairs": 30000,
+        "train_mae": 2.9206945157494014e-07,
+        "validation_mae": 2.9331270336609445e-07
+      },
+      {
+        "students": 1000,
+        "pairs": 60000,
+        "train_mae": 2.922683277067102e-07,
+        "validation_mae": 2.9334501102439235e-07
+      },
+      {
+        "students": 2500,
+        "pairs": 150000,
+        "train_mae": 2.913862308251092e-07,
+        "validation_mae": 2.929908959770212e-07
+      },
+      {
+        "students": 5000,
+        "pairs": 300000,
+        "train_mae": 2.9124111553016594e-07,
+        "validation_mae": 2.929002025173979e-07
+      },
+      {
+        "students": 10000,
+        "pairs": 600000,
+        "train_mae": 2.9137061331980464e-07,
+        "validation_mae": 2.9278971529305825e-07
+      },
+      {
+        "students": 20000,
+        "pairs": 1200000,
+        "train_mae": 2.916214331452045e-07,
+        "validation_mae": 2.928114613838162e-07
+      }
+    ],
+    "decision_tree": [
+      {
+        "students": 100,
+        "pairs": 6000,
+        "train_mae": 0.0013628681662475378,
+        "validation_mae": 0.0032430514495738246
+      },
+      {
+        "students": 250,
+        "pairs": 15000,
+        "train_mae": 0.0009937960311469916,
+        "validation_mae": 0.00188113625669987
+      },
+      {
+        "students": 500,
+        "pairs": 30000,
+        "train_mae": 0.0009521124380583901,
+        "validation_mae": 0.0014853726832777
+      },
+      {
+        "students": 1000,
+        "pairs": 60000,
+        "train_mae": 0.0009361833476671322,
+        "validation_mae": 0.0012583551781483082
+      },
+      {
+        "students": 2500,
+        "pairs": 150000,
+        "train_mae": 0.0009644188551351069,
+        "validation_mae": 0.0011364604766161306
+      },
+      {
+        "students": 5000,
+        "pairs": 300000,
+        "train_mae": 0.0009880778346632235,
+        "validation_mae": 0.0011027474134204286
+      },
+      {
+        "students": 10000,
+        "pairs": 600000,
+        "train_mae": 0.00100028856362397,
+        "validation_mae": 0.0010676451208430449
+      },
+      {
+        "students": 20000,
+        "pairs": 1200000,
+        "train_mae": 0.0010084171534959906,
+        "validation_mae": 0.0010453574089669723
+      }
+    ],
+    "random_forest": [
+      {
+        "students": 100,
+        "pairs": 6000,
+        "train_mae": 0.0019188972341035635,
+        "validation_mae": 0.0031789944830379465
+      },
+      {
+        "students": 250,
+        "pairs": 15000,
+        "train_mae": 0.0019929501612340837,
+        "validation_mae": 0.0026171587014182855
+      },
+      {
+        "students": 500,
+        "pairs": 30000,
+        "train_mae": 0.002175303746262617,
+        "validation_mae": 0.002476818048386112
+      },
+      {
+        "students": 1000,
+        "pairs": 60000,
+        "train_mae": 0.002335069591384565,
+        "validation_mae": 0.0024603440461388464
+      },
+      {
+        "students": 2500,
+        "pairs": 150000,
+        "train_mae": 0.0025717511263300694,
+        "validation_mae": 0.0026342170022935676
+      },
+      {
+        "students": 5000,
+        "pairs": 300000,
+        "train_mae": 0.0027852633046790646,
+        "validation_mae": 0.002800020123536752
+      },
+      {
+        "students": 10000,
+        "pairs": 600000,
+        "train_mae": 0.0030965869253235254,
+        "validation_mae": 0.003121422191639143
+      },
+      {
+        "students": 20000,
+        "pairs": 1200000,
+        "train_mae": 0.00306633441751559,
+        "validation_mae": 0.0030703061374204505
+      }
+    ],
+    "extra_trees": [
+      {
+        "students": 100,
+        "pairs": 6000,
+        "train_mae": 0.0010154072180651793,
+        "validation_mae": 0.0020885129165012484
+      },
+      {
+        "students": 250,
+        "pairs": 15000,
+        "train_mae": 0.0008157512490424184,
+        "validation_mae": 0.0011396522427680894
+      },
+      {
+        "students": 500,
+        "pairs": 30000,
+        "train_mae": 0.000749992942291372,
+        "validation_mae": 0.0008153818011437914
+      },
+      {
+        "students": 1000,
+        "pairs": 60000,
+        "train_mae": 0.0007040371261783335,
+        "validation_mae": 0.000730516096508423
+      },
+      {
+        "students": 2500,
+        "pairs": 150000,
+        "train_mae": 0.0007541238024591729,
+        "validation_mae": 0.0007505554519528234
+      },
+      {
+        "students": 5000,
+        "pairs": 300000,
+        "train_mae": 0.00069737873548555,
+        "validation_mae": 0.0006931085387683855
+      },
+      {
+        "students": 10000,
+        "pairs": 600000,
+        "train_mae": 0.0007199185892998726,
+        "validation_mae": 0.0007213085831811827
+      },
+      {
+        "students": 20000,
+        "pairs": 1200000,
+        "train_mae": 0.0007218841080023371,
+        "validation_mae": 0.0007173784911932428
+      }
+    ],
+    "hist_gradient_boosting": [
+      {
+        "students": 100,
+        "pairs": 6000,
+        "train_mae": 0.001198001685665641,
+        "validation_mae": 0.002200583320551907
+      },
+      {
+        "students": 250,
+        "pairs": 15000,
+        "train_mae": 0.0011408213268576323,
+        "validation_mae": 0.0013949033947959634
+      },
+      {
+        "students": 500,
+        "pairs": 30000,
+        "train_mae": 0.001120450611549398,
+        "validation_mae": 0.0011658743630085116
+      },
+      {
+        "students": 1000,
+        "pairs": 60000,
+        "train_mae": 0.0011039635108732366,
+        "validation_mae": 0.001121829054850384
+      },
+      {
+        "students": 2500,
+        "pairs": 150000,
+        "train_mae": 0.00111242431306303,
+        "validation_mae": 0.001085815090278647
+      },
+      {
+        "students": 5000,
+        "pairs": 300000,
+        "train_mae": 0.0011057960215167578,
+        "validation_mae": 0.001068166526720512
+      },
+      {
+        "students": 10000,
+        "pairs": 600000,
+        "train_mae": 0.001098931116663317,
+        "validation_mae": 0.0010654263361386763
+      },
+      {
+        "students": 20000,
+        "pairs": 1200000,
+        "train_mae": 0.0010852136874433761,
+        "validation_mae": 0.0010532323906835138
+      }
+    ]
+  }
+}

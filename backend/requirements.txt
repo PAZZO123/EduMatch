@@ -1,0 +1,16 @@
+# EduMatch AI backend — exact pins (lockfile). Model deps must match ml/requirements.txt.
+fastapi==0.142.2
+starlette==1.7.0
+uvicorn[standard]==0.54.0
+SQLAlchemy==2.1.1
+pydantic==2.13.5
+pydantic-settings==2.15.0
+python-multipart==0.0.32
+numpy==2.3.5
+pandas==2.2.3
+scikit-learn==1.8.0
+joblib==1.5.3
+# tests
+pytest==9.1.1
+httpx==0.28.1
+httpx2==2.13.1

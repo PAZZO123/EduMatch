@@ -1,0 +1,9 @@
+offer_id,school_name,province,stage_programme,capacity,min_overall,subject_min_math,subject_min_science,subject_min_language,weight_math,weight_science,weight_language
+SCN1-O001,Synthetic School SCN1 001,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.388985,0.546241,0.064774
+SCN1-O002,Synthetic School SCN1 002,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.274869,0.645555,0.079576
+SCN1-O003,Synthetic School SCN1 003,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.291291,0.226947,0.481762
+SCN1-O004,Synthetic School SCN1 004,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.666262,0.155846,0.177892
+SCN1-O005,Synthetic School SCN1 005,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.148002,0.728207,0.123791
+SCN1-O006,Synthetic School SCN1 006,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.593329,0.299482,0.107189
+SCN1-O007,Synthetic School SCN1 007,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.587757,0.326527,0.085716
+SCN1-O008,Synthetic School SCN1 008,Southern Province,DEMO_GENERIC_OFFER,100,0,,,,0.076866,0.565389,0.357745

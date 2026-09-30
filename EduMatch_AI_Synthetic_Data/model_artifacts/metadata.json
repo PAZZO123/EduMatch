@@ -1,0 +1,44 @@
+{
+  "model_version": "rf-synthetic-demo-v1",
+  "synthetic": true,
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "training_source": "Generated synthetic pairs; no real records",
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "train_students_used": 2500,
+  "train_pairs_used": 150000,
+  "train_students_available": 20000,
+  "selected_student_ids_sha256": "ad57b5a0dbf1f11a966c48cdf34bad13c5a2cd0d36987ca9cb85e7401480a741",
+  "fixed_seed": 42,
+  "train_seconds": 2.664,
+  "metrics": {
+    "validation": {
+      "pair_rows": 300000,
+      "student_count": 5000,
+      "synthetic_target_mae": 0.0025592347746750768,
+      "mean_target_baseline_mae": 0.1254491085338272,
+      "interpretation": "Error against the invented compatibility formula. Not real-world placement accuracy."
+    },
+    "test": {
+      "pair_rows": 300000,
+      "student_count": 5000,
+      "synthetic_target_mae": 0.002571800119016977,
+      "mean_target_baseline_mae": 0.1257752105640928,
+      "interpretation": "Error against the invented compatibility formula. Not real-world placement accuracy."
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_sha256": "511b217f8256a809affc8c84d43eebf7996312ae248366bbe61beeea0d9dbde4",
+  "artifact_reload_prediction_check": "PASS",
+  "evaluation_scope": "New synthetic students with shared known offer profiles; no unseen-school or real-policy validation."
+}

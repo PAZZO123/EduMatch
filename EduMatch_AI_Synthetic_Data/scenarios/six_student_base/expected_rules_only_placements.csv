@@ -1,0 +1,7 @@
+student_id,offer_id,status,preference_rank,fallback_used,fit_score,reason_code,decision_trace,synthetic
+S1,A,DRAFT,1,false,,LISTED_CHOICE_1,A:FEASIBLE,true
+S2,A,DRAFT,1,false,,LISTED_CHOICE_1,A:FEASIBLE,true
+S3,B,DRAFT,2,false,,LISTED_CHOICE_2,A:CAPACITY_FULL;B:FEASIBLE,true
+S4,C,DRAFT,1,false,,LISTED_CHOICE_1,C:FEASIBLE,true
+S5,,UNASSIGNED,,false,,CHOICES_EXHAUSTED,A:CAPACITY_FULL;C:INELIGIBLE,true
+S6,,UNASSIGNED,,false,,NO_ELIGIBLE_OFFER,A:INELIGIBLE,true

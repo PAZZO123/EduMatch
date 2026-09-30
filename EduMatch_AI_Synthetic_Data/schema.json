@@ -1,0 +1,73 @@
+{
+  "package_version": "1.0",
+  "synthetic": true,
+  "csv_encoding": "UTF-8",
+  "csv_delimiter": ",",
+  "boolean_encoding": [
+    "true",
+    "false"
+  ],
+  "missing_optional_value": "empty CSV field",
+  "student_fields": [
+    "student_id",
+    "display_name",
+    "cohort_id",
+    "province",
+    "overall_score",
+    "math_score",
+    "science_score",
+    "language_score",
+    "allow_fallback"
+  ],
+  "offer_fields": [
+    "offer_id",
+    "school_name",
+    "province",
+    "stage_programme",
+    "capacity",
+    "min_overall",
+    "subject_min_math",
+    "subject_min_science",
+    "subject_min_language",
+    "weight_math",
+    "weight_science",
+    "weight_language"
+  ],
+  "preference_fields": [
+    "student_id",
+    "offer_id",
+    "rank"
+  ],
+  "pair_fields": [
+    "student_id",
+    "offer_id",
+    "split",
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province",
+    "y_demo",
+    "eligible",
+    "listed_preference_rank",
+    "synthetic"
+  ],
+  "model_feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "model_target": "y_demo",
+  "numeric_score_range": [
+    0,
+    100
+  ],
+  "target_range": [
+    0,
+    1
+  ],
+  "preference_rank_range": [
+    1,
+    3
+  ]
+}

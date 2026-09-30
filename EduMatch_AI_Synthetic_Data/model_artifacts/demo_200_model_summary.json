@@ -1,0 +1,20 @@
+{
+  "valid_applicants": 200,
+  "assigned": 116,
+  "unassigned": 84,
+  "fallback_assigned": 31,
+  "available_seats": 184,
+  "top_three_rate": 0.425,
+  "first_choice_rate": 0.065,
+  "utilization": 0.630435,
+  "reason_counts": {
+    "LISTED_CHOICE_1": 13,
+    "LISTED_CHOICE_2": 48,
+    "LISTED_CHOICE_3": 24,
+    "NO_ELIGIBLE_CHOICE": 15,
+    "FALLBACK_MODEL_RANKED": 31,
+    "CHOICES_EXHAUSTED": 10,
+    "NO_ELIGIBLE_OFFER": 59
+  },
+  "allocation_runtime_seconds": 0.245
+}

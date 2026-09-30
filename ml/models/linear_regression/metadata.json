@@ -1,0 +1,63 @@
+{
+  "model_key": "linear_regression",
+  "model_version": "linear-regression-synthetic-v1",
+  "display_name": "Linear Regression",
+  "algorithm": "LinearRegression",
+  "description": "Ordinary least squares on the 4 features.",
+  "params": {
+    "copy_X": true,
+    "fit_intercept": true,
+    "n_jobs": 1,
+    "positive": false,
+    "tol": 1e-06
+  },
+  "synthetic": true,
+  "training_source": "Generated synthetic pairs; no real records",
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "train_students_used": 2500,
+  "train_pairs_used": 150000,
+  "selected_student_ids_sha256": "ad57b5a0dbf1f11a966c48cdf34bad13c5a2cd0d36987ca9cb85e7401480a741",
+  "fixed_seed": 42,
+  "fit_seconds": 0.05,
+  "metrics": {
+    "train": {
+      "mae": 2.916858068165511e-07,
+      "rmse": 3.6734474477081497e-07,
+      "r2": 0.9999999999944124,
+      "baseline_mae": 0.12486264896982757,
+      "top1_accuracy": 1.0
+    },
+    "validation": {
+      "mae": 2.929500733390252e-07,
+      "rmse": 3.688061565571489e-07,
+      "r2": 0.9999999999943916,
+      "baseline_mae": 0.1254491085338272,
+      "top1_accuracy": 1.0
+    },
+    "test": {
+      "mae": 2.9210927992363307e-07,
+      "rmse": 3.6795075557165226e-07,
+      "r2": 0.9999999999944622,
+      "baseline_mae": 0.1257752105640928,
+      "top1_accuracy": 1.0
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_sha256": "63d9a7963740690ee45a991058f37d688890c3a3734e3fd99fc3678a8af2c86d",
+  "model_bytes": 655,
+  "artifact_reload_prediction_check": "PASS",
+  "is_champion": true,
+  "evaluation_scope": "New synthetic students at known offer profiles. Not real placement accuracy."
+}

@@ -1,0 +1,12 @@
+{
+  "expected_primary_code": "INVALID_SCORE",
+  "errors": [
+    {
+      "file": "students.csv",
+      "row": 2,
+      "field": "math_score",
+      "code": "INVALID_SCORE"
+    }
+  ],
+  "instruction": "Reject this whole import. Never mix invalid-input fixtures into model training."
+}

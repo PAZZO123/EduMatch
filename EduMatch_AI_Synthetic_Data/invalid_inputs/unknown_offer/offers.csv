@@ -1,0 +1,4 @@
+offer_id,school_name,province,stage_programme,capacity,min_overall,subject_min_math,subject_min_science,subject_min_language,weight_math,weight_science,weight_language
+A,Synthetic School A,Southern Province,DEMO_GENERIC_OFFER,2,50,,,,0.4,0.4,0.2
+B,Synthetic School B,Southern Province,DEMO_GENERIC_OFFER,1,50,,,,0.4,0.4,0.2
+C,Synthetic School C,Southern Province,DEMO_GENERIC_OFFER,1,70,,,,0.4,0.4,0.2

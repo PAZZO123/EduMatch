@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "body": {
+    "user": {
+      "username": "admin",
+      "display_name": "Demo Administrator",
+      "role": "ADMIN"
+    },
+    "csrf_token": "xyKRPiyifQbi2zVla-RezOgw1j7FPI92",
+    "expires_at": "2026-09-30T21:12:51.472425+00:00"
+  }
+}

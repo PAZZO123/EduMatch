@@ -1,0 +1,91 @@
+{
+  "model_key": "mlp",
+  "model_version": "mlp-synthetic-v1",
+  "display_name": "Neural Network (MLP)",
+  "algorithm": "MLPRegressor",
+  "description": "64-32 ReLU network, Adam, early stopping, standardised features.",
+  "params": {
+    "memory": null,
+    "transform_input": null,
+    "verbose": false,
+    "standardscaler__copy": true,
+    "standardscaler__with_mean": true,
+    "standardscaler__with_std": true,
+    "mlpregressor__activation": "relu",
+    "mlpregressor__alpha": 0.0001,
+    "mlpregressor__batch_size": "auto",
+    "mlpregressor__beta_1": 0.9,
+    "mlpregressor__beta_2": 0.999,
+    "mlpregressor__early_stopping": true,
+    "mlpregressor__epsilon": 1e-08,
+    "mlpregressor__hidden_layer_sizes": [
+      64,
+      32
+    ],
+    "mlpregressor__learning_rate": "constant",
+    "mlpregressor__learning_rate_init": 0.001,
+    "mlpregressor__loss": "squared_error",
+    "mlpregressor__max_fun": 15000,
+    "mlpregressor__max_iter": 200,
+    "mlpregressor__momentum": 0.9,
+    "mlpregressor__n_iter_no_change": 10,
+    "mlpregressor__nesterovs_momentum": true,
+    "mlpregressor__power_t": 0.5,
+    "mlpregressor__random_state": 42,
+    "mlpregressor__shuffle": true,
+    "mlpregressor__solver": "adam",
+    "mlpregressor__tol": 0.0001,
+    "mlpregressor__validation_fraction": 0.1,
+    "mlpregressor__verbose": false,
+    "mlpregressor__warm_start": false
+  },
+  "synthetic": true,
+  "training_source": "Generated synthetic pairs; no real records",
+  "target_formula": ".75*subject_fit + .15*overall_norm + .10*same_province",
+  "feature_order": [
+    "overall_norm",
+    "subject_fit",
+    "eligibility_margin",
+    "same_province"
+  ],
+  "train_students_used": 2500,
+  "train_pairs_used": 150000,
+  "selected_student_ids_sha256": "ad57b5a0dbf1f11a966c48cdf34bad13c5a2cd0d36987ca9cb85e7401480a741",
+  "fixed_seed": 42,
+  "fit_seconds": 10.373,
+  "metrics": {
+    "train": {
+      "mae": 0.0007443822626237356,
+      "rmse": 0.0010495202171563025,
+      "r2": 0.9999543893272068,
+      "baseline_mae": 0.12486264896982757,
+      "top1_accuracy": 0.9306618640252139
+    },
+    "validation": {
+      "mae": 0.0007529050598674842,
+      "rmse": 0.0010634322261284831,
+      "r2": 0.9999533699476996,
+      "baseline_mae": 0.1254491085338272,
+      "top1_accuracy": 0.9364653243847875
+    },
+    "test": {
+      "mae": 0.0007578912630082179,
+      "rmse": 0.0010784309993841455,
+      "r2": 0.9999524286730939,
+      "baseline_mae": 0.1257752105640928,
+      "top1_accuracy": 0.933468651330627
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "scikit_learn": "1.8.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "joblib": "1.5.3"
+  },
+  "model_sha256": "fb56ee6b26916fd352ab8310816178cb7f2e17aece1d85b15cd8b9c62bfb3de9",
+  "model_bytes": 61506,
+  "artifact_reload_prediction_check": "PASS",
+  "is_champion": false,
+  "evaluation_scope": "New synthetic students at known offer profiles. Not real placement accuracy."
+}

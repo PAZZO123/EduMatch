@@ -1,0 +1,19 @@
+{
+  "status": 422,
+  "body": {
+    "code": "VALIDATION_FAILED",
+    "message": "1 problem(s) found; nothing was imported.",
+    "details": {
+      "errors": [
+        {
+          "file": "students.csv",
+          "row": 2,
+          "field": "overall_score",
+          "code": "INVALID_SCORE",
+          "message": "overall_score is blank; blank scores are never treated as zero."
+        }
+      ]
+    },
+    "request_id": "c7cc3f4977474472"
+  }
+}

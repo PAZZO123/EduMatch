@@ -1,0 +1,82 @@
+{
+  "status": 200,
+  "body": {
+    "total": 200,
+    "limit": 3,
+    "offset": 0,
+    "students": [
+      {
+        "student_id": "DEMO_200-S000114",
+        "display_name": "Synthetic Student DEMO_200 000114",
+        "province": "Southern Province",
+        "overall_score": 100.0,
+        "math_score": 90.7,
+        "science_score": 94.4,
+        "language_score": 100.0,
+        "allow_fallback": true,
+        "choices": [
+          {
+            "rank": 1,
+            "offer_id": "DEMO_200-O001"
+          },
+          {
+            "rank": 2,
+            "offer_id": "DEMO_200-O011"
+          },
+          {
+            "rank": 3,
+            "offer_id": "DEMO_200-O008"
+          }
+        ]
+      },
+      {
+        "student_id": "DEMO_200-S000065",
+        "display_name": "Synthetic Student DEMO_200 000065",
+        "province": "Southern Province",
+        "overall_score": 94.5,
+        "math_score": 98.4,
+        "science_score": 86.9,
+        "language_score": 80.5,
+        "allow_fallback": false,
+        "choices": [
+          {
+            "rank": 1,
+            "offer_id": "DEMO_200-O001"
+          },
+          {
+            "rank": 2,
+            "offer_id": "DEMO_200-O006"
+          },
+          {
+            "rank": 3,
+            "offer_id": "DEMO_200-O005"
+          }
+        ]
+      },
+      {
+        "student_id": "DEMO_200-S000109",
+        "display_name": "Synthetic Student DEMO_200 000109",
+        "province": "Southern Province",
+        "overall_score": 94.5,
+        "math_score": 86.1,
+        "science_score": 100.0,
+        "language_score": 100.0,
+        "allow_fallback": false,
+        "choices": [
+          {
+            "rank": 1,
+            "offer_id": "DEMO_200-O001"
+          },
+          {
+            "rank": 2,
+            "offer_id": "DEMO_200-O011"
+          },
+          {
+            "rank": 3,
+            "offer_id": "DEMO_200-O012"
+          }
+        ]
+      }
+    ]
+  }
+}

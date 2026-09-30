@@ -1,0 +1,20 @@
+{
+  "rules_only": {
+    "valid_applicants": 5000,
+    "assigned": 1397,
+    "unassigned": 3603,
+    "fallback_assigned": 0,
+    "available_seats": 4500,
+    "top_three_rate": 0.2794,
+    "first_choice_rate": 0.13,
+    "utilization": 0.310444,
+    "reason_counts": {
+      "LISTED_CHOICE_1": 650,
+      "LISTED_CHOICE_2": 344,
+      "LISTED_CHOICE_3": 403,
+      "CHOICES_EXHAUSTED": 2865,
+      "NO_ELIGIBLE_CHOICE": 172,
+      "NO_ELIGIBLE_OFFER": 566
+    }
+  }
+}

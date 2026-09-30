@@ -1,0 +1,37 @@
+{
+  "status": 200,
+  "body": {
+    "cohort_id": "SYN-DEMO_200-2026",
+    "source_label": "SEED:demo_200",
+    "synthetic": true,
+    "data_label": "Synthetic data",
+    "policy_label": "Demo policy",
+    "input_version": 1,
+    "rule_version": "demo-policy-v1",
+    "rules": {
+      "rule_version": "demo-policy-v1",
+      "synthetic": true,
+      "score_scale": "0-100",
+      "score_direction": "higher_better",
+      "priority": "overall_desc_then_student_id_asc",
+      "allow_unlisted_fallback": true,
+      "allocation": "serial_priority",
+      "notice": "Invented demonstration rules; not NESA-approved policy.",
+      "stage_status": "UNCONFIRMED_USE_GENERIC_DEMO_OFFER"
+    },
+    "checksum": "824908dd95203436fc5038dba8666aff8a5aecd49f2d05927cf532902f5caed1",
+    "validation_status": "VALID",
+    "counts": {
+      "students": 200,
+      "offers": 12,
+      "preferences": 600,
+      "total_seats": 184,
+      "rejected_rows": 0
+    },
+    "active_run_id": null,
+    "active_run_status": null,
+    "has_approvals": false,
+    "created_at": "2026-09-30T13:12:51.559159",
+    "updated_at": "2026-09-30T13:12:51.559165"
+  }
+}

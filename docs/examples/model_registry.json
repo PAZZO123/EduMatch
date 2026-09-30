@@ -1,0 +1,118 @@
+{
+  "status": 200,
+  "body": {
+    "champion": "linear_regression",
+    "selection_rule": "Highest validation top-1 ranking accuracy, then lowest validation MAE.",
+    "active_model": "linear_regression",
+    "models": [
+      {
+        "model_key": "linear_regression",
+        "display_name": "Linear Regression",
+        "model_version": "linear-regression-synthetic-v1",
+        "loaded": true,
+        "active": true,
+        "champion": true,
+        "algorithm": "LinearRegression",
+        "description": "Ordinary least squares on the 4 features.",
+        "metrics": {
+          "train": {
+            "mae": 2.916858068165511e-07,
+            "rmse": 3.6734474477081497e-07,
+            "r2": 0.9999999999944124,
+            "baseline_mae": 0.12486264896982757,
+            "top1_accuracy": 1.0
+          },
+          "validation": {
+            "mae": 2.929500733390252e-07,
+            "rmse": 3.688061565571489e-07,
+            "r2": 0.9999999999943916,
+            "baseline_mae": 0.1254491085338272,
+            "top1_accuracy": 1.0
+          },
+          "test": {
+            "mae": 2.9210927992363307e-07,
+            "rmse": 3.6795075557165226e-07,
+            "r2": 0.9999999999944622,
+            "baseline_mae": 0.1257752105640928,
+            "top1_accuracy": 1.0
+          }
+        },
+        "fit_seconds": 0.05,
+        "model_bytes": 655,
+        "error": null
+      },
+      {
+        "model_key": "decision_tree",
+        "display_name": "Decision Tree",
+        "model_version": "decision-tree-synthetic-v1",
+        "loaded": true,
+        "active": false,
+        "champion": false,
+        "algorithm": "DecisionTreeRegressor",
+        "description": "Single CART tree, depth 12, min 5 samples per leaf.",
+        "metrics": {
+          "train": {
+            "mae": 0.000939569411032694,
+            "rmse": 0.0012029466813307888,
+            "r2": 0.9999400791980142,
+            "baseline_mae": 0.12486264896982757,
+            "top1_accuracy": 0.9230076542098155
+          },
+          "validation": {
+            "mae": 0.0011302171898337177,
+            "rmse": 0.0015017868573117628,
+            "r2": 0.9999070043001168,
+            "baseline_mae": 0.1254491085338272,
+            "top1_accuracy": 0.917897091722595
+          },
+          "test": {
+            "mae": 0.0011467482713064514,
+            "rmse": 0.0016528925346104078,
+            "r2": 0.9998882494226826,
+            "baseline_mae": 0.1257752105640928,
+            "top1_accuracy": 0.9192602616147948
+          }
+        },
+        "fit_seconds": 0.353,
+        "model_bytes": 170504,
+        "error": null
+      },
+      {
+        "model_key": "random_forest",
+        "display_name": "Random Forest (SRS)",
+        "model_version": "random-forest-synthetic-v1",
+        "loaded": true,
+        "active": false,
+        "champion": false,
+        "algorithm": "RandomForestRegressor",
+        "description": "SRS spec: 100 trees, depth 8, min 5 samples per leaf.",
+        "metrics": {
+          "train": {
+            "mae": 0.00247352905236456,
+            "rmse": 0.003467908052841178,
+            "r2": 0.9995020107027609,
+            "baseline_mae": 0.12486264896982757,
+            "top1_accuracy": 0.9837910850968032
+          },
+          "validation": {
+            "mae": 0.0025592347746750768,
+            "rmse": 0.003582991963030464,
+            "r2": 0.9994706560709518,
+            "baseline_mae": 0.1254491085338272,
+            "top1_accuracy": 0.9816554809843401
+          },
+          "test": {
+            "mae": 0.002571800119016977,
+            "rmse": 0.0037173105523191355,
+            "r2": 0.9994347790792666,
+            "baseline_mae": 0.1257752105640928,
+            "top1_accuracy": 0.9826341903473161
+          }
+        },
+        "fit_seconds": 2.831,
+        "model_bytes": 1450084,
+        "error": null
+      }
+    ]
+  }
+}
