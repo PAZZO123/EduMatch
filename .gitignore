@@ -1,4 +1,13 @@
-# Python
+# ---- Frontend (React + Vite, repo root) ----
+node_modules/
+build/
+dist/
+coverage/
+*.log
+.env*
+!.env.example
+
+# ---- Python ----
 .venv/
 **/.venv/
 __pycache__/
@@ -6,23 +15,17 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
-# Secrets and local databases — never commit
+# ---- Backend secrets and local database: never commit ----
 backend/.env
 backend/data/*.db
 backend/data/*.db-*
 
-# Large, reproducible training pairs (~130 MB). Rebuild with: python ml/prepare_data.py
+# ---- Large, reproducible training pairs (~130 MB). Rebuild with: python ml/prepare_data.py ----
 EduMatch_AI_Synthetic_Data/model_training/*/pairs.csv
 EduMatch_AI_Synthetic_Data/model_artifacts_prebuilt_backup/
 ml/reports/compare_log.txt
 
-# Frontend (teammate)
-node_modules/
-frontend/dist/
-frontend/.env*
-!frontend/.env.example
-
-# OS / editors
+# ---- OS / editors ----
 .DS_Store
 Thumbs.db
 .vscode/
