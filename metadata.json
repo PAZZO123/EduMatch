@@ -1,0 +1,6 @@
+{
+  "name": "EduMatch AI",
+  "description": "Full-stack AI-assisted school placement system with human approval workflow, deterministic constraints, and auditability.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
