@@ -1,15 +1,15 @@
 {
   "status": 200,
   "body": {
-    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
     "status": "GENERATED",
     "mode": "AI",
     "ai_label": "Local model",
     "model_version": "linear-regression-synthetic-v1",
     "rule_version": "demo-policy-v1",
     "input_version": 1,
-    "runtime_ms": 40.36,
-    "allocation_ms": 14.072,
+    "runtime_ms": 53.96,
+    "allocation_ms": 17.129,
     "metrics": {
       "valid_applicants": 200,
       "available_seats": 184,
@@ -52,7 +52,8 @@
       "preference_authority_violations": 0,
       "accountability_violations": 0,
       "total_violations": 0,
-      "passed": true
+      "passed": true,
+      "officer_exceptions": 0
     }
   }
 }

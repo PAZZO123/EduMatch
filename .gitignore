@@ -30,3 +30,6 @@ ml/reports/compare_log.txt
 Thumbs.db
 .vscode/
 .idea/
+
+# Local demo logins (passwords)
+*.local.md

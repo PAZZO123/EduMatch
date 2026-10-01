@@ -86,6 +86,8 @@ def create_cohort(db: Session, cohort_id: str, inputs: CohortInputs, source_labe
     if existing is not None:
         if not replace_existing:
             raise ApiError(409, 'COHORT_EXISTS', f'Cohort "{cohort_id}" already exists. Pass reset=true to replace it.')
+        from .history import archive_cohort_runs
+        archive_cohort_runs(db, cohort_id, 'COHORT_REPLACED')
         db.execute(delete(PlacementRun).where(PlacementRun.cohort_id == cohort_id))
         db.execute(delete(Proposal).where(Proposal.cohort_id == cohort_id))
         version = existing.input_version + 1
@@ -169,8 +171,26 @@ def update_student(db: Session, cohort: Cohort, student_id: str, changes: dict, 
     return student
 
 
+def delete_cohort(db: Session, cohort: Cohort, user: User | None) -> dict:
+    """Remove a cohort with its students, offers, choices, runs and proposals. Audit history is kept."""
+    counts = {'students': db.scalar(select(func.count()).select_from(Student).where(Student.cohort_id == cohort.id)),
+              'runs': db.scalar(select(func.count()).select_from(PlacementRun).where(PlacementRun.cohort_id == cohort.id)),
+              'approvals': db.scalar(select(func.count()).select_from(Proposal)
+                                     .where(Proposal.cohort_id == cohort.id, Proposal.status == 'APPROVED'))}
+    cohort_id = cohort.id
+    from .history import archive_cohort_runs
+    archive_cohort_runs(db, cohort_id, 'COHORT_DELETED')
+    db.execute(delete(Proposal).where(Proposal.cohort_id == cohort_id))
+    db.execute(delete(PlacementRun).where(PlacementRun.cohort_id == cohort_id))
+    db.delete(cohort)  # students, offers and preferences cascade
+    audit.record(db, user, 'COHORT_DELETED', cohort_id=cohort_id, source=cohort.source_label, **counts)
+    return {'deleted': cohort_id, **counts}
+
+
 def reset_cohort(db: Session, cohort: Cohort, user: User) -> Cohort:
-    """Restore the originally loaded inputs and discard all runs/decisions. Audit history is kept."""
+    """Restore the originally loaded inputs and discard all runs/decisions. Audit and placement history are kept."""
+    from .history import archive_cohort_runs
+    archive_cohort_runs(db, cohort.id, 'COHORT_RESET')
     runs = db.scalars(select(PlacementRun.id).where(PlacementRun.cohort_id == cohort.id)).all()
     approvals = db.scalar(select(func.count()).select_from(Proposal)
                           .where(Proposal.cohort_id == cohort.id, Proposal.status == 'APPROVED'))
@@ -187,6 +207,21 @@ def reset_cohort(db: Session, cohort: Cohort, user: User) -> Cohort:
 
 
 # ---- read models ------------------------------------------------------------------------------------
+def preview(db: Session, cohort_id: str, inputs: CohortInputs) -> dict:
+    """What a validated import would load (dry run): real counts for the upload wizard, nothing saved."""
+    existing = db.get(Cohort, cohort_id)
+    return {'valid': True, 'persisted': False, 'cohort_id': cohort_id,
+            'counts': {'students': len(inputs.students), 'offers': len(inputs.offers),
+                       'preferences': len(inputs.preferences),
+                       'total_seats': sum(o.capacity for o in inputs.offers)},
+            'provinces': sorted({o.province for o in inputs.offers}),
+            'zero_capacity_offers': sorted(o.offer_id for o in inputs.offers if o.capacity == 0),
+            'fallback_opt_in': sum(s.allow_fallback for s in inputs.students),
+            'rules': inputs.rules, 'rule_version': inputs.rules.get('rule_version'),
+            'cohort_exists': existing is not None,
+            'cohort_has_approvals': existing is not None and has_approvals(db, cohort_id)}
+
+
 def summary(db: Session, cohort: Cohort) -> dict:
     count = lambda model: db.scalar(select(func.count()).select_from(model).where(model.cohort_id == cohort.id))  # noqa: E731
     seats = db.scalar(select(func.coalesce(func.sum(Offer.capacity), 0)).where(Offer.cohort_id == cohort.id))

@@ -2,11 +2,20 @@
   "status": 200,
   "body": {
     "user": {
+      "id": 1,
       "username": "admin",
-      "display_name": "Demo Administrator",
-      "role": "ADMIN"
+      "email": "admin",
+      "display_name": "Demo Super Administrator",
+      "role": "ADMIN",
+      "title": "Super Administrator",
+      "department": "EduMatch demo",
+      "status": "Active",
+      "is_active": true,
+      "created_via": "SEED",
+      "last_login_at": "2026-09-30T22:55:07.217654+00:00",
+      "created_at": "2026-09-30T22:54:47.826405"
     },
-    "csrf_token": "xyKRPiyifQbi2zVla-RezOgw1j7FPI92",
-    "expires_at": "2026-09-30T21:12:51.472425+00:00"
+    "csrf_token": "oKs7wTpv2-MydYso_tlkjnyu-m7s944Q",
+    "expires_at": "2026-10-01T06:55:07.215090+00:00"
   }
 }

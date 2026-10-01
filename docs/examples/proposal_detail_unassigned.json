@@ -1,8 +1,8 @@
 {
   "status": 200,
   "body": {
-    "proposal_id": "4bc41722-5885-43dc-823a-e0d82a643760",
-    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "proposal_id": "c6a8b792-16e2-4b44-bcb9-a6e6cc02364b",
+    "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
     "student_id": "DEMO_200-S000125",
     "offer_id": null,
     "school_name": null,
@@ -25,6 +25,10 @@
     "reviewer": null,
     "reviewed_at": null,
     "decision_reason": null,
+    "override_preference": false,
+    "override_eligibility": false,
+    "reason_text": "Not placed: not eligible for 1st choice Synthetic School DEMO_200 001 (overall score 75.1 < 80 required); not eligible for 2nd choice Synthetic School DEMO_200 006 (overall score 75.1 < 80 required); not eligible for 3rd choice Synthetic School DEMO_200 011 (overall score 75.1 < 80 required).",
+    "suggested_action": "Contact the family (the student only listed specific schools). Use \"Assign school\": it lists every school that still has free seats, best AI fit first, including schools outside the student's choices; a school outside their choices is recorded as an exception with your reason.",
     "student": {
       "display_name": "Synthetic Student DEMO_200 000125",
       "province": "Southern Province",

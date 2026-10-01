@@ -16,6 +16,8 @@ OFFER_COLUMNS = ['offer_id', 'school_name', 'province', 'stage_programme', 'capa
                  'subject_min_math', 'subject_min_science', 'subject_min_language',
                  'weight_math', 'weight_science', 'weight_language']
 PREF_COLUMNS = ['student_id', 'offer_id', 'rank']
+# Alternative layout: ranked choices as columns of students.csv instead of a separate preferences.csv.
+CHOICE_COLUMNS = ['choice_1', 'choice_2', 'choice_3']
 ID_PATTERN = re.compile(r'^[A-Za-z0-9_.\-]{1,64}$')
 MAX_ERRORS = 500
 SUPPORTED_RULES = {'priority': 'overall_desc_then_student_id_asc', 'allocation': 'serial_priority',
@@ -89,14 +91,34 @@ def parse_rules(raw: bytes | None, err: _Collector) -> dict:
     return merged
 
 
-def validate_import(students_raw: bytes, offers_raw: bytes, prefs_raw: bytes, rules_raw: bytes | None = None
+def _choices_as_preferences(s_rows: list[dict], err: _Collector) -> list[dict]:
+    """Turn choice_1..choice_3 columns into preference rows that remember their students.csv row and column."""
+    if s_rows and 'choice_1' not in s_rows[0]:
+        err.add('students.csv', 1, 'choice_1', 'MISSING_COLUMN',
+                'Without preferences.csv, students.csv needs choice_1 (and optionally choice_2, choice_3) columns.')
+        return []
+    rows = []
+    for i, r in enumerate(s_rows, start=2):
+        for rank, col in enumerate(CHOICE_COLUMNS, start=1):
+            if r.get(col):
+                rows.append({'student_id': r['student_id'], 'offer_id': r[col], 'rank': str(rank),
+                             '_file': 'students.csv', '_row': i, '_field': col})
+    return rows
+
+
+def validate_import(students_raw: bytes, offers_raw: bytes, prefs_raw: bytes | None, rules_raw: bytes | None = None
                     ) -> tuple[str, CohortInputs]:
-    """Returns (cohort_id, inputs) or raises ImportErrors with every row-level problem."""
+    """Returns (cohort_id, inputs) or raises ImportErrors with every row-level problem.
+    Ranked choices come from preferences.csv or, when it is omitted, from students.csv choice_1..choice_3."""
     err = _Collector()
     s_rows = _read_csv('students.csv', students_raw, STUDENT_COLUMNS, err)
     o_rows = _read_csv('offers.csv', offers_raw, OFFER_COLUMNS, err)
-    p_rows = _read_csv('preferences.csv', prefs_raw, PREF_COLUMNS, err)
+    if prefs_raw is None:
+        p_rows = _choices_as_preferences(s_rows, err)
+    else:
+        p_rows = _read_csv('preferences.csv', prefs_raw, PREF_COLUMNS, err)
     rules = parse_rules(rules_raw, err)
+    pref_file = 'preferences.csv' if prefs_raw is not None else 'students.csv'
 
     students, seen_s, cohort_ids = [], set(), set()
     for i, r in enumerate(s_rows, start=2):
@@ -166,27 +188,28 @@ def validate_import(students_raw: bytes, offers_raw: bytes, prefs_raw: bytes, ru
     for i, r in enumerate(p_rows, start=2):
         ok = True
         sid, oid = r['student_id'], r['offer_id']
+        f_name, row, offer_field = r.get('_file', 'preferences.csv'), r.get('_row', i), r.get('_field', 'offer_id')
         if sid not in seen_s:
-            err.add('preferences.csv', i, 'student_id', 'UNKNOWN_STUDENT', f'student_id "{sid}" is not in students.csv.'); ok = False
+            err.add(f_name, row, 'student_id', 'UNKNOWN_STUDENT', f'student_id "{sid}" is not in students.csv.'); ok = False
         if oid not in seen_o:
-            err.add('preferences.csv', i, 'offer_id', 'UNKNOWN_OFFER', f'offer_id "{oid}" is not in offers.csv.'); ok = False
+            err.add(f_name, row, offer_field, 'UNKNOWN_OFFER', f'"{oid}" is not a school offer_id in the schools (offers) file.'); ok = False
         try:
             rank = int(r['rank']); valid_rank = str(rank) == r['rank'] and 1 <= rank <= 3
         except ValueError:
             rank, valid_rank = -1, False
         if not valid_rank:
-            err.add('preferences.csv', i, 'rank', 'INVALID_RANK', f'rank="{r["rank"]}" must be 1, 2 or 3.'); ok = False
+            err.add(f_name, row, 'rank', 'INVALID_RANK', f'rank="{r["rank"]}" must be 1, 2 or 3.'); ok = False
         if (sid, rank) in ranks:
-            err.add('preferences.csv', i, 'rank', 'DUPLICATE_RANK', f'{sid} already has a rank {rank} choice.'); ok = False
+            err.add(f_name, row, 'rank', 'DUPLICATE_RANK', f'{sid} already has a rank {rank} choice.'); ok = False
         if (sid, oid) in pairs:
-            err.add('preferences.csv', i, 'offer_id', 'DUPLICATE_CHOICE', f'{sid} lists {oid} more than once.'); ok = False
+            err.add(f_name, row, offer_field, 'DUPLICATE_CHOICE', f'{sid} lists {oid} more than once.'); ok = False
         ranks.add((sid, rank)); pairs.add((sid, oid)); per_student[sid].append(rank)
         if ok:
             prefs.append(PrefRec(sid, oid, rank))
     for sid in sorted(seen_s):
         rs = sorted(per_student.get(sid, []))
         if not rs or rs != list(range(1, len(rs) + 1)):
-            err.add('preferences.csv', 0, sid, 'MISSING_OR_NONCONTIGUOUS_CHOICES',
+            err.add(pref_file, 0, sid, 'MISSING_OR_NONCONTIGUOUS_CHOICES',
                     f'{sid} must have 1-3 choices ranked contiguously from 1.')
 
     if err.errors:

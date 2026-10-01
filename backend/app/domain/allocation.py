@@ -141,6 +141,35 @@ def allocate(inputs: CohortInputs, scorer: Scorer | None = None,
                             runtime_ms=round((time.perf_counter() - started) * 1000, 3))
 
 
+def rank_open_offers(student: StudentRec, inputs: CohortInputs, free_seats: dict[str, int],
+                     scorer: Scorer | None, exclude_offer: str | None = None) -> list[dict]:
+    """Every offer that still has a free seat, for an officer placing a student by hand. Each row says which
+    recorded exceptions it would need: OUTSIDE_CHOICES (not listed and no fallback consent) and/or
+    BELOW_ENTRY_REQUIREMENTS (with the failed rules and the total points short)."""
+    listed = {p.offer_id: p.rank for p in inputs.preferences if p.student_id == student.student_id}
+    rows = [o for o in inputs.offers if o.offer_id != exclude_offer and free_seats.get(o.offer_id, 0) > 0]
+    scores = (np.clip(np.asarray(scorer(np.asarray([pair_features(student, o) for o in rows], dtype=float))), 0, 1)
+              if scorer is not None and rows else [None] * len(rows))
+    fallback_ok = inputs.fallback_enabled and student.allow_fallback
+    out = []
+    for o, sc in zip(rows, scores):
+        rank, failures = listed.get(o.offer_id), eligibility_failures(student, o)
+        needed = ([] if rank is not None or fallback_ok else ['OUTSIDE_CHOICES']) + \
+                 (['BELOW_ENTRY_REQUIREMENTS'] if failures else [])
+        out.append({'offer_id': o.offer_id, 'school_name': o.school_name, 'province': o.province,
+                    'listed_rank': rank, 'eligible': not failures, 'failures': failures,
+                    'min_overall': o.min_overall, 'exceptions_needed': needed,
+                    'shortfall': round(sum(max(0.0, f['required'] - f['actual']) for f in failures), 1),
+                    'fit_score': None if sc is None else round(100 * float(sc), 2),
+                    'seats_available': free_seats[o.offer_id]})
+    # Fewest exceptions first; among below-cutoff options, the one the student is closest to qualifying for;
+    # then the student's own choices, then AI fit.
+    out.sort(key=lambda r: ('BELOW_ENTRY_REQUIREMENTS' in r['exceptions_needed'], len(r['exceptions_needed']),
+                            r['shortfall'], r['listed_rank'] is None, r['listed_rank'] or 0, -(r['fit_score'] or 0),
+                            r['offer_id']))
+    return out
+
+
 def rank_alternatives(student: StudentRec, inputs: CohortInputs, free_seats: dict[str, int],
                       scorer: Scorer | None, exclude_offer: str | None = None) -> list[dict]:
     """Eligible offers with a free seat for this student, each marked listed/unlisted and whether

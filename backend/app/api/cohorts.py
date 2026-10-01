@@ -42,15 +42,20 @@ async def _read_upload(file: UploadFile | None, name: str, required: bool) -> by
 
 @router.post('/cohorts/import')
 async def import_cohort(students: UploadFile = File(...), offers: UploadFile = File(...),
-                        preferences: UploadFile = File(...), rules: UploadFile | None = File(None),
-                        replace: bool = False, db: Session = Depends(get_db), user: User = Depends(require_admin)):
+                        preferences: UploadFile | None = File(None), rules: UploadFile | None = File(None),
+                        replace: bool = False, dry_run: bool = False,
+                        db: Session = Depends(get_db), user: User = Depends(require_admin)):
+    """Choices come from preferences.csv or, if omitted, from students.csv choice_1..choice_3 columns.
+    dry_run=true validates the whole batch and reports what would be imported, without saving anything."""
     raw = [await _read_upload(students, 'students.csv', True), await _read_upload(offers, 'offers.csv', True),
-           await _read_upload(preferences, 'preferences.csv', True), await _read_upload(rules, 'rules.json', False)]
+           await _read_upload(preferences, 'preferences.csv', False), await _read_upload(rules, 'rules.json', False)]
     try:
         cohort_id, inputs = validate_import(*raw)
     except ImportErrors as exc:
         raise ApiError(422, 'VALIDATION_FAILED', f'{len(exc.errors)} problem(s) found; nothing was imported.',
                        {'errors': exc.errors}) from None
+    if dry_run:
+        return svc.preview(db, cohort_id, inputs)
     cohort = svc.create_cohort(db, cohort_id, inputs, 'IMPORT', user, replace_existing=replace)
     db.commit()
     return svc.summary(db, cohort)
@@ -132,6 +137,14 @@ def patch_student(cohort_id: str, student_id: str, body: StudentPatch, db: Sessi
     svc.update_student(db, cohort, student_id, changes, body.expected_input_version, user)
     db.commit()
     return {'input_version': cohort.input_version, 'student_id': student_id, 'changed': changes}
+
+
+@router.post('/cohorts/{cohort_id}/delete')
+def delete_cohort(cohort_id: str, body: ResetIn, db: Session = Depends(get_db), user: User = Depends(require_admin)):
+    """Permanently remove a cohort and its runs (requires {"confirm": true}). The audit log keeps its history."""
+    result = svc.delete_cohort(db, svc.get_cohort(db, cohort_id), user)
+    db.commit()
+    return result
 
 
 @router.post('/cohorts/{cohort_id}/reset')

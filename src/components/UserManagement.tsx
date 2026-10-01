@@ -32,37 +32,49 @@ export const UserManagement: React.FC = () => {
   // View / Edit Modal State
   const [activeUserDetail, setActiveUserDetail] = useState<UserAccount | null>(null);
 
-  const loadUsers = () => {
+  const loadUsers = async () => {
     setUsers(authService.getUsersDirectory());
+    try {
+      setUsers(await authService.refreshUsersDirectory());
+    } catch (err: any) {
+      setFeedback(err?.details?.message || 'Could not load users from the server.');
+    }
   };
 
   useEffect(() => {
     loadUsers();
   }, []);
 
-  const handleAddUser = (e: React.FormEvent) => {
+  const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newName.trim() || !newEmail.trim()) return;
 
-    authService.saveUserToDirectory({
-      name: newName.trim(),
-      email: newEmail.trim().toLowerCase(),
-      role: newRole,
-      department: newDepartment.trim(),
-      status: 'Active'
-    });
-
-    setFeedback(`User ${newName} created successfully.`);
-    setAddModalOpen(false);
-    setNewName('');
-    setNewEmail('');
-    loadUsers();
+    try {
+      const { temporaryPassword } = await authService.saveUserToDirectory({
+        name: newName.trim(),
+        email: newEmail.trim().toLowerCase(),
+        role: newRole,
+        department: newDepartment.trim(),
+        status: 'Active'
+      });
+      // The server shows the temporary password only once; hand it over securely.
+      setFeedback(`User ${newName} created. Temporary password (shown once): ${temporaryPassword}`);
+      setAddModalOpen(false);
+      setNewName('');
+      setNewEmail('');
+      loadUsers();
+    } catch (err: any) {
+      setFeedback(err?.details?.message || 'User could not be created.');
+    }
   };
 
-  const handleToggleStatus = (userId: string) => {
-    const updated = authService.toggleUserStatus(userId);
-    setUsers(updated);
-    setFeedback('User status updated.');
+  const handleToggleStatus = async (userId: string) => {
+    try {
+      setUsers(await authService.toggleUserStatus(userId));
+      setFeedback('User status updated.');
+    } catch (err: any) {
+      setFeedback(err?.details?.message || 'User status could not be updated.');
+    }
   };
 
   const filteredUsers = users.filter(u => {
@@ -84,7 +96,7 @@ export const UserManagement: React.FC = () => {
             <Shield className="w-3.5 h-3.5 text-[#2563EB]" />
             <span>Super Administrator Privileges</span>
           </div>
-          <h1 className="text-2xl font-bold text-[#0B1F3A] tracking-tight">
+          <h1 className="text-2xl font-bold text-[#172554] tracking-tight">
             User & Access Management
           </h1>
           <p className="text-xs text-[#64748B] mt-0.5">
@@ -133,8 +145,8 @@ export const UserManagement: React.FC = () => {
               onClick={() => setRoleFilter(r)}
               className={`px-2.5 py-1 rounded-[4px] text-[11px] font-medium transition-colors whitespace-nowrap cursor-pointer ${
                 roleFilter === r
-                  ? 'bg-[#0B1F3A] text-white'
-                  : 'text-[#64748B] hover:text-[#0B1F3A]'
+                  ? 'bg-[#2563EB] text-white'
+                  : 'text-[#475569] hover:text-[#2563EB]'
               }`}
             >
               {r === 'ALL' ? 'All Roles' : r.replace(' Administrator', ' Admin')}
@@ -165,7 +177,7 @@ export const UserManagement: React.FC = () => {
                   <tr key={user.id} className="hover:bg-slate-50/70 transition-colors">
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-[#0B1F3A] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs shrink-0">
                           {user.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                         </div>
                         <div>
@@ -230,11 +242,11 @@ export const UserManagement: React.FC = () => {
 
       {/* Add User Modal */}
       {addModalOpen && (
-        <div className="fixed inset-0 z-50 bg-[#0B1F3A]/40 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-md w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
-                <h3 className="font-bold text-sm text-[#0B1F3A]">Add New Administrative User</h3>
+                <h3 className="font-bold text-sm text-[#172554]">Add New Administrative User</h3>
                 <span className="text-[11px] text-[#64748B]">Create credentials and role privileges</span>
               </div>
               <button onClick={() => setAddModalOpen(false)} className="text-slate-400 hover:text-slate-700">
@@ -244,7 +256,7 @@ export const UserManagement: React.FC = () => {
 
             <form onSubmit={handleAddUser} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-semibold text-[#0B1F3A] mb-1">
+                <label className="block text-xs font-semibold text-[#172554] mb-1">
                   Full Name *
                 </label>
                 <input
@@ -258,7 +270,7 @@ export const UserManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#0B1F3A] mb-1">
+                <label className="block text-xs font-semibold text-[#172554] mb-1">
                   Email Address *
                 </label>
                 <input
@@ -272,7 +284,7 @@ export const UserManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#0B1F3A] mb-1">
+                <label className="block text-xs font-semibold text-[#172554] mb-1">
                   Account Role *
                 </label>
                 <select
@@ -288,7 +300,7 @@ export const UserManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#0B1F3A] mb-1">
+                <label className="block text-xs font-semibold text-[#172554] mb-1">
                   Department / Organization
                 </label>
                 <input
@@ -304,7 +316,7 @@ export const UserManagement: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setAddModalOpen(false)}
-                  className="px-3.5 py-1.5 text-[#64748B] hover:text-[#0B1F3A] text-xs font-semibold rounded-[6px]"
+                  className="px-3.5 py-1.5 text-[#64748B] hover:text-[#172554] text-xs font-semibold rounded-[6px]"
                 >
                   Cancel
                 </button>
@@ -322,10 +334,10 @@ export const UserManagement: React.FC = () => {
 
       {/* User Details Modal */}
       {activeUserDetail && (
-        <div className="fixed inset-0 z-50 bg-[#0B1F3A]/40 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-sm w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="font-bold text-sm text-[#0B1F3A]">User Profile Card</h3>
+              <h3 className="font-bold text-sm text-[#172554]">User Profile Card</h3>
               <button onClick={() => setActiveUserDetail(null)} className="text-slate-400 hover:text-slate-700">
                 <X className="w-4 h-4" />
               </button>
@@ -334,15 +346,15 @@ export const UserManagement: React.FC = () => {
             <div className="space-y-2 text-xs">
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">User ID</span>
-                <span className="font-mono text-[#0B1F3A]">{activeUserDetail.id}</span>
+                <span className="font-mono text-[#172554]">{activeUserDetail.id}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Name</span>
-                <span className="font-bold text-[#0B1F3A]">{activeUserDetail.name}</span>
+                <span className="font-bold text-[#172554]">{activeUserDetail.name}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Email</span>
-                <span className="font-mono text-[#0B1F3A]">{activeUserDetail.email}</span>
+                <span className="font-mono text-[#172554]">{activeUserDetail.email}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100 items-center">
                 <span className="text-[#64748B]">Role</span>
@@ -350,7 +362,7 @@ export const UserManagement: React.FC = () => {
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Department</span>
-                <span className="text-[#0B1F3A]">{activeUserDetail.department}</span>
+                <span className="text-[#172554]">{activeUserDetail.department}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Status</span>
@@ -365,7 +377,7 @@ export const UserManagement: React.FC = () => {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveUserDetail(null)}
-                className="px-4 py-1.5 bg-[#0B1F3A] text-white rounded-[6px] font-semibold text-xs"
+                className="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs"
               >
                 Close
               </button>

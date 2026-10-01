@@ -8,11 +8,11 @@ EduMatch_AI_Synthetic_Data/   dataset package (cohorts, fixtures; training pairs
 ml/                           model training, comparison, figures, trained models
 backend/                      FastAPI + SQLAlchemy + SQLite API
 docs/                         API guide for the frontend, openapi.json, example responses
-frontend/                     React + Vite + Tailwind (built by the frontend teammate)
+src/, index.html              frontend: React + Vite + Tailwind CSS v4 (repo root)
 ```
 
-**Frontend teammate:** start with [docs/API.md](docs/API.md). Work in `frontend/` on your own branch;
-the backend only needs the setup and run steps below.
+The SRS (§5) suggested plain CSS for the frontend; the team uses **Tailwind CSS v4** instead
+(`@tailwindcss/vite`, theme tokens in `src/index.css`). The API contract is in [docs/API.md](docs/API.md).
 
 ## Setup (once)
 
@@ -20,6 +20,7 @@ the backend only needs the setup and run steps below.
 python -m venv .venv
 .venv/Scripts/python -m pip install -r ml/requirements.txt -r backend/requirements.txt
 cd backend && ../.venv/Scripts/python scripts/init_env.py
+npm install
 ```
 
 `init_env.py` writes `backend/.env` with a random secret key and random demo passwords for the
@@ -34,13 +35,73 @@ cd backend
 
 API docs: http://127.0.0.1:8010/docs · health: http://127.0.0.1:8010/api/health
 
+An existing `backend/data/edumatch.db` from an older build is upgraded in place on startup (missing
+columns are added; nothing is dropped).
+
+## Run the frontend
+
+In a second terminal, from the repo root:
+
+```bash
+npm run dev
+```
+
+Open http://localhost:3000 and sign in with a demo account from `backend/.env`
+(`superadmin@edumatch.rw`, `placement@edumatch.rw`, `officer@edumatch.rw`, `school@edumatch.rw`).
+Vite proxies `/api` to the backend on port 8010 (override with `EDUMATCH_API_URL`).
+
+### Uploading a cohort (demo files)
+
+**Placements** is a 6-step wizard (Upload → Validate → AI Match → Review → Approve → Complete). Upload:
+
+- `students_2026.csv`: `student_id, display_name, cohort_id, province, overall_score, math_score, science_score,
+  language_score, allow_fallback, choice_1, choice_2, choice_3`
+- `schools_2026.csv`: `offer_id, school_name, province, district, stage_programme, capacity, min_overall,
+  subject_min_math, subject_min_science, subject_min_language, weight_math, weight_science, weight_language`
+- `placement_rules.json` (optional; the machine-readable policy) and `placement_rules.pdf` (optional; for people only,
+  not parsed)
+
+Ready-made demo files are in `EduMatch_AI_Synthetic_Data/upload_demo/`:
+- `rwanda_2026/` has 320 synthetic students with realistic Rwandan names, and 27 A-Level combinations at 12 real Rwandan
+  secondary schools. Seats and cutoffs are invented.
+- `rwanda_2026_with_errors/` has the same data with deliberate mistakes, to show row-level validation.
+
+Regenerate both with `python EduMatch_AI_Synthetic_Data/tools/generate_rwanda_upload.py`.
+
+Validation runs on the server first (`POST /api/cohorts/import?dry_run=true`, nothing saved). Every proposal carries a
+plain-language `reason_text`, and unplaced students also get a `suggested_action`; both appear in the review table and
+the CSV exports. A separate `preferences.csv` (`student_id, offer_id, rank`) is still accepted instead of the
+`choice_*` columns.
+
+To change a demo password, edit it in `backend/.env`, then apply it to the existing database:
+
+```bash
+cd backend && ../.venv/Scripts/python scripts/set_demo_passwords.py
+```
+
+**One-process demo (offline):** `npm run build`, then start only the backend. It serves `dist/` at
+http://127.0.0.1:8010.
+
+`npm run dev:mock` starts the old in-browser mock server (`server.ts`). It does not use the real backend
+or model; don't use it for the demo.
+
+| Screen | What it does | Who |
+|---|---|---|
+| Dashboard | Live run metrics (FR-17): placement / first-choice / top-three / AI-fallback rates, violations, runtime | all |
+| Data & Cohort | Load fixtures, CSV import with row-level errors, fallback rule, model card, run placement | admin (officer: run only) |
+| Schools | Capacity, reserved / approved / remaining seats, real demand by rank | all (edit quota: admin) |
+| Placements | Per-student proposal, decision trace, backend explanation, exact AI score breakdown; approve / change / reject | officer, admin (school admin: read-only) |
+| Review & Export | Bulk approve, approved CSV, exceptions CSV, audit log, cohort reset | reset: admin only |
+| AI Recommendations | 7-model leaderboard; switch the model for new runs | switch: admin only |
+| Acceptance Gate | Runs SRS AT-01..AT-08 on the backend against a temporary database | admin |
+
 ## Tests
 
 ```bash
 cd backend && ../.venv/Scripts/python -m pytest -q
 ```
 
-85 tests: exact regression against all 14 reference cohorts, all 8 invalid-import fixtures, the SRS
+97 tests: exact regression against all 14 reference cohorts, all 8 invalid-import fixtures, the SRS
 acceptance gate (AT-01..AT-08) including the 500-student performance target, race tests (concurrent
 officers fighting for the last seat, duplicate approvals, overlapping runs) and AI score explanations.
 
@@ -89,5 +150,6 @@ This is not real placement accuracy. Retrain on real, authorised data before any
 | Runs | `POST /runs`, `GET /runs/{id}`, `GET /runs/{id}/metrics`, `GET /runs/{id}/proposals`, `POST /cohorts/{id}/simulate`, `POST /cohorts/{id}/what-if` |
 | Review | `GET /proposals/{id}`, `GET /proposals/{id}/alternatives`, `POST /proposals/{id}/decision`, `POST /runs/{id}/bulk-approve` |
 | Export / audit | `GET /runs/{id}/export.csv`, `GET /runs/{id}/exceptions.csv`, `GET /audit` |
+| Acceptance | `POST /acceptance/run` (admin): SRS AT-01..AT-08 on an isolated temporary copy of the backend |
 
 All mutations need the `X-CSRF-Token` header returned by login. Errors use `{code, message, details}`.

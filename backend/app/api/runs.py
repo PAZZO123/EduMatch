@@ -6,12 +6,12 @@ from sqlalchemy.orm import Session
 from ..domain.rules import pair_features
 from ..models import AuditEvent, Cohort, Offer, PlacementRun, Preference, Proposal, Student, User
 from ..schemas import BulkApproveIn, DecisionIn, RunIn
-from ..security import current_user, get_db
+from ..security import current_user, get_db, require_reviewer
 from ..services import cohorts as cohort_svc
 from ..services import decisions as dec_svc
 from ..services import export as export_svc
 from ..services import runs as svc
-from ..services.explain import explain
+from ..services.explain import explain, reason_summary
 
 router = APIRouter(tags=['runs'])
 
@@ -31,7 +31,9 @@ def proposal_out(p: Proposal, student: Student | None = None, schools: dict | No
            'preference_rank': p.preference_rank, 'fallback_used': p.fallback_used, 'fit_score': p.fit_score,
            'reason_code': p.reason_code, 'reason_codes': p.reason_codes, 'engine_offer_id': p.engine_offer_id,
            'released_offer_id': p.released_offer_id, 'revision': p.revision, 'reviewer': p.reviewer,
-           'reviewed_at': p.reviewed_at, 'decision_reason': p.decision_reason}
+           'reviewed_at': p.reviewed_at, 'decision_reason': p.decision_reason,
+           'override_preference': p.override_preference, 'override_eligibility': p.override_eligibility,
+           **(reason_summary(p, schools) if schools is not None else {})}
     if student is not None:
         out['student'] = {'display_name': student.display_name, 'province': student.province,
                           'overall_score': student.overall_score, 'math_score': student.math_score,
@@ -45,7 +47,7 @@ def _schools(db: Session, cohort_id: str) -> dict:
 
 
 @router.post('/runs')
-def create_run(body: RunIn, request: Request, db: Session = Depends(get_db), user: User = Depends(current_user)):
+def create_run(body: RunIn, request: Request, db: Session = Depends(get_db), user: User = Depends(require_reviewer)):
     cohort = cohort_svc.get_cohort(db, body.cohort_id)
     run = svc.create_run(db, cohort, body.expected_input_version, body.mode, body.model_key, user,
                          request.app.state.registry)
@@ -81,7 +83,8 @@ def proposals(run_id: str, status: str | None = None, offer_id: str | None = Non
         select(Student).where(Student.cohort_id == run.cohort_id, Student.student_id.in_([p.student_id for p in rows])))}
     schools = _schools(db, run.cohort_id)
     return {'run_id': run.id, 'run_status': run.status, 'run_revision': run.revision, 'total': total, 'limit': limit,
-            'offset': offset, 'proposals': [proposal_out(p, students.get(p.student_id), schools) for p in rows]}
+            'offset': offset,
+            'proposals': [{**proposal_out(p, students.get(p.student_id), schools), 'trace': p.trace} for p in rows]}
 
 
 def _score_breakdown(db: Session, request: Request, p: Proposal, run: PlacementRun, student: Student) -> dict | None:
@@ -122,18 +125,25 @@ def proposal_alternatives(proposal_id: str, request: Request, compare_models: bo
     return dec_svc.alternatives(db, dec_svc.get_proposal(db, proposal_id), request.app.state.registry, compare_models)
 
 
+@router.get('/proposals/{proposal_id}/open-offers')
+def proposal_open_offers(proposal_id: str, request: Request, db: Session = Depends(get_db),
+                         _: User = Depends(current_user)):
+    """Every school with a free seat for an officer assignment, with the exceptions each would need."""
+    return dec_svc.open_offers(db, dec_svc.get_proposal(db, proposal_id), request.app.state.registry)
+
+
 @router.post('/proposals/{proposal_id}/decision')
 def decision(proposal_id: str, body: DecisionIn, request: Request, db: Session = Depends(get_db),
-             user: User = Depends(current_user)):
+             user: User = Depends(require_reviewer)):
     p = dec_svc.decide(db, proposal_id, body.action, body.offer_id, body.reason, body.expected_revision, user,
-                       request.app.state.registry)
+                       request.app.state.registry, body.allow_below_cutoff)
     db.commit()
     return {**proposal_out(p, None, _schools(db, p.cohort_id)), 'run_status': p.run.status,
             'run_revision': p.run.revision}
 
 
 @router.post('/runs/{run_id}/bulk-approve')
-def bulk_approve(run_id: str, body: BulkApproveIn, db: Session = Depends(get_db), user: User = Depends(current_user)):
+def bulk_approve(run_id: str, body: BulkApproveIn, db: Session = Depends(get_db), user: User = Depends(require_reviewer)):
     result = dec_svc.bulk_approve(db, svc.get_run(db, run_id), body.expected_run_revision, user)
     db.commit()
     return result

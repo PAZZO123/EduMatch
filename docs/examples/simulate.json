@@ -6,7 +6,7 @@
     "mode": "RULES_ONLY",
     "model_version": null,
     "capacity_overrides": {},
-    "runtime_ms": 6.24,
+    "runtime_ms": 6.07,
     "metrics": {
       "valid_applicants": 200,
       "available_seats": 184,
@@ -48,7 +48,8 @@
       "preference_authority_violations": 0,
       "accountability_violations": 0,
       "total_violations": 0,
-      "passed": true
+      "passed": true,
+      "officer_exceptions": 0
     },
     "persisted": false
   }

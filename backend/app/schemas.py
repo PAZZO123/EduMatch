@@ -9,8 +9,44 @@ class Strict(BaseModel):
 
 
 class LoginIn(Strict):
-    username: str = Field(min_length=1, max_length=64)
+    username: str = Field(min_length=1, max_length=128)
     password: str = Field(min_length=1, max_length=256)
+
+
+Title = Literal['Super Administrator', 'Placement Administrator', 'Placement Officer', 'School Administrator']
+EMAIL = r'^[^@\s]+@[^@\s]+\.[^@\s]+$'
+
+
+class RegisterIn(Strict):
+    name: str = Field(min_length=2, max_length=128)
+    email: str = Field(pattern=EMAIL, max_length=128)
+    password: str = Field(min_length=8, max_length=256)
+    role: Literal['Placement Officer', 'School Administrator']
+    department: str | None = Field(default=None, max_length=128)
+
+
+class ProfilePatch(Strict):
+    display_name: str | None = Field(default=None, min_length=2, max_length=128)
+    department: str | None = Field(default=None, max_length=128)
+
+
+class PasswordChangeIn(Strict):
+    current_password: str = Field(min_length=1, max_length=256)
+    new_password: str = Field(min_length=8, max_length=256)
+
+
+class UserCreate(Strict):
+    name: str = Field(min_length=2, max_length=128)
+    email: str = Field(pattern=EMAIL, max_length=128)
+    role: Title
+    department: str | None = Field(default=None, max_length=128)
+
+
+class UserPatch(Strict):
+    display_name: str | None = Field(default=None, min_length=2, max_length=128)
+    department: str | None = Field(default=None, max_length=128)
+    role: Title | None = None
+    is_active: bool | None = None
 
 
 class SeedIn(Strict):
@@ -70,10 +106,11 @@ class WhatIfIn(Strict):
 
 
 class DecisionIn(Strict):
-    action: Literal['approve', 'change', 'reject']
+    action: Literal['approve', 'change', 'reject', 'assign']
     expected_revision: int
     offer_id: str | None = None
     reason: str | None = Field(default=None, max_length=1000)
+    allow_below_cutoff: bool = False   # assign only: confirm an eligibility exception
 
 
 class BulkApproveIn(Strict):

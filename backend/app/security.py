@@ -20,6 +20,7 @@ from sqlalchemy.orm import Session
 from .config import get_settings
 from .errors import ApiError
 from .models import AuthSession, User
+from .roles import REVIEWER_ROLES
 
 SESSION_COOKIE = 'edumatch_session'
 CSRF_COOKIE = 'edumatch_csrf'
@@ -112,3 +113,17 @@ def require_admin(user: User = Depends(current_user)) -> User:
     if user.role != 'ADMIN':
         raise ApiError(403, 'FORBIDDEN', 'Administrator role required.')
     return user
+
+
+def require_reviewer(user: User = Depends(current_user)) -> User:
+    """Officers and administrators may generate runs and decide proposals; viewers may not."""
+    if user.role not in REVIEWER_ROLES:
+        raise ApiError(403, 'FORBIDDEN', 'Your role is read-only. A placement officer or administrator must do this.')
+    return user
+
+
+def end_user_sessions(db: Session, user_id: int, keep_token: str | None = None):
+    q = delete(AuthSession).where(AuthSession.user_id == user_id)
+    if keep_token:
+        q = q.where(AuthSession.token_hash != _token_hash(keep_token))
+    db.execute(q)

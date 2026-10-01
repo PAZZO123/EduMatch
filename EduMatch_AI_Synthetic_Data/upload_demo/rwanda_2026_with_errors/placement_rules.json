@@ -1,0 +1,11 @@
+{
+  "rule_version": "rw-demo-policy-2026-v1",
+  "synthetic": true,
+  "score_scale": "0-100",
+  "score_direction": "higher_better",
+  "priority": "overall_desc_then_student_id_asc",
+  "allow_unlisted_fallback": true,
+  "allocation": "serial_priority",
+  "stage_status": "S3 national exam -> S4 A-Level combination (demo assumption)",
+  "notice": "Demo policy for the EduMatch AI presentation. Not an official NESA rule. Real school names; combinations, seats and cutoffs are invented. Student names and marks are synthetic."
+}

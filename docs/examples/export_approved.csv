@@ -1,2 +1,2 @@
-student_id,offer_id,school_name,preference_rank,fallback_used,fit_score,officer,decision_reason,decided_at,run_id,input_version,rule_version,model_version,synthetic
-DEMO_200-S000114,DEMO_200-O001,Synthetic School DEMO_200 001,1,false,,admin,Approved as proposed.,2026-09-30T13:12:52.017574,2081e770-f41d-4524-9030-c8734edab76e,1,demo-policy-v1,linear-regression-synthetic-v1,true
+student_id,offer_id,school_name,display_name,preference_rank,fallback_used,fit_score,placement_reason,officer_exception,officer,decision_reason,decided_at,run_id,input_version,rule_version,model_version,synthetic
+DEMO_200-S000114,DEMO_200-O001,Synthetic School DEMO_200 001,Synthetic Student DEMO_200 000114,1,false,,Placed at 1st choice Synthetic School DEMO_200 001: the student meets its entry cutoff and a seat was free.,,admin,Approved as proposed.,2026-09-30T22:55:08.190774,3d60c0e8-e47e-452f-9a8f-69a099c5b748,1,demo-policy-v1,linear-regression-synthetic-v1,true

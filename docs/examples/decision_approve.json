@@ -1,8 +1,8 @@
 {
   "status": 200,
   "body": {
-    "proposal_id": "c0e958d0-9139-4869-8e68-827a9fc4f680",
-    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "proposal_id": "4906e719-eec9-4065-b394-9dcc147df3ff",
+    "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
     "student_id": "DEMO_200-S000114",
     "offer_id": "DEMO_200-O001",
     "school_name": "Synthetic School DEMO_200 001",
@@ -19,8 +19,12 @@
     "released_offer_id": null,
     "revision": 2,
     "reviewer": "admin",
-    "reviewed_at": "2026-09-30T13:12:52.017574+00:00",
+    "reviewed_at": "2026-09-30T22:55:08.190774+00:00",
     "decision_reason": "Approved as proposed.",
+    "override_preference": false,
+    "override_eligibility": false,
+    "reason_text": "Placed at 1st choice Synthetic School DEMO_200 001: the student meets its entry cutoff and a seat was free.",
+    "suggested_action": null,
     "run_status": "UNDER_REVIEW",
     "run_revision": 2
   }

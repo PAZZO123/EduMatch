@@ -1,0 +1,28 @@
+offer_id,school_name,province,district,stage_programme,capacity,min_overall,subject_min_math,subject_min_science,subject_min_language,weight_math,weight_science,weight_language
+LDK-PCM,Lycée de Kigali (PCM),Kigali City,Nyarugenge,S4 A-Level PCM: Physics-Chemistry-Mathematics,8,74,60,,,0.5,0.4,0.1
+LDK-MEG,Lycée de Kigali (MEG),Kigali City,Nyarugenge,S4 A-Level MEG: Mathematics-Economics-Geography,12,76,,,,0.55,0.1,0.35
+LDK-HEG,Lycée de Kigali (HEG),Kigali City,Nyarugenge,S4 A-Level HEG: History-Economics-Geography,-3,73,,,55,0.15,0.1,0.75
+CSA-PCB,Collège Saint André (PCB),Kigali City,Nyarugenge,S4 A-Level PCB: Physics-Chemistry-Biology,14,64,,55,,0.2,0.7,0.1
+CSA-MEG,Collège Saint André (MEG),Kigali City,Nyarugenge,S4 A-Level MEG: Mathematics-Economics-Geography,14,63,,,,0.55,0.1,0.35
+GHA-MPC,Green Hills Academy (MPC),Kigali City,Gasabo,S4 A-Level MPC: Mathematics-Physics-Computer Science,12,76,60,,,0.55,0.35,0.1
+GHA-MCB,Green Hills Academy (MCB),Kigali City,Gasabo,S4 A-Level MCB: Mathematics-Chemistry-Biology,11,78,,,,0.35,0.55,0.1
+RHS-MPC,Riviera High School (MPC),Kigali City,Gasabo,S4 A-Level MPC: Mathematics-Physics-Computer Science,14,63,55,,,0.55,0.35,0.1
+RHS-HEG,Riviera High School (HEG),Kigali City,Gasabo,S4 A-Level HEG: History-Economics-Geography,11,60,,,50,0.15,0.1,0.75
+GSOB-PCM,Groupe Scolaire Officiel de Butare (PCM),Southern Province,Huye,S4 A-Level PCM: Physics-Chemistry-Mathematics,12,72,60,,,0.5,0.4,0.1
+GSOB-PCB,Groupe Scolaire Officiel de Butare (PCB),Southern Province,Huye,S4 A-Level PCB: Physics-Chemistry-Biology,8,74,,60,,0.2,0.7,0.1
+GSOB-HEG,Groupe Scolaire Officiel de Butare (HEG),Southern Province,Huye,S4 A-Level HEG: History-Economics-Geography,8,75,,,55,0.15,0.1,0.75
+ESB-PCM,Ecole des Sciences de Byimana (PCM),Southern Province,Ruhango,S4 A-Level PCM: Physics-Chemistry-Mathematics,8,78,60,,,0.5,0.4,0.1
+ESB-MCB,Ecole des Sciences de Byimana (MCB),Southern Province,Ruhango,S4 A-Level MCB: Mathematics-Chemistry-Biology,11,77,,,,0.35,0.55,0.1
+CCR-PCB,Collège du Christ-Roi de Nyanza (PCB),Southern Province,Nyanza,S4 A-Level PCB: Physics-Chemistry-Biology,12,61,,55,,0.2,0.7,0.1
+CCR-MEG,Collège du Christ-Roi de Nyanza (MEG),Southern Province,Nyanza,S4 A-Level MEG: Mathematics-Economics-Geography,13,62,,,,0.55,0.1,0.35
+ESM-PCM,Ecole des Sciences de Musanze (PCM),Northern Province,Musanze,S4 A-Level PCM: Physics-Chemistry-Mathematics,12,62,55,,,0.5,0.4,0.1
+ESM-MCB,Ecole des Sciences de Musanze (MCB),Northern Province,Musanze,S4 A-Level MCB: Mathematics-Chemistry-Biology,13,65,,,,0.35,0.55,0.1
+GSVM-MEG,Groupe Scolaire Saint Vincent Muhoza (MEG),Northern Province,Musanze,S4 A-Level MEG: Mathematics-Economics-Geography,18,49,,,,0.55,0.1,0.35
+GSVM-HEG,Groupe Scolaire Saint Vincent Muhoza (HEG),Northern Province,Musanze,S4 A-Level HEG: History-Economics-Geography,14,49,,,,0.15,0.1,0.75
+CIR-PCB,Collège Inyemeramihigo (PCB),Western Province,Rubavu,S4 A-Level PCB: Physics-Chemistry-Biology,16,44,,,,0.2,0.7,0.1
+CIR-MEG,Collège Inyemeramihigo (MEG),Western Province,Rubavu,S4 A-Level MEG: Mathematics-Economics-Geography,18,48,,,,0.55,0.1,0.35
+CIR-HEG,Collège Inyemeramihigo (HEG),Western Province,Rubavu,S4 A-Level HEG: History-Economics-Geography,16,46,,,,0.15,0.1,0.75
+GSAR-MCB,Groupe Scolaire Saint Aloys Rwamagana (MCB),Eastern Province,Rwamagana,S4 A-Level MCB: Mathematics-Chemistry-Biology,17,45,,,,0.35,0.55,0.1
+GSAR-HEG,Groupe Scolaire Saint Aloys Rwamagana (HEG),Eastern Province,Rwamagana,S4 A-Level HEG: History-Economics-Geography,19,49,,,,0.15,0.1,0.75
+GSG-PCB,Groupe Scolaire de Gahini (PCB),Eastern Province,Kayonza,S4 A-Level PCB: Physics-Chemistry-Biology,19,48,,,,0.2,0.7,0.1
+GSG-MEG,Groupe Scolaire de Gahini (MEG),Eastern Province,Kayonza,S4 A-Level MEG: Mathematics-Economics-Geography,16,44,,,,0.55,0.1,0.35

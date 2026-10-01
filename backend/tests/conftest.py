@@ -7,13 +7,17 @@ from app.config import PROJECT_DIR, Settings
 from app.main import create_app
 
 DATA = PROJECT_DIR / 'EduMatch_AI_Synthetic_Data'
-PASSWORDS = {'admin': secrets.token_urlsafe(12), 'officer': secrets.token_urlsafe(12)}
+PASSWORDS = {'admin': secrets.token_urlsafe(12), 'officer': secrets.token_urlsafe(12),
+             'viewer': secrets.token_urlsafe(12)}
 
 
 def make_settings(tmp_path, **overrides) -> Settings:
-    return Settings(_env_file=None, database_url=f"sqlite:///{(tmp_path / 'test.db').as_posix()}",
-                    secret_key=secrets.token_urlsafe(40), admin_password=PASSWORDS['admin'],
-                    officer_password=PASSWORDS['officer'], **overrides)
+    values = dict(_env_file=None, database_url=f"sqlite:///{(tmp_path / 'test.db').as_posix()}",
+                  secret_key=secrets.token_urlsafe(40), admin_password=PASSWORDS['admin'],
+                  officer_password=PASSWORDS['officer'], school_admin_username='viewer',
+                  school_admin_password=PASSWORDS['viewer'], auto_seed_fixture=None,
+                  frontend_dist=tmp_path / 'no_frontend')
+    return Settings(**{**values, **overrides})
 
 
 class Api:

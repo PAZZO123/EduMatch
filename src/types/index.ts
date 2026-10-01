@@ -56,6 +56,13 @@ export interface PlacementProposal {
   trace: DecisionTraceItem[];
   reviewer?: string;
   decision_reason?: string;
+  /** One plain-language sentence from the backend explaining this result. */
+  reason_text?: string;
+  /** Suggested next step for students left without a seat (null when placed). */
+  suggested_action?: string;
+  /** Officer assignment exceptions (recorded with a reason). */
+  override_preference?: boolean;
+  override_eligibility?: boolean;
   updated_at: string;
 }
 
@@ -86,6 +93,9 @@ export interface DashboardMetrics {
   active_reservations: number;
   violations_count: number;
   runtime_ms: number;
+  fallback_count?: number; // draft proposals placed by the AI-ranked fallback
+  mode?: string; // 'AI' | 'RULES_ONLY'
+  model_version?: string | null;
 }
 
 export interface AuditEvent {
@@ -127,5 +137,8 @@ export interface AlternativeOfferOption {
   is_eligible: boolean;
   has_capacity: boolean;
   fit_score: number;
+  /** false for listed choices the model did not score (e.g. fallback not authorised) */
+  has_score?: boolean;
+  listed_rank?: number | null;
   eligibility_reason: string;
 }

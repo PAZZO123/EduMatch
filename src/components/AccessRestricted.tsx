@@ -22,7 +22,7 @@ export const AccessRestricted: React.FC<AccessRestrictedProps> = ({
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-[#0B1F3A] tracking-tight">
+          <h2 className="text-2xl font-bold text-[#172554] tracking-tight">
             Access Restricted
           </h2>
           <p className="text-sm text-[#64748B] max-w-md mx-auto">
@@ -40,7 +40,7 @@ export const AccessRestricted: React.FC<AccessRestrictedProps> = ({
         <div className="pt-2">
           <button
             onClick={onReturnDashboard}
-            className="px-5 py-2.5 bg-[#0B1F3A] hover:bg-slate-800 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors inline-flex items-center gap-2 cursor-pointer"
+            className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors inline-flex items-center gap-2 cursor-pointer"
           >
             <Home className="w-3.5 h-3.5" />
             <span>Return to Dashboard</span>

@@ -77,7 +77,7 @@ export const StudentsScreen: React.FC<StudentsScreenProps> = ({
           <div className="text-xs font-semibold text-[#64748B] mb-1">
             Registered Cohort · 2026 O-Level
           </div>
-          <h1 className="text-2xl font-bold text-[#0B1F3A] tracking-tight">
+          <h1 className="text-2xl font-bold text-[#172554] tracking-tight">
             Students & Placements Table
           </h1>
         </div>
@@ -101,8 +101,8 @@ export const StudentsScreen: React.FC<StudentsScreenProps> = ({
                 onClick={() => setFilterStatus(st)}
                 className={`px-2.5 py-1 rounded-[4px] text-[11px] font-medium transition-colors cursor-pointer ${
                   filterStatus === st
-                    ? 'bg-[#0B1F3A] text-white'
-                    : 'text-[#64748B] hover:text-[#0B1F3A]'
+                    ? 'bg-[#2563EB] text-white'
+                    : 'text-[#475569] hover:text-[#2563EB]'
                 }`}
               >
                 {st === 'ALL' ? 'All' : st === 'REVIEW' ? 'Needs Review' : st === 'APPROVED' ? 'Approved' : 'Conflicts'}
@@ -156,7 +156,7 @@ export const StudentsScreen: React.FC<StudentsScreenProps> = ({
                     onClick={() => onSelectStudent(s.student_id)}
                     className="hover:bg-slate-50 transition-colors cursor-pointer"
                   >
-                    <td className="py-3 px-4 font-mono font-bold text-[#0B1F3A]">
+                    <td className="py-3 px-4 font-mono font-bold text-[#172554]">
                       #{s.student_id.replace(/^S/, '104')}
                     </td>
 
@@ -167,7 +167,7 @@ export const StudentsScreen: React.FC<StudentsScreenProps> = ({
                       </span>
                     </td>
 
-                    <td className="py-3 px-4 font-mono font-bold text-[#0B1F3A] tabular-nums">
+                    <td className="py-3 px-4 font-mono font-bold text-[#172554] tabular-nums">
                       {s.overall_score}%
                     </td>
 
@@ -192,7 +192,7 @@ export const StudentsScreen: React.FC<StudentsScreenProps> = ({
                       )}
                     </td>
 
-                    <td className="py-3 px-4 font-mono font-bold text-[#0B1F3A] tabular-nums">
+                    <td className="py-3 px-4 font-mono font-bold text-[#172554] tabular-nums">
                       {matchQuality}
                     </td>
 

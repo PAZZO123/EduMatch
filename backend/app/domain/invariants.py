@@ -34,9 +34,11 @@ def check_plan(inputs: CohortInputs, assignments: list[dict], capacity_overrides
         if s is None or o is None:
             problems.append({'type': 'accountability', 'student_id': a['student_id'], 'detail': 'unknown student/offer'})
             continue
-        if not is_eligible(s, o):
+        # An officer assignment may carry a recorded, reasoned exception; capacity and uniqueness never do.
+        if not is_eligible(s, o) and not a.get('override_eligibility'):
             problems.append({'type': 'eligibility', 'student_id': s.student_id, 'offer_id': o.offer_id})
-        if (s.student_id, o.offer_id) not in listed and not (inputs.fallback_enabled and s.allow_fallback):
+        if ((s.student_id, o.offer_id) not in listed and not (inputs.fallback_enabled and s.allow_fallback)
+                and not a.get('override_preference')):
             problems.append({'type': 'preference_authority', 'student_id': s.student_id, 'offer_id': o.offer_id})
     approved = Counter(a['student_id'] for a in assignments if a['status'] == 'APPROVED')
     problems += [{'type': 'uniqueness', 'student_id': sid, 'detail': 'multiple approvals'} for sid, n in approved.items() if n > 1]
@@ -46,4 +48,5 @@ def check_plan(inputs: CohortInputs, assignments: list[dict], capacity_overrides
             'duplicate_placement_violations': counts['uniqueness'],
             'preference_authority_violations': counts['preference_authority'],
             'accountability_violations': counts['accountability'],
-            'total_violations': len(problems), 'passed': not problems, 'problems': problems[:50]}
+            'total_violations': len(problems), 'passed': not problems, 'problems': problems[:50],
+            'officer_exceptions': sum(1 for a in holding if a.get('override_eligibility') or a.get('override_preference'))}

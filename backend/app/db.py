@@ -3,7 +3,7 @@ transaction starts with BEGIN IMMEDIATE so concurrent writers are serialised rat
 racing on seat counts."""
 from collections.abc import Iterator
 
-from sqlalchemy import create_engine, event
+from sqlalchemy import create_engine, event, inspect
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 
@@ -38,6 +38,25 @@ class Database:
     def create_all(self):
         from . import models  # noqa: F401  (register tables)
         Base.metadata.create_all(self.engine)
+        self.add_missing_columns()
+
+    def add_missing_columns(self) -> list[str]:
+        """Additive upgrade for databases created by an older build: create_all() makes new tables but never
+        alters existing ones, so add any column the models now declare. Nothing is dropped or rewritten."""
+        added = []
+        with self.engine.begin() as conn:
+            existing = {t: {c['name'] for c in inspect(conn).get_columns(t)} for t in inspect(conn).get_table_names()}
+            for table in Base.metadata.sorted_tables:
+                for col in table.columns:
+                    if table.name not in existing or col.name in existing[table.name]:
+                        continue
+                    ddl = f'ALTER TABLE {table.name} ADD COLUMN {col.name} {col.type.compile(conn.dialect)}'
+                    default = col.default.arg if col.default is not None and col.default.is_scalar else None
+                    if default is not None:
+                        ddl += f" DEFAULT {int(default) if isinstance(default, bool) else repr(default)}"
+                    conn.exec_driver_sql(ddl)
+                    added.append(f'{table.name}.{col.name}')
+        return added
 
     def session(self) -> Iterator[Session]:
         with self.sessionmaker() as session:

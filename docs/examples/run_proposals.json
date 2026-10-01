@@ -1,7 +1,7 @@
 {
   "status": 200,
   "body": {
-    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
     "run_status": "GENERATED",
     "run_revision": 1,
     "total": 200,
@@ -9,8 +9,8 @@
     "offset": 0,
     "proposals": [
       {
-        "proposal_id": "c0e958d0-9139-4869-8e68-827a9fc4f680",
-        "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+        "proposal_id": "4906e719-eec9-4065-b394-9dcc147df3ff",
+        "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
         "student_id": "DEMO_200-S000114",
         "offer_id": "DEMO_200-O001",
         "school_name": "Synthetic School DEMO_200 001",
@@ -29,6 +29,10 @@
         "reviewer": null,
         "reviewed_at": null,
         "decision_reason": null,
+        "override_preference": false,
+        "override_eligibility": false,
+        "reason_text": "Placed at 1st choice Synthetic School DEMO_200 001: the student meets its entry cutoff and a seat was free.",
+        "suggested_action": null,
         "student": {
           "display_name": "Synthetic Student DEMO_200 000114",
           "province": "Southern Province",
@@ -37,11 +41,21 @@
           "science_score": 94.4,
           "language_score": 100.0,
           "allow_fallback": true
-        }
+        },
+        "trace": [
+          {
+            "kind": "LISTED",
+            "rank": 1,
+            "offer_id": "DEMO_200-O001",
+            "outcome": "FEASIBLE",
+            "seats_left_before": 10,
+            "capacity": 10
+          }
+        ]
       },
       {
-        "proposal_id": "62203c43-62fa-49fb-a24e-e0d2e24d45c8",
-        "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+        "proposal_id": "187fd5c8-1bd9-4749-8d3c-390cd459b8e7",
+        "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
         "student_id": "DEMO_200-S000065",
         "offer_id": "DEMO_200-O001",
         "school_name": "Synthetic School DEMO_200 001",
@@ -60,6 +74,10 @@
         "reviewer": null,
         "reviewed_at": null,
         "decision_reason": null,
+        "override_preference": false,
+        "override_eligibility": false,
+        "reason_text": "Placed at 1st choice Synthetic School DEMO_200 001: the student meets its entry cutoff and a seat was free.",
+        "suggested_action": null,
         "student": {
           "display_name": "Synthetic Student DEMO_200 000065",
           "province": "Southern Province",
@@ -68,11 +86,21 @@
           "science_score": 86.9,
           "language_score": 80.5,
           "allow_fallback": false
-        }
+        },
+        "trace": [
+          {
+            "kind": "LISTED",
+            "rank": 1,
+            "offer_id": "DEMO_200-O001",
+            "outcome": "FEASIBLE",
+            "seats_left_before": 9,
+            "capacity": 10
+          }
+        ]
       },
       {
-        "proposal_id": "72352f13-487d-4a5a-a77a-3ac7409106fe",
-        "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+        "proposal_id": "0bc256e0-0474-4ac3-ba69-c3ff634641a8",
+        "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
         "student_id": "DEMO_200-S000109",
         "offer_id": "DEMO_200-O001",
         "school_name": "Synthetic School DEMO_200 001",
@@ -91,6 +119,10 @@
         "reviewer": null,
         "reviewed_at": null,
         "decision_reason": null,
+        "override_preference": false,
+        "override_eligibility": false,
+        "reason_text": "Placed at 1st choice Synthetic School DEMO_200 001: the student meets its entry cutoff and a seat was free.",
+        "suggested_action": null,
         "student": {
           "display_name": "Synthetic Student DEMO_200 000109",
           "province": "Southern Province",
@@ -99,7 +131,17 @@
           "science_score": 100.0,
           "language_score": 100.0,
           "allow_fallback": false
-        }
+        },
+        "trace": [
+          {
+            "kind": "LISTED",
+            "rank": 1,
+            "offer_id": "DEMO_200-O001",
+            "outcome": "FEASIBLE",
+            "seats_left_before": 8,
+            "capacity": 10
+          }
+        ]
       }
     ]
   }

@@ -3,7 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// MOCK ROLE-BASED AUTHENTICATION — replace with secure backend authentication and authorization before production.
+// Authentication backed by the FastAPI server: HttpOnly session cookie + CSRF token, roles enforced
+// server-side. The UI keeps a cached copy of the signed-in profile for synchronous rendering only —
+// it grants nothing; every protected request is re-checked by the backend.
+
+import { api, http } from './api';
 
 export type RoleType =
   | 'Super Administrator'
@@ -23,196 +27,136 @@ export interface UserAccount {
   schoolName?: string;
 }
 
-const AUTH_KEY = 'edumatch_admin_authenticated';
 const USER_KEY = 'edumatch_admin_user';
-const USERS_LIST_KEY = 'edumatch_users_directory';
+let directoryCache: UserAccount[] = [];
 
-// 1. Supported Mock Demo Accounts
+// Demo account emails for the sign-in shortcuts. Passwords are NOT stored in the frontend:
+// they are generated into backend/.env by `python backend/scripts/init_env.py`.
 export const DEMO_ACCOUNTS: Record<string, { email: string; password: string; user: UserAccount }> = {
   superadmin: {
     email: 'superadmin@edumatch.rw',
-    password: 'SuperAdmin@2026',
-    user: {
-      id: 'USR-001',
-      name: 'Eric Tuyishime',
-      email: 'superadmin@edumatch.rw',
-      role: 'Super Administrator',
-      department: 'National Examination and School Inspection Authority',
-      status: 'Active',
-      lastActive: 'Just now'
-    }
+    password: '',
+    user: { id: 'demo-superadmin', name: 'Demo Super Administrator', email: 'superadmin@edumatch.rw', role: 'Super Administrator', department: 'EduMatch demo', status: 'Active', lastActive: '' }
   },
   placement: {
     email: 'placement@edumatch.rw',
-    password: 'Placement@2026',
-    user: {
-      id: 'USR-002',
-      name: 'Aline Umutoni',
-      email: 'placement@edumatch.rw',
-      role: 'Placement Administrator',
-      department: 'NESA Placement Directorate',
-      status: 'Active',
-      lastActive: '12 mins ago'
-    }
+    password: '',
+    user: { id: 'demo-placement', name: 'Demo Placement Administrator', email: 'placement@edumatch.rw', role: 'Placement Administrator', department: 'EduMatch demo', status: 'Active', lastActive: '' }
   },
   school: {
     email: 'school@edumatch.rw',
-    password: 'School@2026',
-    user: {
-      id: 'USR-003',
-      name: 'Jean-Paul Gasana',
-      email: 'school@edumatch.rw',
-      role: 'School Administrator',
-      department: 'GS Sainte Famille (Kigali)',
-      status: 'Active',
-      lastActive: '1 hour ago',
-      schoolId: 'SCH-01',
-      schoolName: 'GS Sainte Famille'
-    }
+    password: '',
+    user: { id: 'demo-school', name: 'Demo School Administrator', email: 'school@edumatch.rw', role: 'School Administrator', department: 'EduMatch demo', status: 'Active', lastActive: '' }
   },
   officer: {
     email: 'officer@edumatch.rw',
-    password: 'Officer@2026',
-    user: {
-      id: 'USR-004',
-      name: 'Diane Uwase',
-      email: 'officer@edumatch.rw',
-      role: 'Placement Officer',
-      department: 'NESA Basic Education Committee',
-      status: 'Active',
-      lastActive: '3 hours ago'
-    }
+    password: '',
+    user: { id: 'demo-officer', name: 'Demo Placement Officer', email: 'officer@edumatch.rw', role: 'Placement Officer', department: 'EduMatch demo', status: 'Active', lastActive: '' }
   }
 };
 
-// Initial directory list
-const DEFAULT_DIRECTORY: UserAccount[] = [
-  DEMO_ACCOUNTS.superadmin.user,
-  DEMO_ACCOUNTS.placement.user,
-  DEMO_ACCOUNTS.school.user,
-  DEMO_ACCOUNTS.officer.user,
-  {
-    id: 'USR-005',
-    name: 'Thierry Mugenzi',
-    email: 't.mugenzi@nesa.gov.rw',
-    role: 'Placement Officer',
-    department: 'Northern Province Placement Team',
-    status: 'Active',
-    lastActive: 'Yesterday'
-  },
-  {
-    id: 'USR-006',
-    name: 'Claire Mukamwezi',
-    email: 'c.mukamwezi@nesa.gov.rw',
-    role: 'Placement Administrator',
-    department: 'Southern Province Directorate',
-    status: 'Active',
-    lastActive: '2 days ago'
-  }
-];
-
-// 4 & 8. Permission Matrix: Views allowed per role
+// Which screens each role may open (UI convenience; the backend enforces the real permissions).
 export const ROLE_PERMISSIONS: Record<RoleType, string[]> = {
-  'Super Administrator': [
-    'dashboard',
-    'students',
-    'schools',
-    'placement',
-    'responsible_ai',
-    'analytics',
-    'users',
-    'acceptance',
-    'settings',
-    'account'
-  ],
-  'Placement Administrator': [
-    'dashboard',
-    'students',
-    'schools',
-    'placement',
-    'responsible_ai',
-    'analytics',
-    'account'
-  ],
-  'School Administrator': [
-    'dashboard',
-    'schools',
-    'students',
-    'placement',
-    'account'
-  ],
-  'Placement Officer': [
-    'dashboard',
-    'students',
-    'placement',
-    'responsible_ai',
-    'account'
-  ]
+  'Super Administrator': ['dashboard', 'data', 'students', 'schools', 'placement', 'review', 'history', 'responsible_ai', 'analytics', 'users', 'acceptance', 'settings', 'account'],
+  'Placement Administrator': ['dashboard', 'data', 'students', 'schools', 'placement', 'review', 'history', 'responsible_ai', 'analytics', 'acceptance', 'account'],
+  'School Administrator': ['dashboard', 'schools', 'students', 'placement', 'review', 'history', 'account'],
+  'Placement Officer': ['dashboard', 'data', 'students', 'schools', 'placement', 'review', 'history', 'responsible_ai', 'account']
 };
+
+/** Mirrors backend/app/roles.py: ADMIN may change inputs, reset and switch models. */
+export const isAdminRole = (role?: RoleType) => role === 'Super Administrator' || role === 'Placement Administrator';
+/** ADMIN and OFFICER may generate runs and approve / change / reject proposals; School Administrators only view. */
+export const canReviewRole = (role?: RoleType) => isAdminRole(role) || role === 'Placement Officer';
+
+const ROLE_BY_BACKEND: Record<string, RoleType> = {
+  ADMIN: 'Super Administrator',
+  OFFICER: 'Placement Officer',
+  VIEWER: 'School Administrator'
+};
+
+function relativeTime(iso: string | null): string {
+  if (!iso) return 'Never';
+  const minutes = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+  if (minutes < 1) return 'Just now';
+  if (minutes < 60) return `${minutes} min${minutes === 1 ? '' : 's'} ago`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+  const days = Math.round(hours / 24);
+  return days === 1 ? 'Yesterday' : `${days} days ago`;
+}
+
+export function toUserAccount(u: any): UserAccount {
+  return {
+    id: `USR-${u.id}`,
+    name: u.display_name,
+    email: u.email,
+    role: (u.title as RoleType) || ROLE_BY_BACKEND[u.role] || 'Placement Officer',
+    department: u.department || '',
+    status: u.is_active ? 'Active' : 'Inactive',
+    lastActive: u.status === 'Pending' ? 'Pending activation' : relativeTime(u.last_login_at)
+  };
+}
+
+const backendId = (userId: string) => Number(userId.replace(/^USR-/, ''));
+
+function cacheUser(user: UserAccount | null) {
+  try {
+    if (user) localStorage.setItem(USER_KEY, JSON.stringify(user));
+    else localStorage.removeItem(USER_KEY);
+  } catch {
+    /* storage unavailable */
+  }
+}
+
+function errorMessage(err: any, fallback: string): string {
+  return err?.details?.message || err?.message || fallback;
+}
 
 export const authService = {
+  /** Cached flag for first paint; App confirms it with `restoreSession()` against the server. */
   isAuthenticated(): boolean {
-    try {
-      return localStorage.getItem(AUTH_KEY) === 'true';
-    } catch {
-      return false;
-    }
+    return this.getCurrentUser() !== null;
   },
 
   getCurrentUser(): UserAccount | null {
     try {
       const data = localStorage.getItem(USER_KEY);
-      if (data) return JSON.parse(data);
+      return data ? (JSON.parse(data) as UserAccount) : null;
     } catch {
-      // Fallback
+      return null;
     }
-    if (this.isAuthenticated()) {
-      return DEMO_ACCOUNTS.superadmin.user;
+  },
+
+  /** Ask the server whether the session cookie is still valid; refreshes the cached profile. */
+  async restoreSession(): Promise<UserAccount | null> {
+    try {
+      const { user } = await api.getMe();
+      const account = toUserAccount(user);
+      cacheUser(account);
+      return account;
+    } catch {
+      cacheUser(null);
+      return null;
     }
-    return null;
   },
 
   hasPermission(role: RoleType | undefined, viewId: string): boolean {
     if (!role) return false;
-    const allowed = ROLE_PERMISSIONS[role] || [];
-    return allowed.includes(viewId);
+    return (ROLE_PERMISSIONS[role] || []).includes(viewId);
   },
 
   async login(email: string, password: string): Promise<{ success: boolean; error?: string; user?: UserAccount }> {
-    // Brief realistic delay
-    await new Promise(resolve => setTimeout(resolve, 450));
-
-    const cleanEmail = email.trim().toLowerCase();
-    const cleanPassword = password.trim();
-
-    // Check against demo accounts
-    for (const key of Object.keys(DEMO_ACCOUNTS)) {
-      const account = DEMO_ACCOUNTS[key];
-      if (account.email.toLowerCase() === cleanEmail && account.password === cleanPassword) {
-        try {
-          localStorage.setItem(AUTH_KEY, 'true');
-          localStorage.setItem(USER_KEY, JSON.stringify(account.user));
-        } catch (e) {
-          console.error(e);
-        }
-        return { success: true, user: account.user };
-      }
-    }
-
-    // Legacy fallback for admin@edumatch.rw
-    if (cleanEmail === 'admin@edumatch.rw' && cleanPassword === 'EduMatch@2026') {
-      const user = DEMO_ACCOUNTS.superadmin.user;
-      localStorage.setItem(AUTH_KEY, 'true');
-      localStorage.setItem(USER_KEY, JSON.stringify(user));
+    try {
+      const res = await api.login(email.trim().toLowerCase(), password);
+      const user = toUserAccount(res.user);
+      cacheUser(user);
       return { success: true, user };
+    } catch (err: any) {
+      return { success: false, error: errorMessage(err, 'Invalid email or password.') };
     }
-
-    return {
-      success: false,
-      error: 'Invalid email or password.'
-    };
   },
 
+  /** Self-registration creates an INACTIVE account; an administrator must activate it before sign-in. */
   async register(params: {
     name: string;
     email: string;
@@ -220,123 +164,93 @@ export const authService = {
     role: 'Placement Officer' | 'School Administrator';
     department?: string;
   }): Promise<{ success: boolean; error?: string; user?: UserAccount }> {
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    const cleanEmail = params.email.trim().toLowerCase();
-    const cleanName = params.name.trim();
-
-    if (!cleanName || !cleanEmail || !params.password) {
-      return { success: false, error: 'All fields are required.' };
-    }
-
-    // Security requirement: Never allow Super Administrator or Placement Administrator via public signup
-    if (params.role !== 'Placement Officer' && params.role !== 'School Administrator') {
-      return { success: false, error: 'Unauthorized role assignment requested.' };
-    }
-
-    const list = this.getUsersDirectory();
-    if (list.some(u => u.email.toLowerCase() === cleanEmail)) {
-      return { success: false, error: 'An account with this email address already exists.' };
-    }
-
-    const createdUser: UserAccount = {
-      id: `USR-${String(list.length + 1).padStart(3, '0')}`,
-      name: cleanName,
-      email: cleanEmail,
-      role: params.role,
-      department: params.department || (params.role === 'School Administrator' ? 'Assigned Secondary Institution' : 'District Placement Committee'),
-      status: 'Active',
-      lastActive: 'Just now'
-    };
-
-    const updatedList = [createdUser, ...list];
     try {
-      localStorage.setItem(USERS_LIST_KEY, JSON.stringify(updatedList));
-      localStorage.setItem(AUTH_KEY, 'true');
-      localStorage.setItem(USER_KEY, JSON.stringify(createdUser));
-    } catch (e) {
-      console.error(e);
+      const res = await http.post<any>('/auth/register', {
+        name: params.name.trim(),
+        email: params.email.trim().toLowerCase(),
+        password: params.password,
+        role: params.role,
+        department: params.department
+      });
+      // Not signed in yet: surface the pending-activation message instead of entering the app.
+      return { success: false, error: res.message };
+    } catch (err: any) {
+      return { success: false, error: errorMessage(err, 'Registration could not be completed.') };
     }
-
-    return { success: true, user: createdUser };
   },
 
   logout(): void {
-    try {
-      localStorage.removeItem(AUTH_KEY);
-      localStorage.removeItem(USER_KEY);
-    } catch (e) {
-      console.error(e);
-    }
+    cacheUser(null);
+    api.logout().catch(() => undefined);
   },
 
+  /** Updates the display name / department on the server; the email is the sign-in name and stays fixed. */
   updateCurrentUser(updated: Partial<UserAccount>): UserAccount | null {
     const current = this.getCurrentUser();
     if (!current) return null;
-    const merged: UserAccount = { ...current, ...updated };
-    try {
-      localStorage.setItem(USER_KEY, JSON.stringify(merged));
-      // Also update in directory
-      this.updateUserInDirectory(merged);
-    } catch (e) {
-      console.error(e);
+    const merged: UserAccount = { ...current, ...updated, email: current.email };
+    cacheUser(merged);
+    const body: Record<string, string> = {};
+    if (updated.name) body.display_name = updated.name;
+    if (updated.department !== undefined) body.department = updated.department;
+    if (Object.keys(body).length) {
+      http
+        .patch<any>('/auth/me', body)
+        .then(res => cacheUser(toUserAccount(res.user)))
+        .catch(() => undefined);
     }
     return merged;
   },
 
-  // 6. User Management Directory
+  async changePassword(currentPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> {
+    try {
+      await http.post('/auth/password', { current_password: currentPassword, new_password: newPassword });
+      return { success: true };
+    } catch (err: any) {
+      return { success: false, error: errorMessage(err, 'Password could not be changed.') };
+    }
+  },
+
+  // ---- User management (administrators) ----------------------------------------------------
+  /** Last directory fetched from the server (synchronous, for rendering). */
   getUsersDirectory(): UserAccount[] {
-    try {
-      const data = localStorage.getItem(USERS_LIST_KEY);
-      if (data) return JSON.parse(data);
-    } catch {
-      // Fallback
-    }
-    return DEFAULT_DIRECTORY;
+    return directoryCache;
   },
 
-  saveUserToDirectory(newUser: Omit<UserAccount, 'id' | 'lastActive'>): UserAccount {
-    const list = this.getUsersDirectory();
-    const user: UserAccount = {
-      ...newUser,
-      id: `USR-00${list.length + 1}`,
-      lastActive: 'New'
-    };
-    const updated = [user, ...list];
-    try {
-      localStorage.setItem(USERS_LIST_KEY, JSON.stringify(updated));
-    } catch (e) {
-      console.error(e);
-    }
-    return user;
+  async refreshUsersDirectory(): Promise<UserAccount[]> {
+    const res = await http.get<{ users: any[] }>('/users');
+    directoryCache = res.users.map(toUserAccount);
+    return directoryCache;
   },
 
-  updateUserInDirectory(user: UserAccount): void {
-    const list = this.getUsersDirectory();
-    const updated = list.map(u => (u.id === user.id ? user : u));
-    try {
-      localStorage.setItem(USERS_LIST_KEY, JSON.stringify(updated));
-    } catch (e) {
-      console.error(e);
-    }
-  },
-
-  toggleUserStatus(userId: string): UserAccount[] {
-    const list = this.getUsersDirectory();
-    const updated = list.map(u => {
-      if (u.id === userId) {
-        return {
-          ...u,
-          status: (u.status === 'Active' ? 'Inactive' : 'Active') as 'Active' | 'Inactive'
-        };
-      }
-      return u;
+  /** Creates an active account; the server returns a one-time temporary password to hand over securely. */
+  async saveUserToDirectory(
+    newUser: Omit<UserAccount, 'id' | 'lastActive'>
+  ): Promise<{ user: UserAccount; temporaryPassword: string }> {
+    const res = await http.post<any>('/users', {
+      name: newUser.name,
+      email: newUser.email,
+      role: newUser.role,
+      department: newUser.department
     });
-    try {
-      localStorage.setItem(USERS_LIST_KEY, JSON.stringify(updated));
-    } catch (e) {
-      console.error(e);
-    }
-    return updated;
+    await this.refreshUsersDirectory();
+    return { user: toUserAccount(res.user), temporaryPassword: res.temporary_password };
+  },
+
+  async updateUserInDirectory(user: UserAccount): Promise<void> {
+    await http.patch(`/users/${backendId(user.id)}`, {
+      display_name: user.name,
+      department: user.department,
+      role: user.role,
+      is_active: user.status === 'Active'
+    });
+    await this.refreshUsersDirectory();
+  },
+
+  async toggleUserStatus(userId: string): Promise<UserAccount[]> {
+    const user = directoryCache.find(u => u.id === userId);
+    if (!user) return directoryCache;
+    await http.patch(`/users/${backendId(userId)}`, { is_active: user.status !== 'Active' });
+    return this.refreshUsersDirectory();
   }
 };

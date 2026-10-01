@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck, Compass, School, Users } from 'lucide-react';
 
+import logoImg from '../assets/logo.png';
+
 interface MinimalLandingPageProps {
   onEnterPlatform: () => void;
 }
@@ -10,21 +12,15 @@ export const MinimalLandingPage: React.FC<MinimalLandingPageProps> = ({ onEnterP
     <div className="min-h-screen bg-white text-[#0F172A] flex flex-col justify-between selection:bg-[#2563EB] selection:text-white">
       {/* Top Simple Header */}
       <header className="h-16 border-b border-[#E2E8F0] px-6 sm:px-12 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-[6px] bg-[#2563EB] flex items-center justify-center text-white font-bold text-xs shadow-xs">
-            <span className="font-mono">E·</span>
-          </div>
-          <span className="font-extrabold text-base tracking-tight text-[#0B1F3A]">
+        <div className="flex items-center">
+          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#172554] select-none">
             EduMatch AI
-          </span>
-          <span className="hidden sm:inline text-xs text-[#64748B] pl-2 border-l border-[#E2E8F0]">
-            AI-assisted. Human-approved.
           </span>
         </div>
 
         <button
           onClick={onEnterPlatform}
-          className="px-3.5 py-1.5 bg-[#0B1F3A] hover:bg-slate-800 text-white text-xs font-semibold rounded-[6px] transition-colors cursor-pointer"
+          className="px-3.5 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold rounded-[6px] transition-colors cursor-pointer"
         >
           Launch Console
         </button>
@@ -33,13 +29,13 @@ export const MinimalLandingPage: React.FC<MinimalLandingPageProps> = ({ onEnterP
       {/* 15. Centered Minimal Hero */}
       <main className="max-w-4xl mx-auto px-6 py-16 sm:py-24 text-center space-y-8">
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-[#0B1F3A] text-xs font-medium">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-[#172554] text-xs font-medium">
             <span>NESA Challenge 2026</span>
             <span aria-hidden="true">·</span>
             <span className="text-[#0F9D8A] font-semibold">O-Level Secondary Placement</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-[#0B1F3A] tracking-tight leading-[1.1] text-balance">
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-[#172554] tracking-tight leading-[1.1] text-balance">
             Smarter Placement.<br />Better Opportunities.
           </h1>
 
@@ -72,10 +68,10 @@ export const MinimalLandingPage: React.FC<MinimalLandingPageProps> = ({ onEnterP
               <text x="200" y="22" textAnchor="middle" fill="#64748B" fontSize="11" fontWeight="700" letterSpacing="1">
                 STUDENTS (APPLICANTS)
               </text>
-              <circle cx="100" cy="45" r="7" fill="#0B1F3A" stroke="#0B1F3A" />
-              <circle cx="165" cy="45" r="7" fill="#0B1F3A" stroke="#0B1F3A" />
-              <circle cx="235" cy="45" r="7" fill="#0B1F3A" stroke="#0B1F3A" />
-              <circle cx="300" cy="45" r="7" fill="#0B1F3A" stroke="#0B1F3A" />
+              <circle cx="100" cy="45" r="7" fill="#2563EB" stroke="#2563EB" />
+              <circle cx="165" cy="45" r="7" fill="#2563EB" stroke="#2563EB" />
+              <circle cx="235" cy="45" r="7" fill="#2563EB" stroke="#2563EB" />
+              <circle cx="300" cy="45" r="7" fill="#2563EB" stroke="#2563EB" />
 
               {/* Connecting Lines down to Core */}
               <path d="M100 52 L175 110" stroke="#CBD5E1" strokeDasharray="3 3" />
@@ -84,7 +80,7 @@ export const MinimalLandingPage: React.FC<MinimalLandingPageProps> = ({ onEnterP
               <path d="M300 52 L225 110" stroke="#CBD5E1" strokeDasharray="3 3" />
 
               {/* Center Core: EDU MATCH */}
-              <rect x="140" y="105" width="120" height="34" rx="4" fill="#0B1F3A" stroke="#2563EB" strokeWidth="1.5" />
+              <rect x="140" y="105" width="120" height="34" rx="4" fill="#2563EB" stroke="#2563EB" strokeWidth="1.5" />
               <text x="200" y="126" textAnchor="middle" fill="#FFFFFF" fontSize="12" fontWeight="700">
                 EDU MATCH AI
               </text>
@@ -111,21 +107,21 @@ export const MinimalLandingPage: React.FC<MinimalLandingPageProps> = ({ onEnterP
         {/* Minimal Proof Points */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#E2E8F0] text-left">
           <div className="p-4 bg-white rounded-[8px] border border-[#E2E8F0]">
-            <div className="text-xs font-bold text-[#0B1F3A] mb-1">Human-in-the-Loop</div>
+            <div className="text-xs font-bold text-[#172554] mb-1">Human-in-the-Loop</div>
             <p className="text-xs text-[#64748B] leading-relaxed">
               Every draft recommendation requires officer approval. The platform never bypasses human judgment.
             </p>
           </div>
 
           <div className="p-4 bg-white rounded-[8px] border border-[#E2E8F0]">
-            <div className="text-xs font-bold text-[#0B1F3A] mb-1">Deterministic Rules</div>
+            <div className="text-xs font-bold text-[#172554] mb-1">Deterministic Rules</div>
             <p className="text-xs text-[#64748B] leading-relaxed">
               Guarantees zero capacity overflow and 100% eligibility threshold enforcement before sign-off.
             </p>
           </div>
 
           <div className="p-4 bg-white rounded-[8px] border border-[#E2E8F0]">
-            <div className="text-xs font-bold text-[#0B1F3A] mb-1">Auditability & Transparency</div>
+            <div className="text-xs font-bold text-[#172554] mb-1">Auditability & Transparency</div>
             <p className="text-xs text-[#64748B] leading-relaxed">
               Every placement records the applied rules, preference ranking, and officer justification facts.
             </p>

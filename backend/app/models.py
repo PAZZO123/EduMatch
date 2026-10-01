@@ -22,11 +22,15 @@ def new_id() -> str:
 class User(Base):
     __tablename__ = 'users'
     id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str] = mapped_column(String(64), unique=True)
+    username: Mapped[str] = mapped_column(String(128), unique=True)   # sign-in name (an email for UI accounts)
     display_name: Mapped[str] = mapped_column(String(128))
-    role: Mapped[str] = mapped_column(String(16))            # ADMIN | OFFICER
+    role: Mapped[str] = mapped_column(String(16))            # ADMIN | OFFICER | VIEWER (enforced server-side)
+    title: Mapped[str] = mapped_column(String(64), default='')   # UI role label, e.g. "Placement Officer"
+    department: Mapped[str] = mapped_column(String(128), default='')
     password_hash: Mapped[str] = mapped_column(String(256))
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_via: Mapped[str] = mapped_column(String(16), default='SEED')   # SEED | ADMIN | SELF
+    last_login_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
@@ -144,6 +148,10 @@ class Proposal(Base):
     decision_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     reviewer: Mapped[str | None] = mapped_column(String(64), nullable=True)
     reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # Officer assignment of an unplaced student may deliberately go beyond the default rules. Each flag is a
+    # recorded, reasoned exception that the plan checker accepts (capacity and uniqueness never have exceptions).
+    override_preference: Mapped[bool] = mapped_column(Boolean, default=False)    # school not among the student's choices
+    override_eligibility: Mapped[bool] = mapped_column(Boolean, default=False)   # student below the school's entry rules
     run: Mapped[PlacementRun] = relationship(back_populates='proposals')
     __table_args__ = (
         UniqueConstraint('run_id', 'student_id', name='uq_run_student'),
@@ -169,6 +177,28 @@ class AuditEvent(Base):
     new_offer_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     details: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class PlacementHistory(Base):
+    """Permanent snapshot of a placement run and every student's result. Written when a run completes, is
+    replaced by a newer run, or before a reset / re-import / delete removes it. No foreign keys, so it survives."""
+    __tablename__ = 'placement_history'
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    run_id: Mapped[str] = mapped_column(String(36), unique=True)
+    cohort_id: Mapped[str] = mapped_column(String(64), index=True)
+    cohort_source: Mapped[str] = mapped_column(String(64))
+    run_created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    run_created_by: Mapped[str] = mapped_column(String(128))
+    archived_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, index=True)
+    archived_reason: Mapped[str] = mapped_column(String(32))   # COMPLETED | SUPERSEDED | COHORT_RESET | COHORT_REPLACED | COHORT_DELETED
+    run_status: Mapped[str] = mapped_column(String(16))
+    mode: Mapped[str] = mapped_column(String(16))
+    model_version: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    rule_version: Mapped[str] = mapped_column(String(64))
+    input_version: Mapped[int] = mapped_column(Integer)
+    runtime_ms: Mapped[float] = mapped_column(Float)
+    metrics: Mapped[dict] = mapped_column(JSON)
+    results: Mapped[list] = mapped_column(JSON)
 
 
 RESERVING = ('DRAFT', 'CHANGED', 'APPROVED')   # statuses that hold a seat

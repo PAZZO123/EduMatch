@@ -1,8 +1,8 @@
 {
   "status": 200,
   "body": {
-    "proposal_id": "e1682c25-160e-4717-a690-3b7051faa604",
-    "run_id": "2081e770-f41d-4524-9030-c8734edab76e",
+    "proposal_id": "137e1c7d-7ce0-4458-bb5e-8dc83c0635d5",
+    "run_id": "3d60c0e8-e47e-452f-9a8f-69a099c5b748",
     "student_id": "DEMO_200-S000052",
     "offer_id": "DEMO_200-O012",
     "school_name": "Synthetic School DEMO_200 012",
@@ -25,6 +25,10 @@
     "reviewer": null,
     "reviewed_at": null,
     "decision_reason": null,
+    "override_preference": false,
+    "override_eligibility": false,
+    "reason_text": "None of the listed choices worked (not eligible for 1st choice Synthetic School DEMO_200 001 (overall score 73.6 < 80 required); not eligible for 2nd choice Synthetic School DEMO_200 006 (overall score 73.6 < 80 required); not eligible for 3rd choice Synthetic School DEMO_200 002 (overall score 73.6 < 80 required)). The student allowed alternatives, so the AI suggested Synthetic School DEMO_200 012: the most compatible eligible school with a free seat (score 77/100).",
+    "suggested_action": null,
     "student": {
       "display_name": "Synthetic Student DEMO_200 000052",
       "province": "Southern Province",

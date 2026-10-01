@@ -23,6 +23,7 @@ import classroomRwandaStudents from '../assets/images/classroom_rwanda_students_
 import learningRwandaGroup from '../assets/images/learning_rwanda_group_1790766616806.jpg';
 import impactRwandaStudents from '../assets/images/impact_rwanda_students_1790766631214.jpg';
 import campusRwandaPathway from '../assets/images/campus_rwanda_pathway_1790766641897.jpg';
+import logoImg from '../assets/logo.png';
 
 interface LandingPageProps {
   onExplorePlatform: () => void;
@@ -160,25 +161,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#0B1F3A]/90 backdrop-blur-md border-b border-white/10 shadow-sm py-3.5'
+            ? 'bg-[#1E40AF]/95 backdrop-blur-md border-b border-white/10 shadow-sm py-3.5'
             : 'bg-transparent border-b border-white/10 py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-[6px] bg-[#2563EB] flex items-center justify-center text-white font-bold text-sm shadow-xs ring-1 ring-white/20">
-                <span className="font-mono tracking-tighter">E·</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-white font-extrabold text-base tracking-tight">
-                  EduMatch
-                </span>
-                <span className="text-[#99F6E4] font-semibold text-xs px-1.5 py-0.5 rounded-[4px] bg-white/10 border border-white/20">
-                  AI
-                </span>
-              </div>
+            {/* Brand Caption */}
+            <div className="flex items-center">
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white select-none">
+                EduMatch AI
+              </span>
             </div>
 
             {/* Simplified Nav Links: How It Works, Platform, AI, Trust, Impact */}
@@ -224,7 +217,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <section
         onMouseEnter={() => setIsSlidePaused(true)}
         onMouseLeave={() => setIsSlidePaused(false)}
-        className="relative w-full min-h-[90vh] lg:min-h-screen overflow-hidden flex flex-col justify-between text-white select-none border-b border-[#0B1F3A]"
+        className="relative w-full min-h-[90vh] lg:min-h-screen overflow-hidden flex flex-col justify-between text-white select-none border-b border-[#2563EB]"
         aria-label="EduMatch AI Hero Slideshow"
       >
         {/* Full-Background Slides with synchronized Image and Caption Crossfade */}
@@ -247,9 +240,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 referrerPolicy="no-referrer"
               />
 
-              {/* Directional Dark Navy Scrim: Stronger on the left for contrast, fading toward right */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/95 via-[#0B1F3A]/75 to-[#0B1F3A]/35 lg:to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/90 via-transparent to-transparent lg:hidden" />
+              {/* Directional Scrim: Stronger on the left for contrast, fading toward right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#172554]/95 via-[#1E40AF]/75 to-[#2563EB]/35 lg:to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#172554]/90 via-transparent to-transparent lg:hidden" />
 
               {/* Corresponding Content for this slide (Transitions together with the image) */}
               <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 lg:pt-36 lg:pb-20 w-full h-full flex flex-col justify-center">
@@ -378,7 +371,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/60 via-transparent to-transparent flex items-end p-5 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#172554]/70 via-transparent to-transparent flex items-end p-5 text-white">
                   <span className="text-xs font-medium">
                     National examination candidates preparing for secondary school selection
                   </span>
@@ -392,7 +385,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
                   How It Works
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight mt-1">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#172554] tracking-tight mt-1">
                   From complex data to confident decisions.
                 </h2>
                 <p className="text-sm text-[#64748B] mt-2">
@@ -403,11 +396,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div className="space-y-3">
                 <div className="p-3.5 bg-white border border-[#E2E8F0] rounded-[6px] flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-[4px] bg-[#0B1F3A] text-white flex items-center justify-center font-mono font-bold text-xs">
+                    <span className="w-6 h-6 rounded-[4px] bg-[#2563EB] text-white flex items-center justify-center font-mono font-bold text-xs">
                       01
                     </span>
                     <div>
-                      <div className="font-bold text-xs text-[#0B1F3A]">Student Data</div>
+                      <div className="font-bold text-xs text-[#172554]">Student Data</div>
                       <div className="text-[11px] text-[#64748B]">Examination results and 3 ranked preferences</div>
                     </div>
                   </div>
@@ -420,7 +413,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                       02
                     </span>
                     <div>
-                      <div className="font-bold text-xs text-[#0B1F3A]">School Data</div>
+                      <div className="font-bold text-xs text-[#172554]">School Data</div>
                       <div className="text-[11px] text-[#64748B]">Capacity quotas and academic score thresholds</div>
                     </div>
                   </div>
@@ -433,7 +426,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                       03
                     </span>
                     <div>
-                      <div className="font-bold text-xs text-[#0B1F3A]">AI Matching</div>
+                      <div className="font-bold text-xs text-[#172554]">AI Matching</div>
                       <div className="text-[11px] text-[#64748B]">Constraint satisfaction and fallback compatibility ranking</div>
                     </div>
                   </div>
@@ -446,7 +439,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                       04
                     </span>
                     <div>
-                      <div className="font-bold text-xs text-[#0B1F3A]">Human Approval</div>
+                      <div className="font-bold text-xs text-[#172554]">Human Approval</div>
                       <div className="text-[11px] text-[#64748B]">NESA officers review recommendations and sign off</div>
                     </div>
                   </div>
@@ -465,7 +458,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Platform
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight mt-1">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#172554] tracking-tight mt-1">
               The Officer Placement Console
             </h2>
             <p className="text-sm text-[#64748B] mt-1.5">
@@ -480,7 +473,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   Candidate {activeStudent.id}
                 </span>
                 <span className="text-[#64748B] text-xs">·</span>
-                <span className="text-xs font-bold text-[#0B1F3A]">{activeStudent.name}</span>
+                <span className="text-xs font-bold text-[#172554]">{activeStudent.name}</span>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-[#D97706] border border-amber-200 text-[11px] font-semibold">
                 Needs Officer Sign-off
@@ -491,27 +484,27 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               {/* Left Profile */}
               <div className="md:col-span-6 space-y-5 bg-white p-5 rounded-[8px] border border-[#E2E8F0]">
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] mb-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#172554] mb-2">
                     Academic Performance
                   </div>
                   <div className="grid grid-cols-3 gap-2 text-center text-xs">
                     <div className="p-2.5 bg-slate-50 border border-[#E2E8F0] rounded-[6px]">
                       <span className="text-[11px] text-[#64748B] block">Math</span>
-                      <span className="font-bold text-[#0B1F3A] text-base">{activeStudent.math}</span>
+                      <span className="font-bold text-[#172554] text-base">{activeStudent.math}</span>
                     </div>
                     <div className="p-2.5 bg-slate-50 border border-[#E2E8F0] rounded-[6px]">
                       <span className="text-[11px] text-[#64748B] block">English</span>
-                      <span className="font-bold text-[#0B1F3A] text-base">{activeStudent.english}</span>
+                      <span className="font-bold text-[#172554] text-base">{activeStudent.english}</span>
                     </div>
                     <div className="p-2.5 bg-slate-50 border border-[#E2E8F0] rounded-[6px]">
                       <span className="text-[11px] text-[#64748B] block">Science</span>
-                      <span className="font-bold text-[#0B1F3A] text-base">{activeStudent.science}</span>
+                      <span className="font-bold text-[#172554] text-base">{activeStudent.science}</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] mb-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#172554] mb-2">
                     Ranked Choices
                   </div>
                   <div className="space-y-1.5 text-xs">
@@ -547,7 +540,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="text-lg font-bold text-[#0B1F3A]">
+                    <h3 className="text-lg font-bold text-[#172554]">
                       {activeStudent.recSchool}
                     </h3>
                     <div className="text-xs text-[#64748B]">
@@ -556,7 +549,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </div>
 
                   <div className="text-right">
-                    <div className="text-3xl font-extrabold font-sans text-[#0B1F3A] tabular-nums">
+                    <div className="text-3xl font-extrabold font-sans text-[#172554] tabular-nums">
                       {activeStudent.matchQuality}
                     </div>
                     <div className="text-[11px] text-[#64748B]">Match Quality</div>
@@ -581,7 +574,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </button>
                   <button
                     onClick={onExplorePlatform}
-                    className="py-2.5 px-3.5 bg-white hover:bg-slate-50 text-[#0B1F3A] border border-[#E2E8F0] font-semibold text-xs rounded-[6px] transition-colors cursor-pointer"
+                    className="py-2.5 px-3.5 bg-white hover:bg-slate-50 text-[#172554] border border-[#E2E8F0] font-semibold text-xs rounded-[6px] transition-colors cursor-pointer"
                   >
                     View Alternatives
                   </button>
@@ -600,7 +593,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <span className="text-xs font-bold uppercase tracking-wider text-[#0F9D8A]">
                 Explainability
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#172554] tracking-tight">
                 AI that explains its recommendations.
               </h2>
               <p className="text-sm text-[#64748B] leading-relaxed">
@@ -610,7 +603,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
             <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[8px] border border-[#E2E8F0] shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-                <span className="font-bold text-xs text-[#0B1F3A] uppercase tracking-wider">
+                <span className="font-bold text-xs text-[#172554] uppercase tracking-wider">
                   Recommendation Factors
                 </span>
                 <span className="font-mono text-xs font-bold text-[#0F9D8A]">
@@ -620,7 +613,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] space-y-1">
-                  <div className="flex justify-between font-semibold text-[#0B1F3A]">
+                  <div className="flex justify-between font-semibold text-[#172554]">
                     <span>Academic Fit</span>
                     <span className="font-mono text-[#0F9D8A]">100%</span>
                   </div>
@@ -631,7 +624,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 </div>
 
                 <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] space-y-1">
-                  <div className="flex justify-between font-semibold text-[#0B1F3A]">
+                  <div className="flex justify-between font-semibold text-[#172554]">
                     <span>Preference</span>
                     <span className="font-mono text-[#0F9D8A]">90%</span>
                   </div>
@@ -642,7 +635,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 </div>
 
                 <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] space-y-1">
-                  <div className="flex justify-between font-semibold text-[#0B1F3A]">
+                  <div className="flex justify-between font-semibold text-[#172554]">
                     <span>Capacity</span>
                     <span className="font-mono text-[#0F9D8A]">100%</span>
                   </div>
@@ -653,7 +646,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 </div>
 
                 <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] space-y-1">
-                  <div className="flex justify-between font-semibold text-[#0B1F3A]">
+                  <div className="flex justify-between font-semibold text-[#172554]">
                     <span>Rules</span>
                     <span className="font-mono text-[#0F9D8A]">100%</span>
                   </div>
@@ -675,7 +668,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
               Trust
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0B1F3A] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#172554] tracking-tight">
               AI recommends. Humans decide.
             </h2>
             <p className="text-base text-[#64748B] max-w-xl mx-auto leading-relaxed">
@@ -686,19 +679,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs text-left">
             <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px]">
               <span className="text-[10px] font-mono text-[#64748B] block">01</span>
-              <span className="font-bold text-[#0B1F3A] block mt-0.5">AI Recommendation</span>
+              <span className="font-bold text-[#172554] block mt-0.5">AI Recommendation</span>
               <span className="text-[11px] text-[#64748B]">Proposes candidates</span>
             </div>
 
             <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px]">
               <span className="text-[10px] font-mono text-[#64748B] block">02</span>
-              <span className="font-bold text-[#0B1F3A] block mt-0.5">Officer Review</span>
+              <span className="font-bold text-[#172554] block mt-0.5">Officer Review</span>
               <span className="text-[11px] text-[#64748B]">Verifies facts</span>
             </div>
 
             <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px]">
               <span className="text-[10px] font-mono text-[#64748B] block">03</span>
-              <span className="font-bold text-[#0B1F3A] block mt-0.5">Approve or Change</span>
+              <span className="font-bold text-[#172554] block mt-0.5">Approve or Change</span>
               <span className="text-[11px] text-[#64748B]">Controlled override</span>
             </div>
 
@@ -710,19 +703,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-4xl mx-auto text-xs pt-4">
-            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#0B1F3A]">
+            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#172554]">
               Human Oversight
             </div>
-            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#0B1F3A]">
+            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#172554]">
               Explainability
             </div>
-            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#0B1F3A]">
+            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#172554]">
               Rule Compliance
             </div>
-            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#0B1F3A]">
+            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#172554]">
               Privacy
             </div>
-            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#0B1F3A] col-span-2 sm:col-span-1">
+            <div className="p-3 bg-slate-50 rounded-[6px] border border-[#E2E8F0] font-semibold text-[#172554] col-span-2 sm:col-span-1">
               Auditability
             </div>
           </div>
@@ -741,7 +734,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/70 via-transparent to-transparent flex items-end p-6 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#172554]/75 via-transparent to-transparent flex items-end p-6 text-white">
                   <span className="text-xs font-semibold">
                     Equitable educational access for secondary students across Rwanda
                   </span>
@@ -754,28 +747,28 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
                   Impact
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1F3A] tracking-tight mt-1">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#172554] tracking-tight mt-1">
                   Designed for national scale.
                 </h2>
               </div>
 
               <div className="space-y-4">
                 <div className="p-4 bg-white rounded-[6px] border border-[#E2E8F0]">
-                  <h3 className="text-base font-bold text-[#0B1F3A]">Faster decisions.</h3>
+                  <h3 className="text-base font-bold text-[#172554]">Faster decisions.</h3>
                   <p className="text-xs text-[#64748B] mt-0.5">
                     Reduces placement turnaround from weeks to instantaneous proposals.
                   </p>
                 </div>
 
                 <div className="p-4 bg-white rounded-[6px] border border-[#E2E8F0]">
-                  <h3 className="text-base font-bold text-[#0B1F3A]">Better matching.</h3>
+                  <h3 className="text-base font-bold text-[#172554]">Better matching.</h3>
                   <p className="text-xs text-[#64748B] mt-0.5">
                     Matches subject aptitude with specialized academic programmes.
                   </p>
                 </div>
 
                 <div className="p-4 bg-white rounded-[6px] border border-[#E2E8F0]">
-                  <h3 className="text-base font-bold text-[#0B1F3A]">More transparency.</h3>
+                  <h3 className="text-base font-bold text-[#172554]">More transparency.</h3>
                   <p className="text-xs text-[#64748B] mt-0.5">
                     Every match is explainable with recorded criteria.
                   </p>
@@ -795,7 +788,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-[#0B1F3A]/90" />
+          <div className="absolute inset-0 bg-[#2563EB]/90" />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
@@ -824,24 +817,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       </section>
 
       {/* REDESIGNED PROFESSIONAL & SPACIOUS FOOTER */}
-      <footer className="bg-[#0B1F3A] text-slate-300 pt-16 pb-12 sm:pt-20 sm:pb-16 border-t border-slate-800">
+      <footer className="bg-[#2563EB] text-slate-300 pt-16 pb-12 sm:pt-20 sm:pb-16 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Footer Grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
             {/* Col 1: Strong Brand Area (5 Cols) */}
             <div className="md:col-span-5 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-[8px] bg-[#2563EB] flex items-center justify-center text-white font-bold text-base shadow-sm ring-1 ring-white/10">
-                  <span className="font-mono tracking-tighter">E·</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-white font-extrabold text-xl tracking-tight">
-                    EduMatch
-                  </span>
-                  <span className="text-[#0F9D8A] font-semibold text-xs px-1.5 py-0.5 rounded-[4px] bg-[#0F9D8A]/15 border border-[#0F9D8A]/30">
-                    AI
-                  </span>
-                </div>
+                <img src={logoImg} alt="EduMatch AI" className="h-12 sm:h-14 w-auto object-contain" />
               </div>
 
               <div className="text-sm font-semibold text-slate-200">
@@ -1024,10 +1007,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
       {/* Resource Modal for Footer Links */}
       {resourceModal && (
-        <div className="fixed inset-0 z-50 bg-[#0B1F3A]/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-2xl max-w-md w-full p-6 space-y-4 text-xs text-[#0F172A]">
             <div className="flex items-start justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="text-base font-bold text-[#0B1F3A]">
+              <h3 className="text-base font-bold text-[#172554]">
                 {resourceModal.title}
               </h3>
               <button
@@ -1045,7 +1028,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setResourceModal(null)}
-                className="px-4 py-2 bg-[#0B1F3A] hover:bg-slate-800 text-white rounded-[6px] font-semibold text-xs transition-colors cursor-pointer"
+                className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs transition-colors cursor-pointer"
               >
                 Close
               </button>

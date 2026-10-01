@@ -23,6 +23,7 @@ import {
   X
 } from 'lucide-react';
 import { authService, DEMO_ACCOUNTS } from '../services/auth';
+import logoImg from '../assets/logo.png';
 
 // Authentic Rwandan secondary education photography
 import heroRwandaStudents from '../assets/images/hero_rwanda_students_1790766556338.jpg';
@@ -96,8 +97,8 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
       return;
     }
 
-    if (password.length < 6) {
-      setErrorMessage('Password must be at least 6 characters long.');
+    if (password.length < 8) {
+      setErrorMessage('Password must be at least 8 characters long.');
       return;
     }
 
@@ -156,7 +157,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
       {/* ============================================================== */}
       {/* 1. LEFT SIDE: EXACTLY EQUAL 50% SPLIT IMAGE COLUMN */}
       {/* ============================================================== */}
-      <div className="relative w-full h-72 md:h-full min-h-full overflow-hidden bg-[#0B1F3A] flex flex-col justify-between p-6 sm:p-10 order-1 md:order-1">
+      <div className="relative w-full h-72 md:h-full min-h-full overflow-hidden bg-gradient-to-br from-[#1E40AF] via-[#2563EB] to-[#3B82F6] flex flex-col justify-between p-6 sm:p-10 order-1 md:order-1">
         {/* Full-Cover Background Photograph */}
         <img
           src={mode === 'login' ? heroRwandaStudents : learningRwandaGroup}
@@ -170,7 +171,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         />
 
         {/* Subtle Dark Navy Scrim Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/90 via-[#0B1F3A]/40 to-[#0B1F3A]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A8A]/90 via-[#1E40AF]/40 to-transparent" />
 
         {/* Top-Left Back Link */}
         <div className="relative z-20">
@@ -218,22 +219,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         <div className="max-w-md w-full mx-auto space-y-6">
           {/* Logo & Header */}
           <div className="space-y-2">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-[6px] bg-[#2563EB] flex items-center justify-center text-white font-bold text-sm shadow-xs ring-1 ring-black/5">
-                <span className="font-mono tracking-tighter">E·</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[#0B1F3A] font-extrabold text-base tracking-tight">
-                  EduMatch
-                </span>
-                <span className="text-[#0F9D8A] font-semibold text-xs px-1.5 py-0.5 rounded-[4px] bg-[#0F9D8A]/10 border border-[#0F9D8A]/30">
-                  AI
-                </span>
-              </div>
+            <div className="flex items-center">
+              <img src={logoImg} alt="EduMatch AI" className="h-14 sm:h-16 w-auto object-contain" />
             </div>
 
             <div className="pt-2">
-              <h1 className="text-2xl sm:text-3xl font-bold text-[#0B1F3A] tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#172554] tracking-tight">
                 {mode === 'login' ? 'Welcome back' : 'Create your account'}
               </h1>
               <p className="text-xs text-[#64748B] mt-1">
@@ -259,7 +250,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               {/* Email */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-[#0B1F3A]">
+                <label className="block text-xs font-semibold text-[#172554]">
                   Email Address
                 </label>
                 <div className="relative">
@@ -281,7 +272,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               {/* Password */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="block text-xs font-semibold text-[#0B1F3A]">
+                  <label className="block text-xs font-semibold text-[#172554]">
                     Password
                   </label>
                   <button
@@ -312,7 +303,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0B1F3A] transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#172554] transition-colors cursor-pointer"
                     tabIndex={-1}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -342,7 +333,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               {/* Demo Mode Quick Accounts */}
               <div className="p-3 bg-slate-50 border border-[#E2E8F0] rounded-[6px] text-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#0B1F3A] flex items-center gap-1.5">
+                  <span className="font-bold text-[#172554] flex items-center gap-1.5">
                     <KeyRound className="w-3.5 h-3.5 text-[#0F9D8A]" />
                     <span>Demo Accounts</span>
                   </span>
@@ -430,7 +421,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             <form onSubmit={handleSignUpSubmit} className="space-y-3.5">
               {/* Full Name */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0B1F3A]">
+                <label className="block text-xs font-semibold text-[#172554]">
                   Full Name
                 </label>
                 <div className="relative">
@@ -448,7 +439,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
               {/* Email */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0B1F3A]">
+                <label className="block text-xs font-semibold text-[#172554]">
                   Email Address
                 </label>
                 <div className="relative">
@@ -466,7 +457,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
               {/* Role Dropdown (Placement Officer or School Admin only) */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0B1F3A]">
+                <label className="block text-xs font-semibold text-[#172554]">
                   Account Role
                 </label>
                 <select
@@ -484,7 +475,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
               {/* Password */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0B1F3A]">
+                <label className="block text-xs font-semibold text-[#172554]">
                   Password
                 </label>
                 <div className="relative">
@@ -494,13 +485,13 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     required
                     value={password}
                     onChange={e => setPassword(e.target.value)}
-                    placeholder="At least 6 characters"
+                    placeholder="At least 8 characters"
                     className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0B1F3A] transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#172554] transition-colors cursor-pointer"
                     tabIndex={-1}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -510,7 +501,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
               {/* Confirm Password */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0B1F3A]">
+                <label className="block text-xs font-semibold text-[#172554]">
                   Confirm Password
                 </label>
                 <div className="relative">
@@ -526,7 +517,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0B1F3A] transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#172554] transition-colors cursor-pointer"
                     tabIndex={-1}
                   >
                     {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -581,10 +572,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
       {/* Forgot Password Modal */}
       {forgotModalOpen && (
-        <div className="fixed inset-0 z-50 bg-[#0B1F3A]/40 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-sm w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="font-bold text-sm text-[#0B1F3A]">Password Reset</h3>
+              <h3 className="font-bold text-sm text-[#172554]">Password Reset</h3>
               <button
                 onClick={() => setForgotModalOpen(false)}
                 className="text-slate-400 hover:text-slate-700"
@@ -601,7 +592,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 <div className="flex justify-end">
                   <button
                     onClick={() => setForgotModalOpen(false)}
-                    className="px-4 py-1.5 bg-[#0B1F3A] text-white rounded-[6px] font-semibold text-xs"
+                    className="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs"
                   >
                     Done
                   </button>
@@ -613,7 +604,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                   Enter your administrative email address to receive a secure recovery code.
                 </p>
                 <div>
-                  <label className="block text-xs font-semibold text-[#0B1F3A] mb-1">
+                  <label className="block text-xs font-semibold text-[#172554] mb-1">
                     Email Address
                   </label>
                   <input
@@ -629,7 +620,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                   <button
                     type="button"
                     onClick={() => setForgotModalOpen(false)}
-                    className="px-3.5 py-1.5 text-xs text-[#64748B] hover:text-[#0B1F3A]"
+                    className="px-3.5 py-1.5 text-xs text-[#64748B] hover:text-[#172554]"
                   >
                     Cancel
                   </button>

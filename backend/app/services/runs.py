@@ -64,7 +64,11 @@ def create_run(db: Session, cohort: Cohort, expected_input_version: int, mode: s
         # 8. persist run + proposals in one transaction
         previous = cohort.active_run_id
         if previous:
-            db.execute(update(PlacementRun).where(PlacementRun.id == previous).values(status='SUPERSEDED'))
+            from .history import snapshot  # local import: history uses this module
+            prev_run = db.get(PlacementRun, previous)
+            prev_run.status = 'SUPERSEDED'
+            db.flush()
+            snapshot(db, prev_run, 'SUPERSEDED')
         seats = sum(o.capacity for o in inputs.offers)
         metrics = plan_metrics(len(inputs.students), seats, [
             {'offer_id': p.offer_id, 'status': p.status, 'preference_rank': p.preference_rank,
@@ -125,7 +129,8 @@ def get_run(db: Session, run_id: str) -> PlacementRun:
 
 def plan_rows(db: Session, run_id: str) -> list[dict]:
     rows = db.execute(select(Proposal.student_id, Proposal.offer_id, Proposal.status, Proposal.preference_rank,
-                             Proposal.fallback_used, Proposal.reason_code).where(Proposal.run_id == run_id)).all()
+                             Proposal.fallback_used, Proposal.reason_code, Proposal.override_preference,
+                             Proposal.override_eligibility).where(Proposal.run_id == run_id)).all()
     return [dict(r._mapping) for r in rows]
 
 
@@ -148,7 +153,12 @@ def refresh_status(db: Session, run: PlacementRun):
         return
     pending = db.scalar(select(func.count()).select_from(Proposal)
                         .where(Proposal.run_id == run.id, Proposal.status.in_(('DRAFT', 'CHANGED'))))
+    was_completed = run.status == 'COMPLETED'
     run.status = 'COMPLETED' if pending == 0 else 'UNDER_REVIEW'
+    if run.status == 'COMPLETED' and not was_completed:
+        from .history import snapshot
+        db.flush()
+        snapshot(db, run, 'COMPLETED')
 
 
 def list_proposals(db: Session, run: PlacementRun, status: str | None, offer_id: str | None, student_id: str | None,

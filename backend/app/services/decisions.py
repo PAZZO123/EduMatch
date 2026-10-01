@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from ..domain.allocation import rank_alternatives
+from ..domain.allocation import rank_alternatives, rank_open_offers
 from ..domain.invariants import check_plan
 from ..domain.rules import eligibility_failures, pair_features
 from ..errors import ApiError
@@ -20,7 +20,10 @@ from .cohorts import load_inputs
 from .runs import plan_rows, refresh_status, reservations
 
 DECIDABLE = {'approve': ('DRAFT', 'CHANGED'), 'reject': ('DRAFT', 'CHANGED'),
-             'change': ('DRAFT', 'CHANGED', 'REJECTED', 'UNASSIGNED')}
+             'change': ('DRAFT', 'CHANGED', 'REJECTED', 'UNASSIGNED'),
+             'assign': ('UNASSIGNED', 'REJECTED')}
+EXCEPTION_CODES = {'OUTSIDE_CHOICES': 'EXCEPTION_OUTSIDE_CHOICES',
+                   'BELOW_ENTRY_REQUIREMENTS': 'EXCEPTION_BELOW_ENTRY_REQUIREMENTS'}
 
 
 def get_proposal(db: Session, proposal_id: str) -> Proposal:
@@ -43,7 +46,7 @@ def _check_run_is_active(db: Session, run: PlacementRun) -> Cohort:
 
 
 def decide(db: Session, proposal_id: str, action: str, offer_id: str | None, reason: str | None,
-           expected_revision: int, user: User, registry: ModelRegistry) -> Proposal:
+           expected_revision: int, user: User, registry: ModelRegistry, allow_below_cutoff: bool = False) -> Proposal:
     proposal = get_proposal(db, proposal_id)
     run = proposal.run
     cohort = _check_run_is_active(db, run)
@@ -54,7 +57,7 @@ def decide(db: Session, proposal_id: str, action: str, offer_id: str | None, rea
         code = 'ALREADY_APPROVED' if proposal.status == 'APPROVED' else 'INVALID_TRANSITION'
         raise ApiError(409, code, f'Cannot {action} a proposal whose status is {proposal.status}.')
     reason = (reason or '').strip()
-    if action in ('change', 'reject') and not reason:
+    if action in ('change', 'reject', 'assign') and not reason:
         raise ApiError(422, 'REASON_REQUIRED', f'A reason is required to {action} a proposal.')
     if len(reason) > 1000:
         raise ApiError(422, 'REASON_TOO_LONG', 'Reason must be at most 1000 characters.')
@@ -73,9 +76,13 @@ def decide(db: Session, proposal_id: str, action: str, offer_id: str | None, rea
         reason = reason or 'Approved as proposed.'
 
     elif action == 'reject':
+        proposal.override_preference = proposal.override_eligibility = False
         proposal.released_offer_id, proposal.offer_id = old_offer, None
         proposal.status, proposal.preference_rank, proposal.fallback_used = 'REJECTED', None, False
         proposal.reason_codes = [*proposal.reason_codes, 'OFFICER_REJECTED']
+
+    elif action == 'assign':
+        _assign(db, run, cohort, inputs, student, proposal, offer_id, allow_below_cutoff, registry)
 
     else:  # change
         if not offer_id:
@@ -104,6 +111,7 @@ def decide(db: Session, proposal_id: str, action: str, offer_id: str | None, rea
         proposal.fallback_used = offer_id not in listed
         proposal.fit_score = (round(100 * float(model.score([pair_features(student, offer_rec)])[0]), 2)
                               if model and proposal.fallback_used else None)
+        proposal.override_preference = proposal.override_eligibility = False
         proposal.reason_codes = [*proposal.reason_codes, 'OFFICER_CHANGED']
         db.flush()
         invariants = check_plan(inputs, plan_rows(db, run.id))
@@ -116,11 +124,65 @@ def decide(db: Session, proposal_id: str, action: str, offer_id: str | None, rea
     db.flush()
     refresh_status(db, run)
     audit.record(db, user, {'approve': 'PROPOSAL_APPROVED', 'reject': 'PROPOSAL_REJECTED',
-                            'change': 'PROPOSAL_CHANGED'}[action],
+                            'change': 'PROPOSAL_CHANGED', 'assign': 'PROPOSAL_ASSIGNED'}[action],
+                 exceptions=[c for c, on in (('OUTSIDE_CHOICES', proposal.override_preference),
+                                             ('BELOW_ENTRY_REQUIREMENTS', proposal.override_eligibility)) if on],
                  cohort_id=cohort.id, run_id=run.id, proposal_id=proposal.id, student_id=proposal.student_id,
                  old_offer_id=old_offer, new_offer_id=proposal.offer_id, reason=reason, revision=proposal.revision,
                  input_version=run.input_version, rule_version=run.rule_version, model_version=run.model_version)
     return proposal
+
+
+def _assign(db: Session, run: PlacementRun, cohort: Cohort, inputs, student, proposal: Proposal,
+            offer_id: str | None, allow_below_cutoff: bool, registry: ModelRegistry):
+    """Officer places an unplaced or rejected student at ANY school with a free seat. Going outside the
+    student's choices, or below the entry rules, is allowed only as a recorded exception with a reason
+    (below-cutoff needs explicit confirmation). Capacity is never exceeded."""
+    if not offer_id:
+        raise ApiError(422, 'OFFER_REQUIRED', 'offer_id is required to assign a school.')
+    target = db.get(Offer, (cohort.id, offer_id))
+    if target is None:
+        raise ApiError(422, 'UNKNOWN_OFFER', f'Offer "{offer_id}" is not in this cohort.')
+    offer_rec = next(o for o in inputs.offers if o.offer_id == offer_id)
+    failures = eligibility_failures(student, offer_rec)
+    if failures and not allow_below_cutoff:
+        raise ApiError(422, 'INELIGIBLE_OFFER', 'The student is below this school\'s entry requirements. Confirm the '
+                                                'eligibility exception (allow_below_cutoff) to assign anyway.',
+                       {'failures': failures})
+    held = reservations(db, run.id, exclude_proposal=proposal.id)
+    if held.get(offer_id, 0) >= target.capacity:
+        raise ApiError(409, 'CAPACITY_FULL', f'Offer {offer_id} has no free seat.',
+                       {'capacity': target.capacity, 'reserved_by_others': held.get(offer_id, 0)})
+    listed = {p.offer_id: p.rank for p in inputs.preferences if p.student_id == student.student_id}
+    outside = offer_id not in listed and not (inputs.fallback_enabled and student.allow_fallback)
+    model = registry.active
+    proposal.offer_id, proposal.status, proposal.released_offer_id = offer_id, 'CHANGED', None
+    proposal.preference_rank = listed.get(offer_id)
+    proposal.fallback_used = False   # a person chose this school, not the AI fallback
+    proposal.fit_score = round(100 * float(model.score([pair_features(student, offer_rec)])[0]), 2) if model else None
+    proposal.override_preference, proposal.override_eligibility = outside, bool(failures)
+    codes = ['OFFICER_ASSIGNED'] + (['EXCEPTION_OUTSIDE_CHOICES'] if outside else []) + \
+            (['EXCEPTION_BELOW_ENTRY_REQUIREMENTS'] if failures else [])
+    proposal.reason_codes = [*proposal.reason_codes, *codes]
+    db.flush()
+    invariants = check_plan(inputs, plan_rows(db, run.id))
+    if not invariants['passed']:
+        raise ApiError(409, 'PLAN_INVALID', 'Assignment would break a hard constraint; nothing was changed.', invariants)
+
+
+def open_offers(db: Session, proposal: Proposal, registry: ModelRegistry) -> dict:
+    """Every school with a free seat for this student, ranked for an officer assignment."""
+    run = proposal.run
+    inputs = load_inputs(db, db.get(Cohort, run.cohort_id))
+    student = next(s for s in inputs.students if s.student_id == proposal.student_id)
+    held = reservations(db, run.id, exclude_proposal=proposal.id)
+    free = {o.offer_id: o.capacity - held.get(o.offer_id, 0) for o in inputs.offers}
+    model = registry.active
+    rows = rank_open_offers(student, inputs, free, model.score if model else None, exclude_offer=proposal.offer_id)
+    return {'proposal_id': proposal.id, 'student_id': student.student_id, 'overall_score': student.overall_score,
+            'allow_fallback': student.allow_fallback, 'model_version': model.model_version if model else None,
+            'options': rows,
+            'note': 'Schools needing an exception are allowed only with a reason; capacity is never exceeded.'}
 
 
 def bulk_approve(db: Session, run: PlacementRun, expected_run_revision: int, user: User) -> dict:
