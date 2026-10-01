@@ -1,5 +1,5 @@
 # EduMatch AI — one container: FastAPI serves the API at /api and the built React app at /.
-# Works on Hugging Face Spaces (port 7860) and Render/Koyeb/Railway (they set $PORT).
+# Listens on $PORT (set by Render and similar hosts), or 7860 when run locally.
 
 # ---- 1. Build the frontend ----
 FROM node:22-slim AS web
@@ -15,7 +15,7 @@ RUN npm run build
 FROM python:3.13-slim
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Hugging Face Spaces runs containers as uid 1000.
+# Run as an unprivileged user.
 RUN useradd -m -u 1000 user
 WORKDIR /app
 
