@@ -5,29 +5,12 @@
 
 // MOCK ROLE-BASED AUTHENTICATION — replace with secure backend authentication and authorization before production.
 
-import React, { useState } from 'react';
-import {
-  Lock,
-  Mail,
-  User,
-  Eye,
-  EyeOff,
-  ArrowRight,
-  ShieldAlert,
-  Loader2,
-  ChevronLeft,
-  KeyRound,
-  CheckCircle2,
-  Shield,
-  HelpCircle,
-  X
-} from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Eye, EyeOff, ShieldAlert, Loader2, ShieldCheck, X, Cpu, GraduationCap, School, Check } from 'lucide-react';
 import { authService, DEMO_ACCOUNTS } from '../services/auth';
 import logoImg from '../assets/logo.png';
 
-// Authentic Rwandan secondary education photography
-import heroRwandaStudents from '../assets/images/hero_rwanda_students_1790766556338.jpg';
-import learningRwandaGroup from '../assets/images/learning_rwanda_group_1790766616806.jpg';
+import './auth.css';
 
 interface AdminLoginProps {
   onLoginSuccess: () => void;
@@ -66,7 +49,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
     setErrorMessage(null);
 
     if (!email.trim() || !password.trim()) {
-      setErrorMessage('Please enter both your administrator email and password.');
+      setErrorMessage('Please enter your email address and password.');
       return;
     }
 
@@ -152,491 +135,53 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
     setForgotSuccess(true);
   };
 
+  const [animationPaused, setAnimationPaused] = useState(false);
+  const resetDialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    if (forgotModalOpen) resetDialog.current?.showModal();
+    else resetDialog.current?.close();
+  }, [forgotModalOpen]);
+
   return (
-    <div className="min-h-screen bg-white grid grid-cols-1 md:grid-cols-2 selection:bg-[#0077B6] selection:text-white">
-      {/* ============================================================== */}
-      {/* 1. LEFT SIDE: EXACTLY EQUAL 50% SPLIT IMAGE COLUMN */}
-      {/* ============================================================== */}
-      <div className="relative w-full h-72 md:h-full min-h-full overflow-hidden bg-gradient-to-br from-[#0077B6] via-[#0077B6] to-[#20B2AA] flex flex-col justify-between p-6 sm:p-10 order-1 md:order-1">
-        {/* Full-Cover Background Photograph */}
-        <img
-          src={mode === 'login' ? heroRwandaStudents : learningRwandaGroup}
-          alt={
-            mode === 'login'
-              ? 'Rwandan secondary school students walking in school uniforms'
-              : 'Rwandan students collaborating in study hall'
-          }
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-          referrerPolicy="no-referrer"
-        />
-
-        {/* Subtle Dark Navy Scrim Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0077B6]/90 via-[#0077B6]/40 to-transparent" />
-
-        {/* Top-Left Back Link */}
-        <div className="relative z-20">
-          <button
-            onClick={onBackToLanding}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 text-xs font-semibold text-white transition-colors cursor-pointer"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Back to site</span>
-          </button>
-        </div>
-
-        {/* Bottom-Left Overlay Content */}
-        <div className="relative z-20 text-white space-y-2 max-w-lg hidden sm:block">
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-mono uppercase tracking-wider text-[#B1E5E0] font-semibold">
-            {mode === 'login' ? 'National O-Level Placement' : 'Institutional Pathway Allocation'}
+    <div className="auth-page">
+<main className="auth-layout">
+        <aside className="auth-story" aria-labelledby="auth-story-title">
+          <span className="auth-eyebrow">O’Level school placement</span>
+          <h2 id="auth-story-title">Better placements<br />begin here.</h2>
+          <p>Bring student potential and school opportunity together, with a little help from AI.</p>
+          <div className={`auth-illustration${animationPaused ? ' is-paused' : ''}`} aria-hidden="true">
+            <div className="auth-orbit auth-orbit-outer" /><div className="auth-orbit auth-orbit-inner" />
+            <div className="auth-ai"><Cpu size={38} strokeWidth={1.4} /><span>EduMatch AI</span></div>
+            <span className="auth-node auth-node-student"><GraduationCap size={25} /></span>
+            <span className="auth-node auth-node-school"><School size={24} /></span>
+            <span className="auth-node auth-node-check"><Check size={21} /></span>
+            <span className="auth-orbit-dot" />
           </div>
-
-          <h2 className="text-2xl lg:text-3xl font-extrabold tracking-tight text-white leading-tight">
-            {mode === 'login' ? (
-              <>
-                Smarter Placement.<br />
-                <span className="text-[#B1E5E0]">Better Opportunities.</span>
-              </>
-            ) : (
-              <>
-                Build better pathways<br />
-                <span className="text-[#B1E5E0]">for students.</span>
-              </>
-            )}
-          </h2>
-
-          <p className="text-xs text-slate-200 leading-relaxed max-w-sm">
-            {mode === 'login'
-              ? 'AI-assisted student-school matching for Rwanda.'
-              : 'EduMatch AI brings intelligent recommendations and human decision-making together.'}
-          </p>
-        </div>
-      </div>
-
-      {/* ============================================================== */}
-      {/* 2 & 3. RIGHT SIDE: EXACTLY EQUAL 50% SPLIT FORM COLUMN */}
-      {/* ============================================================== */}
-      <div className="w-full h-full min-h-full flex flex-col justify-center px-6 py-10 sm:px-12 lg:px-16 overflow-y-auto bg-white order-2 md:order-2">
-        <div className="max-w-md w-full mx-auto space-y-6">
-          {/* Logo & Header */}
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <img src={logoImg} alt="" className="h-20 sm:h-24 w-auto object-contain" />
-              <span className="ml-3 text-xl sm:text-2xl font-extrabold tracking-tight text-[#0077B6]">EduMatch AI</span>
-            </div>
-
-            <div className="pt-2">
-              <h1 className="text-2xl sm:text-3xl font-bold text-[#0077B6] tracking-tight">
-                {mode === 'login' ? 'Welcome back' : 'Create your account'}
-              </h1>
-              <p className="text-xs text-[#64748B] mt-1">
-                {mode === 'login'
-                  ? 'Sign in to continue to EduMatch AI.'
-                  : 'Get started with EduMatch AI.'}
-              </p>
-            </div>
-          </div>
-
-          {/* Error Banner */}
-          {errorMessage && (
-            <div className="p-3 rounded-[6px] bg-rose-50 border border-rose-200 text-xs text-[#DC2626] font-medium flex items-center gap-2">
-              <ShieldAlert className="w-4 h-4 shrink-0 text-[#DC2626]" />
-              <span>{errorMessage}</span>
-            </div>
-          )}
-
-          {/* ======================= */}
-          {/* LOGIN FORM */}
-          {/* ======================= */}
-          {mode === 'login' && (
-            <form onSubmit={handleLoginSubmit} className="space-y-4">
-              {/* Email */}
-              <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-[#0077B6]">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <Mail className="w-4 h-4 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={e => {
-                      setEmail(e.target.value);
-                      setSelectedDemoKey(null);
-                    }}
-                    placeholder="name@edumatch.rw"
-                    className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6] focus:border-[#0077B6]"
-                  />
-                </div>
-              </div>
-
-              {/* Password */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <label className="block text-xs font-semibold text-[#0077B6]">
-                    Password
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setForgotEmail(email);
-                      setForgotSuccess(false);
-                      setForgotModalOpen(true);
-                    }}
-                    className="text-[11px] font-semibold text-[#0077B6] hover:underline cursor-pointer"
-                  >
-                    Forgot password?
-                  </button>
-                </div>
-                <div className="relative">
-                  <Lock className="w-4 h-4 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    required
-                    value={password}
-                    onChange={e => {
-                      setPassword(e.target.value);
-                      setSelectedDemoKey(null);
-                    }}
-                    placeholder="••••••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6] focus:border-[#0077B6]"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0077B6] transition-colors cursor-pointer"
-                    tabIndex={-1}
-                  >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-2.5 px-4 bg-[#0077B6] hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Signing In...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Sign In</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </>
-                )}
-              </button>
-
-              {/* Demo Mode Quick Accounts */}
-              <div className="p-3 bg-slate-50 border border-[#E2E8F0] rounded-[6px] text-xs space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#0077B6] flex items-center gap-1.5">
-                    <KeyRound className="w-3.5 h-3.5 text-[#20B2AA]" />
-                    <span>Demo Accounts</span>
-                  </span>
-                  <span className="text-[10px] font-mono uppercase bg-[#20B2AA]/10 text-[#20B2AA] px-1.5 py-0.2 rounded font-semibold">
-                    Demo Mode
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => handleSelectDemoAccount('superadmin')}
-                    className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
-                      selectedDemoKey === 'superadmin'
-                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
-                        : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
-                    }`}
-                  >
-                    <div className="text-[11px] font-semibold leading-tight">Super Admin</div>
-                    <div className="text-[9px] text-[#64748B] font-mono truncate">superadmin@edumatch.rw</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleSelectDemoAccount('placement')}
-                    className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
-                      selectedDemoKey === 'placement'
-                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
-                        : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
-                    }`}
-                  >
-                    <div className="text-[11px] font-semibold leading-tight">Placement Admin</div>
-                    <div className="text-[9px] text-[#64748B] font-mono truncate">placement@edumatch.rw</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleSelectDemoAccount('school')}
-                    className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
-                      selectedDemoKey === 'school'
-                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
-                        : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
-                    }`}
-                  >
-                    <div className="text-[11px] font-semibold leading-tight">School Admin</div>
-                    <div className="text-[9px] text-[#64748B] font-mono truncate">school@edumatch.rw</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleSelectDemoAccount('officer')}
-                    className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
-                      selectedDemoKey === 'officer'
-                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
-                        : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
-                    }`}
-                  >
-                    <div className="text-[11px] font-semibold leading-tight">Placement Officer</div>
-                    <div className="text-[9px] text-[#64748B] font-mono truncate">officer@edumatch.rw</div>
-                  </button>
-                </div>
-              </div>
-
-              {/* Switch to Sign Up */}
-              <div className="pt-2 text-center text-xs text-[#64748B]">
-                Don't have an account?{' '}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode('signup');
-                    setErrorMessage(null);
-                  }}
-                  className="font-semibold text-[#0077B6] hover:underline cursor-pointer"
-                >
-                  Create account
-                </button>
-              </div>
+          <button type="button" className="auth-motion-toggle" onClick={() => setAnimationPaused(!animationPaused)} aria-pressed={animationPaused}>{animationPaused ? 'Play animation' : 'Pause animation'}</button>
+          <div className="auth-story-note"><ShieldCheck size={19} /><span>AI-assisted. Human-approved.</span></div>
+        </aside>
+        <section className="auth-form-panel" aria-labelledby="auth-title">
+          <div className="auth-form-wrap">
+            <button className="auth-brand auth-form-brand" onClick={onBackToLanding} aria-label="EduMatch AI home"><img src={logoImg} alt="" /><span>EduMatch <em>AI</em></span></button>
+            <div className="auth-form-heading"><span className="auth-eyebrow">Welcome to EduMatch</span><h1 id="auth-title">{mode === 'login' ? 'Sign in to your account' : 'Create your account'}</h1><p>{mode === 'login' ? 'Enter your details to access your workspace.' : 'Set up your account to get started.'}</p></div>
+            {errorMessage && <div className="auth-error" role="alert"><ShieldAlert size={18} /><span>{errorMessage}</span></div>}
+            <form onSubmit={mode === 'login' ? handleLoginSubmit : handleSignUpSubmit} className="auth-form" aria-busy={isLoading}>
+              {mode === 'signup' && <div className="auth-field"><label htmlFor="auth-name">Full name</label><input id="auth-name" name="name" autoComplete="name" required value={fullName} onChange={e => setFullName(e.target.value)} placeholder="Your full name" disabled={isLoading} /></div>}
+              <div className="auth-field"><label htmlFor="auth-email">Email address</label><input id="auth-email" name="email" type="email" autoComplete="username" autoCapitalize="none" spellCheck={false} required value={email} onChange={e => { setEmail(e.target.value); setSelectedDemoKey(null); }} placeholder="you@example.com" disabled={isLoading} /></div>
+              {mode === 'signup' && <div className="auth-field"><label htmlFor="auth-role">Account role</label><select id="auth-role" value={role} onChange={e => setRole(e.target.value as typeof role)} disabled={isLoading}><option value="Placement Officer">Placement Officer</option><option value="School Administrator">School Administrator</option></select><p className="auth-field-hint">Administrator accounts are managed by your organization.</p></div>}
+              <div className="auth-field"><div className="auth-label-row"><label htmlFor="auth-password">Password</label>{mode === 'login' && <button type="button" className="auth-link" onClick={() => { setForgotEmail(email); setForgotSuccess(false); setForgotModalOpen(true); }}>Forgot password?</button>}</div><div className="auth-password"><input id="auth-password" name="password" type={showPassword ? 'text' : 'password'} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} required minLength={mode === 'signup' ? 8 : undefined} value={password} onChange={e => { setPassword(e.target.value); setSelectedDemoKey(null); }} placeholder={mode === 'login' ? 'Enter your password' : 'At least 8 characters'} disabled={isLoading} /><button type="button" onClick={() => setShowPassword(!showPassword)} aria-label={showPassword ? 'Hide password' : 'Show password'} aria-pressed={showPassword}>{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button></div></div>
+              {mode === 'signup' && <div className="auth-field"><label htmlFor="auth-confirm">Confirm password</label><div className="auth-password"><input id="auth-confirm" name="confirmPassword" type={showConfirmPassword ? 'text' : 'password'} autoComplete="new-password" required value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="Re-enter your password" disabled={isLoading} /><button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} aria-label={showConfirmPassword ? 'Hide confirmation password' : 'Show confirmation password'} aria-pressed={showConfirmPassword}>{showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}</button></div></div>}
+              <button type="submit" className="auth-submit" disabled={isLoading}>{isLoading && <Loader2 size={18} className="animate-spin" />}{isLoading ? (mode === 'login' ? 'Signing in…' : 'Creating account…') : (mode === 'login' ? 'Sign in' : 'Create account')}</button>
             </form>
-          )}
-
-          {/* ======================= */}
-          {/* SIGN-UP FORM */}
-          {/* ======================= */}
-          {mode === 'signup' && (
-            <form onSubmit={handleSignUpSubmit} className="space-y-3.5">
-              {/* Full Name */}
-              <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0077B6]">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="w-4 h-4 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    required
-                    value={fullName}
-                    onChange={e => setFullName(e.target.value)}
-                    placeholder="e.g. Emmanuel Habumugisha"
-                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0077B6]">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <Mail className="w-4 h-4 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="e.habumugisha@edumatch.rw"
-                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
-                  />
-                </div>
-              </div>
-
-              {/* Role Dropdown (Placement Officer or School Admin only) */}
-              <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0077B6]">
-                  Account Role
-                </label>
-                <select
-                  value={role}
-                  onChange={e => setRole(e.target.value as 'Placement Officer' | 'School Administrator')}
-                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
-                >
-                  <option value="Placement Officer">Placement Officer (Evaluates candidates & proposals)</option>
-                  <option value="School Administrator">School Administrator (Manages school quotas & rosters)</option>
-                </select>
-                <span className="text-[10px] text-[#64748B]">
-                  * Super Administrator accounts can only be provisioned by NESA governance.
-                </span>
-              </div>
-
-              {/* Password */}
-              <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0077B6]">
-                  Password
-                </label>
-                <div className="relative">
-                  <Lock className="w-4 h-4 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    required
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    placeholder="At least 8 characters"
-                    className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0077B6] transition-colors cursor-pointer"
-                    tabIndex={-1}
-                  >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Confirm Password */}
-              <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#0077B6]">
-                  Confirm Password
-                </label>
-                <div className="relative">
-                  <Lock className="w-4 h-4 text-[#64748B] absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    required
-                    value={confirmPassword}
-                    onChange={e => setConfirmPassword(e.target.value)}
-                    placeholder="Repeat password"
-                    className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0077B6] transition-colors cursor-pointer"
-                    tabIndex={-1}
-                  >
-                    {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full py-2.5 px-4 bg-[#0077B6] hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Creating Account...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Create Account</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* Switch to Sign In */}
-              <div className="pt-2 text-center text-xs text-[#64748B]">
-                Already have an account?{' '}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode('login');
-                    setErrorMessage(null);
-                  }}
-                  className="font-semibold text-[#0077B6] hover:underline cursor-pointer"
-                >
-                  Sign in
-                </button>
-              </div>
-            </form>
-          )}
-
-          {/* Institutional Note */}
-          <div className="pt-4 text-center border-t border-[#E2E8F0] text-[11px] text-[#64748B]">
-            EduMatch AI · NESA O-Level Placement Infrastructure
+            <p className="auth-switch">{mode === 'login' ? 'New to EduMatch?' : 'Already have an account?'} <button className="auth-link" disabled={isLoading} onClick={() => { setMode(mode === 'login' ? 'signup' : 'login'); setErrorMessage(null); }}>{mode === 'login' ? 'Create an account' : 'Sign in'}</button></p>
+            {mode === 'login' && <details className="auth-demo"><summary>Try a demo account <span>Optional</span></summary><p>Select a role to fill in the demo credentials.</p><div className="auth-demo-grid">{([['superadmin', 'Super Admin'], ['placement', 'Placement Admin'], ['school', 'School Admin'], ['officer', 'Placement Officer']] as const).map(([key, label]) => <button type="button" key={key} disabled={isLoading} aria-pressed={selectedDemoKey === key} onClick={() => handleSelectDemoAccount(key)}>{label}{selectedDemoKey === key && <Check size={14} />}</button>)}</div></details>}
           </div>
-        </div>
-      </div>
-
-      {/* Forgot Password Modal */}
-      {forgotModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-sm w-full p-6 space-y-4 text-xs">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="font-bold text-sm text-[#0077B6]">Password Reset</h3>
-              <button
-                onClick={() => setForgotModalOpen(false)}
-                className="text-slate-400 hover:text-slate-700"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {forgotSuccess ? (
-              <div className="space-y-3">
-                <div className="p-3 bg-emerald-50 border border-emerald-200 text-[#20B2AA] rounded-[6px]">
-                  Password reset link sent to <strong>{forgotEmail}</strong>. (Simulated for this prototype session).
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    onClick={() => setForgotModalOpen(false)}
-                    className="px-4 py-1.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] font-semibold text-xs"
-                  >
-                    Done
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleForgotSubmit} className="space-y-3">
-                <p className="text-[#64748B] leading-relaxed">
-                  Enter your administrative email address to receive a secure recovery code.
-                </p>
-                <div>
-                  <label className="block text-xs font-semibold text-[#0077B6] mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={forgotEmail}
-                    onChange={e => setForgotEmail(e.target.value)}
-                    placeholder="admin@edumatch.rw"
-                    className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#0077B6]"
-                  />
-                </div>
-                <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#E2E8F0]">
-                  <button
-                    type="button"
-                    onClick={() => setForgotModalOpen(false)}
-                    className="px-3.5 py-1.5 text-xs text-[#64748B] hover:text-[#0077B6]"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-4 py-1.5 bg-[#0077B6] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px]"
-                  >
-                    Send Reset Link
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
+        </section>
+      </main>
+<dialog ref={resetDialog} className="auth-reset" onCancel={() => setForgotModalOpen(false)} aria-labelledby="reset-title">
+        <div className="auth-reset-heading"><h2 id="reset-title">Reset your password</h2><button aria-label="Close password reset" onClick={() => setForgotModalOpen(false)}><X size={20} /></button></div>
+        {forgotSuccess ? <><p role="status" className="auth-reset-status">This prototype has recorded your request for <strong>{forgotEmail}</strong>. No recovery email has been sent.</p><button className="auth-submit" onClick={() => setForgotModalOpen(false)}>Done</button></> : <form onSubmit={handleForgotSubmit} className="auth-form"><p className="auth-field-hint">Enter the email address associated with your account. Password recovery is simulated in this prototype.</p><div className="auth-field"><label htmlFor="reset-email">Email address</label><input id="reset-email" autoFocus type="email" autoComplete="email" required value={forgotEmail} onChange={e => setForgotEmail(e.target.value)} placeholder="you@example.com" /></div><button type="submit" className="auth-submit">Request password reset</button></form>}
+      </dialog>
     </div>
   );
 };
