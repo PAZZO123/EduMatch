@@ -78,11 +78,11 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         {/* Left: 4 & 10. EduMatch AI Administration Portal */}
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2.5">
-            <span className="font-extrabold text-[#172554] text-sm tracking-tight hidden sm:inline">
+            <span className="font-extrabold text-[#0077B6] text-sm tracking-tight hidden sm:inline">
               EduMatch AI
             </span>
             <span className="text-[#64748B] text-xs hidden sm:inline">·</span>
-            <span className="text-xs font-semibold text-[#172554]">
+            <span className="text-xs font-semibold text-[#0077B6]">
               Administration Portal
             </span>
           </div>
@@ -94,12 +94,12 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           {/* Backend health status dot */}
           <button
             onClick={onOpenSettings}
-            className="flex items-center gap-1.5 px-2 py-1 rounded-[6px] text-xs text-[#64748B] hover:text-[#172554] hover:bg-slate-100 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2 py-1 rounded-[6px] text-xs text-[#64748B] hover:text-[#0077B6] hover:bg-slate-100 transition-colors cursor-pointer"
             title="Backend Connection Status"
           >
             <span
               className={`w-2 h-2 rounded-full ${
-                backendOk ? 'bg-[#16A34A]' : 'bg-[#DC2626]'
+                backendOk ? 'bg-[#20B2AA]' : 'bg-[#DC2626]'
               }`}
             />
             <span className="hidden sm:inline font-mono text-[11px]">
@@ -112,7 +112,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             <a
               href={api.getExportUrl(activeRunId)}
               download="edumatch_approved_placements.csv"
-              className="px-3 py-1.5 rounded-[6px] text-xs font-semibold text-[#1D4ED8] bg-[#EFF6FF] hover:bg-[#DBEAFE] border border-[#DBEAFE] transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-3 py-1.5 rounded-[6px] text-xs font-semibold text-[#00669D] bg-[#EFF6FF] hover:bg-[#DBEAFE] border border-[#DBEAFE] transition-colors flex items-center gap-1.5 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Export ({approvedCount})</span>
@@ -124,7 +124,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             <button
               onClick={onRunEngine}
               disabled={isRunning}
-              className="px-3.5 py-1.5 rounded-[6px] text-xs font-semibold text-white bg-[#2563EB] hover:bg-[#1D4ED8] shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              className="px-3.5 py-1.5 rounded-[6px] text-xs font-semibold text-white bg-[#0077B6] hover:bg-[#00669D] shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
             >
               {isRunning ? (
                 <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -141,11 +141,11 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
               onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
               className="flex items-center gap-2.5 p-1 rounded-[6px] hover:bg-[#EFF6FF] transition-colors cursor-pointer text-left"
             >
-              <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+              <div className="w-7 h-7 rounded-full bg-[#0077B6] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
                 {initials}
               </div>
               <div className="hidden md:block text-left leading-tight">
-                <span className="text-xs font-bold text-[#172554] block truncate max-w-[140px]">
+                <span className="text-xs font-bold text-[#0077B6] block truncate max-w-[140px]">
                   {currentUser?.name || 'Administrator'}
                 </span>
                 <span className="text-[10px] text-[#64748B] block truncate max-w-[140px]">
@@ -160,7 +160,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
               <div className="absolute right-0 mt-1.5 w-60 bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl py-1 z-50 text-xs animate-in fade-in zoom-in-95 duration-100">
                 {/* Header summary */}
                 <div className="px-3.5 py-2.5 border-b border-[#E2E8F0] space-y-1">
-                  <div className="font-bold text-[#172554] text-xs truncate">
+                  <div className="font-bold text-[#0077B6] text-xs truncate">
                     {currentUser?.name || 'Administrator'}
                   </div>
                   <div className="text-[11px] text-[#64748B] font-mono truncate">
@@ -180,7 +180,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                     }}
                     className="w-full px-3.5 py-1.5 text-left text-[#0F172A] hover:bg-slate-50 flex items-center gap-2 cursor-pointer font-medium"
                   >
-                    <User className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <User className="w-3.5 h-3.5 text-[#0077B6]" />
                     <span>My Account</span>
                   </button>
 
@@ -244,11 +244,11 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-sm w-full p-6 space-y-4 text-xs">
             <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3">
-              <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+              <div className="w-10 h-10 rounded-full bg-[#0077B6] text-white flex items-center justify-center font-bold text-sm shadow-xs">
                 {initials}
               </div>
               <div>
-                <h3 className="font-bold text-sm text-[#172554]">{currentUser?.name}</h3>
+                <h3 className="font-bold text-sm text-[#0077B6]">{currentUser?.name}</h3>
                 <span className="text-[#64748B] text-xs">{currentUser?.department}</span>
               </div>
             </div>
@@ -256,7 +256,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             <div className="space-y-2 text-xs">
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Email</span>
-                <span className="font-mono font-medium text-[#172554]">{currentUser?.email}</span>
+                <span className="font-mono font-medium text-[#0077B6]">{currentUser?.email}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100 items-center">
                 <span className="text-[#64748B]">Assigned Role</span>
@@ -264,11 +264,11 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Affiliation</span>
-                <span className="text-[#172554]">{currentUser?.department}</span>
+                <span className="text-[#0077B6]">{currentUser?.department}</span>
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-[#64748B]">Status</span>
-                <span className="font-semibold text-[#16A34A]">{currentUser?.status || 'Active'}</span>
+                <span className="font-semibold text-[#20B2AA]">{currentUser?.status || 'Active'}</span>
               </div>
             </div>
 
@@ -278,13 +278,13 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                   setProfileModalOpen(false);
                   onNavigateView('account');
                 }}
-                className="px-3.5 py-1.5 text-[#2563EB] hover:bg-blue-50 rounded-[6px] font-semibold text-xs"
+                className="px-3.5 py-1.5 text-[#0077B6] hover:bg-blue-50 rounded-[6px] font-semibold text-xs"
               >
                 Go to My Account
               </button>
               <button
                 onClick={() => setProfileModalOpen(false)}
-                className="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs cursor-pointer"
+                className="px-4 py-1.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] font-semibold text-xs cursor-pointer"
               >
                 Close
               </button>
@@ -299,8 +299,8 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-md w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div className="flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-[#2563EB]" />
-                <h3 className="font-bold text-sm text-[#172554]">Platform Guidance & Help</h3>
+                <HelpCircle className="w-4 h-4 text-[#0077B6]" />
+                <h3 className="font-bold text-sm text-[#0077B6]">Platform Guidance & Help</h3>
               </div>
               <button onClick={() => setHelpModalOpen(false)} className="text-slate-400 hover:text-slate-700">
                 <X className="w-4 h-4" />
@@ -311,21 +311,21 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
               <p>
                 <strong>EduMatch AI</strong> is an institutional decision-support system assisting Rwanda's National Examination and School Inspection Authority (NESA) with secondary school allocations.
               </p>
-              <div className="p-3 bg-slate-50 border border-[#E2E8F0] rounded-[6px] space-y-1 text-[#172554]">
+              <div className="p-3 bg-slate-50 border border-[#E2E8F0] rounded-[6px] space-y-1 text-[#0077B6]">
                 <div className="font-semibold">Role-Based Security Model</div>
                 <p className="text-[11px] text-[#64748B]">
                   Your account role controls which candidate pools, quota limits, and administrative controls you can execute.
                 </p>
               </div>
               <p>
-                For technical issues or quota adjustments, contact NESA System Administration at <span className="font-mono text-[#2563EB]">admin@edumatch.rw</span>.
+                For technical issues or quota adjustments, contact NESA System Administration at <span className="font-mono text-[#0077B6]">admin@edumatch.rw</span>.
               </p>
             </div>
 
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setHelpModalOpen(false)}
-                className="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs cursor-pointer"
+                className="px-4 py-1.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] font-semibold text-xs cursor-pointer"
               >
                 Understood
               </button>

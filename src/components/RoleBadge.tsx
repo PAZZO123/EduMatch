@@ -12,11 +12,11 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({ role, size = 'md' }) => {
       case 'Super Administrator':
         return 'bg-indigo-50 text-indigo-700 border-indigo-200';
       case 'Placement Administrator':
-        return 'bg-blue-50 text-[#2563EB] border-blue-200';
+        return 'bg-blue-50 text-[#0077B6] border-blue-200';
       case 'School Administrator':
         return 'bg-amber-50 text-[#D97706] border-amber-200';
       case 'Placement Officer':
-        return 'bg-[#F0FDFA] text-[#0F9D8A] border-[#99F6E4]';
+        return 'bg-[#F0FAF9] text-[#20B2AA] border-[#B1E5E0]';
       default:
         return 'bg-slate-50 text-slate-700 border-slate-200';
     }

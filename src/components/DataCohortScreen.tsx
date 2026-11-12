@@ -511,10 +511,10 @@ export const DataCohortScreen: React.FC<DataCohortScreenProps> = ({
           </div>
 
           {canRun && (
-            <div className="bg-white border border-[#E2E8F0] text-[#172554] p-6 rounded-[8px] shadow-xs space-y-5">
+            <div className="bg-white border border-[#E2E8F0] text-[#0077B6] p-6 rounded-[8px] shadow-xs space-y-5">
               <div>
-                <div className="text-xs font-mono uppercase tracking-wider text-[#2563EB] mb-1 font-bold">Backend orchestrator</div>
-                <h2 className="text-lg font-bold text-[#172554]">Generate placement proposals</h2>
+                <div className="text-xs font-mono uppercase tracking-wider text-[#0077B6] mb-1 font-bold">Backend orchestrator</div>
+                <h2 className="text-lg font-bold text-[#0077B6]">Generate placement proposals</h2>
                 <p className="text-xs text-[#475569] mt-1">
                   Serial allocation by priority. Listed choices are tried first; the local model ranks eligible unlisted
                   offers only for students who opted in.
@@ -530,7 +530,7 @@ export const DataCohortScreen: React.FC<DataCohortScreenProps> = ({
                     aria-checked={runMode === mode}
                     onClick={() => setRunMode(mode)}
                     className={`py-2 px-3 rounded-md font-semibold transition-colors cursor-pointer ${
-                      runMode === mode ? 'bg-[#2563EB] text-white shadow-xs' : 'text-[#475569] hover:text-[#2563EB]'
+                      runMode === mode ? 'bg-[#0077B6] text-white shadow-xs' : 'text-[#475569] hover:text-[#0077B6]'
                     }`}
                   >
                     {mode === 'AI_ASSISTED' ? 'AI-assisted' : 'Rules only'}
@@ -547,7 +547,7 @@ export const DataCohortScreen: React.FC<DataCohortScreenProps> = ({
               <button
                 onClick={handleExecuteRun}
                 disabled={busy !== null || locked || !summary?.cohort_id}
-                className="w-full py-3.5 px-4 bg-[#2563EB] text-white hover:bg-[#1D4ED8] disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                className="w-full py-3.5 px-4 bg-[#0077B6] text-white hover:bg-[#00669D] disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
               >
                 {busy === 'run' ? (
                   <>

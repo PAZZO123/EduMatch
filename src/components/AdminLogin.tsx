@@ -153,11 +153,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-white grid grid-cols-1 md:grid-cols-2 selection:bg-[#2563EB] selection:text-white">
+    <div className="min-h-screen bg-white grid grid-cols-1 md:grid-cols-2 selection:bg-[#0077B6] selection:text-white">
       {/* ============================================================== */}
       {/* 1. LEFT SIDE: EXACTLY EQUAL 50% SPLIT IMAGE COLUMN */}
       {/* ============================================================== */}
-      <div className="relative w-full h-72 md:h-full min-h-full overflow-hidden bg-gradient-to-br from-[#1E40AF] via-[#2563EB] to-[#3B82F6] flex flex-col justify-between p-6 sm:p-10 order-1 md:order-1">
+      <div className="relative w-full h-72 md:h-full min-h-full overflow-hidden bg-gradient-to-br from-[#0077B6] via-[#0077B6] to-[#20B2AA] flex flex-col justify-between p-6 sm:p-10 order-1 md:order-1">
         {/* Full-Cover Background Photograph */}
         <img
           src={mode === 'login' ? heroRwandaStudents : learningRwandaGroup}
@@ -171,7 +171,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         />
 
         {/* Subtle Dark Navy Scrim Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A8A]/90 via-[#1E40AF]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0077B6]/90 via-[#0077B6]/40 to-transparent" />
 
         {/* Top-Left Back Link */}
         <div className="relative z-20">
@@ -186,7 +186,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
         {/* Bottom-Left Overlay Content */}
         <div className="relative z-20 text-white space-y-2 max-w-lg hidden sm:block">
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-mono uppercase tracking-wider text-[#99F6E4] font-semibold">
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-mono uppercase tracking-wider text-[#B1E5E0] font-semibold">
             {mode === 'login' ? 'National O-Level Placement' : 'Institutional Pathway Allocation'}
           </div>
 
@@ -194,12 +194,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             {mode === 'login' ? (
               <>
                 Smarter Placement.<br />
-                <span className="text-[#99F6E4]">Better Opportunities.</span>
+                <span className="text-[#B1E5E0]">Better Opportunities.</span>
               </>
             ) : (
               <>
                 Build better pathways<br />
-                <span className="text-[#99F6E4]">for students.</span>
+                <span className="text-[#B1E5E0]">for students.</span>
               </>
             )}
           </h2>
@@ -220,11 +220,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           {/* Logo & Header */}
           <div className="space-y-2">
             <div className="flex items-center">
-              <img src={logoImg} alt="EduMatch AI" className="h-14 sm:h-16 w-auto object-contain" />
+              <img src={logoImg} alt="" className="h-20 sm:h-24 w-auto object-contain" />
+              <span className="ml-3 text-xl sm:text-2xl font-extrabold tracking-tight text-[#0077B6]">EduMatch AI</span>
             </div>
 
             <div className="pt-2">
-              <h1 className="text-2xl sm:text-3xl font-bold text-[#172554] tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#0077B6] tracking-tight">
                 {mode === 'login' ? 'Welcome back' : 'Create your account'}
               </h1>
               <p className="text-xs text-[#64748B] mt-1">
@@ -250,7 +251,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               {/* Email */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-[#172554]">
+                <label className="block text-xs font-semibold text-[#0077B6]">
                   Email Address
                 </label>
                 <div className="relative">
@@ -264,7 +265,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                       setSelectedDemoKey(null);
                     }}
                     placeholder="name@edumatch.rw"
-                    className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB] focus:border-[#2563EB]"
+                    className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6] focus:border-[#0077B6]"
                   />
                 </div>
               </div>
@@ -272,7 +273,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               {/* Password */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="block text-xs font-semibold text-[#172554]">
+                  <label className="block text-xs font-semibold text-[#0077B6]">
                     Password
                   </label>
                   <button
@@ -282,7 +283,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                       setForgotSuccess(false);
                       setForgotModalOpen(true);
                     }}
-                    className="text-[11px] font-semibold text-[#2563EB] hover:underline cursor-pointer"
+                    className="text-[11px] font-semibold text-[#0077B6] hover:underline cursor-pointer"
                   >
                     Forgot password?
                   </button>
@@ -298,12 +299,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                       setSelectedDemoKey(null);
                     }}
                     placeholder="••••••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB] focus:border-[#2563EB]"
+                    className="w-full pl-9 pr-10 py-2.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6] focus:border-[#0077B6]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#172554] transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0077B6] transition-colors cursor-pointer"
                     tabIndex={-1}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -315,7 +316,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-2.5 px-4 bg-[#2563EB] hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full py-2.5 px-4 bg-[#0077B6] hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <>
@@ -333,11 +334,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               {/* Demo Mode Quick Accounts */}
               <div className="p-3 bg-slate-50 border border-[#E2E8F0] rounded-[6px] text-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#172554] flex items-center gap-1.5">
-                    <KeyRound className="w-3.5 h-3.5 text-[#0F9D8A]" />
+                  <span className="font-bold text-[#0077B6] flex items-center gap-1.5">
+                    <KeyRound className="w-3.5 h-3.5 text-[#20B2AA]" />
                     <span>Demo Accounts</span>
                   </span>
-                  <span className="text-[10px] font-mono uppercase bg-[#0F9D8A]/10 text-[#0F9D8A] px-1.5 py-0.2 rounded font-semibold">
+                  <span className="text-[10px] font-mono uppercase bg-[#20B2AA]/10 text-[#20B2AA] px-1.5 py-0.2 rounded font-semibold">
                     Demo Mode
                   </span>
                 </div>
@@ -348,7 +349,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     onClick={() => handleSelectDemoAccount('superadmin')}
                     className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
                       selectedDemoKey === 'superadmin'
-                        ? 'bg-blue-50 border-[#2563EB] text-[#2563EB] font-bold'
+                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
                         : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
                     }`}
                   >
@@ -361,7 +362,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     onClick={() => handleSelectDemoAccount('placement')}
                     className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
                       selectedDemoKey === 'placement'
-                        ? 'bg-blue-50 border-[#2563EB] text-[#2563EB] font-bold'
+                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
                         : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
                     }`}
                   >
@@ -374,7 +375,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     onClick={() => handleSelectDemoAccount('school')}
                     className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
                       selectedDemoKey === 'school'
-                        ? 'bg-blue-50 border-[#2563EB] text-[#2563EB] font-bold'
+                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
                         : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
                     }`}
                   >
@@ -387,7 +388,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     onClick={() => handleSelectDemoAccount('officer')}
                     className={`p-1.5 rounded-[4px] border text-left transition-colors cursor-pointer ${
                       selectedDemoKey === 'officer'
-                        ? 'bg-blue-50 border-[#2563EB] text-[#2563EB] font-bold'
+                        ? 'bg-blue-50 border-[#0077B6] text-[#0077B6] font-bold'
                         : 'bg-white border-[#E2E8F0] text-[#0F172A] hover:bg-slate-100'
                     }`}
                   >
@@ -406,7 +407,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     setMode('signup');
                     setErrorMessage(null);
                   }}
-                  className="font-semibold text-[#2563EB] hover:underline cursor-pointer"
+                  className="font-semibold text-[#0077B6] hover:underline cursor-pointer"
                 >
                   Create account
                 </button>
@@ -421,7 +422,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             <form onSubmit={handleSignUpSubmit} className="space-y-3.5">
               {/* Full Name */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#172554]">
+                <label className="block text-xs font-semibold text-[#0077B6]">
                   Full Name
                 </label>
                 <div className="relative">
@@ -432,14 +433,14 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     value={fullName}
                     onChange={e => setFullName(e.target.value)}
                     placeholder="e.g. Emmanuel Habumugisha"
-                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
                   />
                 </div>
               </div>
 
               {/* Email */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#172554]">
+                <label className="block text-xs font-semibold text-[#0077B6]">
                   Email Address
                 </label>
                 <div className="relative">
@@ -450,20 +451,20 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="e.habumugisha@edumatch.rw"
-                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+                    className="w-full pl-9 pr-3 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
                   />
                 </div>
               </div>
 
               {/* Role Dropdown (Placement Officer or School Admin only) */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#172554]">
+                <label className="block text-xs font-semibold text-[#0077B6]">
                   Account Role
                 </label>
                 <select
                   value={role}
                   onChange={e => setRole(e.target.value as 'Placement Officer' | 'School Administrator')}
-                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
                 >
                   <option value="Placement Officer">Placement Officer (Evaluates candidates & proposals)</option>
                   <option value="School Administrator">School Administrator (Manages school quotas & rosters)</option>
@@ -475,7 +476,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
               {/* Password */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#172554]">
+                <label className="block text-xs font-semibold text-[#0077B6]">
                   Password
                 </label>
                 <div className="relative">
@@ -486,12 +487,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="At least 8 characters"
-                    className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+                    className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#172554] transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0077B6] transition-colors cursor-pointer"
                     tabIndex={-1}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -501,7 +502,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
               {/* Confirm Password */}
               <div className="space-y-1">
-                <label className="block text-xs font-semibold text-[#172554]">
+                <label className="block text-xs font-semibold text-[#0077B6]">
                   Confirm Password
                 </label>
                 <div className="relative">
@@ -512,12 +513,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
                     placeholder="Repeat password"
-                    className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+                    className="w-full pl-9 pr-10 py-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs text-[#0F172A] focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#172554] transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#64748B] hover:text-[#0077B6] transition-colors cursor-pointer"
                     tabIndex={-1}
                   >
                     {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -530,7 +531,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-2.5 px-4 bg-[#2563EB] hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                  className="w-full py-2.5 px-4 bg-[#0077B6] hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <>
@@ -555,7 +556,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     setMode('login');
                     setErrorMessage(null);
                   }}
-                  className="font-semibold text-[#2563EB] hover:underline cursor-pointer"
+                  className="font-semibold text-[#0077B6] hover:underline cursor-pointer"
                 >
                   Sign in
                 </button>
@@ -575,7 +576,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-sm w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="font-bold text-sm text-[#172554]">Password Reset</h3>
+              <h3 className="font-bold text-sm text-[#0077B6]">Password Reset</h3>
               <button
                 onClick={() => setForgotModalOpen(false)}
                 className="text-slate-400 hover:text-slate-700"
@@ -586,13 +587,13 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
             {forgotSuccess ? (
               <div className="space-y-3">
-                <div className="p-3 bg-emerald-50 border border-emerald-200 text-[#16A34A] rounded-[6px]">
+                <div className="p-3 bg-emerald-50 border border-emerald-200 text-[#20B2AA] rounded-[6px]">
                   Password reset link sent to <strong>{forgotEmail}</strong>. (Simulated for this prototype session).
                 </div>
                 <div className="flex justify-end">
                   <button
                     onClick={() => setForgotModalOpen(false)}
-                    className="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs"
+                    className="px-4 py-1.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] font-semibold text-xs"
                   >
                     Done
                   </button>
@@ -604,7 +605,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                   Enter your administrative email address to receive a secure recovery code.
                 </p>
                 <div>
-                  <label className="block text-xs font-semibold text-[#172554] mb-1">
+                  <label className="block text-xs font-semibold text-[#0077B6] mb-1">
                     Email Address
                   </label>
                   <input
@@ -613,20 +614,20 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                     value={forgotEmail}
                     onChange={e => setForgotEmail(e.target.value)}
                     placeholder="admin@edumatch.rw"
-                    className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#2563EB]"
+                    className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#0077B6]"
                   />
                 </div>
                 <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#E2E8F0]">
                   <button
                     type="button"
                     onClick={() => setForgotModalOpen(false)}
-                    className="px-3.5 py-1.5 text-xs text-[#64748B] hover:text-[#172554]"
+                    className="px-3.5 py-1.5 text-xs text-[#64748B] hover:text-[#0077B6]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-1.5 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px]"
+                    className="px-4 py-1.5 bg-[#0077B6] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px]"
                   >
                     Send Reset Link
                   </button>

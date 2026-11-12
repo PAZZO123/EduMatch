@@ -189,12 +189,12 @@ export const ReviewExportScreen: React.FC<ReviewExportScreenProps> = ({
       </div>
 
       {/* Bulk Approval & Export Action Bar */}
-      <div className="bg-white border border-[#E2E8F0] text-[#172554] rounded-[8px] p-6 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-white border border-[#E2E8F0] text-[#0077B6] rounded-[8px] p-6 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <div className="text-xs font-mono uppercase tracking-wider text-[#2563EB] mb-1 font-bold">
+          <div className="text-xs font-mono uppercase tracking-wider text-[#0077B6] mb-1 font-bold">
             Human-in-the-Loop Gate · FR-11 & FR-15
           </div>
-          <h2 className="text-lg font-bold text-[#172554]">
+          <h2 className="text-lg font-bold text-[#0077B6]">
             Formal Approval & CSV Export Center
           </h2>
           <p className="text-xs text-[#475569] mt-1 max-w-xl">
@@ -207,7 +207,7 @@ export const ReviewExportScreen: React.FC<ReviewExportScreenProps> = ({
             <button
               onClick={handleBulkApprove}
               disabled={bulkLoading}
-              className="px-4 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] text-xs font-semibold shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+              className="px-4 py-2.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] text-xs font-semibold shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
             >
               <UserCheck className="w-4 h-4" />
               <span>{bulkLoading ? 'Verifying...' : `Bulk Approve Valid Drafts (${draftList.length})`}</span>
@@ -221,7 +221,7 @@ export const ReviewExportScreen: React.FC<ReviewExportScreenProps> = ({
                 download="edumatch_approved_placements.csv"
                 className={`px-4 py-2.5 rounded-[6px] text-xs font-semibold shadow-xs transition-colors flex items-center gap-2 ${
                   approvedList.length > 0
-                    ? 'bg-[#2563EB] hover:bg-[#1D4ED8] text-white'
+                    ? 'bg-[#0077B6] hover:bg-[#00669D] text-white'
                     : 'bg-slate-100 text-slate-400 cursor-not-allowed pointer-events-none'
                 }`}
               >
@@ -232,7 +232,7 @@ export const ReviewExportScreen: React.FC<ReviewExportScreenProps> = ({
               <a
                 href={api.getExceptionsExportUrl(activeRunId)}
                 download="edumatch_unassigned_exceptions.csv"
-                className="px-4 py-2.5 bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#1D4ED8] rounded-[6px] text-xs font-semibold border border-[#DBEAFE] transition-colors flex items-center gap-2"
+                className="px-4 py-2.5 bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#00669D] rounded-[6px] text-xs font-semibold border border-[#DBEAFE] transition-colors flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 <span>Export Exceptions ({exceptionList.length})</span>

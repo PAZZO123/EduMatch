@@ -1,22 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --font-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Open Sans", sans-serif;
 
-  --color-primary-blue: #2563EB;
-  --color-blue-hover: #1D4ED8;
-  --color-light-blue: #3B82F6;
+  --color-primary-blue: #0077B6;
+  --color-blue-hover: #00669D;
+  --color-light-blue: #20B2AA;
   --color-very-light-blue: #EFF6FF;
   --color-soft-blue: #DBEAFE;
 
-  --color-main-text: #172554;
+  --color-main-text: #0077B6;
   --color-secondary-text: #475569;
 
-  --color-ai-teal: #14B8A6;
-  --color-ai-light: #CCFBF1;
+  --color-ai-teal: #20B2AA;
+  --color-ai-light: #D4F2EF;
 
-  --color-status-success: #16A34A;
+  --color-status-success: #20B2AA;
   --color-status-warning: #D97706;
   --color-status-danger: #DC2626;
   --color-canvas-bg: #F8FAFC;
@@ -30,5 +33,66 @@
 
 body {
   background-color: #F8FAFC;
-  color: #172554;
+  color: #0077B6;
+}
+body { font-family: var(--font-sans); font-size: 17px; line-height: 1.6; }
+button, input, select, textarea { font-family: inherit; }
+
+/* Shared brand shades cover utility classes throughout the application. */
+@theme {
+  --color-blue-50: #F0F8FC;
+  --color-blue-100: #DCEFF9;
+  --color-blue-950: #003B59;
+  --color-blue-200: #B5DFF2;
+  --color-blue-300: #82C7E7;
+  --color-blue-400: #41A6D3;
+  --color-blue-500: #168BC2;
+  --color-blue-600: #0077B6;
+  --color-blue-900: #004B72;
+  --color-blue-700: #00669D;
+  --color-blue-800: #005885;
+  --color-indigo-50: #F0F8FC;
+  --color-indigo-100: #DCEFF9;
+  --color-indigo-950: #003B59;
+  --color-indigo-200: #B5DFF2;
+  --color-indigo-300: #82C7E7;
+  --color-indigo-400: #41A6D3;
+  --color-indigo-500: #168BC2;
+  --color-indigo-600: #0077B6;
+  --color-indigo-900: #004B72;
+  --color-indigo-700: #00669D;
+  --color-indigo-800: #005885;
+  --color-green-50: #F0FAF9;
+  --color-green-100: #D4F2EF;
+  --color-green-950: #073A36;
+  --color-green-200: #B1E5E0;
+  --color-green-300: #7DD6CF;
+  --color-green-400: #42C4BC;
+  --color-green-500: #20B2AA;
+  --color-green-600: #168D87;
+  --color-green-900: #104D49;
+  --color-green-700: #11746F;
+  --color-green-800: #105E5A;
+  --color-emerald-50: #F0FAF9;
+  --color-emerald-100: #D4F2EF;
+  --color-emerald-950: #073A36;
+  --color-emerald-200: #B1E5E0;
+  --color-emerald-300: #7DD6CF;
+  --color-emerald-400: #42C4BC;
+  --color-emerald-500: #20B2AA;
+  --color-emerald-600: #168D87;
+  --color-emerald-900: #104D49;
+  --color-emerald-700: #11746F;
+  --color-emerald-800: #105E5A;
+  --color-teal-50: #F0FAF9;
+  --color-teal-100: #D4F2EF;
+  --color-teal-950: #073A36;
+  --color-teal-200: #B1E5E0;
+  --color-teal-300: #7DD6CF;
+  --color-teal-400: #42C4BC;
+  --color-teal-500: #20B2AA;
+  --color-teal-600: #168D87;
+  --color-teal-900: #104D49;
+  --color-teal-700: #11746F;
+  --color-teal-800: #105E5A;
 }

@@ -93,10 +93,10 @@ export const UserManagement: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E2E8F0] pb-5">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold text-[#64748B] mb-1">
-            <Shield className="w-3.5 h-3.5 text-[#2563EB]" />
+            <Shield className="w-3.5 h-3.5 text-[#0077B6]" />
             <span>Super Administrator Privileges</span>
           </div>
-          <h1 className="text-2xl font-bold text-[#172554] tracking-tight">
+          <h1 className="text-2xl font-bold text-[#0077B6] tracking-tight">
             User & Access Management
           </h1>
           <p className="text-xs text-[#64748B] mt-0.5">
@@ -109,7 +109,7 @@ export const UserManagement: React.FC = () => {
             setFeedback(null);
             setAddModalOpen(true);
           }}
-          className="px-4 py-2 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center gap-2 cursor-pointer self-start sm:self-auto"
+          className="px-4 py-2 bg-[#0077B6] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px] shadow-xs transition-colors flex items-center gap-2 cursor-pointer self-start sm:self-auto"
         >
           <UserPlus className="w-4 h-4" />
           <span>+ Add User</span>
@@ -117,7 +117,7 @@ export const UserManagement: React.FC = () => {
       </div>
 
       {feedback && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-[6px] text-xs text-[#16A34A] font-medium flex items-center justify-between">
+        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-[6px] text-xs text-[#20B2AA] font-medium flex items-center justify-between">
           <span>{feedback}</span>
           <button onClick={() => setFeedback(null)} className="font-bold underline ml-2">
             Dismiss
@@ -134,7 +134,7 @@ export const UserManagement: React.FC = () => {
             placeholder="Search name, email, department..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+            className="w-full pl-8 pr-3 py-1.5 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
           />
         </div>
 
@@ -145,8 +145,8 @@ export const UserManagement: React.FC = () => {
               onClick={() => setRoleFilter(r)}
               className={`px-2.5 py-1 rounded-[4px] text-[11px] font-medium transition-colors whitespace-nowrap cursor-pointer ${
                 roleFilter === r
-                  ? 'bg-[#2563EB] text-white'
-                  : 'text-[#475569] hover:text-[#2563EB]'
+                  ? 'bg-[#0077B6] text-white'
+                  : 'text-[#475569] hover:text-[#0077B6]'
               }`}
             >
               {r === 'ALL' ? 'All Roles' : r.replace(' Administrator', ' Admin')}
@@ -177,7 +177,7 @@ export const UserManagement: React.FC = () => {
                   <tr key={user.id} className="hover:bg-slate-50/70 transition-colors">
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-[#0077B6] text-white flex items-center justify-center font-bold text-xs shrink-0">
                           {user.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                         </div>
                         <div>
@@ -199,11 +199,11 @@ export const UserManagement: React.FC = () => {
                       <span
                         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold ${
                           isActive
-                            ? 'bg-emerald-50 text-[#16A34A] border border-emerald-200'
+                            ? 'bg-emerald-50 text-[#20B2AA] border border-emerald-200'
                             : 'bg-slate-100 text-[#64748B] border border-slate-200'
                         }`}
                       >
-                        <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#16A34A]' : 'bg-slate-400'}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#20B2AA]' : 'bg-slate-400'}`} />
                         <span>{user.status}</span>
                       </span>
                     </td>
@@ -216,7 +216,7 @@ export const UserManagement: React.FC = () => {
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => setActiveUserDetail(user)}
-                          className="px-2 py-1 text-xs text-[#2563EB] hover:bg-blue-50 rounded-[4px] font-semibold transition-colors cursor-pointer"
+                          className="px-2 py-1 text-xs text-[#0077B6] hover:bg-blue-50 rounded-[4px] font-semibold transition-colors cursor-pointer"
                         >
                           View
                         </button>
@@ -225,7 +225,7 @@ export const UserManagement: React.FC = () => {
                           className={`px-2 py-1 text-xs rounded-[4px] font-semibold transition-colors cursor-pointer ${
                             isActive
                               ? 'text-[#DC2626] hover:bg-rose-50'
-                              : 'text-[#16A34A] hover:bg-emerald-50'
+                              : 'text-[#20B2AA] hover:bg-emerald-50'
                           }`}
                         >
                           {isActive ? 'Deactivate' : 'Activate'}
@@ -246,7 +246,7 @@ export const UserManagement: React.FC = () => {
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-md w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
-                <h3 className="font-bold text-sm text-[#172554]">Add New Administrative User</h3>
+                <h3 className="font-bold text-sm text-[#0077B6]">Add New Administrative User</h3>
                 <span className="text-[11px] text-[#64748B]">Create credentials and role privileges</span>
               </div>
               <button onClick={() => setAddModalOpen(false)} className="text-slate-400 hover:text-slate-700">
@@ -256,7 +256,7 @@ export const UserManagement: React.FC = () => {
 
             <form onSubmit={handleAddUser} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-semibold text-[#172554] mb-1">
+                <label className="block text-xs font-semibold text-[#0077B6] mb-1">
                   Full Name *
                 </label>
                 <input
@@ -265,12 +265,12 @@ export const UserManagement: React.FC = () => {
                   value={newName}
                   onChange={e => setNewName(e.target.value)}
                   placeholder="e.g. Marie Mukamana"
-                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#2563EB]"
+                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#0077B6]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#172554] mb-1">
+                <label className="block text-xs font-semibold text-[#0077B6] mb-1">
                   Email Address *
                 </label>
                 <input
@@ -279,18 +279,18 @@ export const UserManagement: React.FC = () => {
                   value={newEmail}
                   onChange={e => setNewEmail(e.target.value)}
                   placeholder="m.mukamana@edumatch.rw"
-                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#2563EB]"
+                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#0077B6]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#172554] mb-1">
+                <label className="block text-xs font-semibold text-[#0077B6] mb-1">
                   Account Role *
                 </label>
                 <select
                   value={newRole}
                   onChange={e => setNewRole(e.target.value as RoleType)}
-                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#2563EB]"
+                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#0077B6]"
                 >
                   <option value="Placement Officer">Placement Officer (Review & proposals)</option>
                   <option value="Placement Administrator">Placement Administrator (Directorate level)</option>
@@ -300,7 +300,7 @@ export const UserManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#172554] mb-1">
+                <label className="block text-xs font-semibold text-[#0077B6] mb-1">
                   Department / Organization
                 </label>
                 <input
@@ -308,7 +308,7 @@ export const UserManagement: React.FC = () => {
                   value={newDepartment}
                   onChange={e => setNewDepartment(e.target.value)}
                   placeholder="NESA Basic Education Committee"
-                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#2563EB]"
+                  className="w-full p-2 bg-white border border-[#E2E8F0] rounded-[6px] text-xs focus:ring-1 focus:ring-[#0077B6]"
                 />
               </div>
 
@@ -316,13 +316,13 @@ export const UserManagement: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setAddModalOpen(false)}
-                  className="px-3.5 py-1.5 text-[#64748B] hover:text-[#172554] text-xs font-semibold rounded-[6px]"
+                  className="px-3.5 py-1.5 text-[#64748B] hover:text-[#0077B6] text-xs font-semibold rounded-[6px]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px] transition-colors"
+                  className="px-4 py-1.5 bg-[#0077B6] hover:bg-blue-700 text-white font-semibold text-xs rounded-[6px] transition-colors"
                 >
                   Save User
                 </button>
@@ -337,7 +337,7 @@ export const UserManagement: React.FC = () => {
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] shadow-xl max-w-sm w-full p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-              <h3 className="font-bold text-sm text-[#172554]">User Profile Card</h3>
+              <h3 className="font-bold text-sm text-[#0077B6]">User Profile Card</h3>
               <button onClick={() => setActiveUserDetail(null)} className="text-slate-400 hover:text-slate-700">
                 <X className="w-4 h-4" />
               </button>
@@ -346,15 +346,15 @@ export const UserManagement: React.FC = () => {
             <div className="space-y-2 text-xs">
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">User ID</span>
-                <span className="font-mono text-[#172554]">{activeUserDetail.id}</span>
+                <span className="font-mono text-[#0077B6]">{activeUserDetail.id}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Name</span>
-                <span className="font-bold text-[#172554]">{activeUserDetail.name}</span>
+                <span className="font-bold text-[#0077B6]">{activeUserDetail.name}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Email</span>
-                <span className="font-mono text-[#172554]">{activeUserDetail.email}</span>
+                <span className="font-mono text-[#0077B6]">{activeUserDetail.email}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100 items-center">
                 <span className="text-[#64748B]">Role</span>
@@ -362,11 +362,11 @@ export const UserManagement: React.FC = () => {
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Department</span>
-                <span className="text-[#172554]">{activeUserDetail.department}</span>
+                <span className="text-[#0077B6]">{activeUserDetail.department}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-[#64748B]">Status</span>
-                <span className="font-semibold text-[#16A34A]">{activeUserDetail.status}</span>
+                <span className="font-semibold text-[#20B2AA]">{activeUserDetail.status}</span>
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-[#64748B]">Last Active</span>
@@ -377,7 +377,7 @@ export const UserManagement: React.FC = () => {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveUserDetail(null)}
-                className="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] font-semibold text-xs"
+                className="px-4 py-1.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] font-semibold text-xs"
               >
                 Close
               </button>

@@ -71,14 +71,14 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
     const label = REASON_LABEL[selected.archived_reason];
     return (
       <div className="p-8 max-w-7xl mx-auto space-y-6">
-        <button onClick={() => setSelected(null)} className="text-xs font-semibold text-[#2563EB] hover:underline flex items-center gap-1 cursor-pointer">
+        <button onClick={() => setSelected(null)} className="text-xs font-semibold text-[#0077B6] hover:underline flex items-center gap-1 cursor-pointer">
           <ArrowLeft className="w-3.5 h-3.5" /> All previous placements
         </button>
 
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E2E8F0] pb-5">
           <div>
             <div className="text-xs font-semibold text-[#64748B] mb-1">Placement run of {when(selected.run_created_at)}</div>
-            <h1 className="text-2xl font-bold text-[#172554] tracking-tight">{selected.cohort_id}</h1>
+            <h1 className="text-2xl font-bold text-[#0077B6] tracking-tight">{selected.cohort_id}</h1>
             <div className="text-xs text-[#64748B] mt-1 flex flex-wrap items-center gap-2">
               <span>Run by {selected.run_created_by}</span>·
               <span>{selected.mode === 'AI' ? `AI model ${selected.model_version}` : 'Rules only'}</span>·
@@ -88,7 +88,7 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
           </div>
           <a
             href={api.getHistoryExportUrl(selected.id)}
-            className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] text-xs font-bold flex items-center gap-1.5 self-start md:self-auto"
+            className="px-4 py-2 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] text-xs font-bold flex items-center gap-1.5 self-start md:self-auto"
           >
             <Download className="w-3.5 h-3.5" /> Download results (CSV)
           </a>
@@ -96,11 +96,11 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
           {[
-            ['Students', selected.students, 'text-[#172554]'],
+            ['Students', selected.students, 'text-[#0077B6]'],
             ['Placed', selected.placed, 'text-emerald-700'],
-            ['Approved', selected.approved, 'text-[#2563EB]'],
+            ['Approved', selected.approved, 'text-[#0077B6]'],
             ['Not placed', selected.unplaced, 'text-amber-600'],
-            ['Got 1st choice', pct(selected.first_choice_rate), 'text-[#172554]'],
+            ['Got 1st choice', pct(selected.first_choice_rate), 'text-[#0077B6]'],
             ['Officer exceptions', selected.officer_exceptions, 'text-rose-600']
           ].map(([k, v, cls]) => (
             <div key={k as string} className="p-3 bg-white rounded border border-[#E2E8F0]">
@@ -117,7 +117,7 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search student or school..."
-              className="w-full pl-8 pr-3 py-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] text-xs focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+              className="w-full pl-8 pr-3 py-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] text-xs focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
             />
           </div>
           <select
@@ -149,12 +149,12 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
               {rows.slice(0, 500).map(r => (
                 <tr key={r.student_id} className="align-top hover:bg-slate-50">
                   <td className="py-2.5 px-4">
-                    <div className="font-bold text-[#172554]">{r.display_name}</div>
+                    <div className="font-bold text-[#0077B6]">{r.display_name}</div>
                     <div className="text-[10px] text-slate-400 font-mono">
                       {r.student_id} · {r.overall_score ?? '—'}
                     </div>
                   </td>
-                  <td className="py-2.5 px-4 text-[#172554]">
+                  <td className="py-2.5 px-4 text-[#0077B6]">
                     {r.school_name || <span className="text-rose-600 font-semibold">—</span>}
                     {r.officer_exception && (
                       <div className="text-[10px] text-rose-700 font-semibold mt-0.5">Exception: {r.officer_exception}</div>
@@ -187,7 +187,7 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E2E8F0] pb-5">
         <div>
           <div className="text-xs font-semibold text-[#64748B] mb-1">Placement History</div>
-          <h1 className="text-2xl font-bold text-[#172554] tracking-tight">Previous Placements</h1>
+          <h1 className="text-2xl font-bold text-[#0077B6] tracking-tight">Previous Placements</h1>
           <p className="text-xs text-[#64748B] mt-1 max-w-2xl">
             Every placement run is kept here with its results and each student’s reason, even after a newer run, a reset,
             a re-import or a deleted cohort.
@@ -205,12 +205,12 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
       {error && <div className="p-3 bg-rose-50 border border-rose-200 rounded text-xs text-rose-800">{error}</div>}
 
       {current && !entries?.some(e => e.run_id === current.runId) && (
-        <div className="p-4 bg-blue-50 border border-blue-200 rounded-[6px] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#172554]">
+        <div className="p-4 bg-blue-50 border border-blue-200 rounded-[6px] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#0077B6]">
           <div>
             <strong>Current run</strong> for {current.cohort} ({current.status?.toLowerCase().replace('_', ' ')}). It appears
             here once it is completed or replaced.
           </div>
-          <button onClick={onOpenPlacements} className="px-3 py-1.5 bg-[#2563EB] text-white rounded font-semibold cursor-pointer self-start">
+          <button onClick={onOpenPlacements} className="px-3 py-1.5 bg-[#0077B6] text-white rounded font-semibold cursor-pointer self-start">
             Open Placements
           </button>
         </div>
@@ -246,11 +246,11 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
                 return (
                   <tr key={e.id} onClick={() => open(e.id)} className="hover:bg-slate-50 cursor-pointer">
                     <td className="py-3 px-4">
-                      <div className="font-semibold text-[#172554] whitespace-nowrap">{when(e.run_created_at)}</div>
+                      <div className="font-semibold text-[#0077B6] whitespace-nowrap">{when(e.run_created_at)}</div>
                       <div className="text-[10px] text-slate-400">by {e.run_created_by}</div>
                     </td>
                     <td className="py-3 px-4">
-                      <div className="font-mono font-semibold text-[#172554]">{e.cohort_id}</div>
+                      <div className="font-mono font-semibold text-[#0077B6]">{e.cohort_id}</div>
                       <div className="text-[10px] text-slate-400">{e.mode === 'AI' ? e.model_version : 'rules only'}</div>
                     </td>
                     <td className="py-3 px-4">
@@ -258,12 +258,12 @@ export const HistoryScreen: React.FC<{ onOpenPlacements: () => void }> = ({ onOp
                     </td>
                     <td className="py-3 px-4 text-right font-mono">{e.students}</td>
                     <td className="py-3 px-4 text-right font-mono text-emerald-700">{e.placed}</td>
-                    <td className="py-3 px-4 text-right font-mono text-[#2563EB]">{e.approved}</td>
+                    <td className="py-3 px-4 text-right font-mono text-[#0077B6]">{e.approved}</td>
                     <td className="py-3 px-4 text-right font-mono text-amber-600">{e.unplaced}</td>
                     <td className="py-3 px-4 text-right font-mono">{pct(e.first_choice_rate)}</td>
                     <td className="py-3 px-4 text-right font-mono text-rose-600">{e.officer_exceptions || 0}</td>
                     <td className="py-3 px-4 text-right whitespace-nowrap" onClick={ev => ev.stopPropagation()}>
-                      <button onClick={() => open(e.id)} className="px-2 py-1 text-[11px] font-semibold text-[#2563EB] hover:underline cursor-pointer">
+                      <button onClick={() => open(e.id)} className="px-2 py-1 text-[11px] font-semibold text-[#0077B6] hover:underline cursor-pointer">
                         View
                       </button>
                       <a href={api.getHistoryExportUrl(e.id)} className="px-2 py-1 text-[11px] font-semibold text-slate-600 hover:underline">

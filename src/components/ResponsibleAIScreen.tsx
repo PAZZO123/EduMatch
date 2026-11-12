@@ -57,10 +57,10 @@ export const ResponsibleAIScreen: React.FC = () => {
     <div className="p-8 max-w-7xl mx-auto space-y-8">
       {/* Header */}
       <div className="border-b border-[#E2E8F0] pb-5">
-        <div className="text-xs font-semibold text-[#0F9D8A] mb-1">
+        <div className="text-xs font-semibold text-[#20B2AA] mb-1">
           Institutional Governance & Ethics
         </div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#172554] tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#0077B6] tracking-tight">
           Responsible AI Framework
         </h1>
         <p className="text-sm text-[#64748B] mt-1 max-w-2xl">
@@ -69,7 +69,7 @@ export const ResponsibleAIScreen: React.FC = () => {
       </div>
 
       {/* Slogan Banner */}
-      <div className="p-6 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white rounded-[8px] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-6 bg-gradient-to-r from-[#0077B6] to-[#00669D] text-white rounded-[8px] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="text-xs font-mono uppercase tracking-wider text-blue-200 mb-1">
             Governing Directive
@@ -90,44 +90,44 @@ export const ResponsibleAIScreen: React.FC = () => {
       {/* 14. Four Pillars of Responsible AI */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-5 bg-white rounded-[8px] border border-[#E2E8F0] space-y-2">
-          <div className="w-8 h-8 rounded-[6px] bg-blue-50 border border-blue-100 text-[#2563EB] flex items-center justify-center font-bold text-xs">
+          <div className="w-8 h-8 rounded-[6px] bg-blue-50 border border-blue-100 text-[#0077B6] flex items-center justify-center font-bold text-xs">
             <UserCheck className="w-4 h-4" />
           </div>
-          <div className="text-sm font-bold text-[#172554]">Human Oversight</div>
-          <div className="text-2xl font-bold font-mono text-[#172554] tabular-nums">100%</div>
+          <div className="text-sm font-bold text-[#0077B6]">Human Oversight</div>
+          <div className="text-2xl font-bold font-mono text-[#0077B6] tabular-nums">100%</div>
           <p className="text-xs text-[#64748B] leading-relaxed">
             Final placement requires officer approval. No autonomous write access to student records.
           </p>
         </div>
 
         <div className="p-5 bg-white rounded-[8px] border border-[#E2E8F0] space-y-2">
-          <div className="w-8 h-8 rounded-[6px] bg-teal-50 border border-teal-100 text-[#0F9D8A] flex items-center justify-center font-bold text-xs">
+          <div className="w-8 h-8 rounded-[6px] bg-teal-50 border border-teal-100 text-[#20B2AA] flex items-center justify-center font-bold text-xs">
             <Eye className="w-4 h-4" />
           </div>
-          <div className="text-sm font-bold text-[#172554]">Explainability</div>
-          <div className="text-2xl font-bold font-mono text-[#0F9D8A] tabular-nums">100%</div>
+          <div className="text-sm font-bold text-[#0077B6]">Explainability</div>
+          <div className="text-2xl font-bold font-mono text-[#20B2AA] tabular-nums">100%</div>
           <p className="text-xs text-[#64748B] leading-relaxed">
             Every recommendation explains the exact factors used: eligibility, preference, capacity, and rules.
           </p>
         </div>
 
         <div className="p-5 bg-white rounded-[8px] border border-[#E2E8F0] space-y-2">
-          <div className="w-8 h-8 rounded-[6px] bg-emerald-50 border border-emerald-100 text-[#16A34A] flex items-center justify-center font-bold text-xs">
+          <div className="w-8 h-8 rounded-[6px] bg-emerald-50 border border-emerald-100 text-[#20B2AA] flex items-center justify-center font-bold text-xs">
             <ShieldCheck className="w-4 h-4" />
           </div>
-          <div className="text-sm font-bold text-[#172554]">Rule Compliance</div>
-          <div className="text-2xl font-bold font-mono text-[#16A34A] tabular-nums">Every run</div>
+          <div className="text-sm font-bold text-[#0077B6]">Rule Compliance</div>
+          <div className="text-2xl font-bold font-mono text-[#20B2AA] tabular-nums">Every run</div>
           <p className="text-xs text-[#64748B] leading-relaxed">
             The backend independently re-checks capacity, eligibility, uniqueness and preference authority before saving a plan or an approval.
           </p>
         </div>
 
         <div className="p-5 bg-white rounded-[8px] border border-[#E2E8F0] space-y-2">
-          <div className="w-8 h-8 rounded-[6px] bg-slate-50 border border-slate-200 text-[#172554] flex items-center justify-center font-bold text-xs">
+          <div className="w-8 h-8 rounded-[6px] bg-slate-50 border border-slate-200 text-[#0077B6] flex items-center justify-center font-bold text-xs">
             <Lock className="w-4 h-4" />
           </div>
-          <div className="text-sm font-bold text-[#172554]">Data Privacy</div>
-          <div className="text-2xl font-bold font-mono text-[#172554] tabular-nums">Synthetic</div>
+          <div className="text-sm font-bold text-[#0077B6]">Data Privacy</div>
+          <div className="text-2xl font-bold font-mono text-[#0077B6] tabular-nums">Synthetic</div>
           <p className="text-xs text-[#64748B] leading-relaxed">
             Demo records are synthetic aliases with no national ID, phone or address. Student IDs and names are never model features.
           </p>
@@ -138,7 +138,7 @@ export const ResponsibleAIScreen: React.FC = () => {
       <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
           <div>
-            <h2 className="text-base font-bold text-[#172554] flex items-center gap-2">
+            <h2 className="text-base font-bold text-[#0077B6] flex items-center gap-2">
               <Trophy className="w-4 h-4 text-[#D97706]" />
               Model comparison
             </h2>
@@ -180,13 +180,13 @@ export const ResponsibleAIScreen: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-[#E2E8F0]">
                 {ranked.map((m, i) => (
-                  <tr key={m.model_key} className={m.active ? 'bg-[#F0FDFA]' : 'hover:bg-slate-50'}>
+                  <tr key={m.model_key} className={m.active ? 'bg-[#F0FAF9]' : 'hover:bg-slate-50'}>
                     <td className="py-2.5 px-3 font-mono text-[#64748B]">{i + 1}</td>
                     <td className="py-2.5 px-3">
-                      <div className="font-semibold text-[#172554]">{m.display_name}</div>
+                      <div className="font-semibold text-[#0077B6]">{m.display_name}</div>
                       <div className="text-[11px] text-[#64748B]">{m.description}</div>
                     </td>
-                    <td className="py-2.5 px-3 text-right font-mono tabular-nums font-semibold text-[#172554]">
+                    <td className="py-2.5 px-3 text-right font-mono tabular-nums font-semibold text-[#0077B6]">
                       {pct(m.metrics?.validation?.top1_accuracy)}
                     </td>
                     <td className="py-2.5 px-3 text-right font-mono tabular-nums">{pct(m.metrics?.test?.top1_accuracy)}</td>
@@ -201,7 +201,7 @@ export const ResponsibleAIScreen: React.FC = () => {
                           </span>
                         )}
                         {m.active ? (
-                          <span className="px-1.5 py-0.5 rounded bg-[#0F9D8A]/10 border border-[#0F9D8A]/30 text-[#0F9D8A] text-[10px] font-bold">
+                          <span className="px-1.5 py-0.5 rounded bg-[#20B2AA]/10 border border-[#20B2AA]/30 text-[#20B2AA] text-[10px] font-bold">
                             IN USE
                           </span>
                         ) : !m.loaded ? (
@@ -213,7 +213,7 @@ export const ResponsibleAIScreen: React.FC = () => {
                             <button
                               onClick={() => activate(m)}
                               disabled={switching !== null}
-                              className="px-2 py-0.5 rounded border border-[#E2E8F0] text-[10px] font-semibold text-[#172554] hover:bg-slate-100 disabled:opacity-50 cursor-pointer"
+                              className="px-2 py-0.5 rounded border border-[#E2E8F0] text-[10px] font-semibold text-[#0077B6] hover:bg-slate-100 disabled:opacity-50 cursor-pointer"
                             >
                               {switching === m.model_key ? 'Switching…' : 'Use for new runs'}
                             </button>
@@ -243,16 +243,16 @@ export const ResponsibleAIScreen: React.FC = () => {
 
       <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 space-y-6">
         <div>
-          <h2 className="text-base font-bold text-[#172554]">Decision pipeline</h2>
+          <h2 className="text-base font-bold text-[#0077B6]">Decision pipeline</h2>
           <p className="text-xs text-[#64748B] mt-0.5">Every proposal goes through the same recorded steps</p>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 p-4 bg-slate-50 rounded-[6px] border border-[#E2E8F0] text-xs">
           {[
-            ['Step 1', 'Priority order', 'Overall score, then student ID', 'bg-white border-[#E2E8F0] text-[#172554]'],
-            ['Step 2', 'Listed choices', 'Eligibility and free seats checked', 'bg-white border-[#E2E8F0] text-[#172554]'],
-            ['Step 3', 'AI fallback', 'Only if opted in; eligible offers ranked', 'bg-[#F0FDFA] border-[#99F6E4] text-[#0F9D8A]'],
-            ['Step 4', 'Officer decision', 'Approve, change or reject with a reason', 'bg-emerald-50 border-emerald-200 text-[#16A34A]']
+            ['Step 1', 'Priority order', 'Overall score, then student ID', 'bg-white border-[#E2E8F0] text-[#0077B6]'],
+            ['Step 2', 'Listed choices', 'Eligibility and free seats checked', 'bg-white border-[#E2E8F0] text-[#0077B6]'],
+            ['Step 3', 'AI fallback', 'Only if opted in; eligible offers ranked', 'bg-[#F0FAF9] border-[#B1E5E0] text-[#20B2AA]'],
+            ['Step 4', 'Officer decision', 'Approve, change or reject with a reason', 'bg-emerald-50 border-emerald-200 text-[#20B2AA]']
           ].map(([step, title, sub, cls], i, arr) => (
             <React.Fragment key={step}>
               <div className={`text-center p-3 rounded-[6px] border w-full md:w-48 ${cls}`}>
@@ -271,7 +271,7 @@ export const ResponsibleAIScreen: React.FC = () => {
 
         {/* Audit Log Table */}
         <div className="pt-2">
-          <div className="text-xs font-bold text-[#172554] mb-3">
+          <div className="text-xs font-bold text-[#0077B6] mb-3">
             Latest audit events
           </div>
           <div className="border border-[#E2E8F0] rounded-[6px] overflow-hidden text-xs">
@@ -291,15 +291,15 @@ export const ResponsibleAIScreen: React.FC = () => {
                     <td className="py-2.5 px-3 font-mono text-[11px] text-[#64748B]">
                       {new Date(event.timestamp).toLocaleTimeString()}
                     </td>
-                    <td className="py-2.5 px-3 font-medium text-[#172554]">
+                    <td className="py-2.5 px-3 font-medium text-[#0077B6]">
                       {event.actor}
                     </td>
                     <td className="py-2.5 px-3">
-                      <span className="font-mono font-bold text-[11px] text-[#2563EB]">
+                      <span className="font-mono font-bold text-[11px] text-[#0077B6]">
                         {event.action}
                       </span>
                     </td>
-                    <td className="py-2.5 px-3 font-mono text-[#172554]">
+                    <td className="py-2.5 px-3 font-mono text-[#0077B6]">
                       {event.student_id || 'Cohort'}
                     </td>
                     <td className="py-2.5 px-3 text-[#64748B]">

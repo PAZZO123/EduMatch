@@ -752,8 +752,8 @@ export const StudentPlacementWorkflow: React.FC<{
             toastMessage.type === 'error'
               ? 'bg-[#DC2626] text-white'
               : toastMessage.type === 'info'
-              ? 'bg-[#2563EB] text-white border border-[#2563EB]/40'
-              : 'bg-[#0F9D8A] text-white'
+              ? 'bg-[#0077B6] text-white border border-[#0077B6]/40'
+              : 'bg-[#20B2AA] text-white'
           }`}
         >
           {toastMessage.type === 'error' ? (
@@ -772,21 +772,21 @@ export const StudentPlacementWorkflow: React.FC<{
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs text-[#64748B] font-medium mb-0.5">
-              <span className="font-semibold text-[#2563EB]">National Placement Workflow</span>
+              <span className="font-semibold text-[#0077B6]">National Placement Workflow</span>
               <span>•</span>
-              <span className="inline-flex items-center gap-1 text-[#0F9D8A] font-semibold bg-[#0F9D8A]/10 px-2 py-0.5 rounded-[4px] border border-[#0F9D8A]/20">
+              <span className="inline-flex items-center gap-1 text-[#20B2AA] font-semibold bg-[#20B2AA]/10 px-2 py-0.5 rounded-[4px] border border-[#20B2AA]/20">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 AI recommends. Humans decide.
               </span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-[#172554] tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-[#0077B6] tracking-tight">
               Student Placement
             </h1>
           </div>
 
           <div className="text-xs font-mono text-slate-500">
             Step {currentStep} of {WORKFLOW_STEPS.length}:{' '}
-            <strong className="text-[#172554]">{WORKFLOW_STEPS[currentStep - 1].label}</strong>
+            <strong className="text-[#0077B6]">{WORKFLOW_STEPS[currentStep - 1].label}</strong>
           </div>
         </div>
 
@@ -808,18 +808,18 @@ export const StudentPlacementWorkflow: React.FC<{
                   }}
                   className={`p-2.5 rounded-[6px] text-left border transition-all ${
                     isCurrent
-                      ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-xs ring-2 ring-[#DBEAFE]'
+                      ? 'bg-[#0077B6] text-white border-[#0077B6] shadow-xs ring-2 ring-[#DBEAFE]'
                       : isCompleted
-                      ? 'bg-[#EFF6FF] text-[#1D4ED8] border-[#DBEAFE] hover:bg-[#DBEAFE] cursor-pointer'
+                      ? 'bg-[#EFF6FF] text-[#00669D] border-[#DBEAFE] hover:bg-[#DBEAFE] cursor-pointer'
                       : isUnlocked
-                      ? 'bg-white text-[#172554] border-[#E2E8F0] hover:border-[#2563EB]/40 cursor-pointer'
+                      ? 'bg-white text-[#0077B6] border-[#E2E8F0] hover:border-[#0077B6]/40 cursor-pointer'
                       : 'bg-slate-50 text-slate-400 border-slate-200 opacity-60 cursor-not-allowed'
                   }`}
                 >
                   <div className="flex items-center justify-between text-[11px] font-mono font-bold">
                     <span>{step.num}</span>
                     {isCompleted ? (
-                      <span className="text-[#16A34A] font-bold flex items-center gap-0.5">
+                      <span className="text-[#20B2AA] font-bold flex items-center gap-0.5">
                         <Check className="w-3.5 h-3.5" />
                       </span>
                     ) : isCurrent ? (
@@ -831,7 +831,7 @@ export const StudentPlacementWorkflow: React.FC<{
                     )}
                   </div>
                   <div className="mt-1">
-                    <div className={`text-xs font-bold truncate ${isCurrent ? 'text-white' : 'text-[#172554]'}`}>
+                    <div className={`text-xs font-bold truncate ${isCurrent ? 'text-white' : 'text-[#0077B6]'}`}>
                       {step.label}
                     </div>
                     <div className={`text-[10px] hidden sm:block truncate ${isCurrent ? 'text-blue-100' : 'text-[#64748B]'}`}>
@@ -854,10 +854,10 @@ export const StudentPlacementWorkflow: React.FC<{
         {currentStep === 1 && (
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 sm:p-10 shadow-xs space-y-6 animate-fadeIn">
             <div>
-              <span className="text-[11px] font-mono font-bold text-[#2563EB] uppercase tracking-wider">
+              <span className="text-[11px] font-mono font-bold text-[#0077B6] uppercase tracking-wider">
                 STEP 1 OF 6
               </span>
-              <h2 className="text-2xl font-extrabold text-[#172554] tracking-tight mt-1">
+              <h2 className="text-2xl font-extrabold text-[#0077B6] tracking-tight mt-1">
                 Upload Placement Data
               </h2>
               <p className="text-xs sm:text-sm text-[#64748B] mt-1 leading-relaxed">
@@ -874,11 +874,11 @@ export const StudentPlacementWorkflow: React.FC<{
 
             {canImport && (
               <div className="p-3 bg-blue-50/70 border border-blue-200/80 rounded-[6px] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                <span className="text-[#172554] font-medium">Or load a built-in synthetic sample cohort:</span>
+                <span className="text-[#0077B6] font-medium">Or load a built-in synthetic sample cohort:</span>
                 <div className="flex flex-wrap items-center gap-2">
                   <button
                     onClick={() => handleLoadPresetCohort('200_standard')}
-                    className="px-3 py-1.5 bg-white text-[#2563EB] hover:bg-blue-100 border border-blue-300 rounded-[4px] font-semibold transition-colors cursor-pointer"
+                    className="px-3 py-1.5 bg-white text-[#0077B6] hover:bg-blue-100 border border-blue-300 rounded-[4px] font-semibold transition-colors cursor-pointer"
                   >
                     Sample (200 students)
                   </button>
@@ -905,7 +905,7 @@ export const StudentPlacementWorkflow: React.FC<{
                   handleFileUpload(e.dataTransfer.files);
                 }}
                 className={`border-2 border-dashed rounded-[8px] p-8 sm:p-12 text-center transition-all ${
-                  isDragging ? 'border-[#2563EB] bg-blue-50/50' : 'border-[#CBD5E1] bg-[#F8FAFC] hover:bg-slate-50'
+                  isDragging ? 'border-[#0077B6] bg-blue-50/50' : 'border-[#CBD5E1] bg-[#F8FAFC] hover:bg-slate-50'
                 }`}
               >
                 <input
@@ -919,17 +919,17 @@ export const StudentPlacementWorkflow: React.FC<{
                   accept=".csv,.json,.pdf,.xlsx,.xls"
                   className="hidden"
                 />
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-[#2563EB] flex items-center justify-center mx-auto mb-3 shadow-xs">
+                <div className="w-12 h-12 rounded-full bg-blue-100 text-[#0077B6] flex items-center justify-center mx-auto mb-3 shadow-xs">
                   <UploadCloud className="w-6 h-6" />
                 </div>
-                <div className="text-sm font-bold text-[#172554]">Drag and drop files here</div>
+                <div className="text-sm font-bold text-[#0077B6]">Drag and drop files here</div>
                 <div className="text-xs text-[#64748B] mt-1">
                   students_2026.csv · schools_2026.csv · placement_rules.json (optional) · rules PDF (optional, for reference)
                 </div>
                 <div className="mt-4">
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="px-4 py-2 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-semibold shadow-xs transition-colors flex items-center gap-1.5 mx-auto cursor-pointer"
+                    className="px-4 py-2 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-semibold shadow-xs transition-colors flex items-center gap-1.5 mx-auto cursor-pointer"
                   >
                     <span>+ Upload Files</span>
                   </button>
@@ -938,7 +938,7 @@ export const StudentPlacementWorkflow: React.FC<{
             )}
 
             <div className="space-y-3">
-              <div className="text-xs font-bold text-[#172554] uppercase tracking-wider">
+              <div className="text-xs font-bold text-[#0077B6] uppercase tracking-wider">
                 Uploaded Files ({uploadedFiles.length})
               </div>
 
@@ -959,16 +959,16 @@ export const StudentPlacementWorkflow: React.FC<{
                             ? 'bg-rose-100 text-rose-700'
                             : file.role === 'unsupported'
                             ? 'bg-amber-100 text-amber-700'
-                            : 'bg-blue-100 text-[#2563EB]'
+                            : 'bg-blue-100 text-[#0077B6]'
                         }`}
                       >
                         {file.type === 'PDF' || file.type === 'JSON' ? <FileText className="w-4 h-4" /> : <FileSpreadsheet className="w-4 h-4" />}
                       </div>
                       <div>
-                        <div className="font-bold text-[#172554] flex flex-wrap items-center gap-2">
+                        <div className="font-bold text-[#0077B6] flex flex-wrap items-center gap-2">
                           <span>{file.name}</span>
                           <span className="font-mono text-[10px] bg-slate-100 text-slate-600 px-1 rounded">{file.size}</span>
-                          <span className="text-[10px] font-semibold text-[#2563EB]">{ROLE_LABEL[file.role]}</span>
+                          <span className="text-[10px] font-semibold text-[#0077B6]">{ROLE_LABEL[file.role]}</span>
                         </div>
                         <div className="text-[11px] text-slate-500 mt-0.5">{file.description}</div>
                       </div>
@@ -1007,8 +1007,8 @@ export const StudentPlacementWorkflow: React.FC<{
               )}
             </div>
 
-            <div className="p-3 bg-blue-50/60 border border-blue-200/80 rounded-[6px] flex items-start gap-2.5 text-xs text-[#172554]">
-              <ShieldCheck className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+            <div className="p-3 bg-blue-50/60 border border-blue-200/80 rounded-[6px] flex items-start gap-2.5 text-xs text-[#0077B6]">
+              <ShieldCheck className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
               <p className="text-[#475569] leading-relaxed">
                 <strong>Data Privacy:</strong> Real student data may only be uploaded through authorised NESA channels. Use
                 synthetic or anonymised data for demonstrations.
@@ -1019,7 +1019,7 @@ export const StudentPlacementWorkflow: React.FC<{
               {activeRunId ? (
                 <button
                   onClick={() => goToStep(4)}
-                  className="px-4 py-2 text-xs font-semibold text-[#2563EB] hover:underline cursor-pointer"
+                  className="px-4 py-2 text-xs font-semibold text-[#0077B6] hover:underline cursor-pointer"
                 >
                   Skip to the current run’s results →
                 </button>
@@ -1029,7 +1029,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <button
                 disabled={!canImport || !fileFor('students') || !fileFor('schools') || validating}
                 onClick={handleValidateUpload}
-                className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {validating ? <RefreshCw className="w-4 h-4 animate-spin" /> : null}
                 <span>{validating ? 'Validating on the server…' : 'Validate Files'}</span>
@@ -1045,10 +1045,10 @@ export const StudentPlacementWorkflow: React.FC<{
         {currentStep === 2 && (
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 sm:p-10 shadow-xs space-y-6 animate-fadeIn">
             <div>
-              <span className="text-[11px] font-mono font-bold text-[#2563EB] uppercase tracking-wider">
+              <span className="text-[11px] font-mono font-bold text-[#0077B6] uppercase tracking-wider">
                 STEP 2 OF 6
               </span>
-              <h2 className="text-2xl font-extrabold text-[#172554] tracking-tight mt-1">
+              <h2 className="text-2xl font-extrabold text-[#0077B6] tracking-tight mt-1">
                 Validate Placement Data
               </h2>
               <p className="text-xs sm:text-sm text-[#64748B] mt-1 leading-relaxed">
@@ -1095,24 +1095,24 @@ export const StudentPlacementWorkflow: React.FC<{
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   <div className="p-4 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0]">
                     <div className="text-[11px] font-semibold text-[#64748B] uppercase">Students</div>
-                    <div className="text-2xl font-black text-[#172554] mt-1">{validation.students}</div>
+                    <div className="text-2xl font-black text-[#0077B6] mt-1">{validation.students}</div>
                     <div className="text-[11px] text-emerald-600 mt-1 font-semibold">✓ all rows valid</div>
                   </div>
                   <div className="p-4 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0]">
                     <div className="text-[11px] font-semibold text-[#64748B] uppercase">School offers</div>
-                    <div className="text-2xl font-black text-[#172554] mt-1">{validation.schools}</div>
+                    <div className="text-2xl font-black text-[#0077B6] mt-1">{validation.schools}</div>
                     <div className="text-[11px] text-slate-500 mt-1">{validation.seats} seats in total</div>
                   </div>
                   <div className="p-4 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0]">
                     <div className="text-[11px] font-semibold text-[#64748B] uppercase">Ranked choices</div>
-                    <div className="text-2xl font-black text-[#2563EB] mt-1">{validation.preferences}</div>
+                    <div className="text-2xl font-black text-[#0077B6] mt-1">{validation.preferences}</div>
                     <div className="text-[11px] text-slate-500 mt-1">
                       {validation.fallbackOptIn != null ? `${validation.fallbackOptIn} students allow alternatives` : '1–3 per student'}
                     </div>
                   </div>
                   <div className="p-4 rounded-[6px] bg-[#F8FAFC] border border-[#E2E8F0]">
                     <div className="text-[11px] font-semibold text-[#64748B] uppercase">Seats vs students</div>
-                    <div className={`text-2xl font-black mt-1 ${validation.seats >= validation.students ? 'text-[#0F9D8A]' : 'text-amber-600'}`}>
+                    <div className={`text-2xl font-black mt-1 ${validation.seats >= validation.students ? 'text-[#20B2AA]' : 'text-amber-600'}`}>
                       {validation.seats >= validation.students ? '+' : ''}
                       {validation.seats - validation.students}
                     </div>
@@ -1122,7 +1122,7 @@ export const StudentPlacementWorkflow: React.FC<{
                   </div>
                 </div>
 
-                <div className="p-5 bg-emerald-50/50 border border-emerald-200/80 rounded-[6px] space-y-2 text-xs text-[#172554]">
+                <div className="p-5 bg-emerald-50/50 border border-emerald-200/80 rounded-[6px] space-y-2 text-xs text-[#0077B6]">
                   <div className="text-xs font-bold uppercase tracking-wider">Checks passed</div>
                   <div className="flex items-center gap-2 font-medium">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -1169,7 +1169,7 @@ export const StudentPlacementWorkflow: React.FC<{
                         type="checkbox"
                         checked={issuesAcknowledged}
                         onChange={e => setIssuesAcknowledged(e.target.checked)}
-                        className="rounded border-amber-300 text-[#2563EB] focus:ring-0 cursor-pointer"
+                        className="rounded border-amber-300 text-[#0077B6] focus:ring-0 cursor-pointer"
                       />
                       <span>Replace it</span>
                     </label>
@@ -1181,7 +1181,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
               <button
                 onClick={() => goToStep(1)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#172554] flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#0077B6] flex items-center gap-1.5 cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Upload</span>
@@ -1190,7 +1190,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <button
                 disabled={!validation || !issuesAcknowledged || importing}
                 onClick={handleConfirmData}
-                className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                className="px-6 py-2.5 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {importing ? <RefreshCw className="w-4 h-4 animate-spin" /> : null}
                 <span>{validation?.source === 'upload' ? (importing ? 'Importing…' : 'Import & Continue') : 'Continue to AI Matching'}</span>
@@ -1206,10 +1206,10 @@ export const StudentPlacementWorkflow: React.FC<{
         {currentStep === 3 && (
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 sm:p-10 shadow-xs space-y-6 animate-fadeIn">
             <div>
-              <span className="text-[11px] font-mono font-bold text-[#2563EB] uppercase tracking-wider">
+              <span className="text-[11px] font-mono font-bold text-[#0077B6] uppercase tracking-wider">
                 STEP 3 OF 6
               </span>
-              <h2 className="text-2xl font-extrabold text-[#172554] tracking-tight mt-1">
+              <h2 className="text-2xl font-extrabold text-[#0077B6] tracking-tight mt-1">
                 Ready for AI Matching
               </h2>
               <p className="text-xs sm:text-sm text-[#64748B] mt-1 leading-relaxed">
@@ -1218,9 +1218,9 @@ export const StudentPlacementWorkflow: React.FC<{
             </div>
 
             {!isProcessing && !aiMatchingComplete && (
-              <div className="p-6 rounded-[8px] bg-[#EFF6FF] border border-[#DBEAFE] text-[#172554] space-y-4">
-                <div className="flex items-center gap-2 text-[#14B8A6] text-xs font-bold">
-                  <Sparkles className="w-4 h-4 text-[#14B8A6]" />
+              <div className="p-6 rounded-[8px] bg-[#EFF6FF] border border-[#DBEAFE] text-[#0077B6] space-y-4">
+                <div className="flex items-center gap-2 text-[#20B2AA] text-xs font-bold">
+                  <Sparkles className="w-4 h-4 text-[#20B2AA]" />
                   <span>Serial priority allocation + local AI model</span>
                 </div>
                 <ol className="text-xs text-[#475569] leading-relaxed space-y-1 list-decimal pl-4 max-w-2xl">
@@ -1236,7 +1236,7 @@ export const StudentPlacementWorkflow: React.FC<{
                 {canReview ? (
                   <button
                     onClick={handleStartAIProcessing}
-                    className="px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+                    className="px-6 py-3 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4" />
                     <span>Run AI Placement</span>
@@ -1248,9 +1248,9 @@ export const StudentPlacementWorkflow: React.FC<{
             )}
 
             {isProcessing && (
-              <div className="p-8 rounded-[8px] bg-gradient-to-br from-[#1E40AF] to-[#2563EB] text-white text-center space-y-5 shadow-lg">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold text-[#CCFBF1]">
-                  <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#CCFBF1]" />
+              <div className="p-8 rounded-[8px] bg-gradient-to-br from-[#0077B6] to-[#0077B6] text-white text-center space-y-5 shadow-lg">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold text-[#D4F2EF]">
+                  <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#D4F2EF]" />
                   <span>EduMatch AI Matching Engine</span>
                 </div>
                 <h3 className="text-xl font-bold tracking-tight">Placing students...</h3>
@@ -1278,7 +1278,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <div className="p-6 rounded-[8px] bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-6 h-6 text-emerald-600" />
-                  <h3 className="text-lg font-bold text-[#172554]">✓ Placement proposals ready</h3>
+                  <h3 className="text-lg font-bold text-[#0077B6]">✓ Placement proposals ready</h3>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   {totalStudentsCount} students processed in {runSummary ? Math.round(runSummary.runtime_ms) : '—'} ms on the server
@@ -1292,11 +1292,11 @@ export const StudentPlacementWorkflow: React.FC<{
                   </div>
                   <div className="p-2.5 bg-white rounded border border-emerald-200 font-semibold">
                     <span className="text-slate-500 block text-[10px]">Got 1st choice</span>
-                    <span className="text-[#2563EB] text-base font-bold">{pref1Count}</span>
+                    <span className="text-[#0077B6] text-base font-bold">{pref1Count}</span>
                   </div>
                   <div className="p-2.5 bg-white rounded border border-emerald-200 font-semibold">
                     <span className="text-slate-500 block text-[10px]">AI-suggested alternative</span>
-                    <span className="text-[#0F9D8A] text-base font-bold">{aiSuggestedCount}</span>
+                    <span className="text-[#20B2AA] text-base font-bold">{aiSuggestedCount}</span>
                   </div>
                   <div className="p-2.5 bg-white rounded border border-emerald-200 font-semibold">
                     <span className="text-slate-500 block text-[10px]">Not placed (needs review)</span>
@@ -1310,7 +1310,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <button
                 disabled={isProcessing}
                 onClick={() => goToStep(2)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#172554] flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#0077B6] flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Validation</span>
@@ -1319,7 +1319,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <button
                 disabled={!aiMatchingComplete && !activeRunId}
                 onClick={() => goToStep(4)}
-                className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                className="px-6 py-2.5 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <span>Review Recommendations</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1336,10 +1336,10 @@ export const StudentPlacementWorkflow: React.FC<{
             {/* Header Box */}
             <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] font-mono font-bold text-[#2563EB] uppercase tracking-wider">
+                <span className="text-[11px] font-mono font-bold text-[#0077B6] uppercase tracking-wider">
                   STEP 4 OF 6
                 </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-[#172554] tracking-tight mt-1">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-[#0077B6] tracking-tight mt-1">
                   Review AI Recommendations
                 </h2>
                 <p className="text-xs text-[#64748B] mt-0.5">
@@ -1349,7 +1349,7 @@ export const StudentPlacementWorkflow: React.FC<{
 
               <button
                 onClick={() => goToStep(5)}
-                className="px-5 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer self-start md:self-auto"
+                className="px-5 py-2.5 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer self-start md:self-auto"
               >
                 <span>Continue to Approval</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1360,7 +1360,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
               <div className="p-3 bg-white rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Students</div>
-                <div className="text-lg font-black text-[#172554] mt-1">{totalStudentsCount}</div>
+                <div className="text-lg font-black text-[#0077B6] mt-1">{totalStudentsCount}</div>
               </div>
               <div className="p-3 bg-white rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Placed</div>
@@ -1372,11 +1372,11 @@ export const StudentPlacementWorkflow: React.FC<{
               </div>
               <div className="p-3 bg-white rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Got 1st choice</div>
-                <div className="text-lg font-black text-[#2563EB] mt-1">{metrics ? `${metrics.first_choice_rate}%` : '—'}</div>
+                <div className="text-lg font-black text-[#0077B6] mt-1">{metrics ? `${metrics.first_choice_rate}%` : '—'}</div>
               </div>
               <div className="p-3 bg-white rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Got a top-3 choice</div>
-                <div className="text-lg font-black text-[#172554] mt-1">{metrics ? `${metrics.top_three_rate}%` : '—'}</div>
+                <div className="text-lg font-black text-[#0077B6] mt-1">{metrics ? `${metrics.top_three_rate}%` : '—'}</div>
               </div>
               <div className="p-3 bg-white rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Rule violations</div>
@@ -1396,7 +1396,7 @@ export const StudentPlacementWorkflow: React.FC<{
                     placeholder="Search student or school..."
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
-                    className="w-full pl-8 pr-3 py-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] text-xs focus:outline-none focus:ring-1 focus:ring-[#2563EB]"
+                    className="w-full pl-8 pr-3 py-1.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[6px] text-xs focus:outline-none focus:ring-1 focus:ring-[#0077B6]"
                   />
                 </div>
 
@@ -1437,12 +1437,12 @@ export const StudentPlacementWorkflow: React.FC<{
 
               {canReview && selectedStudentIds.size > 0 && (
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-xs bg-blue-100 text-[#2563EB] px-2 py-0.5 rounded">
+                  <span className="font-mono font-bold text-xs bg-blue-100 text-[#0077B6] px-2 py-0.5 rounded">
                     {selectedStudentIds.size} selected
                   </span>
                   <button
                     onClick={handleApproveSelected}
-                    className="px-3 py-1 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded text-xs font-bold cursor-pointer"
+                    className="px-3 py-1 bg-[#0077B6] hover:bg-[#00669D] text-white rounded text-xs font-bold cursor-pointer"
                   >
                     Approve Selected
                   </button>
@@ -1461,7 +1461,7 @@ export const StudentPlacementWorkflow: React.FC<{
                           type="checkbox"
                           checked={filteredProposals.length > 0 && selectedStudentIds.size === filteredProposals.length}
                           onChange={handleToggleSelectAll}
-                          className="rounded border-slate-300 text-[#2563EB] focus:ring-0 cursor-pointer"
+                          className="rounded border-slate-300 text-[#0077B6] focus:ring-0 cursor-pointer"
                         />}
                       </th>
                       <th className="py-3 px-4">Student ID</th>
@@ -1500,24 +1500,24 @@ export const StudentPlacementWorkflow: React.FC<{
                                   type="checkbox"
                                   checked={isSelected}
                                   onChange={() => handleToggleSelectOne(student.student_id)}
-                                  className="rounded border-slate-300 text-[#2563EB] focus:ring-0 cursor-pointer"
+                                  className="rounded border-slate-300 text-[#0077B6] focus:ring-0 cursor-pointer"
                                 />
                               )}
                             </td>
 
-                            <td className="py-3 px-4 font-mono font-bold text-[#172554] whitespace-nowrap">
+                            <td className="py-3 px-4 font-mono font-bold text-[#0077B6] whitespace-nowrap">
                               {student.student_id}
                             </td>
 
                             <td className="py-3 px-4">
-                              <div className="font-bold text-[#172554]">{student.display_name}</div>
+                              <div className="font-bold text-[#0077B6]">{student.display_name}</div>
                               <div className="text-[10px] text-slate-400 font-mono">Score: {student.overall_score}%</div>
                             </td>
 
                             <td className="py-3 px-4">
                               {offer && !unplaced ? (
-                                <div className="font-bold text-[#172554] flex items-center gap-1.5">
-                                  <Building className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
+                                <div className="font-bold text-[#0077B6] flex items-center gap-1.5">
+                                  <Building className="w-3.5 h-3.5 text-[#0077B6] shrink-0" />
                                   <span>{offer.school_name}</span>
                                 </div>
                               ) : (
@@ -1530,7 +1530,7 @@ export const StudentPlacementWorkflow: React.FC<{
                                 unplaced
                                   ? 'bg-amber-100 text-amber-800'
                                   : proposal.is_fallback
-                                  ? 'bg-teal-50 text-[#0F9D8A] border border-teal-200'
+                                  ? 'bg-teal-50 text-[#20B2AA] border border-teal-200'
                                   : proposal.preference_rank === 1
                                   ? 'bg-emerald-100 text-emerald-800'
                                   : 'bg-blue-100 text-blue-800'
@@ -1577,7 +1577,7 @@ export const StudentPlacementWorkflow: React.FC<{
                                 {canReview && !unplaced && proposal.status !== 'APPROVED' && (
                                   <button
                                     onClick={() => handleApproveProposal(student.student_id)}
-                                    className="px-2.5 py-1 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded font-semibold text-[11px] cursor-pointer"
+                                    className="px-2.5 py-1 bg-[#0077B6] hover:bg-[#00669D] text-white rounded font-semibold text-[11px] cursor-pointer"
                                   >
                                     Approve
                                   </button>
@@ -1588,7 +1588,7 @@ export const StudentPlacementWorkflow: React.FC<{
                                     className={`px-2.5 py-1 rounded font-semibold text-[11px] cursor-pointer border ${
                                       unplaced
                                         ? 'bg-amber-500 hover:bg-amber-600 text-white border-amber-500'
-                                        : 'bg-white hover:bg-slate-100 text-[#172554] border-[#CBD5E1]'
+                                        : 'bg-white hover:bg-slate-100 text-[#0077B6] border-[#CBD5E1]'
                                     }`}
                                   >
                                     {unplaced ? 'Assign school' : 'Change'}
@@ -1616,7 +1616,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="p-4 bg-white rounded-[6px] border border-[#E2E8F0] flex items-center justify-between">
               <button
                 onClick={() => goToStep(3)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#172554] flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#0077B6] flex items-center gap-1.5 cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to AI Matching</span>
@@ -1624,7 +1624,7 @@ export const StudentPlacementWorkflow: React.FC<{
 
               <button
                 onClick={() => goToStep(5)}
-                className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+                className="px-6 py-2.5 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <span>Continue to Approval</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1639,10 +1639,10 @@ export const StudentPlacementWorkflow: React.FC<{
         {currentStep === 5 && (
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 sm:p-10 shadow-xs space-y-6 animate-fadeIn">
             <div>
-              <span className="text-[11px] font-mono font-bold text-[#2563EB] uppercase tracking-wider">
+              <span className="text-[11px] font-mono font-bold text-[#0077B6] uppercase tracking-wider">
                 STEP 5 OF 6
               </span>
-              <h2 className="text-2xl font-extrabold text-[#172554] tracking-tight mt-1">
+              <h2 className="text-2xl font-extrabold text-[#0077B6] tracking-tight mt-1">
                 Approve Placements
               </h2>
               <p className="text-xs sm:text-sm text-[#64748B] mt-1 leading-relaxed">
@@ -1654,11 +1654,11 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
               <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Total Students</div>
-                <div className="text-2xl font-black text-[#172554] mt-1">{totalStudentsCount}</div>
+                <div className="text-2xl font-black text-[#0077B6] mt-1">{totalStudentsCount}</div>
               </div>
               <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Already approved</div>
-                <div className="text-2xl font-black text-[#2563EB] mt-1">{approvedStudentsCount}</div>
+                <div className="text-2xl font-black text-[#0077B6] mt-1">{approvedStudentsCount}</div>
               </div>
               <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">Manually Changed</div>
@@ -1690,12 +1690,12 @@ export const StudentPlacementWorkflow: React.FC<{
 
             {/* Administrator Declaration Checkbox */}
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-[6px]">
-              <label className="flex items-start gap-3 cursor-pointer text-xs text-[#172554]">
+              <label className="flex items-start gap-3 cursor-pointer text-xs text-[#0077B6]">
                 <input
                   type="checkbox"
                   checked={finalApprovalAgreement}
                   onChange={e => setFinalApprovalAgreement(e.target.checked)}
-                  className="rounded border-slate-300 text-[#2563EB] focus:ring-0 mt-0.5 cursor-pointer"
+                  className="rounded border-slate-300 text-[#0077B6] focus:ring-0 mt-0.5 cursor-pointer"
                 />
                 <div>
                   <span className="font-bold">Administrator Declaration:</span>
@@ -1710,7 +1710,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
               <button
                 onClick={() => goToStep(4)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#172554] flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#0077B6] flex items-center gap-1.5 cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Review</span>
@@ -1719,7 +1719,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <button
                 disabled={!finalApprovalAgreement || !canReview || readyForApprovalCount === 0}
                 onClick={() => setApproveConfirmModalOpen(true)}
-                className="px-6 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <CheckSquare className="w-4 h-4" />
                 <span>Approve Final Placements</span>
@@ -1735,10 +1735,10 @@ export const StudentPlacementWorkflow: React.FC<{
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-6 sm:p-10 shadow-xs space-y-6 animate-fadeIn">
             {/* Success Banner */}
             <div className="p-6 rounded-[8px] bg-emerald-50 border border-emerald-200 text-center space-y-2">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 text-[#0F9D8A] flex items-center justify-center mx-auto shadow-xs">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 text-[#20B2AA] flex items-center justify-center mx-auto shadow-xs">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h2 className="text-2xl font-extrabold text-[#172554]">
+              <h2 className="text-2xl font-extrabold text-[#0077B6]">
                 ✓ Placement Completed
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto">
@@ -1754,11 +1754,11 @@ export const StudentPlacementWorkflow: React.FC<{
               </div>
               <div className="p-3 bg-[#F8FAFC] rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">1st Preference</div>
-                <div className="text-xl font-black text-[#2563EB] mt-1">{pref1Count}</div>
+                <div className="text-xl font-black text-[#0077B6] mt-1">{pref1Count}</div>
               </div>
               <div className="p-3 bg-[#F8FAFC] rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">2nd Preference</div>
-                <div className="text-xl font-black text-[#172554] mt-1">{pref2Count}</div>
+                <div className="text-xl font-black text-[#0077B6] mt-1">{pref2Count}</div>
               </div>
               <div className="p-3 bg-[#F8FAFC] rounded border border-[#E2E8F0]">
                 <div className="text-[10px] text-slate-500 font-semibold uppercase">3rd choice / AI</div>
@@ -1778,7 +1778,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="pt-4 border-t border-[#E2E8F0] flex flex-wrap items-center justify-between gap-3">
               <button
                 onClick={() => goToStep(4)}
-                className="px-4 py-2 bg-[#EFF6FF] hover:bg-blue-100 text-[#1D4ED8] rounded-[6px] text-xs font-semibold cursor-pointer"
+                className="px-4 py-2 bg-[#EFF6FF] hover:bg-blue-100 text-[#00669D] rounded-[6px] text-xs font-semibold cursor-pointer"
               >
                 View Placements Table
               </button>
@@ -1786,7 +1786,7 @@ export const StudentPlacementWorkflow: React.FC<{
               <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={handleExportCSV}
-                  className="px-4 py-2 bg-[#2563EB] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2 bg-[#0077B6] hover:bg-blue-700 text-white rounded-[6px] text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Approved placements (CSV)</span>
@@ -1794,7 +1794,7 @@ export const StudentPlacementWorkflow: React.FC<{
 
                 <button
                   onClick={handleExportExceptions}
-                  className="px-4 py-2 bg-[#EFF6FF] hover:bg-blue-100 text-[#1D4ED8] border border-[#DBEAFE] rounded-[6px] text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2 bg-[#EFF6FF] hover:bg-blue-100 text-[#00669D] border border-[#DBEAFE] rounded-[6px] text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Not placed + suggested actions (CSV)</span>
@@ -1802,7 +1802,7 @@ export const StudentPlacementWorkflow: React.FC<{
 
                 <button
                   onClick={handleExportPDF}
-                  className="px-4 py-2 bg-white hover:bg-slate-50 text-[#172554] border border-[#CBD5E1] rounded-[6px] text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2 bg-white hover:bg-slate-50 text-[#0077B6] border border-[#CBD5E1] rounded-[6px] text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5 text-rose-600" />
                   <span>Print Report</span>
@@ -1811,7 +1811,7 @@ export const StudentPlacementWorkflow: React.FC<{
                 {onReturnDashboard && (
                   <button
                     onClick={onReturnDashboard}
-                    className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#172554] cursor-pointer"
+                    className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#0077B6] cursor-pointer"
                   >
                     Return to Dashboard
                   </button>
@@ -1828,7 +1828,7 @@ export const StudentPlacementWorkflow: React.FC<{
       {detailStudent && (
         <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/40 backdrop-blur-xs">
           <div className="w-full max-w-xl h-full bg-white shadow-2xl flex flex-col overflow-y-auto animate-slideInRight">
-            <div className="p-6 bg-[#2563EB] text-white flex items-center justify-between shadow-xs">
+            <div className="p-6 bg-[#0077B6] text-white flex items-center justify-between shadow-xs">
               <div>
                 <div className="text-xs text-blue-200 font-semibold">Student Placement Dossier</div>
                 <h3 className="text-lg font-bold">{detailStudent.student.display_name}</h3>
@@ -1845,32 +1845,32 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="p-6 space-y-6 flex-1 text-xs">
               {/* Student Information & Academic Results */}
               <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[6px] space-y-2">
-                <div className="font-bold text-[#172554] uppercase tracking-wider text-[11px]">
+                <div className="font-bold text-[#0077B6] uppercase tracking-wider text-[11px]">
                   Academic Results
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                   <div>
                     <div className="text-slate-400 text-[10px]">Aggregate</div>
-                    <div className="text-base font-black text-[#172554]">{detailStudent.student.overall_score}%</div>
+                    <div className="text-base font-black text-[#0077B6]">{detailStudent.student.overall_score}%</div>
                   </div>
                   <div>
                     <div className="text-slate-400 text-[10px]">Math</div>
-                    <div className="text-sm font-bold text-[#172554]">{detailStudent.student.math_score}%</div>
+                    <div className="text-sm font-bold text-[#0077B6]">{detailStudent.student.math_score}%</div>
                   </div>
                   <div>
                     <div className="text-slate-400 text-[10px]">Science</div>
-                    <div className="text-sm font-bold text-[#172554]">{detailStudent.student.science_score}%</div>
+                    <div className="text-sm font-bold text-[#0077B6]">{detailStudent.student.science_score}%</div>
                   </div>
                   <div>
                     <div className="text-slate-400 text-[10px]">Language</div>
-                    <div className="text-sm font-bold text-[#172554]">{detailStudent.student.language_score}%</div>
+                    <div className="text-sm font-bold text-[#0077B6]">{detailStudent.student.language_score}%</div>
                   </div>
                 </div>
               </div>
 
               {/* School Preferences */}
               <div className="space-y-2">
-                <div className="font-bold text-[#172554] uppercase tracking-wider text-[11px]">
+                <div className="font-bold text-[#0077B6] uppercase tracking-wider text-[11px]">
                   School Preferences
                 </div>
                 <div className="space-y-1.5">
@@ -1880,18 +1880,18 @@ export const StudentPlacementWorkflow: React.FC<{
                         key={c.rank}
                         className={`p-2.5 rounded-[4px] border flex items-center justify-between ${
                           detailStudent.proposal.offer_id === c.offer_id
-                            ? 'bg-blue-50 border-[#2563EB]'
+                            ? 'bg-blue-50 border-[#0077B6]'
                             : 'bg-white border-slate-200'
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="w-5 h-5 rounded-full bg-slate-100 text-[#172554] flex items-center justify-center font-bold text-[10px]">
+                          <span className="w-5 h-5 rounded-full bg-slate-100 text-[#0077B6] flex items-center justify-center font-bold text-[10px]">
                             {c.rank}
                           </span>
-                          <span className="font-bold text-[#172554]">{c.school_name}</span>
+                          <span className="font-bold text-[#0077B6]">{c.school_name}</span>
                         </div>
                         {detailStudent.proposal.offer_id === c.offer_id && (
-                          <span className="text-[10px] font-bold text-[#2563EB] bg-blue-100 px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-bold text-[#0077B6] bg-blue-100 px-2 py-0.5 rounded">
                             Assigned
                           </span>
                         )}
@@ -1906,26 +1906,26 @@ export const StudentPlacementWorkflow: React.FC<{
               {/* Placement decision and its reason (from the server's recorded decision facts) */}
               <div className={`p-4 rounded-[6px] space-y-3 border ${isUnplaced(detailStudent) ? 'bg-amber-50/60 border-amber-200' : 'bg-blue-50/50 border-blue-200'}`}>
                 <div className="flex items-center justify-between gap-2">
-                  <div className="font-bold text-[#172554] uppercase tracking-wider text-[11px]">Proposed placement</div>
+                  <div className="font-bold text-[#0077B6] uppercase tracking-wider text-[11px]">Proposed placement</div>
                   <span
                     className={`font-mono font-bold text-[11px] px-2 py-0.5 rounded ${
                       isUnplaced(detailStudent)
                         ? 'bg-amber-100 text-amber-800'
                         : detailStudent.proposal.is_fallback
-                        ? 'bg-teal-50 text-[#0F9D8A] border border-teal-200'
+                        ? 'bg-teal-50 text-[#20B2AA] border border-teal-200'
                         : 'bg-emerald-100 text-emerald-800'
                     }`}
                   >
                     {isUnplaced(detailStudent) ? 'Not placed' : basisLabel(detailStudent.proposal)}
                   </span>
                 </div>
-                <div className="text-sm font-bold text-[#172554] flex items-center gap-1.5">
-                  <Building className="w-4 h-4 text-[#2563EB]" />
+                <div className="text-sm font-bold text-[#0077B6] flex items-center gap-1.5">
+                  <Building className="w-4 h-4 text-[#0077B6]" />
                   <span>{!isUnplaced(detailStudent) && detailStudent.offer ? detailStudent.offer.school_name : 'No school yet'}</span>
                 </div>
 
-                <div className="p-3 bg-white rounded border border-slate-200 text-[#172554] leading-relaxed">
-                  <div className="font-bold text-[11px] uppercase text-[#2563EB] mb-1">Reason</div>
+                <div className="p-3 bg-white rounded border border-slate-200 text-[#0077B6] leading-relaxed">
+                  <div className="font-bold text-[11px] uppercase text-[#0077B6] mb-1">Reason</div>
                   {detailStudent.proposal.reason_text || '—'}
                   {detailStudent.proposal.suggested_action && (
                     <div className="mt-2 p-2 bg-amber-50 border border-amber-200 rounded text-amber-900">
@@ -1941,8 +1941,8 @@ export const StudentPlacementWorkflow: React.FC<{
                   </div>
                 )}
 
-                <div className="space-y-1 pt-2 border-t border-blue-200 text-[11px] text-[#172554]">
-                  <div className="font-bold uppercase text-[#2563EB]">Step-by-step decision</div>
+                <div className="space-y-1 pt-2 border-t border-blue-200 text-[11px] text-[#0077B6]">
+                  <div className="font-bold uppercase text-[#0077B6]">Step-by-step decision</div>
                   {!detailData ? (
                     <div className="text-slate-400">Loading…</div>
                   ) : (
@@ -1957,7 +1957,7 @@ export const StudentPlacementWorkflow: React.FC<{
 
               {isUnplaced(detailStudent) && (
                 <div className="p-4 bg-amber-50/60 border border-amber-200 rounded-[6px] space-y-2">
-                  <div className="font-bold text-[#172554] uppercase tracking-wider text-[11px]">
+                  <div className="font-bold text-[#0077B6] uppercase tracking-wider text-[11px]">
                     Suggested: assign a school that still has free seats
                   </div>
                   <p className="text-[11px] text-amber-900">
@@ -1973,8 +1973,8 @@ export const StudentPlacementWorkflow: React.FC<{
                       {detailOpenOffers.slice(0, 5).map((o, i) => (
                         <div key={o.offer_id} className="p-2.5 bg-white border border-[#E2E8F0] rounded-[6px] flex items-center justify-between gap-2">
                           <div className="min-w-0">
-                            <div className="font-bold text-[#172554] truncate">
-                              {i === 0 && <span className="text-[10px] font-bold text-[#0F9D8A] mr-1">{o.shortfall > 0 ? "CLOSEST TO REQUIREMENTS" : "BEST FIT"}</span>}
+                            <div className="font-bold text-[#0077B6] truncate">
+                              {i === 0 && <span className="text-[10px] font-bold text-[#20B2AA] mr-1">{o.shortfall > 0 ? "CLOSEST TO REQUIREMENTS" : "BEST FIT"}</span>}
                               {o.school_name}
                             </div>
                             <div className="text-[10px] text-slate-500">
@@ -1996,7 +1996,7 @@ export const StudentPlacementWorkflow: React.FC<{
                       {detailOpenOffers.length > 5 && (
                         <button
                           onClick={() => handleOpenAssign(detailStudent)}
-                          className="text-[11px] font-semibold text-[#2563EB] hover:underline cursor-pointer"
+                          className="text-[11px] font-semibold text-[#0077B6] hover:underline cursor-pointer"
                         >
                           See all {detailOpenOffers.length} schools with free seats →
                         </button>
@@ -2008,7 +2008,7 @@ export const StudentPlacementWorkflow: React.FC<{
 
               {/* Feasible alternatives, scored by the model */}
               <div className="space-y-2">
-                <div className="font-bold text-[#172554] uppercase tracking-wider text-[11px]">
+                <div className="font-bold text-[#0077B6] uppercase tracking-wider text-[11px]">
                   Other schools this student could take now
                 </div>
                 {detailAlternatives === null ? (
@@ -2026,17 +2026,17 @@ export const StudentPlacementWorkflow: React.FC<{
                       .map(alt => (
                         <div key={alt.offer.offer_id} className="p-3 bg-white border border-[#E2E8F0] rounded-[6px] flex items-center justify-between gap-2">
                           <div>
-                            <div className="font-bold text-[#172554]">{alt.offer.school_name}</div>
+                            <div className="font-bold text-[#0077B6]">{alt.offer.school_name}</div>
                             <div className="text-[11px] text-slate-500">{alt.eligibility_reason}</div>
                           </div>
                           <div className="flex items-center gap-2 shrink-0">
-                            <span className="font-mono text-xs font-bold text-[#0F9D8A]">
+                            <span className="font-mono text-xs font-bold text-[#20B2AA]">
                               {alt.has_score ? `${alt.fit_score.toFixed(0)}/100` : alt.listed_rank ? `choice ${alt.listed_rank}` : ''}
                             </span>
                             {canReview && detailStudent.proposal.status !== 'APPROVED' && (
                               <button
                                 onClick={() => handleOpenManualOverride(detailStudent, alt.offer.offer_id)}
-                                className="px-2 py-1 text-[11px] bg-[#EFF6FF] hover:bg-blue-100 text-[#1D4ED8] rounded font-semibold cursor-pointer"
+                                className="px-2 py-1 text-[11px] bg-[#EFF6FF] hover:bg-blue-100 text-[#00669D] rounded font-semibold cursor-pointer"
                               >
                                 Select
                               </button>
@@ -2053,7 +2053,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="p-4 bg-slate-50 border-t border-[#E2E8F0] flex items-center justify-between">
               <button
                 onClick={() => setDetailStudent(null)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#172554] cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#0077B6] cursor-pointer"
               >
                 Close
               </button>
@@ -2061,7 +2061,7 @@ export const StudentPlacementWorkflow: React.FC<{
                 {canReview && detailStudent.proposal.status !== 'APPROVED' && (
                   <button
                     onClick={() => (isUnplaced(detailStudent) ? handleOpenAssign(detailStudent) : handleOpenManualOverride(detailStudent))}
-                    className="px-3.5 py-2 bg-white hover:bg-slate-100 text-[#172554] border border-[#CBD5E1] rounded-[6px] text-xs font-semibold cursor-pointer"
+                    className="px-3.5 py-2 bg-white hover:bg-slate-100 text-[#0077B6] border border-[#CBD5E1] rounded-[6px] text-xs font-semibold cursor-pointer"
                   >
                     {isUnplaced(detailStudent) ? 'Assign School' : 'Change School'}
                   </button>
@@ -2069,7 +2069,7 @@ export const StudentPlacementWorkflow: React.FC<{
                 {canReview && !isUnplaced(detailStudent) && detailStudent.proposal.status !== 'APPROVED' && (
                   <button
                     onClick={() => handleApproveProposal(detailStudent.student.student_id)}
-                    className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-[6px] text-xs font-bold cursor-pointer"
+                    className="px-4 py-2 bg-[#0077B6] hover:bg-[#00669D] text-white rounded-[6px] text-xs font-bold cursor-pointer"
                   >
                     ✓ Approve Match
                   </button>
@@ -2089,7 +2089,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div>
                 <span className="text-[10px] font-mono uppercase text-purple-700 font-bold">Officer change (needs approval afterwards)</span>
-                <h3 className="text-base font-bold text-[#172554]">Change School for {manualTargetStudent.student.display_name}</h3>
+                <h3 className="text-base font-bold text-[#0077B6]">Change School for {manualTargetStudent.student.display_name}</h3>
               </div>
               <button onClick={() => setManualOverrideModalOpen(false)} className="p-1 hover:bg-slate-100 rounded text-slate-400">
                 <X className="w-5 h-5" />
@@ -2103,7 +2103,7 @@ export const StudentPlacementWorkflow: React.FC<{
             )}
 
             <div className="space-y-2 text-xs">
-              <label className="font-bold text-[#172554]">Select a school (only schools this student is eligible and allowed for, with free seats)</label>
+              <label className="font-bold text-[#0077B6]">Select a school (only schools this student is eligible and allowed for, with free seats)</label>
               <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
                 {manualOptions === null ? (
                   <div className="p-3 text-slate-400">Loading feasible schools…</div>
@@ -2118,11 +2118,11 @@ export const StudentPlacementWorkflow: React.FC<{
                       key={opt.offer.offer_id}
                       onClick={() => setManualSelectedOfferId(opt.offer.offer_id)}
                       className={`p-2.5 rounded border cursor-pointer flex items-center justify-between gap-2 ${
-                        manualSelectedOfferId === opt.offer.offer_id ? 'bg-blue-50 border-[#2563EB]' : 'bg-[#F8FAFC] border-slate-200'
+                        manualSelectedOfferId === opt.offer.offer_id ? 'bg-blue-50 border-[#0077B6]' : 'bg-[#F8FAFC] border-slate-200'
                       }`}
                     >
                       <div>
-                        <div className="font-bold text-[#172554]">{opt.offer.school_name}</div>
+                        <div className="font-bold text-[#0077B6]">{opt.offer.school_name}</div>
                         <div className="text-[10px] text-slate-500">
                           {opt.eligibility_reason} · cutoff {opt.offer.min_overall}
                           {opt.has_score ? ` · AI score ${opt.fit_score.toFixed(0)}/100` : ''}
@@ -2132,7 +2132,7 @@ export const StudentPlacementWorkflow: React.FC<{
                         type="radio"
                         checked={manualSelectedOfferId === opt.offer.offer_id}
                         onChange={() => setManualSelectedOfferId(opt.offer.offer_id)}
-                        className="text-[#2563EB]"
+                        className="text-[#0077B6]"
                       />
                     </div>
                   ))
@@ -2141,7 +2141,7 @@ export const StudentPlacementWorkflow: React.FC<{
             </div>
 
             <div className="space-y-1.5 text-xs">
-              <label className="font-bold text-[#172554]">Reason for the change (required, recorded in the audit log)</label>
+              <label className="font-bold text-[#0077B6]">Reason for the change (required, recorded in the audit log)</label>
               <select
                 value={manualReason}
                 onChange={e => setManualReason(e.target.value)}
@@ -2165,14 +2165,14 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2 text-xs">
               <button
                 onClick={() => setManualOverrideModalOpen(false)}
-                className="px-4 py-2 font-semibold text-slate-600 hover:text-[#172554] cursor-pointer"
+                className="px-4 py-2 font-semibold text-slate-600 hover:text-[#0077B6] cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmManualOverride}
                 disabled={manualLoading || !manualSelectedOfferId}
-                className="px-5 py-2 bg-[#2563EB] hover:bg-blue-700 text-white rounded font-bold transition-colors cursor-pointer disabled:opacity-50"
+                className="px-5 py-2 bg-[#0077B6] hover:bg-blue-700 text-white rounded font-bold transition-colors cursor-pointer disabled:opacity-50"
               >
                 {manualLoading ? 'Checking on the server…' : 'Confirm Change'}
               </button>
@@ -2190,7 +2190,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="flex items-start justify-between border-b border-[#E2E8F0] pb-3 gap-3">
               <div>
                 <span className="text-[10px] font-mono uppercase text-amber-700 font-bold">Officer assignment (needs approval afterwards)</span>
-                <h3 className="text-base font-bold text-[#172554]">Assign a school to {assignTarget.student.display_name}</h3>
+                <h3 className="text-base font-bold text-[#0077B6]">Assign a school to {assignTarget.student.display_name}</h3>
                 <p className="text-[11px] text-slate-500 mt-0.5">
                   Overall {assignTarget.student.overall_score} · {assignTarget.student.province} ·{' '}
                   {assignTarget.student.allow_fallback ? 'accepts alternative schools' : 'only listed specific schools'}
@@ -2210,7 +2210,7 @@ export const StudentPlacementWorkflow: React.FC<{
             {assignError && <div className="p-2.5 bg-rose-50 border border-rose-200 text-rose-700 rounded text-xs">{assignError}</div>}
 
             <div className="space-y-2 text-xs">
-              <label className="font-bold text-[#172554]">
+              <label className="font-bold text-[#0077B6]">
                 Schools that still have free seats ({assignOptions?.length ?? '…'}), best option first
               </label>
               <div className="space-y-1.5 max-h-72 overflow-y-auto pr-1">
@@ -2229,12 +2229,12 @@ export const StudentPlacementWorkflow: React.FC<{
                         setAssignConfirmBelow(false);
                       }}
                       className={`p-2.5 rounded border cursor-pointer flex items-center justify-between gap-2 ${
-                        assignSelected === o.offer_id ? 'bg-blue-50 border-[#2563EB]' : 'bg-[#F8FAFC] border-slate-200 hover:bg-slate-50'
+                        assignSelected === o.offer_id ? 'bg-blue-50 border-[#0077B6]' : 'bg-[#F8FAFC] border-slate-200 hover:bg-slate-50'
                       }`}
                     >
                       <div className="min-w-0">
-                        <div className="font-bold text-[#172554]">
-                          {i === 0 && <span className="text-[10px] font-bold text-[#0F9D8A] mr-1">{o.shortfall > 0 ? "CLOSEST TO REQUIREMENTS" : "RECOMMENDED"}</span>}
+                        <div className="font-bold text-[#0077B6]">
+                          {i === 0 && <span className="text-[10px] font-bold text-[#20B2AA] mr-1">{o.shortfall > 0 ? "CLOSEST TO REQUIREMENTS" : "RECOMMENDED"}</span>}
                           {o.school_name}
                         </div>
                         <div className="text-[10px] text-slate-500">
@@ -2243,7 +2243,7 @@ export const StudentPlacementWorkflow: React.FC<{
                         </div>
                         <ExceptionBadges option={o} />
                       </div>
-                      <input type="radio" readOnly checked={assignSelected === o.offer_id} className="text-[#2563EB] shrink-0" />
+                      <input type="radio" readOnly checked={assignSelected === o.offer_id} className="text-[#0077B6] shrink-0" />
                     </div>
                   ))
                 )}
@@ -2270,7 +2270,7 @@ export const StudentPlacementWorkflow: React.FC<{
             })()}
 
             <div className="space-y-1.5 text-xs">
-              <label className="font-bold text-[#172554]">Reason (required, recorded in the audit log)</label>
+              <label className="font-bold text-[#0077B6]">Reason (required, recorded in the audit log)</label>
               <select
                 value={assignReason}
                 onChange={e => setAssignReason(e.target.value)}
@@ -2292,7 +2292,7 @@ export const StudentPlacementWorkflow: React.FC<{
             </div>
 
             <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2 text-xs">
-              <button onClick={() => setAssignTarget(null)} className="px-4 py-2 font-semibold text-slate-600 hover:text-[#172554] cursor-pointer">
+              <button onClick={() => setAssignTarget(null)} className="px-4 py-2 font-semibold text-slate-600 hover:text-[#0077B6] cursor-pointer">
                 Cancel
               </button>
               <button
@@ -2318,12 +2318,12 @@ export const StudentPlacementWorkflow: React.FC<{
       {approveConfirmModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
           <div className="bg-white rounded-[8px] max-w-md w-full border border-[#CBD5E1] shadow-2xl p-6 space-y-4">
-            <div className="w-10 h-10 rounded-full bg-emerald-100 text-[#0F9D8A] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-emerald-100 text-[#20B2AA] flex items-center justify-center">
               <CheckSquare className="w-5 h-5" />
             </div>
 
             <div>
-              <h3 className="text-base font-bold text-[#172554]">
+              <h3 className="text-base font-bold text-[#0077B6]">
                 Approve Final Placements?
               </h3>
               <p className="text-xs text-[#64748B] mt-1 leading-relaxed">
@@ -2334,7 +2334,7 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="p-3 bg-[#F8FAFC] border border-slate-200 rounded text-xs space-y-1">
               <div className="flex justify-between">
                 <span className="text-slate-500">Placements to approve now:</span>
-                <span className="font-bold font-mono text-[#172554]">{readyForApprovalCount}</span>
+                <span className="font-bold font-mono text-[#0077B6]">{readyForApprovalCount}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Already approved:</span>
@@ -2349,14 +2349,14 @@ export const StudentPlacementWorkflow: React.FC<{
             <div className="flex items-center justify-end gap-2 pt-2 text-xs">
               <button
                 onClick={() => setApproveConfirmModalOpen(false)}
-                className="px-4 py-2 font-semibold text-slate-600 hover:text-[#172554] cursor-pointer"
+                className="px-4 py-2 font-semibold text-slate-600 hover:text-[#0077B6] cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleFinalizeAllPlacements}
                 disabled={finalizingLoading}
-                className="px-5 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded font-bold transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="px-5 py-2 bg-[#0077B6] hover:bg-[#00669D] text-white rounded font-bold transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {finalizingLoading ? (
                   <RefreshCw className="w-3.5 h-3.5 animate-spin" />

@@ -100,16 +100,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
     : 'AU';
 
   return (
-    <aside className="w-60 shrink-0 bg-[#020261] text-blue-100 flex flex-col justify-between border-r border-[#0e1675] h-screen sticky top-0 select-none shadow-md">
+    <aside className="w-60 shrink-0 bg-[#0077B6] text-blue-100 flex flex-col justify-between border-r border-[#0077B6] h-screen sticky top-0 select-none shadow-md">
       {/* Top Branding Section */}
       <div className="p-5">
         <div className="flex items-center gap-3">
-          <img src={faviconImg} alt="EduMatch AI" className="h-11 w-auto object-contain shrink-0" />
+          <img src={faviconImg} alt="" className="h-14 w-14 object-contain shrink-0" style={{ filter: 'drop-shadow(0 0 4px white)' }} />
 
           <div>
             <div className="text-white font-bold text-[15px] tracking-tight leading-tight flex items-center gap-1.5">
               <span>EduMatch</span>
-              <span className="text-[#38BDF8] font-bold text-xs px-1.5 py-0.2 rounded bg-white/10">
+              <span className="text-[#20B2AA] font-bold text-xs px-1.5 py-0.2 rounded bg-white/10">
                 AI
               </span>
             </div>
@@ -143,12 +143,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       }}
                       className={`relative w-full flex items-center justify-between px-3 py-2 rounded-[6px] text-[13px] font-semibold transition-all cursor-pointer ${
                         isActive
-                          ? 'bg-white/15 text-white border-l-[3px] border-[#38BDF8] rounded-l-none font-bold'
+                          ? 'bg-white/15 text-white border-l-[3px] border-[#20B2AA] rounded-l-none font-bold'
                           : 'text-blue-100/85 hover:text-white hover:bg-white/10'
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <Icon className={`w-4 h-4 ${isActive ? 'text-[#38BDF8]' : 'text-blue-200'}`} />
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-[#20B2AA]' : 'text-blue-200'}`} />
                         <span className="truncate">{item.label}</span>
                       </div>
 
@@ -167,7 +167,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
 
       {/* Bottom Officer Profile & Public Page Link */}
-      <div className="p-4 border-t border-white/10 space-y-3 bg-[#01014a]/40">
+      <div className="p-4 border-t border-white/10 space-y-3 bg-[#00669D]/40">
         <button
           onClick={onOpenLanding}
           className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-[6px] text-xs font-medium text-blue-100 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
@@ -182,7 +182,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Dynamic Role-Aware Profile Card */}
         <div className="p-2.5 rounded-[6px] bg-white/10 border border-white/15 space-y-2 shadow-xs">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-white text-[#020261] flex items-center justify-center text-xs font-bold shrink-0 shadow-xs">
+            <div className="w-8 h-8 rounded-full bg-white text-[#0077B6] flex items-center justify-center text-xs font-bold shrink-0 shadow-xs">
               {initials}
             </div>
             <div className="flex-1 min-w-0">
